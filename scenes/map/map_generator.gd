@@ -9,7 +9,8 @@ const MAP_WIDTH := 7
 const PATHS := 6
 const MONSTER_ROOM_WEIGHT := 10.0
 const SHOP_ROOM_WEIGHT := 2.5
-const CAMPFIRE_ROOM_WEIGHT := 4.0
+const CAMPFIRE_ROOM_WEIGHT := 3.0
+const EVENT_ROOM_WEIGHT := 3.5
 
 @export var battle_stats_pool: BattleStatsPool
 
