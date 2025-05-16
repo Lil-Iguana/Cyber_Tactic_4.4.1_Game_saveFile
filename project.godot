@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Cyber Tactics"
 config/description="Game"
-run/main_scene="res://scenes/battle/battle.tscn"
+run/main_scene="uid://bu3dhos1m15kj"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
