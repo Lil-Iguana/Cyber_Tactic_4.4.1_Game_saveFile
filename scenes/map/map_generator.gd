@@ -17,7 +17,8 @@ const EVENT_ROOM_WEIGHT := 3.5
 var random_room_type_weights = {
 	Room.Type.MONSTER: 0.0,
 	Room.Type.CAMPFIRE: 0.0,
-	Room.Type.SHOP: 0.0
+	Room.Type.SHOP: 0.0,
+	Room.Type.EVENT: 0.0
 }
 var random_room_type_total_weight := 0
 var map_data: Array[Array]
@@ -142,8 +143,10 @@ func _setup_random_room_weights() -> void:
 	random_room_type_weights[Room.Type.MONSTER] = MONSTER_ROOM_WEIGHT
 	random_room_type_weights[Room.Type.CAMPFIRE] = MONSTER_ROOM_WEIGHT + CAMPFIRE_ROOM_WEIGHT
 	random_room_type_weights[Room.Type.SHOP] = MONSTER_ROOM_WEIGHT + CAMPFIRE_ROOM_WEIGHT + SHOP_ROOM_WEIGHT
+	# When we implement room type "Event", we can add the following line of code:
+	random_room_type_weights[Room.Type.EVENT] = MONSTER_ROOM_WEIGHT + CAMPFIRE_ROOM_WEIGHT + SHOP_ROOM_WEIGHT + EVENT_ROOM_WEIGHT
 	
-	random_room_type_total_weight = random_room_type_weights[Room.Type.SHOP]
+	random_room_type_total_weight = random_room_type_weights[Room.Type.EVENT]
 
 
 func _setup_room_types() -> void:
