@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=4 format=3 uid="uid://di1u2yn8ru2vi"]
+
+[ext_resource type="Script" uid="uid://d0tnal1w0vdan" path="res://custom_resources/enemy_stats.gd" id="1_00qpd"]
+[ext_resource type="Texture2D" uid="uid://61n5m4hwmpcc" path="res://art/tile_0108.png" id="1_41ff6"]
+[ext_resource type="PackedScene" uid="uid://pi6b7mp1b2gx" path="res://enemies_stats/virus/virus_enemy_ai.tscn" id="1_lem3m"]
+
+[resource]
+script = ExtResource("1_00qpd")
+ai = ExtResource("1_lem3m")
+max_health = 25
+enemy_name = "Stuxnet"
+art = ExtResource("1_41ff6")
+tooltip_text = "You may struggle to kill this virus, so be aware of its actions or intent."
+tooltip_text_real = "Stuxnet, a state-sponsored cyberweapon, represents a high level of sophistication and geopolitical significance. Designed to destabilize Iran’s nuclear program, Stuxnet exploited vulnerabilities via USB thumb drives to target software controlling nuclear facilities. T Its impact was nothing short of astounding, forcing Iran's centrifuges to self-destruct and causing substantial setbacks to their nuclear ambitions."

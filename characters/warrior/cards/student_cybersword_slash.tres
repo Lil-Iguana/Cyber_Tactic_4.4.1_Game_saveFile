@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://kyu5l54a2ljg"]
+
+[ext_resource type="Texture2D" uid="uid://wy0km0q1cnv8" path="res://art/tile_0119.png" id="1_rxkcs"]
+[ext_resource type="Script" uid="uid://g5n676vk8j50" path="res://characters/warrior/cards/cybersword_slash.gd" id="2_xcl6d"]
+[ext_resource type="AudioStream" uid="uid://bty1q3l7ltsla" path="res://art/hitHurt.wav" id="3_wxncg"]
+
+[resource]
+script = ExtResource("2_xcl6d")
+name = "Sword Slash"
+id = "student_cybersword_slash"
+type = 0
+rarity = 0
+target = 2
+cost = 2
+remove = false
+icon = ExtResource("1_rxkcs")
+tooltip_text = "[center]Targets [color=\"#FFFF00\"]all enemies[/color] enemy to deal [color=\"ff0000\"]%s[/color] damage.[/center]"
+sound = ExtResource("3_wxncg")

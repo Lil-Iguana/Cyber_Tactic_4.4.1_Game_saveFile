@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cwxlm3oyg546w"]
+
+[ext_resource type="Texture2D" uid="uid://hmpqosvuxwib" path="res://art/tile_0107.png" id="1_qlntc"]
+[ext_resource type="Script" uid="uid://b3expdwte7ilg" path="res://threads/kabluey.gd" id="2_3hrbo"]
+
+[resource]
+script = ExtResource("2_3hrbo")
+damage = 2
+thread_name = "Kabluey"
+id = "kabluey"
+type = 0
+character_type = 0
+starter_thread = false
+icon = ExtResource("1_qlntc")
+tooltip = "[color=\"#FFFF00\"]Kabluey[/color]
+At the start of your turn, deal 2 damage to all enemies."

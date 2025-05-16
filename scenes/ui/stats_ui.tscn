@@ -1,0 +1,83 @@
+[gd_scene load_steps=15 format=3 uid="uid://b77sl1lvlhcwq"]
+
+[ext_resource type="Theme" uid="uid://cao7y1u2su7i5" path="res://main_theme.tres" id="1_57rat"]
+[ext_resource type="Texture2D" uid="uid://p0yqsrixsboc" path="res://art/tile_0102.png" id="2_ghfqv"]
+[ext_resource type="Script" uid="uid://dc37w23j05poe" path="res://scenes/ui/stats_ui.gd" id="2_mm03n"]
+[ext_resource type="Texture2D" uid="uid://cmpefot7ccsg5" path="res://art/animatedSprites/ShieldIcons/ShieldIconV2P4-Sheet.png" id="4_vmk4i"]
+[ext_resource type="Texture2D" uid="uid://ch2rcj17q4js2" path="res://art/animatedSprites/ShieldIcons/ShieldIconV2P5-Sheet.png" id="5_wicuj"]
+[ext_resource type="Texture2D" uid="uid://c13ton16r6my8" path="res://art/animatedSprites/ShieldIcons/ShieldIconV2P6-Sheet.png" id="6_77vqp"]
+[ext_resource type="Texture2D" uid="uid://db8mbiux0pt6h" path="res://art/animatedSprites/ShieldIcons/ShieldIconV2P7-Sheet.png" id="7_71ijm"]
+[ext_resource type="Texture2D" uid="uid://usrrqtjjoy5w" path="res://art/animatedSprites/ShieldIcons/ShieldIconV2P8-Sheet.png" id="8_v2jf4"]
+[ext_resource type="Texture2D" uid="uid://dd5x67dxcoa5g" path="res://art/animatedSprites/ShieldIcons/ShieldIconV2P9-Sheet.png" id="9_up7a2"]
+[ext_resource type="Texture2D" uid="uid://bjt5tyiakqgck" path="res://art/animatedSprites/ShieldIcons/ShieldIconV2P1-Sheet.png" id="10_ofyjk"]
+[ext_resource type="Texture2D" uid="uid://c0o6lrnupojm5" path="res://art/animatedSprites/ShieldIcons/ShieldIconV2P2-Sheet.png" id="11_m1ixe"]
+[ext_resource type="Texture2D" uid="uid://c71vc5xaej1l0" path="res://art/animatedSprites/ShieldIcons/ShieldIconV2P3-Sheet.png" id="12_fvqgd"]
+[ext_resource type="PackedScene" uid="uid://cb6e701xyfirv" path="res://scenes/ui/health_ui.tscn" id="13_dq7in"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_q23uh"]
+frames = 16
+speed_scale = 10.0
+frame_0/texture = ExtResource("2_ghfqv")
+frame_1/texture = ExtResource("2_ghfqv")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("2_ghfqv")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("2_ghfqv")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("2_ghfqv")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("2_ghfqv")
+frame_5/duration = 1.0
+frame_6/texture = ExtResource("2_ghfqv")
+frame_6/duration = 1.0
+frame_7/texture = ExtResource("10_ofyjk")
+frame_7/duration = 1.0
+frame_8/texture = ExtResource("11_m1ixe")
+frame_8/duration = 1.0
+frame_9/texture = ExtResource("12_fvqgd")
+frame_9/duration = 1.0
+frame_10/texture = ExtResource("4_vmk4i")
+frame_10/duration = 1.0
+frame_11/texture = ExtResource("5_wicuj")
+frame_11/duration = 1.0
+frame_12/texture = ExtResource("6_77vqp")
+frame_12/duration = 1.0
+frame_13/texture = ExtResource("7_71ijm")
+frame_13/duration = 1.0
+frame_14/texture = ExtResource("8_v2jf4")
+frame_14/duration = 1.0
+frame_15/texture = ExtResource("9_up7a2")
+frame_15/duration = 1.0
+
+[node name="StatsUI" type="HBoxContainer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -45.0
+offset_right = 45.0
+offset_bottom = 16.0
+grow_horizontal = 2
+theme = ExtResource("1_57rat")
+alignment = 1
+script = ExtResource("2_mm03n")
+
+[node name="Block" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="BlockImage" type="TextureRect" parent="Block"]
+layout_mode = 2
+texture = SubResource("AnimatedTexture_q23uh")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="BlockLabel" type="Label" parent="Block"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "6"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Health" parent="." instance=ExtResource("13_dq7in")]
+layout_mode = 2

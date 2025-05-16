@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="PowerUpStatus" load_steps=3 format=3 uid="uid://dqrq5yc3esw0a"]
+
+[ext_resource type="Texture2D" uid="uid://bndwuastbmdgu" path="res://art/muscle.png" id="1_lgfja"]
+[ext_resource type="Script" uid="uid://dlxb4fdh6d5q" path="res://statuses/power_up.gd" id="2_ynu4e"]
+
+[resource]
+script = ExtResource("2_ynu4e")
+id = "power_up"
+type = 2
+effect_type = 1
+stack_type = 1
+can_expire = false
+duration = 0
+stacks = 2
+icon = ExtResource("1_lgfja")
+tooltip = "Power Up: attacks deal %s more damage."

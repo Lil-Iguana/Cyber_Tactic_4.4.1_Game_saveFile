@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://buuvbbcr5ok0i"]
+
+[ext_resource type="PackedScene" uid="uid://306utgcvnsbs" path="res://scenes/enemy/enemy.tscn" id="1_50w8o"]
+[ext_resource type="Resource" uid="uid://di1u2yn8ru2vi" path="res://enemies_stats/virus/virus_enemy.tres" id="2_b4uqw"]
+
+[node name="Tier0Worms2" type="Node2D"]
+
+[node name="Enemy" parent="." instance=ExtResource("1_50w8o")]
+position = Vector2(174, 73)
+stats = ExtResource("2_b4uqw")
+
+[node name="Enemy2" parent="." instance=ExtResource("1_50w8o")]
+position = Vector2(221, 73)
+stats = ExtResource("2_b4uqw")

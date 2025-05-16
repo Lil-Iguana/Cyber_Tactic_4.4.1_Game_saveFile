@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bewgiacc3d4xk"]
+
+[ext_resource type="Script" uid="uid://weulmxgs6wh8" path="res://scenes/ui/status_tooltip.gd" id="1_n50un"]
+[ext_resource type="Texture2D" uid="uid://bs0qd6rr0gix7" path="res://art/expose.png" id="1_rw8mh"]
+[ext_resource type="FontFile" uid="uid://7ucfniysa1ko" path="res://art/Font Styles/pixel_rpg.ttf" id="2_hfxrr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_va8am"]
+font = ExtResource("2_hfxrr")
+font_size = 6
+
+[node name="StatusTooltip" type="HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+offset_right = 150.0
+offset_bottom = 24.0
+script = ExtResource("1_n50un")
+
+[node name="Icon" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+texture = ExtResource("1_rw8mh")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Vulnerable: take 50%% more damage from attacks for %s turn(s)."
+label_settings = SubResource("LabelSettings_va8am")
+vertical_alignment = 1
+autowrap_mode = 2

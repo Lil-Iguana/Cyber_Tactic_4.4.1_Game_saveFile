@@ -1,0 +1,140 @@
+[gd_scene load_steps=7 format=3 uid="uid://istosvrl2ng1"]
+
+[ext_resource type="PackedScene" uid="uid://rsk8d12egnnf" path="res://scenes/ui/card_menu_ui.tscn" id="1_6kcv7"]
+[ext_resource type="Script" uid="uid://bkarab6e2bcx8" path="res://scenes/ui/card_tooltip_pop_up.gd" id="1_aur4j"]
+[ext_resource type="FontFile" uid="uid://d3fuaowohtamf" path="res://art/Font Styles/PressStart2P-Regular.ttf" id="2_wgmuf"]
+[ext_resource type="FontFile" uid="uid://7ucfniysa1ko" path="res://art/Font Styles/pixel_rpg.ttf" id="4_wmmgr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uas1f"]
+font = ExtResource("2_wgmuf")
+font_size = 8
+outline_size = 2
+outline_color = Color(0.184314, 0, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_h63ux"]
+
+[node name="CardTooltipPopUp" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aur4j")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.568627)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -79.0
+offset_top = -50.0
+offset_right = 79.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(75, 50)
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 3
+
+[node name="CardName" type="Label" parent="ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+text = "Card Name"
+label_settings = SubResource("LabelSettings_uas1f")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TooltipCard" type="CenterContainer" parent="ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="CardMenuUI" parent="ScrollContainer/VBoxContainer/TooltipCard" instance=ExtResource("1_6kcv7")]
+layout_mode = 2
+
+[node name="CardType" type="Label" parent="ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "(Type)"
+label_settings = SubResource("LabelSettings_h63ux")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RarityType" type="Label" parent="ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "(Type)"
+label_settings = SubResource("LabelSettings_h63ux")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardDescription" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_wmmgr")
+theme_override_font_sizes/normal_font_size = 6
+bbcode_enabled = true
+text = "Card Description 
+Card Description
+Card Description 
+Card Description
+Card Description 
+Card Description
+Card Description 
+Card Description"
+fit_content = true
+
+[node name="ChooseButton" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 14)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 75.0
+offset_top = -28.0
+offset_right = 115.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("4_wmmgr")
+theme_override_font_sizes/font_size = 6
+text = "Select"
+
+[node name="BackButton" type="Button" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 208.0
+offset_top = 8.0
+offset_right = 248.0
+offset_bottom = 23.0
+text = "Back"
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="pressed" from="ChooseButton" to="." method="_on_choose_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

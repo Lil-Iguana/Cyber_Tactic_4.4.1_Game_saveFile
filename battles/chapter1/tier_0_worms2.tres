@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BattleStats" load_steps=3 format=3 uid="uid://dlb6el0rgswue"]
+
+[ext_resource type="PackedScene" uid="uid://buuvbbcr5ok0i" path="res://battles/chapter1/tier_0_worms_2.tscn" id="1_2jh8t"]
+[ext_resource type="Script" uid="uid://dedae26v8t7fi" path="res://custom_resources/battle_stats.gd" id="1_p6q8d"]
+
+[resource]
+script = ExtResource("1_p6q8d")
+battle_tier = 0
+weight = 2.5
+gold_reward_min = 53
+gold_reward_max = 72
+enemies = ExtResource("1_2jh8t")

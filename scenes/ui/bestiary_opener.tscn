@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dig87d8hgclxf"]
+
+[ext_resource type="Texture2D" uid="uid://t7gutmixoxh6" path="res://art/bestiary.png" id="1_wjk25"]
+
+[node name="BestiaryOpener" type="TextureButton"]
+offset_right = 16.0
+offset_bottom = 16.0
+texture_normal = ExtResource("1_wjk25")
+ignore_texture_size = true
+stretch_mode = 5

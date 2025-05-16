@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://bi4s6cxvknvci"]
+
+[ext_resource type="Script" uid="uid://0bnp8a4m67wc" path="res://scenes/status_handler/status_ui.gd" id="1_6mlwl"]
+[ext_resource type="Texture2D" uid="uid://ra3deudpmllj" path="res://art/heart.png" id="1_qlpom"]
+[ext_resource type="FontFile" uid="uid://7ucfniysa1ko" path="res://art/Font Styles/pixel_rpg.ttf" id="2_kkobe"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_443hj"]
+font = ExtResource("2_kkobe")
+font_size = 6
+font_color = Color(1, 0.809379, 0.77806, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0u3hx"]
+font = ExtResource("2_kkobe")
+font_size = 6
+font_color = Color(0.470158, 0.998568, 0.53073, 1)
+
+[node name="StatusUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_6mlwl")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 10.0
+offset_bottom = 10.0
+texture = ExtResource("1_qlpom")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Duration" type="Label" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 14.0
+offset_bottom = 11.0
+text = "99"
+label_settings = SubResource("LabelSettings_443hj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Stacks" type="Label" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 14.0
+offset_bottom = 11.0
+text = "99"
+label_settings = SubResource("LabelSettings_0u3hx")
+horizontal_alignment = 1
+vertical_alignment = 1

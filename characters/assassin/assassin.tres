@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=4 format=3 uid="uid://cbhlln0fk7s0w"]
+
+[ext_resource type="Texture2D" uid="uid://p0yqsrixsboc" path="res://art/tile_0102.png" id="1_1nmtn"]
+[ext_resource type="Script" uid="uid://dxplxo6x2a02m" path="res://custom_resources/character_stats.gd" id="1_3t7do"]
+[ext_resource type="Resource" uid="uid://cowpt7h8htwl" path="res://characters/warrior/warrior_starting_deck.tres" id="3_e40x2"]
+
+[resource]
+script = ExtResource("1_3t7do")
+character_name = "Assassin"
+description = "I am snake."
+portrait = ExtResource("1_1nmtn")
+starting_deck = ExtResource("3_e40x2")
+cards_per_turn = 5
+max_mana = 3
+max_health = 24
+art = ExtResource("1_1nmtn")
+tooltip_text = ""

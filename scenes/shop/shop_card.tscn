@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://c4levpjon1c5s"]
+
+[ext_resource type="Script" uid="uid://bu3dx65ejjyr1" path="res://scenes/shop/shop_card.gd" id="1_5q1iu"]
+[ext_resource type="PackedScene" uid="uid://rsk8d12egnnf" path="res://scenes/ui/card_menu_ui.tscn" id="1_alfhh"]
+[ext_resource type="Resource" uid="uid://kyu5l54a2ljg" path="res://characters/warrior/cards/student_cybersword_slash.tres" id="2_4ldbr"]
+[ext_resource type="FontFile" uid="uid://7ucfniysa1ko" path="res://art/Font Styles/pixel_rpg.ttf" id="2_vr56u"]
+[ext_resource type="Texture2D" uid="uid://c4hcddu2md8wb" path="res://art/Cache10.png" id="5_jhj4o"]
+
+[node name="ShopCard" type="VBoxContainer"]
+custom_minimum_size = Vector2(40, 57)
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 2
+script = ExtResource("1_5q1iu")
+card = ExtResource("2_4ldbr")
+
+[node name="CardContainer" type="CenterContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="CardMenuUI" parent="CardContainer" instance=ExtResource("1_alfhh")]
+layout_mode = 2
+
+[node name="Price" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="PriceLabel" type="Label" parent="Price"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vr56u")
+theme_override_font_sizes/font_size = 6
+text = "999"
+
+[node name="GoldIcon" type="TextureRect" parent="Price"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+texture = ExtResource("5_jhj4o")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BuyButton" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 13)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vr56u")
+theme_override_font_sizes/font_size = 6
+text = "Buy"
+
+[connection signal="pressed" from="BuyButton" to="." method="_on_buy_button_pressed"]

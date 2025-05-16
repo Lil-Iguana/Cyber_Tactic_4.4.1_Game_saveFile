@@ -1,0 +1,85 @@
+[gd_scene load_steps=6 format=3 uid="uid://cusrqvpni62dv"]
+
+[ext_resource type="Script" uid="uid://b5mqyaekatelf" path="res://scenes/thread_handler/thread_handler.gd" id="1_2bgop"]
+[ext_resource type="Texture2D" uid="uid://dtmj57ks6bmxo" path="res://art/arrow_small.png" id="1_v60l0"]
+[ext_resource type="Texture2D" uid="uid://l8auqkvj28y5" path="res://art/arrow_small_disabled.png" id="2_a26ud"]
+[ext_resource type="Script" uid="uid://dubmxhcov0v6a" path="res://scenes/thread_handler/threads_control.gd" id="3_l5tbk"]
+[ext_resource type="PackedScene" uid="uid://dy03obqy51h0k" path="res://scenes/thread_handler/thread_ui.tscn" id="4_00t72"]
+
+[node name="ThreadHandler" type="HBoxContainer"]
+offset_right = 120.0
+offset_bottom = 16.0
+script = ExtResource("1_2bgop")
+
+[node name="LeftButton" type="TextureButton" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+texture_normal = ExtResource("1_v60l0")
+texture_pressed = ExtResource("1_v60l0")
+texture_hover = ExtResource("1_v60l0")
+texture_disabled = ExtResource("2_a26ud")
+stretch_mode = 5
+flip_h = true
+
+[node name="ThreadsControl" type="Control" parent="." node_paths=PackedStringArray("left_button", "right_button")]
+clip_contents = true
+custom_minimum_size = Vector2(88, 0)
+layout_mode = 2
+script = ExtResource("3_l5tbk")
+left_button = NodePath("../LeftButton")
+right_button = NodePath("../RightButton")
+
+[node name="ThreadsHold" type="HBoxContainer" parent="ThreadsControl"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(88, 16)
+layout_mode = 0
+offset_right = 236.0
+offset_bottom = 16.0
+theme_override_constants/separation = 2
+
+[node name="ThreadUI" parent="ThreadsControl/ThreadsHold" instance=ExtResource("4_00t72")]
+layout_mode = 2
+
+[node name="ThreadUI2" parent="ThreadsControl/ThreadsHold" instance=ExtResource("4_00t72")]
+layout_mode = 2
+
+[node name="ThreadUI3" parent="ThreadsControl/ThreadsHold" instance=ExtResource("4_00t72")]
+layout_mode = 2
+
+[node name="ThreadUI4" parent="ThreadsControl/ThreadsHold" instance=ExtResource("4_00t72")]
+layout_mode = 2
+
+[node name="ThreadUI5" parent="ThreadsControl/ThreadsHold" instance=ExtResource("4_00t72")]
+layout_mode = 2
+
+[node name="ThreadUI6" parent="ThreadsControl/ThreadsHold" instance=ExtResource("4_00t72")]
+layout_mode = 2
+
+[node name="ThreadUI7" parent="ThreadsControl/ThreadsHold" instance=ExtResource("4_00t72")]
+layout_mode = 2
+
+[node name="ThreadUI8" parent="ThreadsControl/ThreadsHold" instance=ExtResource("4_00t72")]
+layout_mode = 2
+
+[node name="ThreadUI9" parent="ThreadsControl/ThreadsHold" instance=ExtResource("4_00t72")]
+layout_mode = 2
+
+[node name="ThreadUI10" parent="ThreadsControl/ThreadsHold" instance=ExtResource("4_00t72")]
+layout_mode = 2
+
+[node name="ThreadUI11" parent="ThreadsControl/ThreadsHold" instance=ExtResource("4_00t72")]
+layout_mode = 2
+
+[node name="ThreadUI12" parent="ThreadsControl/ThreadsHold" instance=ExtResource("4_00t72")]
+layout_mode = 2
+
+[node name="RightButton" type="TextureButton" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+texture_normal = ExtResource("1_v60l0")
+texture_pressed = ExtResource("1_v60l0")
+texture_hover = ExtResource("1_v60l0")
+texture_disabled = ExtResource("2_a26ud")
+stretch_mode = 5

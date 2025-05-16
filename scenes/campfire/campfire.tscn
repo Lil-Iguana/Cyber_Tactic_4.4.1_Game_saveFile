@@ -1,0 +1,237 @@
+[gd_scene load_steps=17 format=3 uid="uid://mpnkn13856x1"]
+
+[ext_resource type="Script" uid="uid://b2pd8thhd1l7e" path="res://scenes/campfire/campfire.gd" id="1_wduac"]
+[ext_resource type="FontFile" uid="uid://bojuhq17w6srl" path="res://art/Font Styles/m3x6.ttf" id="2_1nk4i"]
+[ext_resource type="Texture2D" uid="uid://uqdfrrdigtec" path="res://art/line.png" id="2_yyc03"]
+[ext_resource type="FontFile" uid="uid://7ucfniysa1ko" path="res://art/Font Styles/pixel_rpg.ttf" id="3_igcod"]
+[ext_resource type="PackedScene" uid="uid://df1tufvp2h0o5" path="res://scenes/ui/card_pile_view.tscn" id="5_cj7qx"]
+
+[sub_resource type="Gradient" id="Gradient_bdoxw"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0.00392157, 0.486275, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b54su"]
+gradient = SubResource("Gradient_bdoxw")
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 8
+
+[sub_resource type="Gradient" id="Gradient_06f58"]
+offsets = PackedFloat32Array(0, 0.289941, 0.568047, 0.816568, 1)
+colors = PackedColorArray(0.0862745, 0.843137, 1, 1, 0, 0.313245, 0.588053, 1, 0.510789, 0.673939, 1, 1, 0.165082, 0.231621, 0.631633, 1, 0.137255, 0.223529, 0.576471, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ccnj2"]
+gradient = SubResource("Gradient_06f58")
+
+[sub_resource type="Curve" id="Curve_04ui2"]
+_data = [Vector2(0, 0.384615), 0.0, 0.0, 0, 0, Vector2(0.213198, 1), 0.0, 0.0, 0, 0, Vector2(0.761421, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.461538), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_cjuvh"]
+curve = SubResource("Curve_04ui2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ytiwx"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 25.0
+angle_min = 60.0
+angle_max = 120.0
+direction = Vector3(0, -1, 0)
+spread = 10.0
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 15.0
+linear_accel_max = 25.0
+damping_min = 20.0
+damping_max = 50.0
+scale_curve = SubResource("CurveTexture_cjuvh")
+color_ramp = SubResource("GradientTexture1D_ccnj2")
+
+[sub_resource type="LabelSettings" id="LabelSettings_xke4x"]
+font = ExtResource("2_1nk4i")
+font_size = 32
+
+[sub_resource type="Animation" id="Animation_4h8fk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ParticlesLayer/GPUParticles2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UILayer/UI:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vi5ju"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ParticlesLayer/GPUParticles2D:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3, 0.8),
+"transitions": PackedFloat32Array(1, 2),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UILayer/UI:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.8),
+"transitions": PackedFloat32Array(1, 2),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_fade_out_finished"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_omvee"]
+_data = {
+&"RESET": SubResource("Animation_4h8fk"),
+&"fade_out": SubResource("Animation_vi5ju")
+}
+
+[node name="Campfire" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_wduac")
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="Background" type="TextureRect" parent="BackgroundLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_b54su")
+
+[node name="ParticlesLayer" type="CanvasLayer" parent="."]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="ParticlesLayer"]
+position = Vector2(65, 105)
+amount = 128
+texture = ExtResource("2_yyc03")
+lifetime = 1.5
+process_material = SubResource("ParticleProcessMaterial_ytiwx")
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="VBoxContainer" parent="UILayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -17.0
+offset_top = -28.0
+offset_right = 113.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="UILayer/UI"]
+layout_mode = 2
+text = "Safe Spot"
+label_settings = SubResource("LabelSettings_xke4x")
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="UILayer/UI"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UILayer/UI"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+
+[node name="Rest" type="VBoxContainer" parent="UILayer/UI/HBoxContainer"]
+layout_mode = 2
+
+[node name="RestButton" type="Button" parent="UILayer/UI/HBoxContainer/Rest"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 18)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Rest
+"
+
+[node name="Description" type="Label" parent="UILayer/UI/HBoxContainer/Rest"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_igcod")
+theme_override_font_sizes/font_size = 6
+text = "+30% HP"
+horizontal_alignment = 1
+
+[node name="Remove" type="VBoxContainer" parent="UILayer/UI/HBoxContainer"]
+layout_mode = 2
+
+[node name="RemoveButton" type="Button" parent="UILayer/UI/HBoxContainer/Remove"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 18)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Drop"
+
+[node name="Description" type="Label" parent="UILayer/UI/HBoxContainer/Remove"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_igcod")
+theme_override_font_sizes/font_size = 6
+text = "Drop a card
+in your deck"
+horizontal_alignment = 1
+
+[node name="DeckViewLayer" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="DeckView" parent="DeckViewLayer" instance=ExtResource("5_cj7qx")]
+unique_name_in_owner = true
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_omvee")
+}
+
+[connection signal="pressed" from="UILayer/UI/HBoxContainer/Rest/RestButton" to="." method="_on_rest_button_pressed"]
+[connection signal="pressed" from="UILayer/UI/HBoxContainer/Remove/RemoveButton" to="." method="_on_remove_button_pressed"]

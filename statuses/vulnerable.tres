@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="VulnerableStatus" load_steps=3 format=3 uid="uid://dj8xnen1xfq5"]
+
+[ext_resource type="Texture2D" uid="uid://bs0qd6rr0gix7" path="res://art/expose.png" id="1_mh8tp"]
+[ext_resource type="Script" uid="uid://cx27mbh4uf1sj" path="res://statuses/vulnerable.gd" id="2_memtb"]
+
+[resource]
+script = ExtResource("2_memtb")
+id = "vulnerable"
+type = 0
+effect_type = 0
+stack_type = 2
+can_expire = true
+duration = 1
+stacks = 0
+icon = ExtResource("1_mh8tp")
+tooltip = "Vulnerable: take 50%% more damage from attacks for %s turn(s)."

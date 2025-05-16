@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://daiht3oljvjoj"]
+
+[ext_resource type="Texture2D" uid="uid://dexe65qywimpe" path="res://art/CyberSword_attack.png" id="1_48yow"]
+[ext_resource type="Script" uid="uid://bel2a66awwo8i" path="res://characters/warrior/cards/warrior_cybersword_attack.gd" id="2_cvsc0"]
+[ext_resource type="AudioStream" uid="uid://mld5qltxsv80" path="res://art/synth.wav" id="3_f525k"]
+
+[resource]
+script = ExtResource("2_cvsc0")
+name = "Cyber Sword"
+id = "warrior_cybersword_attack"
+type = 0
+rarity = 0
+target = 1
+cost = 1
+remove = false
+icon = ExtResource("1_48yow")
+tooltip_text = "[center]Target [color=\"#FFFF00\"]single[/color] enemy to deal [color=\"ff0000\"]%s[/color] damage.[/center]"
+sound = ExtResource("3_f525k")

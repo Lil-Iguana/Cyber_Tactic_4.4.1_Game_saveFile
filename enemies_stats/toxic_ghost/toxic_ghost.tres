@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=4 format=3 uid="uid://uy3e52yhtsei"]
+
+[ext_resource type="PackedScene" uid="uid://d1luu5u334kps" path="res://enemies_stats/toxic_ghost/toxic_ghost_ai.tscn" id="1_rr2lt"]
+[ext_resource type="Texture2D" uid="uid://61n5m4hwmpcc" path="res://art/tile_0108.png" id="1_uys0k"]
+[ext_resource type="Script" uid="uid://d0tnal1w0vdan" path="res://custom_resources/enemy_stats.gd" id="2_6dk34"]
+
+[resource]
+script = ExtResource("2_6dk34")
+ai = ExtResource("1_rr2lt")
+max_health = 40
+enemy_name = "Morris Worm"
+art = ExtResource("1_uys0k")
+tooltip_text = "This worm can pack a punch, and has a trick in its sleeve."
+tooltip_text_real = "It was the first widespread computer worm, which meant it could reproduce itself without needing another program to piggyback on. It targeted multiple vulnerabilities to help it spread faster and further. While not designed to do harm, it was probably the first malware to do real substantive financial damage, more than earning its place on this list. It spread incredibly swiftly — within 24 hours of its release, it had infected 10% of all internet-connected computers — and created multiple copies of itself on each machine, causing many of them to grind to a halt. Estimates of the costs of the attack ranged into the millions."

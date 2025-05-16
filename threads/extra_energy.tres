@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://44a423e8clh1"]
+
+[ext_resource type="Texture2D" uid="uid://bqhiuu3kr650s" path="res://art/tile_0103.png" id="1_60268"]
+[ext_resource type="Script" uid="uid://dr5jtn3tgs54p" path="res://threads/extra_energy.gd" id="2_pb3w1"]
+
+[resource]
+script = ExtResource("2_pb3w1")
+thread_name = "Extra Energy"
+id = "extra_energy"
+type = 1
+character_type = 0
+starter_thread = false
+icon = ExtResource("1_60268")
+tooltip = "[color=\"#FFFF00\"]Extra Energy[/color]
+At the start of combat, gain 1 energy."

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CardPile" load_steps=6 format=3 uid="uid://ceybpc07sti3p"]
+
+[ext_resource type="Script" uid="uid://db7gxbb4g4qbl" path="res://custom_resources/card.gd" id="1_mfr0o"]
+[ext_resource type="Script" uid="uid://do5h7q7uufehy" path="res://custom_resources/card_pile.gd" id="2_eij6y"]
+[ext_resource type="Resource" uid="uid://kyu5l54a2ljg" path="res://characters/warrior/cards/student_cybersword_slash.tres" id="3_62spa"]
+[ext_resource type="Resource" uid="uid://cavj5bacvpmrd" path="res://characters/warrior/cards/warrior_big_slam.tres" id="4_d75lg"]
+[ext_resource type="Resource" uid="uid://bl66ldjcrh1ii" path="res://characters/warrior/cards/warrior_true_strength.tres" id="5_kq36k"]
+
+[resource]
+script = ExtResource("2_eij6y")
+cards = Array[ExtResource("1_mfr0o")]([ExtResource("5_kq36k"), ExtResource("5_kq36k"), ExtResource("4_d75lg"), ExtResource("4_d75lg"), ExtResource("4_d75lg"), ExtResource("4_d75lg"), ExtResource("3_62spa"), ExtResource("3_62spa"), ExtResource("3_62spa"), ExtResource("3_62spa")])
