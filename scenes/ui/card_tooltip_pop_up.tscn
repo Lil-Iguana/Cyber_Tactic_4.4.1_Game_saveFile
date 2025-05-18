@@ -91,6 +91,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 mouse_filter = 2
+theme_override_constants/line_separation = 2
 theme_override_fonts/normal_font = ExtResource("4_wmmgr")
 theme_override_font_sizes/normal_font_size = 6
 bbcode_enabled = true

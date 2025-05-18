@@ -1,5 +1,7 @@
 extends Card
 
+@export var element := Stats.Element.WATER
+
 const VULNERABLE_STATUS = preload("res://statuses/vulnerable.tres")
 
 var base_damage := 4
@@ -13,6 +15,11 @@ func get_default_tooltip() -> String:
 func get_updated_tooltip(player_modifiers: ModifierHandler, enemy_modifiers: ModifierHandler) -> String:
 	var modified_dmg := player_modifiers.get_modified_value(base_damage, Modifier.Type.DMG_DEALT)
 
+	if enemy_modifiers and enemy_modifiers.has_modifier(Modifier.Type.DMG_TAKEN):
+		var enemy_stats = enemy_modifiers.get_parent().stats
+		var elem_mult = enemy_stats.get_elemental_multiplier(element)
+		modified_dmg = floor(modified_dmg * elem_mult)
+
 	if enemy_modifiers:
 		modified_dmg = enemy_modifiers.get_modified_value(modified_dmg, Modifier.Type.DMG_TAKEN)
 		
@@ -20,8 +27,10 @@ func get_updated_tooltip(player_modifiers: ModifierHandler, enemy_modifiers: Mod
 
 
 func apply_effects(targets: Array[Node], modifiers: ModifierHandler) -> void:
+	var raw = modifiers.get_modified_value(base_damage, Modifier.Type.DMG_DEALT)
 	var damage_effect := DamageEffect.new()
-	damage_effect.amount = modifiers.get_modified_value(base_damage, Modifier.Type.DMG_DEALT)
+	damage_effect.amount = raw
+	damage_effect.element = element
 	damage_effect.sound = sound
 	damage_effect.execute(targets)
 	
