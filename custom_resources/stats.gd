@@ -1,6 +1,8 @@
 class_name Stats
 extends Resource
 
+enum Element { PHYSICAL, FIRE, WATER, ICE, LIGHTING}
+
 signal stats_changed
 
 @export var max_health := 1
@@ -8,6 +10,13 @@ signal stats_changed
 @export var art: Texture
 @export_multiline var tooltip_text: String
 @export_multiline var tooltip_text_real: String
+@export var elemental_multipliers := {
+	Element.PHYSICAL: 1.0,
+	Element.FIRE: 1.0,
+	Element.WATER: 1.0,
+	Element.ICE: 1.0,
+	Element.LIGHTING: 1.0
+}
 
 var health: int : set = set_health
 var block: int : set = set_block
@@ -40,6 +49,13 @@ func take_pure_damage(damage: int) -> void:
 
 func heal(amount: int) -> void:
 	health += amount
+
+
+# Helper to get the multiplier for an element (defaults to 1.0 if not found)
+func get_elemental_multiplier(elem: Element) -> float:
+	if elemental_multipliers.has(elem):
+		return elemental_multipliers[elem]
+	return 1.0
 
 
 func create_instance() -> Resource:
