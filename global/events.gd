@@ -114,6 +114,10 @@ signal start_of_turn_relics_activated
 @warning_ignore("unused_signal")
 signal end_of_turn_relics_activated
 
+# Random Event room-related events
+@warning_ignore("unused_signal")
+signal event_room_exited
+
 # Bestiary-related events
 @warning_ignore("unused_signal")
 signal bestiary_exited
