@@ -10,7 +10,7 @@ id = "warrior_big_slam"
 type = 0
 rarity = 1
 target = 1
-cost = 2
+cost = 1
 remove = true
 icon = ExtResource("1_6ge4e")
 tooltip_text = "[center]Deal [color=\"ff0000\"]%s[/color] damage and apply 2 [color=\"ffdf00\"]Exposed[/color].[/center]"
