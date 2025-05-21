@@ -5,7 +5,7 @@ enum Element { PHYSICAL, FIRE, WATER, ICE, LIGHTING}
 
 signal stats_changed
 
-@export var max_health := 1
+@export var max_health := 1 : set = set_max_health
 @export var enemy_name: String
 @export var art: Texture
 @export_multiline var tooltip_text: String
@@ -24,6 +24,18 @@ var block: int : set = set_block
 
 func set_health(value: int) -> void:
 	health = clampi(value, 0, max_health)
+	stats_changed.emit()
+
+
+func set_max_health(value : int) -> void:
+	var diff := value - max_health
+	max_health = value
+
+	if diff > 0:
+		health += diff
+	elif health > max_health:
+		health = max_health
+
 	stats_changed.emit()
 
 
