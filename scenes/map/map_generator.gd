@@ -13,6 +13,7 @@ const CAMPFIRE_ROOM_WEIGHT := 3.0
 const EVENT_ROOM_WEIGHT := 3.5
 
 @export var battle_stats_pool: BattleStatsPool
+@export var event_room_pool: EventRoomPool
 
 var random_room_type_weights = {
 	Room.Type.MONSTER: 0.0,
@@ -204,6 +205,9 @@ func _set_room_randomly(room_to_set: Room) -> void:
 			tier_for_monster_rooms = 1
 			
 		room_to_set.battle_stats = battle_stats_pool.get_random_battle_for_tier(tier_for_monster_rooms)
+	
+	if room_to_set.type == Room.Type.EVENT:
+		room_to_set.event_scene = event_room_pool.get_random()
 
 
 func _room_has_parent_of_type(room: Room, type: Room.Type) -> bool:

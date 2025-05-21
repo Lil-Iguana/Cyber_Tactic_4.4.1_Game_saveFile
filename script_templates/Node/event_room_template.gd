@@ -12,6 +12,10 @@ func _ready() -> void:
 	# However, you can pass an optional Callable that executes BEFORE that happens.
 	example_button.event_button_callback = add_gold
 
+# If you want to do something once, AFTER injecting the dependencies
+# do it here.
+func setup() -> void:
+	pass
 
 func add_gold() -> void:
 	run_stats.gold += 50
