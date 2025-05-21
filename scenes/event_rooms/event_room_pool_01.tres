@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="EventRoomPool" load_steps=2 format=3 uid="uid://cjhpms5hechb6"]
+
+[ext_resource type="Script" uid="uid://c04lmg8ewveto" path="res://custom_resources/event_room_pool.gd" id="1_ravmy"]
+
+[resource]
+script = ExtResource("1_ravmy")
+event_rooms = Array[PackedScene]([])
+metadata/_custom_type_script = "uid://c04lmg8ewveto"
