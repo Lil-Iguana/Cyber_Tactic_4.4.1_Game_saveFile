@@ -34,6 +34,11 @@ var character: CharacterStats
 var save_data: SaveGame
 
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("cheat"):
+		get_tree().call_group("enemies", "queue_free")
+
+
 func _ready() -> void:
 	if not run_startup:
 		return
