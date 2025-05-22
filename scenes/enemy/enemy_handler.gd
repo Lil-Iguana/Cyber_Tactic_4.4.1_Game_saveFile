@@ -28,9 +28,7 @@ func setup_enemies(battle_stats: BattleStats) -> void:
 
 
 func reset_enemy_actions() -> void:
-	var enemy: Enemy
-	for child in get_children():
-		enemy = child as Enemy
+	for enemy: Enemy in get_children():
 		enemy.current_action = null
 		enemy.update_action()
 
