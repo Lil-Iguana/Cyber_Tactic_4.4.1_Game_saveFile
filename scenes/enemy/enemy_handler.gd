@@ -8,6 +8,7 @@ func _ready() -> void:
 	Events.enemy_died.connect(_on_enemy_died)
 	Events.enemy_action_completed.connect(_on_enemy_action_completed)
 	Events.player_hand_drawn.connect(_on_player_hand_drawn)
+	Events.status_gained.connect(_on_status_gained)
 
 
 func setup_enemies(battle_stats: BattleStats) -> void:
@@ -74,5 +75,10 @@ func _on_enemy_action_completed(enemy: Enemy) -> void:
 
 
 func _on_player_hand_drawn() -> void:
+	for enemy: Enemy in get_children():
+		enemy.update_intent()
+
+
+func _on_status_gained() -> void:
 	for enemy: Enemy in get_children():
 		enemy.update_intent()
