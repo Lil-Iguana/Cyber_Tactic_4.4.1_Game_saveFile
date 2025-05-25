@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://d6sv5u62ahn3"]
+
+[ext_resource type="PackedScene" uid="uid://cn1rpop62rwtg" path="res://art/3d_models/VirusMExp.glb" id="1_1iklr"]
+
+[node name="VirusMExp" instance=ExtResource("1_1iklr")]
+
+[node name="Skeleton3D" parent="Controls" index="0"]
+bones/0/position = Vector3(0, -0.140803, 0)
+bones/0/rotation = Quaternion(-0.687511, 0.0232603, -0.725331, 0.0261249)
+bones/0/scale = Vector3(1, 1, 1)
+bones/1/position = Vector3(0.983742, 0.48967, -0.0254062)
+bones/1/rotation = Quaternion(-0.0505298, -0.10486, -0.536522, 0.83582)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/position = Vector3(0.333899, 0.498222, -0.967038)
+bones/2/rotation = Quaternion(-0.518294, -0.0286247, -0.134713, 0.844041)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/position = Vector3(-0.83168, 0.484247, -0.578573)
+bones/3/rotation = Quaternion(-0.366488, 0.105291, 0.359585, 0.851645)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/position = Vector3(-0.81906, 0.506591, 0.574066)
+bones/4/rotation = Quaternion(0.263622, 0.10443, 0.462027, 0.840315)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/position = Vector3(0.282534, 0.48759, 0.922178)
+bones/5/scale = Vector3(1, 1, 1)
+bones/7/position = Vector3(-0.868545, -0.480045, -0.0169648)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/position = Vector3(0.690005, -0.506549, 0.6642)
+bones/8/rotation = Quaternion(0.820342, 0.490247, 0.174648, 0.237054)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/position = Vector3(-0.313331, -0.480979, 0.95132)
+bones/9/rotation = Quaternion(0.722867, 0.108932, 0.450865, 0.51217)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/position = Vector3(0.713672, -0.472108, -0.53545)
+bones/10/rotation = Quaternion(-0.313846, 0.0998241, -0.785492, 0.523965)
+bones/10/scale = Vector3(1, 1, 1)
+bones/12/position = Vector3(-0.300371, -0.515225, -0.87479)
+bones/12/rotation = Quaternion(0.814847, -0.251268, 0.178665, -0.490884)
+bones/12/scale = Vector3(1, 1, 1)
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "Idle"
+
+[node name="Camera3D" type="Camera3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.25)
+projection = 1
+size = 4.222
