@@ -9,6 +9,17 @@ const WHITE_SPRITE_MATERIAL := preload("res://art/white_sprite_material.tres")
 @onready var stats_ui: StatsUI = $StatsUI
 @onready var status_handler: StatusHandler = $StatusHandler
 @onready var modifier_handler: ModifierHandler = $ModifierHandler
+@onready var model_3d: SubViewport = $SubViewportContainer/SubViewport
+@onready var model_3d_flash: Control = $SubViewportContainer
+
+
+func _replace_editor_placeholder_with_model() -> void:
+	if model_3d.has_node("StudentMExp"):
+		model_3d.get_node("StudentMExp").queue_free()
+	
+	if stats and stats.model:
+		var real_model_3d = stats.model.instantiate()
+		model_3d.add_child(real_model_3d)
 
 
 func _ready() -> void:
@@ -49,16 +60,20 @@ func take_damage(damage: int, which_modifier: Modifier.Type) -> void:
 		return
 	
 	sprite_2d.material = WHITE_SPRITE_MATERIAL
+	model_3d_flash.material = WHITE_SPRITE_MATERIAL
 	var modified_damage := modifier_handler.get_modified_value(damage, which_modifier)
 	
 	var tween := create_tween()
 	tween.tween_callback(Shaker.shake.bind(self, 16, 0.15))
 	tween.tween_callback(stats.take_damage.bind(modified_damage))
 	tween.tween_interval(0.17)
+	play_hurt_animation()
 	
 	tween.finished.connect(
 		func():
 			sprite_2d.material = null
+			model_3d_flash.material = null
+			play_idle_animation()
 			
 			if stats.health <= 0:
 				Events.player_died.emit()
@@ -71,18 +86,44 @@ func take_pure_damage(damage: int, which_modifier: Modifier.Type) -> void:
 		return
 	
 	sprite_2d.material = WHITE_SPRITE_MATERIAL
+	model_3d_flash.material = WHITE_SPRITE_MATERIAL
 	var modified_damage := modifier_handler.get_modified_value(damage, which_modifier)
 	
 	var tween := create_tween()
 	tween.tween_callback(Shaker.shake.bind(self, 16, 0.15))
 	tween.tween_callback(stats.take_pure_damage.bind(modified_damage))
 	tween.tween_interval(0.17)
+	play_hurt_animation()
 	
 	tween.finished.connect(
 		func():
 			sprite_2d.material = null
+			model_3d_flash.material = null
+			play_idle_animation()
 			
 			if stats.health <= 0:
 				Events.player_died.emit(self)
 				queue_free()
 	)
+
+
+func play_idle_animation() -> void:
+	if model_3d.get_child_count() > 0:
+		var model_node = model_3d.get_child(0)
+		if model_node.has_node("AnimationPlayer"):
+			var anim = model_node.get_node("AnimationPlayer") as AnimationPlayer
+			if anim.has_animation("Idle"):
+				anim.play("Idle")
+
+
+func play_hurt_animation() -> void:
+	if model_3d.get_child_count() > 0:
+		var model_node = model_3d.get_child(0)
+		if model_node.has_node("AnimationPlayer"):
+			var anim = model_node.get_node("AnimationPlayer") as AnimationPlayer
+			if anim.has_animation("Hurt"):
+				anim.play("Hurt")
+			else:
+				push_warning("No ‘Hurt’ on this AnimationPlayer!")
+		else:
+			push_warning("Model has no AnimationPlayer!")

@@ -65,7 +65,7 @@ position = Vector2(360, 120)
 stats = ExtResource("8_kd15x")
 
 [node name="Player" parent="." instance=ExtResource("3_arrrb")]
-position = Vector2(54, 135)
+position = Vector2(71, 125)
 stats = ExtResource("4_nhdv7")
 
 [node name="CardTargetSelector" parent="." instance=ExtResource("3_jsmm7")]

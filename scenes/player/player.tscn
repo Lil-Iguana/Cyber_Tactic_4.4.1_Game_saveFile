@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b25jnn2o0ion1"]
+[gd_scene load_steps=8 format=3 uid="uid://b25jnn2o0ion1"]
 
 [ext_resource type="Texture2D" uid="uid://c65soght4j8py" path="res://art/tile_0087.png" id="1_4lngq"]
 [ext_resource type="Script" uid="uid://2d7rv1dlh0wi" path="res://scenes/player/player.gd" id="1_novxo"]
+[ext_resource type="PackedScene" uid="uid://b7kumxdfd0gb5" path="res://art/3d_models/student_m_exp.tscn" id="2_0owmy"]
 [ext_resource type="PackedScene" uid="uid://b77sl1lvlhcwq" path="res://scenes/ui/stats_ui.tscn" id="2_bmctw"]
 [ext_resource type="PackedScene" uid="uid://lddt0jsn6usa" path="res://scenes/status_handler/status_handler.tscn" id="4_qwgjy"]
 [ext_resource type="PackedScene" uid="uid://bb71f8mjtb5fh" path="res://scenes/modifier_handler/modifier_handler.tscn" id="5_vkuqp"]
@@ -10,18 +11,40 @@
 [node name="Player" type="Node2D" groups=["player"]]
 script = ExtResource("1_novxo")
 
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -57.0
+offset_right = 45.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(90, 90)
+render_target_update_mode = 4
+
+[node name="StudentMExp" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_0owmy")]
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("1_4lngq")
 
 [node name="StatsUI" parent="." instance=ExtResource("2_bmctw")]
-offset_top = 7.0
-offset_bottom = 23.0
+offset_top = 32.0
+offset_bottom = 48.0
 
 [node name="StatusHandler" parent="." node_paths=PackedStringArray("status_owner") instance=ExtResource("4_qwgjy")]
 offset_left = -25.0
-offset_top = 23.0
+offset_top = 48.0
 offset_right = -25.0
-offset_bottom = 23.0
+offset_bottom = 48.0
 status_owner = NodePath("..")
 
 [node name="ModifierHandler" parent="." instance=ExtResource("5_vkuqp")]
