@@ -1,9 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2vbx7gpljslx"]
+[gd_scene load_steps=10 format=3 uid="uid://c2vbx7gpljslx"]
 
 [ext_resource type="Texture2D" uid="uid://w0k3g0fmd32b" path="res://art/close.png" id="1_4hcer"]
 [ext_resource type="Script" uid="uid://ccrclt4rl25cc" path="res://scenes/ui/enemy_tooltip_popup.gd" id="1_5i7e6"]
 [ext_resource type="Texture2D" uid="uid://wy0km0q1cnv8" path="res://art/tile_0119.png" id="2_5i7e6"]
 [ext_resource type="FontFile" uid="uid://7ucfniysa1ko" path="res://art/Font Styles/pixel_rpg.ttf" id="3_cxtbw"]
+[ext_resource type="FontFile" uid="uid://d3fuaowohtamf" path="res://art/Font Styles/PressStart2P-Regular.ttf" id="3_tj8xd"]
+[ext_resource type="FontFile" uid="uid://dkc0wbxtwj6ao" path="res://art/Font Styles/MedodicaRegular.otf" id="5_tj8xd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tmxuf"]
+font = ExtResource("3_tj8xd")
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_o5wh3"]
+font = ExtResource("3_cxtbw")
+font_size = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_tqb38"]
+font = ExtResource("3_cxtbw")
+font_size = 12
 
 [node name="EnemyTooltipPopup" type="Control"]
 clip_contents = true
@@ -22,43 +36,67 @@ offset_left = 2.0
 offset_top = 19.0
 offset_right = 254.0
 offset_bottom = 139.0
+scale = Vector2(1.646, 1.833)
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 3
-theme_override_constants/margin_top = 3
-theme_override_constants/margin_right = 3
-theme_override_constants/margin_bottom = 3
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -189.0
+offset_top = -92.0
+offset_right = 179.0
+offset_bottom = 102.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
 clip_contents = true
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="EnemyIcon" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="EnemyIcon" type="TextureRect" parent="ScrollContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 texture = ExtResource("2_5i7e6")
 stretch_mode = 5
 
-[node name="EnemyName" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="EnemyName" type="Label" parent="ScrollContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Name"
+label_settings = SubResource("LabelSettings_tmxuf")
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 75)
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 75)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="RealTooltipText" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "In game"
+label_settings = SubResource("LabelSettings_o5wh3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RealTooltipText" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/line_separation = 2
-theme_override_fonts/normal_font = ExtResource("3_cxtbw")
-theme_override_font_sizes/normal_font_size = 6
+theme_override_fonts/normal_font = ExtResource("5_tj8xd")
+theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
 text = "tooltip description
 tooltip description
@@ -129,14 +167,25 @@ tooltip description
 tooltip description
 "
 
-[node name="EnemyTooltipText" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "In real world"
+label_settings = SubResource("LabelSettings_tqb38")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EnemyTooltipText" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/line_separation = 2
-theme_override_fonts/normal_font = ExtResource("3_cxtbw")
-theme_override_font_sizes/normal_font_size = 6
+theme_override_fonts/normal_font = ExtResource("5_tj8xd")
+theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
 text = "tooltip description
 tooltip description
@@ -151,10 +200,10 @@ tooltip description
 [node name="CloseButton" type="TextureButton" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
-offset_left = 237.0
-offset_top = 20.0
-offset_right = 253.0
-offset_bottom = 36.0
+offset_left = 396.0
+offset_top = 23.0
+offset_right = 412.0
+offset_bottom = 39.0
 size_flags_horizontal = 8
 size_flags_vertical = 0
 texture_normal = ExtResource("1_4hcer")
