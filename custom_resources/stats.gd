@@ -8,6 +8,7 @@ signal stats_changed
 @export var max_health := 1 : set = set_max_health
 @export var enemy_name: String
 @export var art: Texture
+@export var model: PackedScene
 @export_multiline var tooltip_text: String
 @export_multiline var tooltip_text_real: String
 @export var elemental_multipliers := {

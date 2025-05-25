@@ -12,9 +12,20 @@ const WHITE_SPRITE_MATERIAL := preload("res://art/white_sprite_material.tres")
 @onready var intent_ui: IntentUI = $IntentUI
 @onready var status_handler: StatusHandler = $StatusHandler
 @onready var modifier_handler: ModifierHandler = $ModifierHandler
+@onready var model_3d: SubViewport = $SubViewportContainer/SubViewport
+@onready var model_3d_flash: Control = $SubViewportContainer
 
 var enemy_action_picker: EnemyActionPicker
 var current_action: EnemyAction : set = set_current_action
+
+
+func _replace_editor_placeholder_with_model() -> void:
+	if model_3d.has_node("VirusMExp"):
+		model_3d.get_node("VirusMExp").queue_free()
+	
+	if stats and stats.model:
+		var real_model_3d = stats.model.instantiate()
+		model_3d.add_child(real_model_3d)
 
 
 func set_current_action(value: EnemyAction) -> void:
@@ -91,16 +102,20 @@ func take_damage(damage: int, which_modifier: Modifier.Type) -> void:
 		return
 	
 	sprite_2d.material = WHITE_SPRITE_MATERIAL
+	model_3d_flash.material = WHITE_SPRITE_MATERIAL
 	var modified_damage := modifier_handler.get_modified_value(damage, which_modifier)
 	
 	var tween := create_tween()
 	tween.tween_callback(Shaker.shake.bind(self, 16, 0.15))
 	tween.tween_callback(stats.take_damage.bind(modified_damage))
 	tween.tween_interval(0.17)
+	play_hurt_animation()
 	
 	tween.finished.connect(
 		func():
 			sprite_2d.material = null
+			model_3d_flash.material = null
+			play_idle_animation()
 			
 			if stats.health <= 0:
 				Events.enemy_died.emit(self)
@@ -142,7 +157,34 @@ func _on_area_exited(_area: Area2D) -> void:
 	arrow.hide()
 
 
+func play_idle_animation() -> void:
+	if model_3d.get_child_count() > 0:
+		var model_node = model_3d.get_child(0)
+		if model_node.has_node("AnimationPlayer"):
+			var anim = model_node.get_node("AnimationPlayer") as AnimationPlayer
+			if anim.has_animation("Idle"):
+				anim.play("Idle")
+
+
+func play_hurt_animation() -> void:
+	if model_3d.get_child_count() > 0:
+		var model_node = model_3d.get_child(0)
+		if model_node.has_node("AnimationPlayer"):
+			var anim = model_node.get_node("AnimationPlayer") as AnimationPlayer
+			if anim.has_animation("Hurt"):
+				anim.play("Hurt")
+			else:
+				push_warning("No ‘Hurt’ on this AnimationPlayer!")
+		else:
+			push_warning("Model has no AnimationPlayer!")
+
+
 func _ready() -> void:
+	if not Engine.is_editor_hint():
+		_replace_editor_placeholder_with_model()
+	
+	play_idle_animation()
+	
 	connect("input_event", Callable(self, "_on_input_event"))
 	status_handler.status_owner = self
 
