@@ -24,6 +24,7 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(82, 49)
 offset = Vector2(128, 72)
 
 [node name="MapGenerator" type="Node" parent="."]
@@ -38,9 +39,10 @@ layer = -1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1.0
-offset_right = -2.0
-offset_bottom = -1.0
+offset_left = 170.0
+offset_top = -1.0
+offset_right = 190.0
+offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 1.5708

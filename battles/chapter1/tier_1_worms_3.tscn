@@ -6,13 +6,13 @@
 [node name="Tier1Worms3" type="Node2D"]
 
 [node name="Enemy" parent="." instance=ExtResource("1_by67q")]
-position = Vector2(146, 76)
+position = Vector2(271, 128)
 stats = ExtResource("2_tp6xg")
 
 [node name="Enemy2" parent="." instance=ExtResource("1_by67q")]
-position = Vector2(183, 47)
+position = Vector2(308, 99)
 stats = ExtResource("2_tp6xg")
 
 [node name="Enemy3" parent="." instance=ExtResource("1_by67q")]
-position = Vector2(220, 76)
+position = Vector2(345, 128)
 stats = ExtResource("2_tp6xg")
