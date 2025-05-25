@@ -14,7 +14,11 @@ config/name="Cyber Tactics"
 config/description="Game"
 run/main_scene="uid://bu3dhos1m15kj"
 config/features=PackedStringArray("4.4", "Mobile")
-config/icon="res://icon.svg"
+boot_splash/fullsize=false
+boot_splash/image="uid://cx8el6s00skub"
+config/icon="uid://cx8el6s00skub"
+config/windows_native_icon="res://game_icon_win.ico"
+boot_splash/minimum_display_time=100
 
 [autoload]
 
