@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://48dvyc5h4mpb"
-path="res://.godot/imported/question_mark.png-f8ae5d3faeefa8fd9c5bf846db362049.ctex"
+path="res://.godot/imported/question_mark.png-ecf93c4138e77a7f9fb8276222ea5ea6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/animatedSprites/question_mark.png"
-dest_files=["res://.godot/imported/question_mark.png-f8ae5d3faeefa8fd9c5bf846db362049.ctex"]
+source_file="res://art/question_mark.png"
+dest_files=["res://.godot/imported/question_mark.png-ecf93c4138e77a7f9fb8276222ea5ea6.ctex"]
 
 [params]
 
