@@ -147,6 +147,7 @@ stretch_mode = 5
 [node name="WizardButton2" type="Button" parent="PlayerButtons"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+disabled = true
 toggle_mode = true
 button_group = SubResource("ButtonGroup_8tgp3")
 
@@ -170,6 +171,7 @@ stretch_mode = 5
 [node name="AssassinButton3" type="Button" parent="PlayerButtons"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+disabled = true
 toggle_mode = true
 button_group = SubResource("ButtonGroup_8tgp3")
 
