@@ -53,8 +53,15 @@ func end_turn() -> void:
 
 func draw_card() -> void:
 	reshuffle_deck_from_discard()
-	hand.add_card(character.draw_pile.draw_card())
+	if hand.get_child_count() <= character.max_hand_size:
+		hand.add_card(character.draw_pile.draw_card())
+	else:
+		character.discard.add_card(character.draw_pile.draw_card())
+		Events.card_discarded.emit()
+		print("Hand full, discarding card.")
 	reshuffle_deck_from_discard()
+	Events.player_card_drawn.emit()
+	print("card drawn")
 
 
 func draw_cards(amount: int) -> void:
