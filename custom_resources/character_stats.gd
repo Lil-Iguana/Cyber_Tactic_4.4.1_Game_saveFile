@@ -18,6 +18,7 @@ var deck: CardPile
 var discard: CardPile
 var draw_pile: CardPile
 var exhaust_pile: CardPile
+var max_hand_size := 5
 
 
 func set_mana(value: int) -> void:
