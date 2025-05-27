@@ -131,7 +131,7 @@ func _on_char_stats_changed() -> void:
 func _on_player_card_drawn() -> void:
 	playable = char_stats.can_play_card(card)
 	var player = get_tree().get_first_node_in_group("player")
-	card.on_drawn_effects([player], player_modifiers)
+	card.on_draw_effects([player], player_modifiers)
 
 
 # Todo: trigger card effects when a card stays in the hand at the end of turn
