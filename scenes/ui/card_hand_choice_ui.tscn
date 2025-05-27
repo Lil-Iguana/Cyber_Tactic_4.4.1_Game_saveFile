@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3r4tog78o57g"]
+
+[ext_resource type="PackedScene" uid="uid://mtahay6yxl8j" path="res://scenes/ui/card_visuals.tscn" id="1_4oxjf"]
+[ext_resource type="Script" uid="uid://cgjwg6jj6vi2" path="res://scenes/ui/card_hand_choice_ui.gd" id="1_ndy1t"]
+
+[node name="CardHandChoiceUI" type="CenterContainer"]
+custom_minimum_size = Vector2(35, 45)
+offset_right = 35.0
+offset_bottom = 45.0
+script = ExtResource("1_ndy1t")
+
+[node name="Visuals" parent="." instance=ExtResource("1_4oxjf")]
+layout_mode = 2
+
+[connection signal="gui_input" from="Visuals" to="." method="_on_visuals_gui_input"]
+[connection signal="mouse_entered" from="Visuals" to="." method="_on_visuals_mouse_entered"]
+[connection signal="mouse_exited" from="Visuals" to="." method="_on_visuals_mouse_exited"]

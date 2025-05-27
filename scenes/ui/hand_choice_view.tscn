@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4o366c13h18p"]
+
+[ext_resource type="FontFile" uid="uid://7ucfniysa1ko" path="res://art/Font Styles/pixel_rpg.ttf" id="1_t5hk6"]
+[ext_resource type="Script" uid="uid://2fu1nhf245df" path="res://scenes/ui/hand_choice_view.gd" id="1_xk28b"]
+[ext_resource type="PackedScene" uid="uid://istosvrl2ng1" path="res://scenes/ui/card_tooltip_pop_up.tscn" id="2_xk28b"]
+[ext_resource type="PackedScene" uid="uid://d3r4tog78o57g" path="res://scenes/ui/card_hand_choice_ui.tscn" id="3_6h00s"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fn6mv"]
+font = ExtResource("1_t5hk6")
+font_size = 18
+
+[node name="HandChoiceView" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xk28b")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.627451)
+
+[node name="Title" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -78.5
+offset_top = 10.0
+offset_right = 78.5
+offset_bottom = 28.0
+grow_horizontal = 2
+text = "Select a card"
+label_settings = SubResource("LabelSettings_fn6mv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardTooltipPopUp" parent="." instance=ExtResource("2_xk28b")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="HandCopy" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -139.0
+offset_top = -38.0
+offset_right = 139.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+alignment = 1
+
+[node name="CardHandChoiceUI" parent="HandCopy" instance=ExtResource("3_6h00s")]
+layout_mode = 2
+
+[node name="CardHandChoiceUI2" parent="HandCopy" instance=ExtResource("3_6h00s")]
+layout_mode = 2
+
+[node name="CardHandChoiceUI3" parent="HandCopy" instance=ExtResource("3_6h00s")]
+layout_mode = 2
+
+[node name="CardHandChoiceUI4" parent="HandCopy" instance=ExtResource("3_6h00s")]
+layout_mode = 2
