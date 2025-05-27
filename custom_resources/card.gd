@@ -60,6 +60,14 @@ func apply_effects(_targets: Array[Node], _modifiers: ModifierHandler) -> void:
 	pass
 
 
+func on_draw_effects(_targets: Array[Node], _modifiers: ModifierHandler) -> void:
+	pass
+
+
+func end_of_turn_effects(_targets: Array[Node], _modifiers: ModifierHandler) -> void:
+	pass
+
+
 func get_default_tooltip() -> String:
 	return tooltip_text
 

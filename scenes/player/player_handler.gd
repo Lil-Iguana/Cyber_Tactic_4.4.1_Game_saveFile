@@ -1,10 +1,12 @@
 # Player turn order:
-# 1. START_OF_TURN Relics 
+# 1. START_OF_TURN Threads 
 # 2. START_OF_TURN Statuses
 # 3. Draw Hand
 # 4. End Turn 
-# 5. END_OF_TURN Relics 
+# 4.5. Special signal for certain cards and threads that must activate before END_OF_TURN threads
+# 5. END_OF_TURN Threads 
 # 6. END_OF_TURN Statuses
+# 6.5. End of turn effects of cards 
 # 7. Discard Hand
 class_name PlayerHandler
 extends Node
@@ -28,8 +30,10 @@ func start_battle(char_stats: CharacterStats) -> void:
 	character.draw_pile = character.deck.custom_duplicate()
 	character.draw_pile.shuffle()
 	character.discard = CardPile.new()
+	character.exhaust_pile = CardPile.new()
 	threads.threads_activated.connect(_on_threads_activated)
 	player.status_handler.statuses_applied.connect(_on_statuses_applied)
+	Events.player_turn_ended.connect(_on_player_turn_ended)
 	start_turn()
 
 
@@ -38,11 +42,13 @@ func start_turn() -> void:
 	character.block = 0
 	character.reset_mana()
 	threads.activate_threads_by_type(ThreadPassive.Type.START_OF_TURN)
+	Events.start_of_turn_relics_activated.emit()
 
 
 func end_turn() -> void:
 	hand.disable_hand()
 	threads.activate_threads_by_type(ThreadPassive.Type.END_OF_TURN)
+	Events.end_of_turn_relics_activated.emit()
 
 
 func draw_card() -> void:
@@ -112,7 +118,7 @@ func _on_statuses_applied(type: Status.Type) -> void:
 		Status.Type.START_OF_TURN:
 			draw_cards(character.cards_per_turn)
 		Status.Type.END_OF_TURN:
-			discard_cards()
+			Events.player_turn_ended.emit()
 
 
 func _on_threads_activated(type: ThreadPassive.Type) -> void:
@@ -121,3 +127,7 @@ func _on_threads_activated(type: ThreadPassive.Type) -> void:
 			player.status_handler.apply_statuses_by_type(Status.Type.START_OF_TURN)
 		ThreadPassive.Type.END_OF_TURN:
 			player.status_handler.apply_statuses_by_type(Status.Type.END_OF_TURN)
+
+
+func _on_player_turn_ended() -> void:
+	discard_cards()

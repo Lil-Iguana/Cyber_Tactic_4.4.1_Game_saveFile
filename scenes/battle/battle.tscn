@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dn52uptr8vtiu"]
+[gd_scene load_steps=27 format=3 uid="uid://dn52uptr8vtiu"]
 
 [ext_resource type="Texture2D" uid="uid://cnjjfxn6hrai3" path="res://art/background.png" id="1_obr54"]
 [ext_resource type="Script" uid="uid://cfsvercw8jdkv" path="res://scenes/battle/battle.gd" id="1_tgtwy"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://c2vbx7gpljslx" path="res://scenes/ui/enemy_tooltip_popup.tscn" id="20_pyfix"]
 [ext_resource type="PackedScene" uid="uid://df1tufvp2h0o5" path="res://scenes/ui/card_pile_view.tscn" id="22_ems6g"]
 [ext_resource type="PackedScene" uid="uid://0ghovce46nd1" path="res://scenes/ui/status_view.tscn" id="23_83k76"]
+[ext_resource type="PackedScene" uid="uid://b4o366c13h18p" path="res://scenes/ui/hand_choice_view.tscn" id="25_8eh2s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ubsi8"]
 size = Vector2(420, 172)
@@ -217,4 +218,9 @@ visible = false
 layer = 4
 
 [node name="StatusView" parent="StatusViewLayer" instance=ExtResource("23_83k76")]
+visible = false
+
+[node name="HandChoiceLayer" type="CanvasLayer" parent="."]
+
+[node name="HandChoiceView" parent="HandChoiceLayer" instance=ExtResource("25_8eh2s")]
 visible = false

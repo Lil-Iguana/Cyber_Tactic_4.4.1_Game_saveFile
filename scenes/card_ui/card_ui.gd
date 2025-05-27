@@ -29,7 +29,10 @@ func _ready() -> void:
 	Events.card_drag_started.connect(_on_card_drag_or_aiming_started)
 	Events.card_drag_ended.connect(_on_card_drag_or_aim_ended)
 	Events.card_aim_ended.connect(_on_card_drag_or_aim_ended)
+	Events.player_card_drawn.connect(_on_player_card_drawn)
 	card_state_machine.init(self)
+	
+	Events.player_turn_ended.connect(_on_player_turn_ended)
 
 
 func _input(event: InputEvent) -> void:
@@ -121,3 +124,20 @@ func _on_card_drag_or_aim_ended(_card: CardUI) -> void:
 
 func _on_char_stats_changed() -> void:
 	playable = char_stats.can_play_card(card)
+
+
+# When player draws cards during its turn, check if they're playable.
+# Todo: trigger any effect on card draw. For now, the default target is the player.
+func _on_player_card_drawn() -> void:
+	playable = char_stats.can_play_card(card)
+	var player = get_tree().get_first_node_in_group("player")
+	card.on_drawn_effects([player], player_modifiers)
+
+
+# Todo: trigger card effects when a card stays in the hand at the end of turn
+# Todo: trigger any effect on end of turn. For now, the default target is the player.
+func _on_player_turn_ended() -> void:
+	if not card:
+		return
+	var player = get_tree().get_first_node_in_group("player")
+	card.end_of_turn_effects([player], player_modifiers)

@@ -16,7 +16,7 @@ func _ready() -> void:
 	enemy_handler.child_order_changed.connect(_on_enemies_child_order_changed)
 	Events.enemy_turn_ended.connect(_on_enemy_turn_ended)
 	
-	Events.player_turn_ended.connect(player_handler.end_turn)
+	Events.player_press_end_turn_button.connect(player_handler.end_turn)
 	Events.player_hand_discarded.connect(enemy_handler.start_turn)
 	Events.player_died.connect(_on_player_died)
 
