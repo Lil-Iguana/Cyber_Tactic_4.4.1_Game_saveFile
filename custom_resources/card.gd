@@ -23,6 +23,7 @@ const RARITY_COLORS := {
 @export_group("Card Visuals")
 @export var icon: Texture
 @export_multiline var tooltip_text: String
+@export_multiline var real_world_text: String
 @export var sound: AudioStream
 
 func is_single_targeted() -> bool:
@@ -66,6 +67,10 @@ func on_draw_effects(_targets: Array[Node], _modifiers: ModifierHandler) -> void
 
 func end_of_turn_effects(_targets: Array[Node], _modifiers: ModifierHandler) -> void:
 	pass
+
+
+func get_default_real_world_text() -> String:
+	return real_world_text
 
 
 func get_default_tooltip() -> String:
