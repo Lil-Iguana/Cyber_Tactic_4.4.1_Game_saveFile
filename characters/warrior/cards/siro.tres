@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Card" load_steps=2 format=3 uid="uid://c5wwjjw0cns1t"]
+
+[ext_resource type="Script" uid="uid://db7gxbb4g4qbl" path="res://custom_resources/card.gd" id="1_f57rb"]
+
+[resource]
+script = ExtResource("1_f57rb")
+name = "Service in Random Order"
+id = "service in random order"
+type = 1
+rarity = 0
+target = 0
+cost = 0
+remove = true
+tooltip_text = ""
+real_world_text = ""
+metadata/_custom_type_script = "uid://db7gxbb4g4qbl"

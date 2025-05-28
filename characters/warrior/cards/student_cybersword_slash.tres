@@ -15,4 +15,5 @@ cost = 2
 remove = false
 icon = ExtResource("1_rxkcs")
 tooltip_text = "[center]Targets [color=\"#FFFF00\"]all enemies[/color] enemy to deal [color=\"ff0000\"]%s[/color] damage.[/center]"
+real_world_text = ""
 sound = ExtResource("3_wxncg")
