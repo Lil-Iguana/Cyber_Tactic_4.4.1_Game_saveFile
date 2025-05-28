@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="Card" load_steps=2 format=3 uid="uid://c5wwjjw0cns1t"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c5wwjjw0cns1t"]
 
-[ext_resource type="Script" uid="uid://db7gxbb4g4qbl" path="res://custom_resources/card.gd" id="1_f57rb"]
+[ext_resource type="Texture2D" uid="uid://48dvyc5h4mpb" path="res://art/question_mark.png" id="1_wcu3v"]
+[ext_resource type="Script" uid="uid://b7e5ymj88kefb" path="res://characters/warrior/cards/siro.gd" id="2_7unnv"]
 
 [resource]
-script = ExtResource("1_f57rb")
+script = ExtResource("2_7unnv")
 name = "Service in Random Order"
 id = "service in random order"
 type = 1
@@ -11,6 +12,7 @@ rarity = 0
 target = 0
 cost = 0
 remove = true
-tooltip_text = ""
-real_world_text = ""
+icon = ExtResource("1_wcu3v")
+tooltip_text = "Draw 1 Card. Then put a card from your hand to the top of your draw pile. Remove"
+real_world_text = "Service in Random Order"
 metadata/_custom_type_script = "uid://db7gxbb4g4qbl"

@@ -113,6 +113,16 @@ func reshuffle_deck_from_discard() -> void:
 	character.draw_pile.shuffle()
 
 
+func return_to_top_deck(card: Card) -> void:
+	var card_to_return: CardUI
+	for checked_card: CardUI in hand.get_children():
+		if checked_card.card == card:
+			card_to_return = checked_card
+	card_to_return.queue_free()
+	character.draw_pile.add_card_to_top(card)
+	Events.card_returned_to_top_deck.emit(card)
+
+
 func _on_card_played(card: Card) -> void:
 	if card.remove or card.type == Card.Type.POWER:
 		return
