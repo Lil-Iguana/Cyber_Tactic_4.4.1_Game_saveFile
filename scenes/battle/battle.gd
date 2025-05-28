@@ -10,6 +10,8 @@ extends Node2D
 @onready var player_handler: PlayerHandler = $PlayerHandler 
 @onready var enemy_handler: EnemyHandler = $EnemyHandler
 @onready var player: Player = $Player
+@onready var hand: HBoxContainer = %Hand
+
 
 
 func _ready() -> void:

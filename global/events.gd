@@ -27,6 +27,9 @@ signal card_returned_to_top_deck(card: Card)
 signal card_returned_to_bottom_deck(card: Card)
 @warning_ignore("unused_signal")
 signal card_type_found_in_hand(found: bool)
+@warning_ignore("unused_signal")
+signal card_removed
+
 
 # Player-related events
 @warning_ignore("unused_signal")

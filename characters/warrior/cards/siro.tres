@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_7unnv")
 name = "Service in Random Order"
-id = "service in random order"
+id = "service_in_random order"
 type = 1
 rarity = 0
 target = 0

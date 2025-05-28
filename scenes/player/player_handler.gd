@@ -125,6 +125,10 @@ func return_to_top_deck(card: Card) -> void:
 
 func _on_card_played(card: Card) -> void:
 	if card.remove or card.type == Card.Type.POWER:
+		if card.remove:
+			character.exhaust_pile.add_card(card)
+			Events.card_removed.emit()
+			
 		return
 	
 	character.discard.add_card(card)
