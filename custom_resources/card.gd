@@ -11,12 +11,6 @@ const RARITY_COLORS := {
 	Card.Rarity.RARE: Color.GOLD,
 }
 
-const PANEL_COLORS := {
-	Card.Type.ATTACK: Color.RED,
-	Card.Type.SKILL: Color.BLUE,
-	Card.Type.POWER: Color.GREEN,
-	# You can add a DEBUFF type if needed
-}
 
 @export_group("Card Attributes")
 @export var name: String
