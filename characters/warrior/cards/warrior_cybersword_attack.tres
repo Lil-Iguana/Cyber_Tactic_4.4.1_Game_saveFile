@@ -1,22 +1,24 @@
 [gd_resource type="Resource" load_steps=4 format=3 uid="uid://daiht3oljvjoj"]
 
-[ext_resource type="Texture2D" uid="uid://dexe65qywimpe" path="res://art/CyberSword_attack.png" id="1_48yow"]
+[ext_resource type="Texture2D" uid="uid://dnblcwlq0j5r0" path="res://art/Untitled1_20250529100304.png" id="1_5vaqh"]
 [ext_resource type="Script" uid="uid://bel2a66awwo8i" path="res://characters/warrior/cards/warrior_cybersword_attack.gd" id="2_cvsc0"]
 [ext_resource type="AudioStream" uid="uid://mld5qltxsv80" path="res://art/synth.wav" id="3_f525k"]
 
 [resource]
 script = ExtResource("2_cvsc0")
 element = 1
-name = "Cyber Sword"
+name = "Port Probe"
 id = "warrior_cybersword_attack"
 type = 0
 rarity = 0
 target = 1
 cost = 1
 remove = false
-icon = ExtResource("1_48yow")
+icon = ExtResource("1_5vaqh")
 tooltip_text = "[center][color=\"#FFA500\"]Card Description[/color][/center]
 [center]Target [color=\"#FFFF00\"]single[/color] enemy to deal [color=\"ff0000\"]%s[/color] damage.[/center]
-[center]Fire element[/center]"
-real_world_text = ""
+Sends a precision request to test for weak spots in enemy defenses.
+[center]Affinity: [color=\"#9acd32\"]Scanwave[/color][/center]"
+real_world_text = "[center][color=\"#FFA500\"]Real-World Description[/color][/center]
+A port probe scans specific ports on a network to detect open services a common recon technique used in early-stage cyber attacks."
 sound = ExtResource("3_f525k")

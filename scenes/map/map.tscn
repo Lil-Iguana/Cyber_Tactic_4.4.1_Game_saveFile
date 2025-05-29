@@ -5,11 +5,11 @@
 [ext_resource type="Resource" uid="uid://5vocm1gyjpxs" path="res://battles/chapter1/battle_stats_pool1.tres" id="3_a7bss"]
 [ext_resource type="Resource" uid="uid://cjhpms5hechb6" path="res://scenes/event_rooms/event_room_pool_01.tres" id="4_ph54e"]
 
-[sub_resource type="Gradient" id="Gradient_a1cvt"]
+[sub_resource type="Gradient" id="Gradient_ph54e"]
 colors = PackedColorArray(0.0430392, 0.0430392, 0.0430392, 1, 0.0328372, 0.0537276, 0.174974, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_408ti"]
-gradient = SubResource("Gradient_a1cvt")
+gradient = SubResource("Gradient_ph54e")
 width = 50
 
 [node name="Map" type="Node2D"]
