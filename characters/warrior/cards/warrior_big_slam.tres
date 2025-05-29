@@ -14,4 +14,6 @@ target = 1
 cost = 1
 remove = true
 icon = ExtResource("1_6ge4e")
-tooltip_text = "[center]Deal [color=\"ff0000\"]%s[/color] damage and apply 2 [color=\"ffdf00\"]Exposed[/color].[/center][center]Water element[/center]"
+tooltip_text = "[center][color=\"#FFA500\"]Card Description[/color][/center]
+[center]Deal [color=\"ff0000\"]%s[/color] damage and apply 2 [color=\"ffdf00\"]Exposed[/color].[/center][center]Water element[/center]"
+real_world_text = ""

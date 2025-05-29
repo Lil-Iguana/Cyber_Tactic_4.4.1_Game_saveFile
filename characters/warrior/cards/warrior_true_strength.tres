@@ -13,5 +13,6 @@ target = 0
 cost = 3
 remove = true
 icon = ExtResource("1_oe66v")
-tooltip_text = "[center]At the start of your turn, gain 2 [color=\"ffdf00\"]Muscle[/color].[/center]"
+tooltip_text = "[center][color=\"#FFA500\"]Card Description[/color][/center]
+[center]At the start of your turn, gain 2 [color=\"ffdf00\"]Power[/color].[/center]"
 real_world_text = ""
