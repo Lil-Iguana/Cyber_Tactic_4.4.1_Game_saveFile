@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bnfjh7yrnu0ta"]
+[gd_scene load_steps=7 format=3 uid="uid://dhmcntg5pqiuv"]
 
-[ext_resource type="Texture2D" uid="uid://b7t8oexqbbdw7" path="res://art/testing_pic.png" id="1_6p1au"]
-[ext_resource type="Script" uid="uid://cmd41jivi1pfx" path="res://scenes/win_screen/panel.gd" id="1_jg8ma"]
+[ext_resource type="Texture2D" uid="uid://cri3p27lyc1g" path="res://art/testing_placeholder.png" id="1_6p1au"]
+[ext_resource type="Script" uid="uid://b187rxa27i68u" path="res://scenes/win_screen/panel.gd" id="1_jg8ma"]
 
 [sub_resource type="Animation" id="Animation_jg8ma"]
 resource_name = "fadein"
@@ -30,7 +30,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_d78ll"]
@@ -45,7 +45,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.2, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_brgev"]
@@ -65,9 +65,11 @@ grow_vertical = 2
 script = ExtResource("1_jg8ma")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(210, 110)
 layout_mode = 0
-offset_right = 210.0
-offset_bottom = 122.0
+offset_right = 40.0
+offset_bottom = 40.0
 texture = ExtResource("1_6p1au")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
