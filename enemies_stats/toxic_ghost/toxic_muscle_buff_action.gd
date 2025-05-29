@@ -4,7 +4,7 @@ const POWER_STATUS = preload("res://statuses/power_up.tres")
 
 @export var stacks_per_action := 2
 
-var hp_threshold := 10
+var hp_threshold := 25
 var usages := 0
 
 

@@ -11,10 +11,11 @@
 [ext_resource type="Script" uid="uid://otuio6yjoknb" path="res://enemies_stats/toxic_ghost/toxic_ghost_block_action.gd" id="9_1mqy8"]
 [ext_resource type="Texture2D" uid="uid://p0yqsrixsboc" path="res://art/tile_0102.png" id="10_t8x2w"]
 
-[sub_resource type="Resource" id="Resource_bpmco"]
+[sub_resource type="Resource" id="Resource_0j80q"]
 script = ExtResource("4_3fyun")
 base_text = ""
 icon = ExtResource("3_wgnq7")
+metadata/_custom_type_script = "uid://dly8oycd8fytg"
 
 [sub_resource type="Resource" id="Resource_abp8h"]
 script = ExtResource("4_3fyun")
@@ -29,10 +30,11 @@ icon = ExtResource("10_t8x2w")
 [node name="ToxicGhostAI" type="Node"]
 script = ExtResource("1_31s36")
 
-[node name="MuscleBuffAction" type="Node" parent="."]
+[node name="PowerUpBuffAction" type="Node" parent="."]
 script = ExtResource("2_hje63")
-intent = SubResource("Resource_bpmco")
+intent = SubResource("Resource_0j80q")
 sound = ExtResource("5_03teb")
+metadata/_custom_type_script = "uid://fffrdohulik0"
 
 [node name="AttackAction" type="Node" parent="."]
 script = ExtResource("6_6b6ny")
