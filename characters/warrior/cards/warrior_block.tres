@@ -14,9 +14,9 @@ target = 0
 cost = 1
 remove = false
 icon = ExtResource("1_bd3y4")
-tooltip_text = "[center][color=\"#FFA500\"]Card Description[/color][/center]
+tooltip_text = "[center][color=\"#FFA500\"]---- Card Description ----[/color][/center]
 [center]Gain [color=\"00FFFF\"]%s[/color] block.[/center]
 Screens and drops hostile packets before they reach your core."
-real_world_text = "[center][color=\"#FFA500\"]Real-World Description[/color][/center]
+real_world_text = "[center][color=\"#FFA500\"]---- Real-World Description ----[/color][/center]
 A packet filter is a basic firewall function that checks network traffic against predefined rules and blocks threats based on source, destination, and type."
 sound = ExtResource("3_6dpdd")

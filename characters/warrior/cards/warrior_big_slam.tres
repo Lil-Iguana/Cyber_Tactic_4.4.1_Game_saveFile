@@ -14,9 +14,9 @@ target = 1
 cost = 1
 remove = true
 icon = ExtResource("1_6ge4e")
-tooltip_text = "[center][color=\"#FFA500\"]Card Description[/color][/center]
+tooltip_text = "[center][color=\"#FFA500\"]---- Card Description ----[/color][/center]
 [center]Affinity: [color=\"#9acd32\"]Heuristic[/color][/center]
 [center]Deal [color=\"ff0000\"]%s[/color] damage and apply 2 [color=\"ffdf00\"]Exposed[/color].[/center]
 Injects an error at the lowest level, exposing the enemy to follow-up damage."
-real_world_text = "[center][color=\"#FFA500\"]Real-World Description[/color][/center]
+real_world_text = "[center][color=\"#FFA500\"]---- Real-World Description ----[/color][/center]
 A bit flip changes a single bit in memory (from 0 to 1). It can happen via fault injection or hardware error — sometimes causing crashes or security vulnerabilities."

@@ -14,9 +14,9 @@ target = 2
 cost = 2
 remove = false
 icon = ExtResource("1_rxkcs")
-tooltip_text = "[center][color=\"#FFA500\"]Card Description[/color][/center]
+tooltip_text = "[center][color=\"#FFA500\"]---- Card Description ----[/color][/center]
 [center]Targets [color=\"#FFFF00\"]all enemies[/color] enemy to deal [color=\"ff0000\"]%s[/color] damage.[/center]
 Surges a burst of micro-packets across the field, lightly tagging every node."
-real_world_text = "[center][color=\"#FFA500\"]Real-World Description[/color][/center]
+real_world_text = "[center][color=\"#FFA500\"]---- Real-World Description ----[/color][/center]
 A packet storm can describe an uncontrolled flood of data packets that congests a network — often a symptom of poor configuration or used in DoS attacks."
 sound = ExtResource("3_wxncg")
