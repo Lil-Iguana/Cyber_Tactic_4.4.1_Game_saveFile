@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bniqc6dmkdwux"]
+[gd_scene load_steps=5 format=3 uid="uid://bniqc6dmkdwux"]
 
 [ext_resource type="PackedScene" uid="uid://dhmcntg5pqiuv" path="res://scenes/win_screen/panel.tscn" id="1_4pqbn"]
+[ext_resource type="Script" uid="uid://0fworeqhlmr1" path="res://intro_screen.gd" id="1_6c87n"]
 
 [sub_resource type="Gradient" id="Gradient_6c87n"]
 colors = PackedColorArray(0.0430392, 0.0430392, 0.0430392, 1, 0.0328372, 0.0537276, 0.174974, 1)
@@ -16,6 +17,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_6c87n")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -38,35 +40,46 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -1.0
+offset_right = 2.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Line1" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="Panel" parent="VBoxContainer/HBoxContainer" instance=ExtResource("1_4pqbn")]
+[node name="Panel1" parent="VBoxContainer/Line1" instance=ExtResource("1_4pqbn")]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(210, 110)
 layout_mode = 2
 
-[node name="Panel2" parent="VBoxContainer/HBoxContainer" instance=ExtResource("1_4pqbn")]
+[node name="Panel2" parent="VBoxContainer/Line1" instance=ExtResource("1_4pqbn")]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(210, 110)
 layout_mode = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Line2" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="Panel" parent="VBoxContainer/HBoxContainer2" instance=ExtResource("1_4pqbn")]
+[node name="Panel3" parent="VBoxContainer/Line2" instance=ExtResource("1_4pqbn")]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(210, 110)
 layout_mode = 2
 
-[node name="Panel2" parent="VBoxContainer/HBoxContainer2" instance=ExtResource("1_4pqbn")]
+[node name="Panel4" parent="VBoxContainer/Line2" instance=ExtResource("1_4pqbn")]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(210, 110)
 layout_mode = 2
 
 [node name="BeginButton" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(50, 18)
+visible = false
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Let's Go!"
+
+[connection signal="pressed" from="VBoxContainer/BeginButton" to="." method="_on_begin_button_pressed"]

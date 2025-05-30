@@ -1,12 +1,12 @@
 [gd_scene load_steps=27 format=3 uid="uid://dn52uptr8vtiu"]
 
-[ext_resource type="Texture2D" uid="uid://cnjjfxn6hrai3" path="res://art/background.png" id="1_obr54"]
 [ext_resource type="Script" uid="uid://cfsvercw8jdkv" path="res://scenes/battle/battle.gd" id="1_tgtwy"]
 [ext_resource type="PackedScene" uid="uid://306utgcvnsbs" path="res://scenes/enemy/enemy.tscn" id="2_7kg7y"]
 [ext_resource type="Script" uid="uid://c7qxtsgofswco" path="res://scenes/ui/hand.gd" id="2_dybx0"]
 [ext_resource type="PackedScene" uid="uid://b25jnn2o0ion1" path="res://scenes/player/player.tscn" id="3_arrrb"]
 [ext_resource type="AudioStream" uid="uid://cb2r7qvwyonp0" path="res://art/One_Two_ExterminateMP3.mp3" id="3_fsq28"]
 [ext_resource type="PackedScene" uid="uid://neowwkxk87rp" path="res://scenes/card_target_selector/card_target_selector.tscn" id="3_jsmm7"]
+[ext_resource type="Texture2D" uid="uid://lugennxj0o6x" path="res://art/battle_background1.png" id="4_8eh2s"]
 [ext_resource type="Resource" uid="uid://co6ar47di3crh" path="res://characters/warrior/warrior.tres" id="4_nhdv7"]
 [ext_resource type="Script" uid="uid://cgojt0i5spdq4" path="res://scenes/enemy/enemy_handler.gd" id="4_pp0u0"]
 [ext_resource type="Resource" uid="uid://di1u2yn8ru2vi" path="res://enemies_stats/virus/virus_enemy.tres" id="5_bry55"]
@@ -36,9 +36,9 @@ music = ExtResource("3_fsq28")
 metadata/_edit_lock_ = true
 
 [node name="Background" type="Sprite2D" parent="."]
-modulate = Color(0.485703, 0.485704, 0.485703, 1)
-scale = Vector2(1.64, 1.7)
-texture = ExtResource("1_obr54")
+modulate = Color(0.230315, 0.230315, 0.230315, 1)
+scale = Vector2(0.331, 0.337)
+texture = ExtResource("4_8eh2s")
 centered = false
 metadata/_edit_lock_ = true
 

@@ -1,6 +1,6 @@
 extends Control
 
-const RUN_SCENE = preload("res://scenes/run/run.tscn")
+const INTRO_SCENE = preload("res://intro_screen.tscn")
 const ASSASSIN_STATS := preload("res://characters/assassin/assassin.tres")
 const WARRIOR_STATS := preload("res://characters/warrior/warrior.tres")
 const WIZARD_STATS := preload("res://characters/wizard/wizard.tres")
@@ -27,9 +27,17 @@ func set_current_character(new_character: CharacterStats) -> void:
 
 func _on_start_button_pressed() -> void:
 	print("Start new Run with %s" % current_character.character_name)
+
 	run_startup.type = RunStartup.Type.NEW_RUN
 	run_startup.picked_character = current_character
-	get_tree().change_scene_to_packed(RUN_SCENE)
+
+	# Manually load and instance the intro screen scene
+	var intro_screen = INTRO_SCENE.instantiate()
+	intro_screen.character = current_character  # Pass selected character
+
+	# Replace the current scene
+	get_tree().root.add_child(intro_screen)     # Add to scene tree
+	get_tree().current_scene.queue_free()       # Remove current scene
 
 
 func _on_student_button_pressed() -> void:
