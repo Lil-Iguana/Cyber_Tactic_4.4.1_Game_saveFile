@@ -28,13 +28,13 @@ func _ready() -> void:
 	
 	tween.tween_interval(1)
 	tween.tween_callback(panel_1.animation_player.play.bind("fadein"))
-	tween.tween_interval(3)
+	tween.tween_interval(2)
 	tween.tween_callback(panel_2.animation_player.play.bind("fadein"))
-	tween.tween_interval(3)
+	tween.tween_interval(2)
 	tween.tween_callback(panel_3.animation_player.play.bind("fadein"))
-	tween.tween_interval(3)
+	tween.tween_interval(2)
 	tween.tween_callback(panel_4.animation_player.play.bind("fadein"))
-	tween.tween_interval(3)
+	tween.tween_interval(2)
 	tween.tween_property(begin_button, "visible", true, 0.4)
 
 
