@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cr6oeapjhsnjt"]
 
 [ext_resource type="Script" uid="uid://bex0kkfy7ai5n" path="res://scenes/battle_reward/battle_reward.gd" id="1_q0wnb"]
-[ext_resource type="Texture2D" uid="uid://cnjjfxn6hrai3" path="res://art/background.png" id="2_7ksok"]
+[ext_resource type="Texture2D" uid="uid://lugennxj0o6x" path="res://art/battle_background1.png" id="2_gdsnt"]
 [ext_resource type="PackedScene" uid="uid://d1h161tcghnyh" path="res://scenes/ui/reward_button.tscn" id="3_08i2o"]
 [ext_resource type="Texture2D" uid="uid://vytb7q5g8iyr" path="res://art/Cache.png" id="4_isejm"]
 [ext_resource type="Texture2D" uid="uid://dxjqjw61iqcea" path="res://art/rarity.png" id="5_y72du"]
@@ -30,7 +30,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_7ksok")
+texture = ExtResource("2_gdsnt")
 expand_mode = 1
 stretch_mode = 5
 
