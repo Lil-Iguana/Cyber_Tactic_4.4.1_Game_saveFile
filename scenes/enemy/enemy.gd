@@ -179,6 +179,19 @@ func play_hurt_animation() -> void:
 			push_warning("Model has no AnimationPlayer!")
 
 
+func play_animation(animation_name: String) -> void:
+	if model_3d.get_child_count() > 0:
+		var model_node = model_3d.get_child(0)
+		if model_node.has_node("AnimationPlayer"):
+			var anim = model_node.get_node("AnimationPlayer") as AnimationPlayer
+			if anim.has_animation(animation_name):
+				anim.play(animation_name)
+			else:
+				push_warning("No animation named '%s' found!" % animation_name)
+		else:
+			push_warning("Model has no AnimationPlayer!")
+
+
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		_replace_editor_placeholder_with_model()

@@ -1,5 +1,7 @@
 extends CardState
 
+@onready var player_node = get_tree().get_first_node_in_group("player") as Player
+
 const DRAG_MINIMUM_THRESHOLD := 0.05
 
 var minimum_drag_time_elapsed := false
@@ -16,10 +18,14 @@ func enter() -> void:
 	minimum_drag_time_elapsed = false
 	var threshold_timer := get_tree().create_timer(DRAG_MINIMUM_THRESHOLD, false)
 	threshold_timer.timeout.connect(func(): minimum_drag_time_elapsed = true)
+	if player_node:
+		player_node.play_animation("Casting")
 
 
 func exit() -> void:
 	Events.card_drag_ended.emit(card_ui)
+	if player_node:
+		player_node.play_animation("Idle")
 
 
 func on_input(event: InputEvent) -> void:
@@ -40,3 +46,9 @@ func on_input(event: InputEvent) -> void:
 	elif minimum_drag_time_elapsed and confirm:
 		get_viewport().set_input_as_handled()
 		transition_requested.emit(self, CardState.State.RELEASED)
+		if player_node:
+			player_node.play_animation("Attacking")
+			var timer := get_tree().create_timer(2.0)
+			timer.timeout.connect(func():
+				player_node.play_animation("Idle")
+				)

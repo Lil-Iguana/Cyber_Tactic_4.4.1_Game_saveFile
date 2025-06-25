@@ -2,6 +2,7 @@ extends CardState
 
 const MOUSE_Y_SNAPBACK_THRESHOLD := 900
 
+@onready var player_node = get_tree().get_first_node_in_group("player") as Player
 
 func enter() -> void:
 	card_ui.targets.clear()
@@ -10,10 +11,14 @@ func enter() -> void:
 	card_ui.animate_to_position(card_ui.parent.global_position + offset, 0.2)
 	card_ui.drop_point_detector.monitoring = false
 	Events.card_aim_started.emit(card_ui)
+	if player_node:
+		player_node.play_animation("Casting")
 
 
 func exit() -> void:
 	Events.card_aim_ended.emit(card_ui)
+	if player_node:
+		player_node.play_animation("Idle")
 
 
 func on_input(event: InputEvent) -> void:
