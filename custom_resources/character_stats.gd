@@ -9,6 +9,7 @@ extends Stats
 @export_group("Gameplay Data")
 @export var starting_deck: CardPile
 @export var draftable_cards: CardPile
+@export var library_cards: CardPile
 @export var cards_per_turn: int
 @export var max_mana: int
 @export var starting_thread: ThreadPassive
@@ -18,6 +19,7 @@ var deck: CardPile
 var discard: CardPile
 var draw_pile: CardPile
 var exhaust_pile: CardPile
+var card_library: CardPile
 var max_hand_size := 5
 
 
@@ -48,6 +50,7 @@ func create_instance() -> Resource:
 	instance.block = 0
 	instance.reset_mana()
 	instance.deck = instance.starting_deck.duplicate()
+	instance.card_library = instance.library_cards.duplicate()
 	instance.draw_pile = CardPile.new()
 	instance.discard = CardPile.new()
 	instance.exhaust_pile = CardPile.new()

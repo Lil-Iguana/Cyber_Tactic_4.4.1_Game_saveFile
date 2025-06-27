@@ -20,6 +20,8 @@ const MAIN_MENU_PATH := "res://scenes/ui/main_menu.tscn"
 @onready var thread_tooltip: ThreadTooltip = %ThreadTooltip
 @onready var deck_button: CardPileOpener = %DeckButton
 @onready var deck_view: CardPileView = %DeckView
+@onready var card_library_button: CardLibraryOpener = %CardLibraryButton
+@onready var card_library_view: CardPileView = %CardLibraryView
 @onready var pause_menu: PauseMenu = $PauseMenu
 
 @onready var battle_button: Button = %BattleButton
@@ -153,6 +155,11 @@ func _setup_top_bar():
 	deck_button.card_pile = character.deck
 	deck_view.card_pile = character.deck
 	deck_button.pressed.connect(deck_view.show_current_view.bind("Deck"))
+	
+	card_library_button.card_library = character.card_library
+	card_library_view.card_pile = character.card_library
+	card_library_button.pressed.connect(card_library_view.show_current_view.bind("Card Library"))
+	
 
 
 func _show_regular_battle_rewards() -> void:
