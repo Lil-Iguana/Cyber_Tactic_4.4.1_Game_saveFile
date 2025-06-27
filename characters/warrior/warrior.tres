@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=7 format=3 uid="uid://co6ar47di3crh"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=8 format=3 uid="uid://co6ar47di3crh"]
 
 [ext_resource type="Texture2D" uid="uid://bjo47ds8vcbi3" path="res://art/pixil-frame-0.png" id="1_4dwfv"]
 [ext_resource type="Script" uid="uid://dxplxo6x2a02m" path="res://custom_resources/character_stats.gd" id="1_px33x"]
 [ext_resource type="Resource" uid="uid://ceybpc07sti3p" path="res://characters/warrior/warrior_draftable_cards.tres" id="2_57hcw"]
 [ext_resource type="PackedScene" uid="uid://b7kumxdfd0gb5" path="res://art/3d_models/student_m_exp.tscn" id="3_4dwfv"]
 [ext_resource type="Resource" uid="uid://cowpt7h8htwl" path="res://characters/warrior/warrior_starting_deck.tres" id="3_edb7b"]
+[ext_resource type="Resource" uid="uid://ch4gjbmnndb6c" path="res://characters/card_library.tres" id="3_imjtc"]
 [ext_resource type="Resource" uid="uid://barqhdrh22oly" path="res://threads/break_time.tres" id="5_at0b3"]
 
 [resource]
@@ -14,6 +15,7 @@ description = "Normie."
 portrait = ExtResource("1_4dwfv")
 starting_deck = ExtResource("3_edb7b")
 draftable_cards = ExtResource("2_57hcw")
+library_cards = ExtResource("3_imjtc")
 cards_per_turn = 4
 max_mana = 3
 starting_thread = ExtResource("5_at0b3")

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CardPile" load_steps=10 format=3 uid="uid://ch4gjbmnndb6c"]
+
+[ext_resource type="Script" uid="uid://db7gxbb4g4qbl" path="res://custom_resources/card.gd" id="1_wcluk"]
+[ext_resource type="Resource" uid="uid://djdrm0hdg5b23" path="res://shared_cards/toxin.tres" id="2_xgjfg"]
+[ext_resource type="Script" uid="uid://do5h7q7uufehy" path="res://custom_resources/card_pile.gd" id="2_yp6aw"]
+[ext_resource type="Resource" uid="uid://c5wwjjw0cns1t" path="res://characters/warrior/cards/siro.tres" id="3_mxn01"]
+[ext_resource type="Resource" uid="uid://kyu5l54a2ljg" path="res://characters/warrior/cards/student_cybersword_slash.tres" id="4_jsvv0"]
+[ext_resource type="Resource" uid="uid://cavj5bacvpmrd" path="res://characters/warrior/cards/warrior_big_slam.tres" id="5_ck2rw"]
+[ext_resource type="Resource" uid="uid://cusemvfvh0inm" path="res://characters/warrior/cards/warrior_block.tres" id="6_8mulo"]
+[ext_resource type="Resource" uid="uid://daiht3oljvjoj" path="res://characters/warrior/cards/warrior_cybersword_attack.tres" id="7_0rq4v"]
+[ext_resource type="Resource" uid="uid://bl66ldjcrh1ii" path="res://characters/warrior/cards/warrior_true_strength.tres" id="8_j3uos"]
+
+[resource]
+script = ExtResource("2_yp6aw")
+cards = Array[ExtResource("1_wcluk")]([ExtResource("2_xgjfg"), ExtResource("3_mxn01"), ExtResource("4_jsvv0"), ExtResource("5_ck2rw"), ExtResource("6_8mulo"), ExtResource("7_0rq4v"), ExtResource("8_j3uos")])
+metadata/_custom_type_script = "uid://do5h7q7uufehy"

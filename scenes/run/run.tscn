@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://clm7o5ocig46s"]
+[gd_scene load_steps=17 format=3 uid="uid://clm7o5ocig46s"]
 
 [ext_resource type="PackedScene" uid="uid://y5cqwnshg50s" path="res://scenes/map/map.tscn" id="1_imm70"]
 [ext_resource type="Script" uid="uid://bml5rycg8wq3v" path="res://scenes/run/run.gd" id="1_x1ycp"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://c2xpl6v80ddmh" path="res://art/deckHover.png" id="9_x53nd"]
 [ext_resource type="Script" uid="uid://cvittjk6naban" path="res://scenes/run/pause_menu.gd" id="10_cnkn7"]
 [ext_resource type="FontFile" uid="uid://d3fuaowohtamf" path="res://art/Font Styles/PressStart2P-Regular.ttf" id="10_g42ja"]
+[ext_resource type="PackedScene" uid="uid://n4f3c8twu5n7" path="res://scenes/ui/card_library_opener.tscn" id="10_x53nd"]
 [ext_resource type="FontFile" uid="uid://7ucfniysa1ko" path="res://art/Font Styles/pixel_rpg.ttf" id="11_cnkn7"]
 [ext_resource type="PackedScene" uid="uid://cyj73muy4ysx2" path="res://scenes/thread_handler/thread_tooltip.tscn" id="11_vjuex"]
 
@@ -117,7 +118,16 @@ offset_bottom = 19.0
 text = "99"
 horizontal_alignment = 1
 
+[node name="CardLibraryButton" parent="TopBar/BarItems" instance=ExtResource("10_x53nd")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
 [node name="DeckView" parent="TopBar" instance=ExtResource("5_7jmm0")]
+unique_name_in_owner = true
+visible = false
+
+[node name="CardLibraryView" parent="TopBar" instance=ExtResource("5_7jmm0")]
 unique_name_in_owner = true
 visible = false
 
