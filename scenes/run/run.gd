@@ -77,6 +77,7 @@ func _save_run(was_on_map: bool) -> void:
 	save_data.run_stats = stats
 	save_data.char_stats = character
 	save_data.current_deck = character.deck
+	save_data.current_library = character.card_library
 	save_data.current_health = character.health
 	save_data.threads = thread_handler.get_all_threads()
 	save_data.last_room = map.last_room
@@ -94,6 +95,7 @@ func _load_run() -> void:
 	stats = save_data.run_stats
 	character = save_data.char_stats
 	character.deck = save_data.current_deck
+	character.card_library = save_data.current_library
 	character.health = save_data.current_health
 	thread_handler.add_threads(save_data.threads)
 	_setup_top_bar()
