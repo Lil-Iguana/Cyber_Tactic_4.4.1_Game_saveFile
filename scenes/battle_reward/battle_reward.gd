@@ -115,6 +115,7 @@ func _on_card_reward_taken(card: Card) -> void:
 		return
 		
 	character_stats.deck.add_card(card)
+	Events.card_reward_selected.emit(card)
 
 
 func _on_thread_reward_taken(thread: ThreadPassive) -> void:

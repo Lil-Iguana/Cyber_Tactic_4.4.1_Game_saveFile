@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://1jp0fu7lnfpy"]
+[gd_scene load_steps=7 format=3 uid="uid://2smpfeuu0xv0"]
 
 [ext_resource type="FontFile" uid="uid://d3fuaowohtamf" path="res://art/Font Styles/PressStart2P-Regular.ttf" id="1_cmnhj"]
-[ext_resource type="Script" uid="uid://b0aovutwij0n4" path="res://scenes/ui/card_pile_library_view.gd" id="1_qsoie"]
+[ext_resource type="Script" uid="uid://b8k33gux8qgpl" path="res://scenes/ui/card_pile_library_view.gd" id="1_qsoie"]
 [ext_resource type="PackedScene" uid="uid://rsk8d12egnnf" path="res://scenes/ui/card_menu_ui.tscn" id="2_qsoie"]
 [ext_resource type="FontFile" uid="uid://7ucfniysa1ko" path="res://art/Font Styles/pixel_rpg.ttf" id="3_bo1yt"]
 [ext_resource type="PackedScene" uid="uid://istosvrl2ng1" path="res://scenes/ui/card_tooltip_pop_up.tscn" id="4_aoqxi"]
@@ -56,7 +56,7 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 3
-vertical_scroll_mode = 2
+vertical_scroll_mode = 4
 
 [node name="Cards" type="GridContainer" parent="MarginContainer/VBoxContainer/ScrollContainer"]
 unique_name_in_owner = true

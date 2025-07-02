@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://n4f3c8twu5n7" path="res://scenes/ui/card_library_opener.tscn" id="10_x53nd"]
 [ext_resource type="FontFile" uid="uid://7ucfniysa1ko" path="res://art/Font Styles/pixel_rpg.ttf" id="11_cnkn7"]
 [ext_resource type="PackedScene" uid="uid://cyj73muy4ysx2" path="res://scenes/thread_handler/thread_tooltip.tscn" id="11_vjuex"]
-[ext_resource type="PackedScene" path="res://scenes/ui/card_pile_library_view.tscn" id="12_l6p45"]
+[ext_resource type="PackedScene" uid="uid://2smpfeuu0xv0" path="res://scenes/ui/card_pile_library_view.tscn" id="12_l6p45"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7yo0l"]
 font = ExtResource("10_g42ja")
