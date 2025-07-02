@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dypgnhhcv4a0l"]
+
+[ext_resource type="Texture2D" uid="uid://48dvyc5h4mpb" path="res://art/question_mark.png" id="1_f85vg"]
+[ext_resource type="Script" uid="uid://et8pjbu8vam4" path="res://characters/warrior/cards/warrior_one_two.gd" id="2_f85vg"]
+
+[resource]
+script = ExtResource("2_f85vg")
+name = "One-Two"
+id = "warrior_one_two"
+type = 0
+rarity = 0
+target = 1
+cost = 1
+remove = false
+icon = ExtResource("1_f85vg")
+tooltip_text = "[center]Deal [color='ff0000']%s[/color] damage two times.[/center]"
+real_world_text = ""
+metadata/_custom_type_script = "uid://db7gxbb4g4qbl"
