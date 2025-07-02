@@ -45,6 +45,7 @@ func set_card(new_card: Card) -> void:
 
 func _on_buy_button_pressed() -> void:
 	Events.shop_card_bought.emit(card, gold_cost)
+	Events.card_reward_selected.emit(card)
 	card_container.queue_free()
 	price.queue_free()
 	buy_button.queue_free()

@@ -8,6 +8,8 @@ const SAVE_PATH := "user://savegame.tres"
 @export var run_stats: RunStats
 @export var char_stats: CharacterStats
 @export var current_deck: CardPile
+@export var current_library: CardPile
+@export var discovered_cards: Array[String]
 @export var current_health: int
 @export var threads: Array[ThreadPassive]
 @export var map_data: Array[Array]

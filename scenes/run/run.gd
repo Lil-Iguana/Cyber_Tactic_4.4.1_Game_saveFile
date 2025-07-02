@@ -21,7 +21,7 @@ const MAIN_MENU_PATH := "res://scenes/ui/main_menu.tscn"
 @onready var deck_button: CardPileOpener = %DeckButton
 @onready var deck_view: CardPileView = %DeckView
 @onready var card_library_button: CardLibraryOpener = %CardLibraryButton
-@onready var card_library_view: CardPileView = %CardLibraryView
+@onready var card_library_view: CardPileLibraryView = %CardLibraryView
 @onready var pause_menu: PauseMenu = $PauseMenu
 
 @onready var battle_button: Button = %BattleButton
@@ -61,6 +61,13 @@ func _ready() -> void:
 func _start_run() -> void:
 	stats = RunStats.new()
 	
+	# Instantiate character and reset decks
+	character = run_startup.picked_character.create_instance()
+	# Auto-unlock starter deck cards
+	for card in character.deck.cards:
+		if not CardLibrary.is_discovered(card.id):
+			CardLibrary.discovered_cards.append(card.id)
+	
 	_setup_event_connections()
 	_setup_top_bar()
 	
@@ -84,6 +91,7 @@ func _save_run(was_on_map: bool) -> void:
 	save_data.map_data = map.map_data.duplicate()
 	save_data.floors_climbed = map.floors_climbed
 	save_data.was_on_map = was_on_map
+	save_data.discovered_cards = CardLibrary.discovered_cards
 	save_data.save_data()
 
 
@@ -98,6 +106,14 @@ func _load_run() -> void:
 	character.card_library = save_data.current_library
 	character.health = save_data.current_health
 	thread_handler.add_threads(save_data.threads)
+	
+		# Restore discovered cards
+	CardLibrary.discovered_cards = save_data.discovered_cards.duplicate()
+	# Auto-unlock starter deck cards if missing
+	for card in character.deck.cards:
+		if not CardLibrary.is_discovered(card.id):
+			CardLibrary.discovered_cards.append(card.id)
+	
 	_setup_top_bar()
 	_setup_event_connections()
 	

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpj1i1kmyuxvs"]
+
+[ext_resource type="Script" uid="uid://bwxwgrrnd3wbj" path="res://scenes/ui/card_menu_library_ui.gd" id="1_10est"]
+[ext_resource type="PackedScene" uid="uid://mtahay6yxl8j" path="res://scenes/ui/card_visuals.tscn" id="1_ygtxd"]
+
+[node name="CardMenuLibraryUI" type="CenterContainer"]
+offset_right = 25.0
+offset_bottom = 30.0
+size_flags_horizontal = 3
+script = ExtResource("1_10est")
+
+[node name="Visuals" parent="." instance=ExtResource("1_ygtxd")]
+layout_mode = 2
+
+[connection signal="gui_input" from="Visuals" to="." method="_on_visuals_gui_input"]
+[connection signal="mouse_entered" from="Visuals" to="." method="_on_visuals_mouse_entered"]
+[connection signal="mouse_exited" from="Visuals" to="." method="_on_visuals_mouse_exited"]
