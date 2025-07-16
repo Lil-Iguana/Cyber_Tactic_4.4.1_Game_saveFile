@@ -143,7 +143,7 @@ func _show_map() -> void:
 	
 	_save_run(true)
 
-
+# This is for debug purposes
 func _setup_event_connections() -> void:
 	Events.battle_won.connect(_on_battle_won)
 	Events.battle_reward_exited.connect(_show_map)
