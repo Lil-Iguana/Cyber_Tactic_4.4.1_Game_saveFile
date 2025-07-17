@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkgu6fv00nbs1"]
+
+[ext_resource type="Texture2D" uid="uid://dv4cg82ov8sqr" path="res://art/bestiary_icon.png" id="1_ev3jl"]
+[ext_resource type="Texture2D" uid="uid://c1iesdgp8su5l" path="res://art/bestiary_icon_hover.png" id="2_4gm3p"]
+
+[node name="BestiaryOpenerButton" type="TextureButton"]
+offset_right = 16.0
+offset_bottom = 16.0
+texture_normal = ExtResource("1_ev3jl")
+texture_hover = ExtResource("2_4gm3p")
+ignore_texture_size = true
+stretch_mode = 5
