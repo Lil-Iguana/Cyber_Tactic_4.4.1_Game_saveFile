@@ -27,7 +27,26 @@ func set_current_character(new_character: CharacterStats) -> void:
 
 func _on_start_button_pressed() -> void:
 	CardLibrary.discovered_cards.clear()
-	
+
+	# --- New: reset the CodexManager state ---
+	# 1) Mark every entry locked
+	for entry in CodexManager.entries.values():
+		entry.is_unlocked = false
+	# 2) Clear runtime tracking
+	CodexManager.discovered_ids.clear()
+	# 3) Erase saved data
+	var save_res := SaveGame.load_data() if SaveGame.load_data() else SaveGame.new()
+	save_res.codex_discovered.clear()
+	save_res.save_data()
+	# Alternatively, you could call CodexManager.save_state() after clearing discovered_ids,
+	# if you’ve exposed a public method that writes the cleared state back out.
+
+	# (Optional) Hide any currently open BestiaryView
+	if has_node("/root/Run/CurrentView/BestiaryView"):
+		get_node("/root/Run/CurrentView/BestiaryView").hide()
+
+	# --- End Codex reset ---
+
 	print("Start new Run with %s" % current_character.character_name)
 
 	run_startup.type = RunStartup.Type.NEW_RUN
