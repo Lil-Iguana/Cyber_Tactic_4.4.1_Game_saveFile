@@ -1,0 +1,161 @@
+[gd_scene load_steps=11 format=3 uid="uid://dwo3o5gqe6pbf"]
+
+[ext_resource type="FontFile" uid="uid://d3fuaowohtamf" path="res://art/Font Styles/PressStart2P-Regular.ttf" id="1_etqfd"]
+[ext_resource type="Texture2D" uid="uid://61n5m4hwmpcc" path="res://art/tile_0108.png" id="2_2rjr8"]
+[ext_resource type="FontFile" uid="uid://dkc0wbxtwj6ao" path="res://art/Font Styles/MedodicaRegular.otf" id="3_3bfrl"]
+[ext_resource type="FontFile" uid="uid://7ucfniysa1ko" path="res://art/Font Styles/pixel_rpg.ttf" id="4_n654e"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6e57x"]
+font = ExtResource("1_etqfd")
+font_color = Color(0, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_t8un3"]
+font = ExtResource("3_3bfrl")
+font_color = Color(0, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nc4qm"]
+font = ExtResource("3_3bfrl")
+font_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yc6pm"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0.341176, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gdjkv"]
+bg_color = Color(0.0941176, 0.521569, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lokbv"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 1, 0, 1)
+
+[node name="BestiaryView" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
+offset_top = 5.0
+offset_right = 64.0
+offset_bottom = 21.0
+grow_horizontal = 2
+text = "Bestiary"
+label_settings = SubResource("LabelSettings_6e57x")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="EntryList" type="VBoxContainer" parent="HBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="IconPreview" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+texture = ExtResource("2_2rjr8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name&ShortDesc" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NameLabel" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/Name&ShortDesc"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Name"
+label_settings = SubResource("LabelSettings_t8un3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShortDesc" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/HBoxContainer/Name&ShortDesc"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0, 1, 0, 1)
+text = "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text"
+
+[node name="RealDescription" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Real Description"
+label_settings = SubResource("LabelSettings_nc4qm")
+horizontal_alignment = 1
+
+[node name="FullDesc" type="RichTextLabel" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0, 1, 0, 1)
+bbcode_enabled = true
+text = "Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text 
+"
+
+[node name="BackButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -37.0
+offset_top = 5.0
+offset_right = -7.0
+offset_bottom = 20.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.341176, 0, 1)
+theme_override_fonts/font = ExtResource("4_n654e")
+theme_override_font_sizes/font_size = 6
+theme_override_styles/hover = SubResource("StyleBoxFlat_yc6pm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gdjkv")
+theme_override_styles/normal = SubResource("StyleBoxFlat_lokbv")
+text = "Back"
