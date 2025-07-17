@@ -29,6 +29,7 @@ SFXPlayer="*res://global/sfx_player.tscn"
 RNG="*res://global/rng.gd"
 GlobalTurnNumber="*res://global/global_turn_number.gd"
 CardLibrary="*res://global/card_library.gd"
+CodexManager="*res://global/codex_manager.gd"
 
 [display]
 
