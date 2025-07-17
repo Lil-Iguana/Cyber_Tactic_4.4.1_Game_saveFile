@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CodexEntry" load_steps=3 format=3 uid="uid://dys8wkgbpeum1"]
+
+[ext_resource type="Texture2D" uid="uid://61n5m4hwmpcc" path="res://art/tile_0108.png" id="1_jcanl"]
+[ext_resource type="Script" uid="uid://8upc5fsyrvob" path="res://custom_resources/codex_entry.gd" id="1_k7uft"]
+
+[resource]
+script = ExtResource("1_k7uft")
+id = "toxic_ghost"
+name = "Angry Boss Worm"
+art = ExtResource("1_jcanl")
+tooltip_text = "Worm Boss Text"
+tooltip_text_real = "Worm Boss Real Text"
+is_unlocked = false
+metadata/_custom_type_script = "uid://8upc5fsyrvob"
