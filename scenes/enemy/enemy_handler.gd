@@ -2,6 +2,7 @@ class_name EnemyHandler
 extends Node2D
 
 var acting_enemies: Array[Enemy] = []
+var recently_defeated: Array[String] = []
 
 
 func _ready() -> void:
@@ -9,6 +10,7 @@ func _ready() -> void:
 	Events.enemy_action_completed.connect(_on_enemy_action_completed)
 	Events.player_hand_drawn.connect(_on_player_hand_drawn)
 	Events.status_gained.connect(_on_status_gained)
+	Events.battle_over_screen_requested.connect(_on_battle_over)
 
 
 func setup_enemies(battle_stats: BattleStats) -> void:
@@ -68,6 +70,10 @@ func _on_enemy_died(enemy: Enemy) -> void:
 	
 	if is_enemy_turn:
 		_start_next_enemy_turn()
+	
+	var stats = enemy.stats as Stats
+	var id = stats.enemy_name.to_lower().replace(" ", "_")
+	recently_defeated.append(id)
 
 
 func _on_enemy_action_completed(enemy: Enemy) -> void:
@@ -82,3 +88,12 @@ func _on_player_hand_drawn() -> void:
 func _on_status_gained() -> void:
 	for enemy: Enemy in get_children():
 		enemy.update_intent()
+
+
+func _on_battle_over(_text: String, type: BattleOverPanel.Type) -> void:
+	# Only unlock when player wins
+	if type == BattleOverPanel.Type.WIN:
+		for id in recently_defeated:
+			CodexManager.unlock(id)
+	# Clear list for next battle
+	recently_defeated.clear()
