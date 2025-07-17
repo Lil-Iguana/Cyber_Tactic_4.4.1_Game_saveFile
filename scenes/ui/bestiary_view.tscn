@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://dwo3o5gqe6pbf"]
+[gd_scene load_steps=13 format=3 uid="uid://dwo3o5gqe6pbf"]
 
+[ext_resource type="Script" uid="uid://vckx3gqeb4e2" path="res://scenes/ui/bestiary_view.gd" id="1_3bfrl"]
 [ext_resource type="FontFile" uid="uid://d3fuaowohtamf" path="res://art/Font Styles/PressStart2P-Regular.ttf" id="1_etqfd"]
 [ext_resource type="Texture2D" uid="uid://61n5m4hwmpcc" path="res://art/tile_0108.png" id="2_2rjr8"]
 [ext_resource type="PackedScene" uid="uid://lq2vlsicq0s5" path="res://scenes/ui/bestiary_entry_button.tscn" id="2_3bfrl"]
@@ -49,6 +50,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_3bfrl")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1

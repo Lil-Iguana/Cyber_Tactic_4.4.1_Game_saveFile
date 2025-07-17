@@ -22,6 +22,8 @@ const MAIN_MENU_PATH := "res://scenes/ui/main_menu.tscn"
 @onready var deck_view: CardPileView = %DeckView
 @onready var card_library_button: CardLibraryOpener = %CardLibraryButton
 @onready var card_library_view: CardPileLibraryView = %CardLibraryView
+@onready var bestiary_opener_button: TextureButton = %BestiaryOpenerButton
+@onready var bestiary_view: BestiaryView = %BestiaryView
 @onready var pause_menu: PauseMenu = $PauseMenu
 
 @onready var battle_button: Button = %BattleButton
@@ -143,7 +145,7 @@ func _show_map() -> void:
 	
 	_save_run(true)
 
-# This is for debug purposes
+
 func _setup_event_connections() -> void:
 	Events.battle_won.connect(_on_battle_won)
 	Events.battle_reward_exited.connect(_show_map)
@@ -177,6 +179,8 @@ func _setup_top_bar():
 	card_library_button.card_library = character.card_library
 	card_library_view.card_pile = character.card_library
 	card_library_button.pressed.connect(card_library_view.show_current_view.bind("Card Library"))
+	
+	bestiary_opener_button.pressed.connect(bestiary_view.show)
 	
 
 
