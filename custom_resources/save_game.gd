@@ -16,6 +16,7 @@ const SAVE_PATH := "user://savegame.tres"
 @export var last_room: Room
 @export var floors_climbed: int
 @export var was_on_map: bool
+@export var codex_discovered: Array[String] = []
 
 
 func save_data() -> void:
