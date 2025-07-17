@@ -16,7 +16,8 @@ font = ExtResource("3_3bfrl")
 font_color = Color(0, 1, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_nc4qm"]
-font = ExtResource("3_3bfrl")
+font = ExtResource("4_n654e")
+font_size = 12
 font_color = Color(0, 1, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yc6pm"]
@@ -80,7 +81,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 24.0
+offset_top = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 

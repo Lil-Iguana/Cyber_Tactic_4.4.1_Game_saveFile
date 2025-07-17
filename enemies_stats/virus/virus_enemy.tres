@@ -8,8 +8,8 @@
 [resource]
 script = ExtResource("1_00qpd")
 ai = ExtResource("1_lem3m")
-max_health = 25
-enemy_name = "Stuxnet"
+max_health = 15
+enemy_name = "Virus"
 art = ExtResource("1_41ff6")
 model = ExtResource("3_j4yco")
 tooltip_text = "You may struggle to kill this virus, so be aware of its actions or intent.

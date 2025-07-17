@@ -9,7 +9,7 @@
 script = ExtResource("2_6dk34")
 ai = ExtResource("1_rr2lt")
 max_health = 40
-enemy_name = "Morris Worm"
+enemy_name = "Toxic Ghost"
 art = ExtResource("1_uys0k")
 model = ExtResource("3_bmb82")
 tooltip_text = "This worm can pack a punch, and has a trick in its sleeve."
