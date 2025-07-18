@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="EnemyStats" load_steps=5 format=3 uid="uid://di1u2yn8ru2vi"]
 
 [ext_resource type="Script" uid="uid://d0tnal1w0vdan" path="res://custom_resources/enemy_stats.gd" id="1_00qpd"]
-[ext_resource type="Texture2D" uid="uid://61n5m4hwmpcc" path="res://art/tile_0108.png" id="1_41ff6"]
 [ext_resource type="PackedScene" uid="uid://pi6b7mp1b2gx" path="res://enemies_stats/virus/virus_enemy_ai.tscn" id="1_lem3m"]
+[ext_resource type="Texture2D" uid="uid://ci0dah4u7y57d" path="res://art/virus_icon.png" id="2_j4yco"]
 [ext_resource type="PackedScene" uid="uid://d6sv5u62ahn3" path="res://art/3d_models/virus_m_exp.tscn" id="3_j4yco"]
 
 [resource]
@@ -10,7 +10,7 @@ script = ExtResource("1_00qpd")
 ai = ExtResource("1_lem3m")
 max_health = 15
 enemy_name = "Virus"
-art = ExtResource("1_41ff6")
+art = ExtResource("2_j4yco")
 model = ExtResource("3_j4yco")
 tooltip_text = "You may struggle to kill this virus, so be aware of its actions or intent.
 

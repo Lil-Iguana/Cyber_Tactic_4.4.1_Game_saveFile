@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="CodexEntry" load_steps=3 format=3 uid="uid://cl3w0kj0kbekh"]
 
 [ext_resource type="Script" uid="uid://8upc5fsyrvob" path="res://custom_resources/codex_entry.gd" id="1_dnocl"]
-[ext_resource type="Texture2D" uid="uid://61n5m4hwmpcc" path="res://art/tile_0108.png" id="1_rdnan"]
+[ext_resource type="Texture2D" uid="uid://ci0dah4u7y57d" path="res://art/virus_icon.png" id="1_rdnan"]
 
 [resource]
 script = ExtResource("1_dnocl")
