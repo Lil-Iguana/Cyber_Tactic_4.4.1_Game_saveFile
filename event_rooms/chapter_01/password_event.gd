@@ -38,6 +38,7 @@ func _on_start_pressed() -> void:
 	$EventTitle.visible = false
 	$EventGame.visible  = true
 	_start_timer()
+	_on_check_pressed()
 
 func _start_timer() -> void:
 	time_left = time_limit
@@ -107,8 +108,8 @@ func _show_aftermath(success: bool, override_text: String = "") -> void:
 		aftermath_text.text = override_text
 	else:
 		if success:
-			aftermath_text.text = "[center]\"Success! Here is your award!\"[/center]"
-			aftermath_text.text = "[center]\"+200 cache\"[/center]"
+			aftermath_text.text = "[center]\"Success! Here is your award!\"[/center] [center]\n[color=green]+200 cache[/color][/center]
+			[center]\nDon’t reuse passwords or variations of the same password. Instead of reusing your passwords, or a slight variation of the same password (Password1, Password2, etc.), practice good password hygiene by creating strong and unique passwords for each of your accounts. [/center]"
 			run_stats.gold += 200
 		else:
 			aftermath_text.text = "[center]\"You failed the challenge. Better luck next time!\"[/center]"
