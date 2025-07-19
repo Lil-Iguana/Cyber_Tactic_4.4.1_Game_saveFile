@@ -108,6 +108,7 @@ func _show_aftermath(success: bool, override_text: String = "") -> void:
 	else:
 		if success:
 			aftermath_text.text = "[center]\"Success! Here is your award!\"[/center]"
+			aftermath_text.text = "[center]\"+200 cache\"[/center]"
 			run_stats.gold += 200
 		else:
 			aftermath_text.text = "[center]\"You failed the challenge. Better luck next time!\"[/center]"
