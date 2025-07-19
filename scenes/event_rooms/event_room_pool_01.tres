@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="EventRoomPool" load_steps=3 format=3 uid="uid://cjhpms5hechb6"]
 
-[ext_resource type="PackedScene" uid="uid://bjve674gwc21n" path="res://event_rooms/chapter_01/gamble_event.tscn" id="1_e00kh"]
 [ext_resource type="Script" uid="uid://c04lmg8ewveto" path="res://custom_resources/event_room_pool.gd" id="1_ravmy"]
+[ext_resource type="PackedScene" uid="uid://dja8vtnjtu71r" path="res://event_rooms/chapter_01/password_event.tscn" id="2_lsjjn"]
 
 [resource]
 script = ExtResource("1_ravmy")
-event_rooms = Array[PackedScene]([ExtResource("1_e00kh")])
+event_rooms = Array[PackedScene]([ExtResource("2_lsjjn")])
 metadata/_custom_type_script = "uid://c04lmg8ewveto"
