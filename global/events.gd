@@ -69,7 +69,7 @@ signal enemy_turn_ended
 @warning_ignore("unused_signal")
 signal enemy_died(enemy: Enemy)
 @warning_ignore("unused_signal")
-signal enemy_tooltip_requested(enemy: Stats)
+signal enemy_tooltip_requested(enemy: Stats, intent_icons: Array, intent_descs: Array, enemy_name: String)
 
 # Battle-related events
 @warning_ignore("unused_signal")

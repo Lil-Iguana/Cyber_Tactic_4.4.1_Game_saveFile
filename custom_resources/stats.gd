@@ -9,8 +9,8 @@ signal stats_changed
 @export var enemy_name: String
 @export var art: Texture
 @export var model: PackedScene
-@export_multiline var tooltip_text: String
-@export_multiline var tooltip_text_real: String
+@export var intent_icons: Array[Texture] = []
+@export_multiline var intent_descriptions: Array[String] = []
 @export var elemental_multipliers := {
 	Element.PHYSICAL: 1.0,
 	Element.FIRE: 1.0,

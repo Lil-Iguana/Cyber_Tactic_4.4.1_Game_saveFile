@@ -6,8 +6,7 @@ extends Control
 @onready var close_button: TextureButton = %CloseButton
 @onready var tooltip_icon: TextureRect = %EnemyIcon
 @onready var enemy_name: Label = %EnemyName
-@onready var tooltip_text_label: RichTextLabel = %EnemyTooltipText
-@onready var tooltip_text_label1: RichTextLabel = %RealTooltipText
+@onready var intent_grid: GridContainer  = %IntentGrid
 
 var tween: Tween
 var is_visible_now := false
@@ -20,15 +19,31 @@ func _ready() -> void:
 	modulate = Color.TRANSPARENT
 
 
-func show_tooltip(icon: Texture, name_text: String, text: String, real_text: String) -> void:
+func show_tooltip(icon: Texture, name_text: String, icons: Array, descs: Array) -> void:
 	is_visible_now = true
 	if tween:
 		tween.kill()
 	
+	for child in intent_grid.get_children():
+		intent_grid.remove_child(child)
+		child.queue_free()
+	
 	tooltip_icon.texture = icon
 	enemy_name.text = name_text
-	tooltip_text_label.text = text
-	tooltip_text_label1.text = real_text
+	
+	intent_grid.columns = 2
+	var count = min(icons.size(), descs.size())
+	for i in count:
+		var iconS = TextureRect.new()
+		iconS.texture = icons[i]
+		iconS.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		intent_grid.add_child(iconS)
+
+		var lbl = Label.new()
+		lbl.text = descs[i]
+		lbl.vertical_alignment = 1
+		lbl.horizontal_alignment = 1
+		intent_grid.add_child(lbl)
 	
 	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	tween.tween_callback(show)
