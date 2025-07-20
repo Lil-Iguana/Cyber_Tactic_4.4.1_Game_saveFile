@@ -206,4 +206,4 @@ func _on_input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) ->
 	if event is InputEventMouseButton:
 		if event.button_index == 2 and event.pressed:
 			if stats:
-				Events.enemy_tooltip_requested.emit(stats.art, stats.enemy_name, stats.tooltip_text_real, stats.tooltip_text)
+				Events.enemy_tooltip_requested.emit(stats.art, stats.enemy_name, stats.intent_icons, stats.intent_descriptions)

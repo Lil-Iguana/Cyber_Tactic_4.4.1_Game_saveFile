@@ -57,11 +57,11 @@ layout_mode = 2
 text = "Skills"
 horizontal_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+[node name="IntentScroll" type="ScrollContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="IntentGrid" type="GridContainer" parent="VBoxContainer/ScrollContainer"]
+[node name="IntentGrid" type="GridContainer" parent="VBoxContainer/IntentScroll"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
