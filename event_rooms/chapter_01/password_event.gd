@@ -9,18 +9,39 @@ signal event_finished(success: bool)
 # ——— Node References ———
 @onready var start_button    : EventRoomButton  = %StartButton
 @onready var title_label     : Label            = %title_label
-
 @onready var password_input  : LineEdit         = %password_input
 @onready var check_button    : EventRoomButton  = %check_button
 @onready var timer_bar       : ProgressBar      = %timer_bar
 @onready var result_label    : RichTextLabel    = %result_label
 @onready var countdown_timer : Timer            = %CountdownTimer
-
 @onready var aftermath_box   : VBoxContainer    = %EventAfterMath
 @onready var aftermath_text  : RichTextLabel    = %aftermath_text
 
+# ——— Internal state ———
 var time_left: int
-var strength: int
+var current_stage: int = 0
+
+# ——— Define stages with method names ———
+var stages = [
+	{
+		"prompt": "At least 10 characters.",
+		"method": "_check_length",
+		"pass_text": "✅ Length OK!",
+		"fail_text": "❌ Need at least 10 characters."
+	},
+	{
+		"prompt": "Include at least one number.",
+		"method": "_check_number",
+		"pass_text": "✅ Number found!",
+		"fail_text": "❌ No number yet."
+	},
+	{
+		"prompt": "Include at least one symbol/special character.",
+		"method": "_check_symbol",
+		"pass_text": "✅ Symbol found!",
+		"fail_text": "❌ No symbol yet."
+	}
+]
 
 func _ready() -> void:
 	# wire up callbacks
@@ -38,66 +59,55 @@ func _on_start_pressed() -> void:
 	$EventTitle.visible = false
 	$EventGame.visible  = true
 	_start_timer()
-	_on_check_pressed()
 
 func _start_timer() -> void:
 	time_left = time_limit
 	timer_bar.max_value = time_limit
 	timer_bar.value     = time_left
-	result_label.clear()
+
+	current_stage = 0
+	result_label.bbcode_enabled = true
+	result_label.text = "[color=orange]Requirement:[/color] %s" % stages[current_stage]["prompt"]
+
 	check_button.disabled = false
 	countdown_timer.start()
 
+# ——— STEP 2: Timer countdown ———
 func _on_timer_tick() -> void:
 	time_left -= 1
 	if time_left > 0:
 		timer_bar.value = time_left
 	else:
 		countdown_timer.stop()
-		_on_time_up()
+		_show_aftermath(false, "[center][color=red]⏰ Time’s up! You failed.[/color][/center]")
 
-func _on_time_up() -> void:
-	_show_aftermath(false, "[center][color=red]⏰ Time’s up![/color]\nYou failed to meet the requirements.")
-
-# ——— STEP 3: Player presses “Check” ———
+# ——— STEP 3: Check current requirement ———
 func _on_check_pressed() -> void:
 	var pwd = password_input.text
-	var feedback = "[b]Password Strength Check:[/b]\n"
-	strength = 0
+	var stage = stages[current_stage]
 
-	# Length check (weak)
-	if pwd.length() >= 10:
-		feedback += "✅ At least 10 chars (Weak)\n"
+	# call the check method by name
+	if call(stage.method, pwd):
+		# passed this stage
+		result_label.bbcode_enabled = true
+		result_label.text = stage.pass_text
+		current_stage += 1
+
+		if current_stage < stages.size():
+			# slight pause before next
+			var t = get_tree().create_timer(0.7)
+			await t.timeout
+			result_label.bbcode_enabled = true
+			result_label.text = "[color=orange]Requirement:[/color] %s" % stages[current_stage].prompt
+		else:
+			# all done — success
+			countdown_timer.stop()
+			_show_aftermath(true)
+			check_button.disabled = true
 	else:
-		feedback += "❌ Less than 10 chars\n"
-
-	# Number check (strong)
-	if _contains_digit(pwd):
-		feedback += "✅ Contains number (Strong)\n"
-		strength += 1
-	else:
-		feedback += "❌ No number\n"
-
-	# Symbol check (strong)
-	if _contains_symbol(pwd):
-		feedback += "✅ Contains symbol (Strong)\n"
-		strength += 1
-	else:
-		feedback += "❌ No symbol\n"
-
-	var passed = (strength >= 2 and pwd.length() >= 10)
-	if passed:
-		countdown_timer.stop()
-		feedback += "\n[color=green]🎉 You passed![/green]"
-		_show_aftermath(true)
-	else:
-		feedback += "[color=orange]Keep trying until time runs out!"
-
-	result_label.bbcode_enabled = true
-	result_label.text = feedback
-
-	# only disable on success
-	check_button.disabled = passed
+		# failed this stage
+		result_label.bbcode_enabled = true
+		result_label.text = stage.fail_text
 
 # ——— STEP 4: Show aftermath & cleanup ———
 func _show_aftermath(success: bool, override_text: String = "") -> void:
@@ -117,20 +127,21 @@ func _show_aftermath(success: bool, override_text: String = "") -> void:
 	$EventAfterMath.visible = true
 
 func _on_continue_pressed() -> void:
-	emit_signal("event_finished", strength >= 2)
+	emit_signal("event_finished", current_stage == stages.size())
 	queue_free()
 
 # ———————— Helpers ————————
-func _contains_digit(pwd: String) -> bool:
+func _check_length(pwd: String) -> bool:
+	return pwd.length() >= 10
+
+func _check_number(pwd: String) -> bool:
 	for c in pwd:
 		if c >= "0" and c <= "9":
 			return true
 	return false
 
-func _contains_symbol(pwd: String) -> bool:
+func _check_symbol(pwd: String) -> bool:
 	for c in pwd:
-		if not ((c >= "a" and c <= "z")
-			 or (c >= "A" and c <= "Z")
-			 or (c >= "0" and c <= "9")):
+		if not ((c >= "a" and c <= "z") or (c >= "A" and c <= "Z") or (c >= "0" and c <= "9")):
 			return true
 	return false
