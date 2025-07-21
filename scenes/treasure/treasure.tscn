@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://da6ocx485g0c7"]
+[gd_scene load_steps=23 format=3 uid="uid://da6ocx485g0c7"]
 
 [ext_resource type="Script" uid="uid://ddky077xerok0" path="res://scenes/treasure/treasure.gd" id="1_xmwdt"]
 [ext_resource type="Script" uid="uid://jie6cbv6kc3m" path="res://custom_resources/thread_passive.gd" id="2_3ynfn"]
@@ -7,10 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://dbt36pxssl5iw" path="res://art/tile_0089.png" id="3_p583m"]
 [ext_resource type="Texture2D" uid="uid://dnudqtw3tv2h7" path="res://art/Cache16.png" id="4_hk1q6"]
 [ext_resource type="Resource" uid="uid://44a423e8clh1" path="res://threads/extra_energy.tres" id="4_knoyn"]
-[ext_resource type="Texture2D" uid="uid://bceuqyw50fdpi" path="res://art/tile_0090.png" id="4_o8ugj"]
-[ext_resource type="Texture2D" uid="uid://bl74ak1f0n8cg" path="res://art/tile_0091.png" id="5_2qnwf"]
 [ext_resource type="Resource" uid="uid://c014g8rpo2k1t" path="res://threads/reinforced_block.tres" id="5_ypb2i"]
 [ext_resource type="Resource" uid="uid://chqxc7ly6cg54" path="res://threads/confusing_staff.tres" id="6_8auyv"]
+[ext_resource type="Texture2D" uid="uid://c1uiov8rpeocw" path="res://art/chest_1.png" id="9_bbvtr"]
+[ext_resource type="Texture2D" uid="uid://c1kxfntpop5p6" path="res://art/chest_2.png" id="10_ko1oj"]
+[ext_resource type="Texture2D" uid="uid://b43l4dvdk1uos" path="res://art/chest_3.png" id="11_ab3yx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5bk8g"]
 font_size = 32
@@ -86,7 +87,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [ExtResource("3_p583m"), ExtResource("4_o8ugj"), ExtResource("5_2qnwf")]
+"values": [ExtResource("9_bbvtr"), ExtResource("10_ko1oj"), ExtResource("11_ab3yx")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false

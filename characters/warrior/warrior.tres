@@ -23,8 +23,8 @@ max_health = 35
 enemy_name = ""
 art = ExtResource("1_4dwfv")
 model = ExtResource("3_4dwfv")
-tooltip_text = ""
-tooltip_text_real = ""
+intent_icons = Array[Texture]([])
+intent_descriptions = Array[String]([])
 elemental_multipliers = {
 0: 1.0,
 1: 1.0,
