@@ -109,7 +109,7 @@ func _show_aftermath(success: bool, override_text: String = "") -> void:
 	else:
 		if success:
 			aftermath_text.text = "[center]\"Success! Here is your award!\"[/center] [center]\n[color=green]+200 cache[/color][/center]
-			[center]\nDon’t reuse passwords or variations of the same password. Instead of reusing your passwords, or a slight variation of the same password (Password1, Password2, etc.), practice good password hygiene by creating strong and unique passwords for each of your accounts. [/center]"
+			[center]\nDo not reuse passwords or variations of the same password. Instead use a slight variation of the same password (Password1, Password2, etc.), practice good password hygiene by creating strong and unique passwords for each of your accounts. [/center]"
 			run_stats.gold += 200
 		else:
 			aftermath_text.text = "[center]\"You failed the challenge. Better luck next time!\"[/center]"
