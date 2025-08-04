@@ -7,9 +7,21 @@ enum Target {SELF, SINGLE_ENEMY, ALL_ENEMIES, EVERYONE}
 
 const RARITY_COLORS := {
 	Card.Rarity.COMMON: Color.GRAY,
-	Card.Rarity.UNCOMMON: Color.SKY_BLUE,
+	Card.Rarity.UNCOMMON: Color.AQUA,
 	Card.Rarity.RARE: Color.GOLD,
 }
+
+
+static func type_color(t: int) -> Color:
+	match t:
+		Type.ATTACK:
+			return Color(0.862745, 0.0784314, 0.235294, 1)   # red
+		Type.POWER:
+			return Color(0.15, 0.8, 0.15)   # green
+		Type.SKILL:
+			return Color(0.15, 0.15, 0.8)   # blue
+		_:
+			return Color(1,1,1)
 
 
 @export_group("Card Attributes")

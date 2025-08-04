@@ -23,7 +23,6 @@ var tween: Tween
 var playable := true : set = _set_playable
 var disabled := false
 
-
 func _ready() -> void:
 	Events.card_aim_started.connect(_on_card_drag_or_aiming_started)
 	Events.card_drag_started.connect(_on_card_drag_or_aiming_started)
@@ -77,12 +76,24 @@ func _on_mouse_exited() -> void:
 	card_state_machine.on_mouse_exited()
 
 
+func apply_tinted_style(template: StyleBoxFlat) -> void:
+	# — guard: don’t tint if there’s no card yet —
+	if card == null:
+		return
+
+	var sb = template.duplicate() as StyleBoxFlat
+	sb.bg_color = Card.type_color(card.type)
+	card_visuals.panel.set("theme_override_styles/panel", sb)
+
+
 func _set_card(value: Card) -> void:
 	if not is_node_ready():
 		await ready
 	
 	card = value
 	card_visuals.card = card
+	# now that card is non-null, apply the base tint once
+	apply_tinted_style(BASE_STYLEBOX)
 
 
 func _set_playable(value: bool) -> void:
