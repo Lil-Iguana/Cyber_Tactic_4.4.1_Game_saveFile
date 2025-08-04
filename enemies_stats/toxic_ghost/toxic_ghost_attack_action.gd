@@ -1,6 +1,6 @@
 extends EnemyAction
 
-const TOXIN = preload("res://shared_cards/toxin.tres")
+const TOXIN = preload("res://shared_cards/infection/toxin.tres")
 
 @export var damage := 8
 
