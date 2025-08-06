@@ -25,9 +25,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not visible:
 		return
 	
-	if event.is_action_pressed("scroll_up"):
+	if event.is_action_pressed("scroll_up") or event.is_action_pressed("up_arrow"):
 		camera_2d.position.y -= SCROLL_SPEED
-	elif event.is_action_pressed("scroll_down"):
+	elif event.is_action_pressed("scroll_down") or event.is_action_pressed("down_arrow"):
 		camera_2d.position.y += SCROLL_SPEED
 	
 	camera_2d.position.y = clamp(camera_2d.position.y, -camera_edge_y, 0)
