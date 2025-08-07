@@ -15,7 +15,7 @@ const RARITY_COLORS := {
 static func type_color(t: int) -> Color:
 	match t:
 		Type.ATTACK:
-			return Color(0.862745, 0.0784314, 0.235294, 1)   # red
+			return Color(0.545098, 0, 0, 1)   # red
 		Type.POWER:
 			return Color(0.15, 0.8, 0.15)   # green
 		Type.SKILL:

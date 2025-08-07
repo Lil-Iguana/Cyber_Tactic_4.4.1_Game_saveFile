@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://clm7o5ocig46s"]
+[gd_scene load_steps=25 format=3 uid="uid://clm7o5ocig46s"]
 
 [ext_resource type="PackedScene" uid="uid://y5cqwnshg50s" path="res://scenes/map/map.tscn" id="1_imm70"]
 [ext_resource type="Script" uid="uid://bml5rycg8wq3v" path="res://scenes/run/run.gd" id="1_x1ycp"]
@@ -6,9 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://di04dbe481yuy" path="res://scenes/ui/card_pile_opener.tscn" id="4_ney7o"]
 [ext_resource type="PackedScene" uid="uid://cb6e701xyfirv" path="res://scenes/ui/health_ui.tscn" id="4_pv6hd"]
 [ext_resource type="PackedScene" uid="uid://tlt3hyoj0ida" path="res://scenes/ui/gold_ui.tscn" id="4_y5dly"]
+[ext_resource type="Texture2D" uid="uid://cbrv674oecikf" path="res://art/Enemy_Icon.png" id="4_ymu0v"]
 [ext_resource type="PackedScene" uid="uid://df1tufvp2h0o5" path="res://scenes/ui/card_pile_view.tscn" id="5_7jmm0"]
+[ext_resource type="Texture2D" uid="uid://b3shg7ko406ha" path="res://art/player_heart.png" id="5_vqexm"]
 [ext_resource type="PackedScene" uid="uid://cusrqvpni62dv" path="res://scenes/thread_handler/thread_handler.tscn" id="6_7cv5a"]
+[ext_resource type="Texture2D" uid="uid://bgthv7yuw134w" path="res://art/room_event_symbol.png" id="6_wy2jw"]
+[ext_resource type="Texture2D" uid="uid://ji1cm0uepdkw" path="res://art/shop_icon.png" id="7_0bq42"]
 [ext_resource type="Texture2D" uid="uid://btsr1cm0opoqa" path="res://art/deck.png" id="8_fo0ly"]
+[ext_resource type="Texture2D" uid="uid://dg1qygcrnr7ft" path="res://art/MalwareBoss.png" id="8_wgm62"]
 [ext_resource type="Texture2D" uid="uid://c2xpl6v80ddmh" path="res://art/deckHover.png" id="9_x53nd"]
 [ext_resource type="Script" uid="uid://cvittjk6naban" path="res://scenes/run/pause_menu.gd" id="10_cnkn7"]
 [ext_resource type="FontFile" uid="uid://d3fuaowohtamf" path="res://art/Font Styles/PressStart2P-Regular.ttf" id="10_g42ja"]
@@ -67,6 +72,74 @@ text = "Campfire"
 unique_name_in_owner = true
 layout_mode = 2
 text = "Bestiary"
+
+[node name="MapLabels" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="MapLabels" type="VBoxContainer" parent="MapLabels"]
+unique_name_in_owner = true
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 18.0
+offset_right = 108.0
+grow_vertical = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MapLabels/MapLabels"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MapLabels/MapLabels/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_ymu0v")
+
+[node name="Label" type="Label" parent="MapLabels/MapLabels/HBoxContainer"]
+layout_mode = 2
+text = "Battle"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MapLabels/MapLabels"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MapLabels/MapLabels/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("5_vqexm")
+
+[node name="Label" type="Label" parent="MapLabels/MapLabels/HBoxContainer2"]
+layout_mode = 2
+text = "Rest"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MapLabels/MapLabels"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MapLabels/MapLabels/HBoxContainer3"]
+layout_mode = 2
+texture = ExtResource("6_wy2jw")
+
+[node name="Label" type="Label" parent="MapLabels/MapLabels/HBoxContainer3"]
+layout_mode = 2
+text = "Encounter"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="MapLabels/MapLabels"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MapLabels/MapLabels/HBoxContainer4"]
+layout_mode = 2
+texture = ExtResource("7_0bq42")
+
+[node name="Label" type="Label" parent="MapLabels/MapLabels/HBoxContainer4"]
+layout_mode = 2
+text = "Shop"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="MapLabels/MapLabels"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MapLabels/MapLabels/HBoxContainer5"]
+layout_mode = 2
+texture = ExtResource("8_wgm62")
+
+[node name="Label" type="Label" parent="MapLabels/MapLabels/HBoxContainer5"]
+layout_mode = 2
+text = "Boss"
 
 [node name="TopBar" type="CanvasLayer" parent="."]
 layer = 3

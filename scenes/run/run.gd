@@ -25,6 +25,7 @@ const MAIN_MENU_PATH := "res://scenes/ui/main_menu.tscn"
 @onready var bestiary_opener_button: TextureButton = %BestiaryOpenerButton
 @onready var bestiary_view: BestiaryView = %BestiaryView
 @onready var pause_menu: PauseMenu = $PauseMenu
+@onready var map_labels: VBoxContainer = %MapLabels
 
 @onready var battle_button: Button = %BattleButton
 @onready var campfire_button: Button = %CampfireButton
@@ -132,6 +133,7 @@ func _change_view(scene: PackedScene) -> Node:
 	var new_view := scene.instantiate()
 	current_view.add_child(new_view)
 	map.hide_map()
+	map_labels.hide()
 	
 	return new_view
 
@@ -142,6 +144,7 @@ func _show_map() -> void:
 	
 	map.show_map()
 	map.unlock_next_rooms()
+	map_labels.show()
 	
 	_save_run(true)
 
