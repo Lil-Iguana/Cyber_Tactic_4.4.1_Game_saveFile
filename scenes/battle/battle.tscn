@@ -49,7 +49,7 @@ position = Vector2(210, 109)
 shape = SubResource("RectangleShape2D_ubsi8")
 debug_color = Color(0, 0.6, 0.701961, 0.129412)
 
-[node name="EnemyHandler" type="Node2D" parent="."]
+[node name="EnemyHandler" type="Node2D" parent="." groups=["enemy_handler"]]
 script = ExtResource("4_pp0u0")
 
 [node name="MalwareEnemy" parent="EnemyHandler" instance=ExtResource("2_7kg7y")]
