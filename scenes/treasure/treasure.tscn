@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://ddky077xerok0" path="res://scenes/treasure/treasure.gd" id="1_xmwdt"]
 [ext_resource type="Script" uid="uid://jie6cbv6kc3m" path="res://custom_resources/thread_passive.gd" id="2_3ynfn"]
-[ext_resource type="Texture2D" uid="uid://cnjjfxn6hrai3" path="res://art/background.png" id="2_fpb8l"]
 [ext_resource type="Resource" uid="uid://cwxlm3oyg546w" path="res://threads/kabluey.tres" id="3_72l3w"]
 [ext_resource type="Texture2D" uid="uid://dnudqtw3tv2h7" path="res://art/Cache16.png" id="4_hk1q6"]
 [ext_resource type="Resource" uid="uid://44a423e8clh1" path="res://threads/extra_energy.tres" id="4_knoyn"]
 [ext_resource type="Resource" uid="uid://c014g8rpo2k1t" path="res://threads/reinforced_block.tres" id="5_ypb2i"]
 [ext_resource type="Resource" uid="uid://chqxc7ly6cg54" path="res://threads/confusing_staff.tres" id="6_8auyv"]
+[ext_resource type="Texture2D" uid="uid://dgrl3uj53d0b" path="res://art/background_battle.png" id="7_8auyv"]
 [ext_resource type="Texture2D" uid="uid://c1uiov8rpeocw" path="res://art/chest_1.png" id="9_bbvtr"]
 [ext_resource type="Texture2D" uid="uid://c1kxfntpop5p6" path="res://art/chest_2.png" id="10_ko1oj"]
 [ext_resource type="Texture2D" uid="uid://b43l4dvdk1uos" path="res://art/chest_3.png" id="11_ab3yx"]
@@ -163,7 +163,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_fpb8l")
+texture = ExtResource("7_8auyv")
 expand_mode = 1
 stretch_mode = 5
 
