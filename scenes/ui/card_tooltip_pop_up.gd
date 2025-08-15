@@ -3,7 +3,7 @@ extends Control
 
 const CARD_MENU_UI_SCENE := preload("res://scenes/ui/card_menu_ui.tscn")
 
-@export var background_color: Color = Color("000000b0")
+@export var background_color: Color = Color("000000e4")
 
 @onready var background: ColorRect = $Background
 @onready var tooltip_card: CenterContainer = %TooltipCard

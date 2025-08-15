@@ -33,31 +33,22 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -122.5
-offset_top = -83.5
-offset_right = 122.5
-offset_bottom = 83.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(75, 50)
-horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
-clip_contents = true
-custom_minimum_size = Vector2(237, 167)
+[node name="CardVisuals" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 theme_override_constants/separation = 4
 
-[node name="CardName" type="Label" parent="ScrollContainer/VBoxContainer"]
+[node name="CardName" type="Label" parent="HBoxContainer/CardVisuals"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
@@ -65,23 +56,16 @@ text = "Card Name"
 label_settings = SubResource("LabelSettings_uas1f")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
-[node name="TooltipCard" type="CenterContainer" parent="ScrollContainer/VBoxContainer"]
+[node name="TooltipCard" type="CenterContainer" parent="HBoxContainer/CardVisuals"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="CardMenuUI" parent="ScrollContainer/VBoxContainer/TooltipCard" instance=ExtResource("1_6kcv7")]
+[node name="CardMenuUI" parent="HBoxContainer/CardVisuals/TooltipCard" instance=ExtResource("1_6kcv7")]
 layout_mode = 2
 
-[node name="CardType" type="Label" parent="ScrollContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "(Type)"
-label_settings = SubResource("LabelSettings_h63ux")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="RarityType" type="Label" parent="ScrollContainer/VBoxContainer"]
+[node name="CardType" type="Label" parent="HBoxContainer/CardVisuals"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "(Type)"
@@ -89,7 +73,21 @@ label_settings = SubResource("LabelSettings_h63ux")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CardDescription" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+[node name="RarityType" type="Label" parent="HBoxContainer/CardVisuals"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "(Type)"
+label_settings = SubResource("LabelSettings_h63ux")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="CardDescription" type="RichTextLabel" parent="HBoxContainer/Description"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
@@ -104,7 +102,7 @@ Card Description
 fit_content = true
 scroll_active = false
 
-[node name="RealWorldDescription" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+[node name="RealWorldDescription" type="RichTextLabel" parent="HBoxContainer/Description"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
