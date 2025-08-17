@@ -36,43 +36,6 @@ run_startup = ExtResource("2_yiexl")
 
 [node name="CurrentView" type="Node" parent="."]
 
-[node name="DebugButtons" type="VBoxContainer" parent="."]
-visible = false
-anchors_preset = 9
-anchor_bottom = 1.0
-grow_vertical = 2
-alignment = 1
-
-[node name="BattleButton" type="Button" parent="DebugButtons"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Battle"
-
-[node name="ShopButton" type="Button" parent="DebugButtons"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Shop"
-
-[node name="TreasureButton" type="Button" parent="DebugButtons"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Treasure"
-
-[node name="RewardsButton" type="Button" parent="DebugButtons"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Rewards"
-
-[node name="CampfireButton" type="Button" parent="DebugButtons"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Campfire"
-
-[node name="BestiaryButton" type="Button" parent="DebugButtons"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Bestiary"
-
 [node name="MapLabels" type="CanvasLayer" parent="."]
 layer = 3
 

@@ -27,13 +27,6 @@ const MAIN_MENU_PATH := "res://scenes/ui/main_menu.tscn"
 @onready var pause_menu: PauseMenu = $PauseMenu
 @onready var map_labels: VBoxContainer = %MapLabels
 
-@onready var battle_button: Button = %BattleButton
-@onready var campfire_button: Button = %CampfireButton
-@onready var rewards_button: Button = %RewardsButton
-@onready var shop_button: Button = %ShopButton
-@onready var treasure_button: Button = %TreasureButton
-@onready var bestiary_button: Button = %BestiaryButton
-
 var stats: RunStats
 var character: CharacterStats
 var save_data: SaveGame
@@ -158,13 +151,6 @@ func _setup_event_connections() -> void:
 	Events.treasure_room_exited.connect(_on_treasure_room_exited)
 	Events.event_room_exited.connect(_show_map)
 	Events.bestiary_exited.connect(_show_map)
-	
-	battle_button.pressed.connect(_change_view.bind(BATTLE_SCENE))
-	campfire_button.pressed.connect(_change_view.bind(CAMPFIRE_SCENE))
-	rewards_button.pressed.connect(_change_view.bind(BATTLE_REWARD_SCENE))
-	shop_button.pressed.connect(_change_view.bind(SHOP_SCENE))
-	treasure_button.pressed.connect(_change_view.bind(TREASURE_SCENE))
-	bestiary_button.pressed.connect(_change_view.bind(BESTIARY_SCENE))
 
 
 func _setup_top_bar():
