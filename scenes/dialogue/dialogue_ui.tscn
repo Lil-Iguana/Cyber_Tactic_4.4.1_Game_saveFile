@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://i315oax6po0n"]
+[gd_scene load_steps=5 format=3 uid="uid://i315oax6po0n"]
 
 [ext_resource type="Texture2D" uid="uid://c65soght4j8py" path="res://art/tile_0087.png" id="1_c5aah"]
+[ext_resource type="Script" uid="uid://brjcvx65iqdsf" path="res://scenes/dialogue/dialogue_ui.gd" id="1_sh47r"]
 [ext_resource type="FontFile" uid="uid://dyuep3t4l8j4" path="res://art/Font Styles/PublicPixel-rv0pA.ttf" id="2_sh47r"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d3qot"]
@@ -14,6 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_sh47r")
 
 [node name="BlackBlock" type="ColorRect" parent="."]
 layout_mode = 1

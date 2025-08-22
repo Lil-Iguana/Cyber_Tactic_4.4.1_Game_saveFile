@@ -30,6 +30,8 @@ RNG="*res://global/rng.gd"
 GlobalTurnNumber="*res://global/global_turn_number.gd"
 CardLibrary="*res://global/card_library.gd"
 CodexManager="*res://global/codex_manager.gd"
+DialogueState="*res://global/dialogue_state.gd"
+DialogueManager="*res://global/dialogue_manager.gd"
 
 [display]
 
