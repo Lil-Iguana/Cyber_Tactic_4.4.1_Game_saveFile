@@ -1,20 +1,31 @@
 {
   "lines": [
 	{
-	  "speaker": "Mentor",
-	  "portrait": "res://art/tile_0086.png",
-	  "text": "This is your first battle. Let me show you how it works."
+	  "speaker": "Student",
+	  "portrait": "res://art/pixil-frame-0.png",
+	  "text": "What is this around my wrist? Who are they?!"
 	},
 	{
-	  "speaker": "Mentor",
-	  "portrait": "res://art/tile_0087.png",
-	  "image": "res://art/illustrations/testing_placeholder.png",
-	  "text": "Here you can see your health, mana, and abilities. Use them wisely!"
+	  "speaker": "Cortana",
+	  "portrait": "res://art/cortana.png",
+	  "text": "I have given you a bracelet for you to combat this viruses. I will explain our situation after we have exterminate them."
 	},
 	{
-	  "speaker": "Mentor",
-	  "portrait": "res://art/tile_0086.png",
-	  "text": "Now, try using your first ability on the enemy."
+	  "speaker": "Cortana",
+	  "portrait": "res://art/cortana_lookdown.png",
+	  "image": "res://art/hand_tutorial.png",
+	  "text": "Defeat the enemies by playing cards from your hand! Cards require Energy to play. Once you are out, end your turn. At the start of your turn, new cards are drawn and your Energy is replenished."
+	},
+	{
+	  "speaker": "Cortana",
+	  "portrait": "res://art/cortana_lookdown.png",
+	  "image": "res://art/battleUI_tutorial.png",
+	  "text": "Your Energy is displayed on the left above where your Draw Pile is located. On the right is the End Button and the Discard Pile."
+	},
+	{
+	  "speaker": "Cortana",
+	  "portrait": "res://art/cortana.png",
+	  "text": "If there are no cards in the Draw Pile, your Discard Pile is shuffled into the Draw Pile."
 	}
   ]
 }
