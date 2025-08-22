@@ -1,0 +1,14 @@
+{
+  "lines": [
+	{
+	  "speaker": "Mentor",
+	  "portrait": "res://art/tile_0086.png",
+	  "text": "Welcome, traveler. Your journey begins here."
+	},
+	{
+	  "speaker": "Mentor",
+	  "portrait": "res://art/shopkeeper_blink.png",
+	  "text": "Pay close attention, for the world is full of danger and opportunity."
+	}
+  ]
+}

@@ -72,6 +72,14 @@ func _start_run() -> void:
 	
 	save_data = SaveGame.new()
 	_save_run(true)
+	
+	# show Cortana intro once (deferred so UI exists in scene)
+	if not DialogueState.has_shown("intro_shown"):
+		DialogueManager.call_deferred(
+			"start_dialogue_from_file",
+			"res://dialogues/intro.json",
+			"intro_shown"
+		)
 
 
 func _save_run(was_on_map: bool) -> void:
@@ -144,7 +152,8 @@ func _show_map() -> void:
 
 func _setup_event_connections() -> void:
 	Events.battle_won.connect(_on_battle_won)
-	Events.battle_reward_exited.connect(_show_map)
+	# use a wrapper so we can show map then run the dialogue (once)
+	Events.battle_reward_exited.connect(_on_battle_reward_exited_wrapper)
 	Events.campfire_exited.connect(_show_map)
 	Events.map_exited.connect(_on_map_exited)
 	Events.shop_exited.connect(_show_map)
@@ -188,6 +197,10 @@ func _on_battle_room_entered(room: Room) -> void:
 	battle_scene.battle_stats = room.battle_stats
 	battle_scene.threads = thread_handler
 	battle_scene.start_battle()
+	
+	# If first battle tutorial not shown, show it *before* starting the battle
+	if not DialogueState.has_shown("first_battle_shown"):
+		DialogueManager.start_dialogue_from_file("res://dialogues/first_battle_tutorial.json", "first_battle_shown")
 
 
 func _on_treasure_room_entered() -> void:
@@ -253,3 +266,10 @@ func _on_map_exited(room: Room) -> void:
 			_on_event_room_entered(room)
 		Room.Type.BOSS:
 			_on_battle_room_entered(room)
+
+
+func _on_battle_reward_exited_wrapper() -> void:
+	_show_map()
+	# show a short congrats dialogue once after returning to map
+	if not DialogueState.has_shown("post_battle_shown"):
+		DialogueManager.start_dialogue_from_file("res://dialogues/post_battle_congrats.json", "post_battle_shown")
