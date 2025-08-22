@@ -25,7 +25,7 @@ signal dialogue_finished()
 
 var _lines: Array = []
 var _index: int = 0
-var _full_text: String = ""
+var _full_bbcode_text: String = ""
 var _typing: bool = false
 
 func _ready() -> void:
@@ -92,28 +92,43 @@ func _show_current_line() -> void:
 			image_panel.texture = null
 
 	# text typewriter
-	_full_text = str(line.get("text", ""))
-	_start_typing(_full_text)
+	_full_bbcode_text = str(line.get("text", ""))
+	_start_typing_bbcode(_full_bbcode_text)
 
-func _start_typing(text: String) -> void:
-	_typing = true
+func _start_typing_bbcode(full_bbcode_text: String) -> void:
+	# Ensure bbcode parsing is enabled
 	if dialogue_label:
-		dialogue_label.text = ""
-	# run non-blocking coroutine
-	_typewriter(text)
+		dialogue_label.bbcode_enabled = true
+		# Set the full bbcode text up-front so tags are parsed before revealing
+		dialogue_label.bbcode_text = full_bbcode_text
+		# Start with zero visible characters
+		dialogue_label.visible_characters = 0
+		_typing = true
+		# Kick off the coroutine
+		_typewriter_bbcode()
 
-func _typewriter(text: String) -> void:
-	var length := text.length()
-	for i in range(1, length + 1):
-		# if typing was canceled by input, break and show full
+func _typewriter_bbcode() -> void:
+	if dialogue_label == null:
+		_typing = false
+		return
+
+	# number of visible (rendered) characters (BBCode tags excluded)
+	var total_chars: int = dialogue_label.get_total_character_count()
+	# if there are no visible characters, just finish
+	if total_chars <= 0:
+		_typing = false
+		return
+
+	for i in range(1, total_chars + 1):
+		# If typing was cancelled externally (by input), break and show everything
 		if not _typing:
 			break
-		if dialogue_label:
-			dialogue_label.text = text.substr(0, i)
+		dialogue_label.visible_characters = i
+		# yield a short delay between characters
 		await get_tree().create_timer(char_delay).timeout
-	# ensure full text shown
-	if dialogue_label:
-		dialogue_label.text = text
+
+	# Make sure everything is visible at the end
+	dialogue_label.visible_characters = total_chars
 	_typing = false
 
 func _on_next_pressed() -> void:
@@ -121,7 +136,7 @@ func _on_next_pressed() -> void:
 	if _typing:
 		_typing = false
 		if dialogue_label:
-			dialogue_label.text = _full_text
+			dialogue_label.visible_characters = dialogue_label.get_total_character_count()
 		return
 
 	# advance
@@ -146,6 +161,6 @@ func _emit_finished() -> void:
 
 	_lines = []
 	_index = 0
-	_full_text = ""
+	_full_bbcode_text = ""
 	_typing = false
 	emit_signal("dialogue_finished")
