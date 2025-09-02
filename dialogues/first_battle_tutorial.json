@@ -13,14 +13,14 @@
 	{
 	  "speaker": "Cortana",
 	  "portrait": "res://art/cortana_lookdown.png",
-	  "image": "res://art/hand_tutorial.png",
+	  "image": "res://art/cards_demo.png",
 	  "text": "Defeat the enemies by playing cards from your hand! Cards require Energy to play. Once you are out, end your turn. At the start of your turn, new cards are drawn and your Energy is replenished."
 	},
 	{
 	  "speaker": "Cortana",
 	  "portrait": "res://art/cortana_lookdown.png",
 	  "image": "res://art/icons_demo.png",
-	  "text": "Your Energy is displayed on the left above where your Draw Pile is located. On the right is the End Button and the Discard Pile."
+	  "text": "Your Energy is displays your current Energy. You can click on your Draw Pile to view your cards. Same goes to the Discard Pile, your played cards will go in there."
 	},
 	{
 	  "speaker": "Cortana",
