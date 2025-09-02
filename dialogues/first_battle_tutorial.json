@@ -19,7 +19,7 @@
 	{
 	  "speaker": "Cortana",
 	  "portrait": "res://art/cortana_lookdown.png",
-	  "image": "res://art/battleUI_tutorial.png",
+	  "image": "res://art/icons_demo.png",
 	  "text": "Your Energy is displayed on the left above where your Draw Pile is located. On the right is the End Button and the Discard Pile."
 	},
 	{
