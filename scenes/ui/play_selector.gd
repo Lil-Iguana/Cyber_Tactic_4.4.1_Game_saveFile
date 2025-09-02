@@ -10,13 +10,12 @@ const WIZARD_STATS := preload("res://characters/wizard/wizard.tres")
 @onready var title: Label = %Title
 @onready var description: Label = %Description
 @onready var character_portrait: TextureRect = %CharacterPotrait
+@onready var tutorial_check_box: CheckBox = %TutorialCheckBox
 
 var current_character: CharacterStats : set = set_current_character
 
-
 func _ready() -> void:
 	set_current_character(WARRIOR_STATS)
-
 
 func set_current_character(new_character: CharacterStats) -> void:
 	current_character = new_character
@@ -24,28 +23,31 @@ func set_current_character(new_character: CharacterStats) -> void:
 	description.text = current_character.description
 	character_portrait.texture = current_character.portrait
 
-
 func _on_start_button_pressed() -> void:
+	# Before starting a new run decide tutorial flags based on the checkbutton
+	if tutorial_check_box:
+		# If checked => player wants tutorials => reset flags
+		if tutorial_check_box.button_pressed:
+			DialogueState.reset_all()
+		else:
+			# If unchecked => skip tutorials
+			DialogueState.complete_all()
+	else:
+		# If the checkbutton isn't present for any reason, default to showing tutorials
+		DialogueState.reset_all()
+
 	CardLibrary.discovered_cards.clear()
 
 	# --- New: reset the CodexManager state ---
-	# 1) Mark every entry locked
 	for entry in CodexManager.entries.values():
 		entry.is_unlocked = false
-	# 2) Clear runtime tracking
 	CodexManager.discovered_ids.clear()
-	# 3) Erase saved data
 	var save_res := SaveGame.load_data() if SaveGame.load_data() else SaveGame.new()
 	save_res.codex_discovered.clear()
 	save_res.save_data()
-	# Alternatively, you could call CodexManager.save_state() after clearing discovered_ids,
-	# if you’ve exposed a public method that writes the cleared state back out.
-
 	# (Optional) Hide any currently open BestiaryView
 	if has_node("/root/Run/CurrentView/BestiaryView"):
 		get_node("/root/Run/CurrentView/BestiaryView").hide()
-
-	# --- End Codex reset ---
 
 	print("Start new Run with %s" % current_character.character_name)
 

@@ -35,10 +35,20 @@ func mark_shown(key: String) -> void:
 	data[key] = true
 	_save()
 
+# Reset all tutorial flags so the tutorials will play again.
 func reset_all() -> void:
 	data = {
 		"intro_shown": false,
 		"first_battle_shown": false,
 		"post_battle_shown": false
+	}
+	_save()
+
+# Mark all tutorial flags as shown so tutorials are skipped.
+func complete_all() -> void:
+	data = {
+		"intro_shown": true,
+		"first_battle_shown": true,
+		"post_battle_shown": true
 	}
 	_save()
