@@ -31,7 +31,7 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -135.0
+offset_left = -190.0
 offset_top = 20.0
 offset_right = 135.0
 offset_bottom = 110.0
@@ -102,10 +102,10 @@ text = "Next"
 [node name="SkipButton" type="Button" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 20.0
-offset_top = 95.0
-offset_right = 70.0
-offset_bottom = 110.0
+offset_left = 350.0
+offset_top = 76.0
+offset_right = 400.0
+offset_bottom = 91.0
 text = "Skip"
 
 [node name="TypingTimer" type="Timer" parent="."]
