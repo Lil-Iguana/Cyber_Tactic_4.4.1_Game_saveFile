@@ -13,11 +13,6 @@
 	{
 	  "speaker": "Cortana",
 	  "portrait": "res://art/cortana.png",
-	  "text": "Booting successful. Hello! My name is Cortana your AI companion."
-	},
-	{
-	  "speaker": "Cortana",
-	  "portrait": "res://art/cortana.png",
 	  "text": "Booting successful. Hello! My name is Cortana your AI companion. What can I do for you?"
 	},
 	{
