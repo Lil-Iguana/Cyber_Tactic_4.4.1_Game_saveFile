@@ -278,6 +278,18 @@ func _on_battle_reward_exited_wrapper() -> void:
 	# show a short congrats dialogue once after returning to map
 	if not DialogueState.has_shown("post_battle_shown"):
 		DialogueManager.start_dialogue_from_file("res://dialogues/post_battle_congrats.json", "post_battle_shown")
-	
-	
-	
+
+
+func set_music(scene) -> void:
+	match stats.chapter:
+		0:
+			scene.music = MAP_MUSIC_01
+			scene.boss_music = BOSS_MUSIC_01
+		1:
+			scene.music = MAP_MUSIC_02
+			scene.boss_music = BOSS_MUSIC_02
+		_:
+			scene.music = MAP_MUSIC_01
+			scene.boss_music = BOSS_MUSIC_01
+			
+	Events.music_set.emit()
