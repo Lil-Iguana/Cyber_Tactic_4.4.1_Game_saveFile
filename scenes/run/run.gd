@@ -71,6 +71,7 @@ func _start_run() -> void:
 	
 	_setup_event_connections()
 	_setup_top_bar()
+	set_music(map)
 	
 	map.generate_new_map()
 	map.unlock_floor(0)
@@ -129,6 +130,8 @@ func _load_run() -> void:
 	map.load_map(save_data.map_data, save_data.floors_climbed, save_data.last_room)
 	if save_data.last_room and not save_data.was_on_map:
 		_on_map_exited(save_data.last_room)
+	
+	set_music(map)
 
 
 func _change_view(scene: PackedScene) -> Node:
