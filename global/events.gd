@@ -1,5 +1,9 @@
 extends Node
 
+# Run-related events
+@warning_ignore("unused_signal")
+signal music_set
+
 # Card-related events
 @warning_ignore("unused_signal")
 signal card_drag_started(card_ui: CardUI)
