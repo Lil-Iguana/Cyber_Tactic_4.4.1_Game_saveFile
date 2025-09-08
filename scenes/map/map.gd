@@ -5,6 +5,9 @@ const SCROLL_SPEED := 15
 const MAP_ROOM = preload("res://scenes/map/map_room.tscn")
 const MAP_LINE = preload("res://scenes/map/map_line.tscn")
 
+@export var music: AudioStream
+@export var boss_music: AudioStream
+
 @onready var map_generator: MapGenerator = $MapGenerator
 @onready var lines: Node2D = %Lines
 @onready var rooms: Node2D = %Rooms
@@ -122,3 +125,8 @@ func _on_map_room_selected(room: Room) -> void:
 	last_room = room
 	floors_climbed += 1
 	Events.map_exited.emit(room)
+
+
+func _on_music_set() -> void:
+	MusicPlayer.play_music(music, true)
+	print("map is playing the music")
