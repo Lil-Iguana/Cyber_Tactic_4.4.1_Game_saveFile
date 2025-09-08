@@ -10,6 +10,11 @@ const BESTIARY_SCENE := preload("res://scenes/bestiary/bestiary.tscn")
 const WIN_SCREEN_SCENE := preload("res://scenes/win_screen/win_screen.tscn")
 const MAIN_MENU_PATH := "res://scenes/ui/main_menu.tscn"
 
+const MAP_MUSIC_01 := preload("res://art/music/Processing.mp3")
+const MAP_MUSIC_02 := preload("res://art/music/Processing.mp3")
+const BOSS_MUSIC_01 := preload("res://art/music/Processing.mp3")
+const BOSS_MUSIC_02 := preload("res://art/music/Processing.mp3")
+
 @export var run_startup: RunStartup
 
 @onready var map: Map = $Map
@@ -273,3 +278,6 @@ func _on_battle_reward_exited_wrapper() -> void:
 	# show a short congrats dialogue once after returning to map
 	if not DialogueState.has_shown("post_battle_shown"):
 		DialogueManager.start_dialogue_from_file("res://dialogues/post_battle_congrats.json", "post_battle_shown")
+	
+	
+	
