@@ -140,12 +140,11 @@ text = "Select"
 
 [node name="BackButton" type="Button" parent="."]
 unique_name_in_owner = true
-visible = false
 layout_mode = 0
-offset_left = 208.0
-offset_top = 8.0
-offset_right = 248.0
-offset_bottom = 23.0
+offset_left = 12.0
+offset_top = 27.0
+offset_right = 52.0
+offset_bottom = 42.0
 text = "Back"
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
