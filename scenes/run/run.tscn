@@ -107,6 +107,7 @@ layout_mode = 2
 text = "Boss"
 
 [node name="DesiredPath" type="RichTextLabel" parent="MapLabels"]
+unique_name_in_owner = true
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
@@ -117,7 +118,7 @@ grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("9_wy2jw")
 theme_override_font_sizes/normal_font_size = 8
 bbcode_enabled = true
-text = "[wave amp=50.0 freq=5.0 connected=1]Choose your desired path[/wave]"
+text = "[wave amp=50.0 freq=4.0 connected=1]Choose your desired path[/wave]"
 horizontal_alignment = 1
 vertical_alignment = 1
 
