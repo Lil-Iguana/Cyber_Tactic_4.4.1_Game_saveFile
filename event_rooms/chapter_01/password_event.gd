@@ -145,3 +145,7 @@ func _check_symbol(pwd: String) -> bool:
 		if not ((c >= "a" and c <= "z") or (c >= "A" and c <= "Z") or (c >= "0" and c <= "9")):
 			return true
 	return false
+
+
+func _on_password_input_text_submitted(_new_text: String) -> void:
+	_on_check_pressed()

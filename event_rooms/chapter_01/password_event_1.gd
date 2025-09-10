@@ -169,3 +169,7 @@ func _is_prime(n: int) -> bool:
 		if n % i == 0:
 			return false
 	return true
+
+
+func _on_password_input_text_submitted(_new_text: String) -> void:
+	_on_check_pressed()
