@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://clm7o5ocig46s"]
+[gd_scene load_steps=27 format=3 uid="uid://clm7o5ocig46s"]
 
 [ext_resource type="PackedScene" uid="uid://y5cqwnshg50s" path="res://scenes/map/map.tscn" id="1_imm70"]
 [ext_resource type="Script" uid="uid://bml5rycg8wq3v" path="res://scenes/run/run.gd" id="1_x1ycp"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://ji1cm0uepdkw" path="res://art/shop_icon.png" id="7_0bq42"]
 [ext_resource type="Texture2D" uid="uid://btsr1cm0opoqa" path="res://art/deck.png" id="8_fo0ly"]
 [ext_resource type="Texture2D" uid="uid://dg1qygcrnr7ft" path="res://art/MalwareBoss.png" id="8_wgm62"]
+[ext_resource type="FontFile" uid="uid://dyuep3t4l8j4" path="res://art/Font Styles/PublicPixel-rv0pA.ttf" id="9_wy2jw"]
 [ext_resource type="Texture2D" uid="uid://c2xpl6v80ddmh" path="res://art/deckHover.png" id="9_x53nd"]
 [ext_resource type="Script" uid="uid://cvittjk6naban" path="res://scenes/run/pause_menu.gd" id="10_cnkn7"]
 [ext_resource type="FontFile" uid="uid://d3fuaowohtamf" path="res://art/Font Styles/PressStart2P-Regular.ttf" id="10_g42ja"]
@@ -104,6 +105,21 @@ texture = ExtResource("8_wgm62")
 [node name="Label" type="Label" parent="MapLabels/MapLabels/HBoxContainer5"]
 layout_mode = 2
 text = "Boss"
+
+[node name="DesiredPath" type="RichTextLabel" parent="MapLabels"]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -91.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("9_wy2jw")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "[wave amp=50.0 freq=5.0 connected=1]Choose your desired path[/wave]"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TopBar" type="CanvasLayer" parent="."]
 layer = 3
