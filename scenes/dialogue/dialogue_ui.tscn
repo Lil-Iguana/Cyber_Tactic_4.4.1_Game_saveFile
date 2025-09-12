@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://i315oax6po0n"]
+[gd_scene load_steps=6 format=3 uid="uid://i315oax6po0n"]
 
 [ext_resource type="Texture2D" uid="uid://c65soght4j8py" path="res://art/tile_0087.png" id="1_c5aah"]
 [ext_resource type="Script" uid="uid://brjcvx65iqdsf" path="res://scenes/dialogue/dialogue_ui.gd" id="1_sh47r"]
 [ext_resource type="FontFile" uid="uid://dyuep3t4l8j4" path="res://art/Font Styles/PublicPixel-rv0pA.ttf" id="2_sh47r"]
+[ext_resource type="FontFile" uid="uid://ctwqex6ybxuav" path="res://art/Font Styles/m5x7.ttf" id="4_d3qot"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d3qot"]
 font = ExtResource("2_sh47r")
@@ -70,8 +71,11 @@ label_settings = SubResource("LabelSettings_d3qot")
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("4_d3qot")
+theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
 text = "Hi! Hello!"
+scroll_active = false
 
 [node name="ImagePanel" type="TextureRect" parent="."]
 unique_name_in_owner = true
