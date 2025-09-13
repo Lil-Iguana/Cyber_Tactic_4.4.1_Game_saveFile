@@ -65,35 +65,19 @@ func _show_current_line() -> void:
 
 	var line: Dictionary = _lines[_index] as Dictionary
 
-	# name
+	# 1) Speaker name
 	if name_label:
 		name_label.text = str(line.get("speaker", ""))
 
-	# small portrait / speaker icon (optional)
-	var portrait_path: String = str(line.get("portrait", ""))
-	if speaker_icon:
-		if portrait_path != "" and FileAccess.file_exists(portrait_path):
-			var tex := load(portrait_path)
-			if tex and tex is Texture2D:
-				speaker_icon.texture = tex
-			else:
-				# clear texture if it's not valid
-				speaker_icon.texture = null
-		else:
-			# clear texture if missing (do not toggle visibility of nodes)
-			speaker_icon.texture = null
+	# 2) Portrait (small icon) - use the helper (handles registry/fallback/logging)
+	var portrait_key_or_path: String = str(line.get("portrait", ""))
+	_set_portrait_from_key_or_path(portrait_key_or_path)
 
-	# large tutorial image (optional). Use key "image"
-	var image_path: String = str(line.get("image", ""))
 	if image_panel:
-		if image_path != "" and FileAccess.file_exists(image_path):
-			var itex := load(image_path)
-			if itex and itex is Texture2D:
-				image_panel.texture = itex
-			else:
-				image_panel.texture = null
-		else:
-			image_panel.texture = null
+		image_panel.texture = null
+	# 3) Tutorial image (large image panel) - use the helper
+	var image_key_or_path: String = str(line.get("image", ""))
+	_set_image_from_key_or_path(image_key_or_path)
 
 	# text typewriter
 	_full_bbcode_text = str(line.get("text", ""))
