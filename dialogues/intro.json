@@ -2,27 +2,27 @@
   "lines": [
 	{
 	  "speaker": "????",
-	  "portrait": "res://art/cortana_sleep.png",
+	  "portrait": "cortana_sleep",
 	  "text": "[wave amp=50.0 freq=5.0 connected=0]Initializing...[/wave]"
 	},
 	{
 	  "speaker": "????",
-	  "portrait": "res://art/cortana_sleep.png",
+	  "portrait": "cortana_sleep",
 	  "text": "Memory backup recovery... executed... memory cannot be found. Booting up."
 	},
 	{
 	  "speaker": "Cortana",
-	  "portrait": "res://art/cortana.png",
+	  "portrait": "cortana",
 	  "text": "Booting successful. Hello! My name is Cortana your AI companion. What can I do for you?"
 	},
 	{
 	  "speaker": "Student",
-	  "portrait": "res://art/pixil-frame-0.png",
+	  "portrait": "student",
 	  "text": "Whe- Where am I? What is this place?!"
 	},
 	{
 	  "speaker": "Cortana",
-	  "portrait": "res://art/cortana.png",
+	  "portrait": "cortana",
 	  "text": "Threats detected! User safety status: [shake rate=20.0 level=5 connected=1]DANGER[/shake]"
 	}
   ]

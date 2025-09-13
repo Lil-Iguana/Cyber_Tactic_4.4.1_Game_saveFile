@@ -2,12 +2,12 @@
   "lines": [
 	{
 	  "speaker": "Mentor",
-	  "portrait": "res://art/tile_0087.png",
+	  "portrait": "cortana",
 	  "text": "Well done! You survived your first battle."
 	},
 	{
 	  "speaker": "Mentor",
-	  "portrait": "res://art/tile_0086.png",
+	  "portrait": "cortana",
 	  "image": "res://art/illustrations/testing_placeholder.png",
 	  "text": "Every victory brings you closer to mastering your destiny."
 	}
