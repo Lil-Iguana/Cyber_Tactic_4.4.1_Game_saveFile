@@ -23,6 +23,10 @@ signal dialogue_finished()
 @onready var next_button: Button = get_node(next_button_path) as Button
 @onready var skip_button: Button = get_node(skip_button_path) as Button
 
+@onready var default_portrait: Texture2D = preload("res://art/question_mark.png")
+@onready var _debug_log_path: String = "user://dialogue_assets_debug.log"
+@onready var default_tutorial_image: Texture2D = preload("res://art/question_mark.png")
+
 var _lines: Array = []
 var _index: int = 0
 var _full_bbcode_text: String = ""
@@ -164,3 +168,105 @@ func _emit_finished() -> void:
 	_full_bbcode_text = ""
 	_typing = false
 	emit_signal("dialogue_finished")
+
+func _write_debug(msg: String) -> void:
+	var f: FileAccess = FileAccess.open(_debug_log_path, FileAccess.WRITE_READ)
+	if f:
+		f.seek_end()
+		f.store_string(msg + "\n")
+		f.close()
+
+func _get_texture_from_registry_or_path(key_or_path: String) -> Texture2D:
+	# Attempt 1: static class (requires `class_name PortraitRegistry` inside portrait_registry.gd)
+	if ClassDB.class_exists("PortraitRegistry"):
+		# Safe static call: returns Texture2D or null
+		var t_static := PortraitRegistry.get_portrait(key_or_path) if typeof(PortraitRegistry.get_portrait) != TYPE_NIL else null
+		if t_static and t_static is Texture2D:
+			_write_debug("RESOLVE(stat): '%s' -> static registry" % key_or_path)
+			return t_static
+
+	# Attempt 2: autoload instance (if you registered the registry as an autoload singleton named 'PortraitRegistry')
+	# When an autoload is present, its name is available as a global variable.
+	if typeof(PortraitRegistry) != TYPE_NIL and PortraitRegistry is Object:
+		# avoid static-on-instance warning by calling instance method if available
+		if PortraitRegistry.has_method("get_portrait"):
+			var t_inst := PortraitRegistry.get_portrait(key_or_path)
+			if t_inst and t_inst is Texture2D:
+				_write_debug("RESOLVE(autoload): '%s' -> autoload instance" % key_or_path)
+				return t_inst
+
+	# Attempt 3: treat argument as res:// path and try to load
+	if key_or_path != "" and ResourceLoader.exists(key_or_path):
+		var loaded: Resource = ResourceLoader.load(key_or_path)
+		if loaded and loaded is Texture2D:
+			_write_debug("RESOLVE(path): '%s' -> loaded from path" % key_or_path)
+			return loaded
+
+	# Not found
+	_write_debug("MISS: '%s' -> falling back to default" % key_or_path)
+	return null
+
+# Helper that returns a Texture2D OR null.
+func _resolve_tutorial_texture(key_or_path: String) -> Texture2D:
+	# 1) If the key is empty, explicitly return null (clear the panel).
+	if key_or_path == "" or key_or_path == null:
+		_write_debug("RESOLVE: image key empty -> returning NULL")
+		return null
+
+	# 2) If a static registry class exists, try it (must expose get_tutorial_image)
+	if ClassDB.class_exists("PortraitRegistry"):
+		# static method:
+		if PortraitRegistry.has_method("get_tutorial_image"):
+			var from_static := PortraitRegistry.get_tutorial_image(key_or_path)
+			if from_static and from_static is Texture2D:
+				_write_debug("RESOLVE: '%s' -> static registry" % key_or_path)
+				return from_static
+
+	# 3) If an autoload instance exists with same name, try calling instance method.
+	#    This covers projects where registry was autoloaded but class_name may be missing.
+	if typeof(PortraitRegistry) != TYPE_NIL and PortraitRegistry is Object:
+		if PortraitRegistry.has_method("get_tutorial_image"):
+			var from_instance := PortraitRegistry.get_tutorial_image(key_or_path)
+			if from_instance and from_instance is Texture2D:
+				_write_debug("RESOLVE: '%s' -> autoload registry instance" % key_or_path)
+				return from_instance
+
+	# 4) Try to treat the value as a res:// path and load it.
+	if ResourceLoader.exists(key_or_path):
+		var loaded := ResourceLoader.load(key_or_path)
+		if loaded and loaded is Texture2D:
+			_write_debug("RESOLVE: '%s' -> loaded from res path" % key_or_path)
+			return loaded
+		else:
+			_write_debug("FOUND path but not a Texture2D: '%s'" % key_or_path)
+			return null
+
+	# 5) Not found: log and return null (do NOT return portrait default)
+	_write_debug("MISS: tutorial image '%s' not found; will clear image panel" % key_or_path)
+	return null
+
+
+func _set_portrait_from_key_or_path(key_or_path: String) -> void:
+	var tex: Texture2D = _get_texture_from_registry_or_path(key_or_path)
+	if tex == null:
+		# Use default portrait if nothing resolved
+		tex = default_portrait
+	# assign
+	if speaker_icon:
+		speaker_icon.texture = tex
+
+# Sets or clears the image_panel texture (no portrait-default fallback).
+func _set_image_from_key_or_path(key_or_path: String) -> void:
+	# Always clear previous texture first (prevents stale images)
+	if image_panel:
+		image_panel.texture = null
+
+	var tex := _resolve_tutorial_texture(key_or_path)
+	if tex:
+		if image_panel:
+			image_panel.texture = tex
+	else:
+		# If you want a visual default banner instead of empty, uncomment next line:
+		# if image_panel: image_panel.texture = default_tutorial_image
+		# Otherwise leave it cleared (preferred).
+		pass
