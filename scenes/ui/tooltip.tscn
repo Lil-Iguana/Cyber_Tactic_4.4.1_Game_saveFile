@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://cao7y1u2su7i5" path="res://main_theme.tres" id="1_o8a0y"]
 [ext_resource type="Texture2D" uid="uid://wy0km0q1cnv8" path="res://art/tile_0119.png" id="2_k4j5b"]
 [ext_resource type="Script" uid="uid://58t0uw2ipi3j" path="res://scenes/ui/tooltip.gd" id="2_o3wlr"]
-[ext_resource type="FontFile" uid="uid://7ucfniysa1ko" path="res://art/Font Styles/pixel_rpg.ttf" id="4_eu8f1"]
+[ext_resource type="FontFile" uid="uid://dkc0wbxtwj6ao" path="res://art/Font Styles/MedodicaRegular.otf" id="4_o3msy"]
 
 [node name="Tooltip" type="PanelContainer"]
 anchors_preset = 5
@@ -38,9 +38,8 @@ stretch_mode = 5
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/line_separation = 2
-theme_override_fonts/normal_font = ExtResource("4_eu8f1")
-theme_override_font_sizes/normal_font_size = 6
+theme_override_fonts/normal_font = ExtResource("4_o3msy")
+theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
 text = "tooltip description
 tooltip description"
