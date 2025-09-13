@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.4", "Mobile")
 boot_splash/fullsize=false
 boot_splash/image="uid://cx8el6s00skub"
 config/icon="uid://cx8el6s00skub"
+config/windows_native_icon="res://game_Icon.ico"
 boot_splash/minimum_display_time=100
 
 [autoload]
