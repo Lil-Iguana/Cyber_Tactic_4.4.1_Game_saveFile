@@ -32,6 +32,7 @@ CardLibrary="*res://global/card_library.gd"
 CodexManager="*res://global/codex_manager.gd"
 DialogueState="*res://global/dialogue_state.gd"
 DialogueManager="*res://global/dialogue_manager.gd"
+PortraitRegistry="*res://global/portrait_registry.gd"
 
 [display]
 
