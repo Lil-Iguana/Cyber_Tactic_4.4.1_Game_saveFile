@@ -138,25 +138,88 @@ func _check_month(pwd: String) -> bool:
 			return true
 	return false
 
-# 2. Roman numeral check via RegEx
+# Robust Roman check: find roman-letter runs anywhere (no \b boundaries),
+# then validate by round-tripping to canonical Roman form.
 func _check_roman(pwd: String) -> bool:
 	var rx = RegEx.new()
-	# Matches valid Roman numerals from 1 to 3999
-	rx.compile("(?i)\\bM{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})\\b")
-	return rx.search(pwd) != null
+	# find any run of roman letters anywhere in the string (case-insensitive)
+	rx.compile("(?i)[IVXLCDM]+")
+	for match in rx.search_all(pwd):
+		var token = match.get_string().to_upper()
+		var val = _roman_to_int(token)
+		# Accept only if it converts to a positive integer and
+		# the canonical roman string equals the token
+		if val > 0 and _int_to_roman(val) == token:
+			return true
+	return false
 
-# 3. Prime number check
+
+# Robust Prime check: find digit-runs anywhere (no \b boundaries),
+# get the matched string directly and test each number for primality.
 func _check_prime(pwd: String) -> bool:
 	var rx = RegEx.new()
-	rx.compile("\\d+")
+	rx.compile("\\d+")   # matches any contiguous digits anywhere, e.g. "17" inside "abc17def"
 	for match in rx.search_all(pwd):
-		# get the matched digits directly
 		var num_str = match.get_string()
+		# skip empty just in case
+		if num_str == "":
+			continue
 		var num = int(num_str)
 		if _is_prime(num):
 			return true
 	return false
 
+
+# --- helpers used above (include in your script if not present) ---
+
+# Roman -> int (standard subtractive algorithm)
+func _roman_to_int(s: String) -> int:
+	var map = {
+		"I": 1, "V": 5, "X": 10, "L": 50,
+		"C": 100, "D": 500, "M": 1000
+	}
+	var n = s.length()
+	if n == 0:
+		return 0
+	var total = 0
+	for i in range(n):
+		var c = s[i]
+		var v = map.get(c, 0)
+		if v == 0:
+			return 0 # contains invalid char
+		if i + 1 < n:
+			var nextv = map.get(s[i + 1], 0)
+			if v < nextv:
+				total -= v
+			else:
+				total += v
+		else:
+			total += v
+	# only accept conventional Roman numerals in the 1..3999 range
+	if total < 1 or total > 3999:
+		return 0
+	return total
+
+# Int -> canonical Roman (1..3999)
+func _int_to_roman(num: int) -> String:
+	if num < 1 or num > 3999:
+		return ""
+	var pairs = [
+		[1000, "M"], [900, "CM"], [500, "D"], [400, "CD"],
+		[100, "C"], [90, "XC"], [50, "L"], [40, "XL"],
+		[10, "X"], [9, "IX"], [5, "V"], [4, "IV"], [1, "I"]
+	]
+	var res := ""
+	var n = num
+	for p in pairs:
+		var val = p[0]
+		var sym = p[1]
+		while n >= val:
+			res += sym
+			n -= val
+	return res
+
+# Primality test (sensible for numbers of reasonable size)
 func _is_prime(n: int) -> bool:
 	if n < 2:
 		return false
@@ -165,9 +228,11 @@ func _is_prime(n: int) -> bool:
 	if n % 2 == 0:
 		return false
 	var r = int(sqrt(n))
-	for i in range(3, r + 1, 2):
+	var i = 3
+	while i <= r:
 		if n % i == 0:
 			return false
+		i += 2
 	return true
 
 
