@@ -130,4 +130,4 @@ func _on_map_room_selected(room: Room) -> void:
 
 func _on_music_set() -> void:
 	MusicPlayer.play_music(music, true)
-	print("map is playing the music")
+	#print("map is playing the music")
