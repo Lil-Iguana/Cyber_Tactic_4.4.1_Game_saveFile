@@ -1,6 +1,6 @@
 extends EnemyAction
 
-const TOXIN = preload("res://shared_cards/infection/toxin.tres")
+const JUNK = preload("res://shared_cards/infection/junk.tres")
 
 @export var damage := 8
 
@@ -26,7 +26,7 @@ func perform_action() -> void:
 	
 	tween.tween_property(enemy, "global_position", end, 0.4)
 	tween.tween_callback(damage_effect.execute.bind(target_array))
-	tween.tween_callback(player.stats.draw_pile.add_card.bind(TOXIN.duplicate()))
+	tween.tween_callback(player.stats.draw_pile.add_card.bind(JUNK.duplicate()))
 	tween.tween_interval(0.25)
 	tween.tween_property(enemy, "global_position", start, 0.4)
 	
