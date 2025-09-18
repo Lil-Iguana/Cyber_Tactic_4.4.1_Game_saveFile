@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=3 format=3 uid="uid://bn8ywn1pg6sn7"]
+
+[ext_resource type="PackedScene" uid="uid://ctwl4w40643t6" path="res://art/3d_models/hacker_model.tscn" id="1_cvpt6"]
+[ext_resource type="Script" uid="uid://d0tnal1w0vdan" path="res://custom_resources/enemy_stats.gd" id="1_vaswa"]
+
+[resource]
+script = ExtResource("1_vaswa")
+max_health = 80
+enemy_name = "Hacker"
+model = ExtResource("1_cvpt6")
+metadata/_custom_type_script = "uid://d0tnal1w0vdan"
