@@ -10,10 +10,10 @@ const BESTIARY_SCENE := preload("res://scenes/bestiary/bestiary.tscn")
 const WIN_SCREEN_SCENE := preload("res://scenes/win_screen/win_screen.tscn")
 const MAIN_MENU_PATH := "res://scenes/ui/main_menu.tscn"
 
-const MAP_MUSIC_01 := preload("res://art/music/Processing.mp3")
-const MAP_MUSIC_02 := preload("res://art/music/Processing.mp3")
-const BOSS_MUSIC_01 := preload("res://art/music/Processing.mp3")
-const BOSS_MUSIC_02 := preload("res://art/music/Processing.mp3")
+const MAP_MUSIC_01 := preload("res://art/music/Updating.mp3")
+const MAP_MUSIC_02 := preload("res://art/music/Updating.mp3")
+const BOSS_MUSIC_01 := preload("res://art/music/Updating.mp3")
+const BOSS_MUSIC_02 := preload("res://art/music/Updating.mp3")
 
 @export var run_startup: RunStartup
 

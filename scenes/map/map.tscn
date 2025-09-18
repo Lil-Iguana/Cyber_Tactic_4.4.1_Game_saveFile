@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://n6221co7xgoo" path="res://scenes/map/map.gd" id="1_bd6jt"]
 [ext_resource type="Script" uid="uid://3rrc105e18wf" path="res://scenes/map/map_generator.gd" id="2_ewjbt"]
-[ext_resource type="AudioStream" uid="uid://dfdqn1wtllhbv" path="res://art/music/Processing.mp3" id="2_fcby6"]
+[ext_resource type="AudioStream" uid="uid://bfoo1bs3kkc51" path="res://art/music/Updating.mp3" id="2_fcby6"]
 [ext_resource type="Resource" uid="uid://5vocm1gyjpxs" path="res://battles/chapter1/battle_stats_pool1.tres" id="3_a7bss"]
 [ext_resource type="Resource" uid="uid://cjhpms5hechb6" path="res://scenes/event_rooms/event_room_pool_01.tres" id="4_ph54e"]
 
