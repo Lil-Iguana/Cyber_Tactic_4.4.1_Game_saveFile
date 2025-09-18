@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://d0tnal1w0vdan" path="res://custom_resources/enemy_stats.gd" id="2_6dk34"]
 [ext_resource type="Texture2D" uid="uid://pgnrffkpyidd" path="res://art/tile_0127.png" id="3_7olcf"]
 [ext_resource type="PackedScene" uid="uid://b81uflaadb2xc" path="res://art/3d_models/elite_worm_m_exp.tscn" id="3_bmb82"]
-[ext_resource type="Texture2D" uid="uid://buwtda4fe2ens" path="res://art/tile_0114.png" id="4_bifq4"]
+[ext_resource type="Texture2D" uid="uid://dqop85qprnndt" path="res://art/junk_icon.png" id="4_7olcf"]
 [ext_resource type="Texture2D" uid="uid://p0yqsrixsboc" path="res://art/tile_0102.png" id="5_mfy2g"]
 
 [resource]
@@ -15,15 +15,8 @@ max_health = 40
 enemy_name = "Toxic Ghost"
 art = ExtResource("1_uys0k")
 model = ExtResource("3_bmb82")
-intent_icons = Array[Texture]([ExtResource("3_7olcf"), ExtResource("4_bifq4"), ExtResource("5_mfy2g")])
+intent_icons = Array[Texture]([ExtResource("3_7olcf"), ExtResource("4_7olcf"), ExtResource("5_mfy2g")])
 intent_descriptions = Array[String](["[color=orange]Buffed Up[/color]
 At the start of combat, gain [color=yellow]2[/color] additional [color=red]damage.[/color] If it's health is less than or equal to 10, then gain another additional [color=yellow]2[/color] [color=red]damage.[/color]", "[color=orange]Surprise Attack[/color]
 Deal [color=yellow]8[/color] [color=red]damage.[/color] Adds a Toxin card to the players draw deck.", "[color=orange]Block[/color]
 Gains [color=yellow]10[/color] [color=cyan]block.[/color]"])
-elemental_multipliers = {
-0: 1.0,
-1: 1.0,
-2: 1.0,
-3: 1.0,
-4: 1.0
-}
