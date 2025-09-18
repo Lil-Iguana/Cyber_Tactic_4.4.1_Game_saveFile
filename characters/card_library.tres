@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="CardPile" load_steps=11 format=3 uid="uid://ch4gjbmnndb6c"]
 
 [ext_resource type="Script" uid="uid://db7gxbb4g4qbl" path="res://custom_resources/card.gd" id="1_wcluk"]
-[ext_resource type="Resource" uid="uid://djdrm0hdg5b23" path="res://shared_cards/infection/toxin.tres" id="2_mxn01"]
+[ext_resource type="Resource" uid="uid://djdrm0hdg5b23" path="res://shared_cards/infection/junk.tres" id="2_mxn01"]
 [ext_resource type="Script" uid="uid://do5h7q7uufehy" path="res://custom_resources/card_pile.gd" id="2_yp6aw"]
 [ext_resource type="Resource" uid="uid://c5wwjjw0cns1t" path="res://characters/warrior/cards/siro.tres" id="3_mxn01"]
 [ext_resource type="Resource" uid="uid://kyu5l54a2ljg" path="res://characters/warrior/cards/student_cybersword_slash.tres" id="4_jsvv0"]
