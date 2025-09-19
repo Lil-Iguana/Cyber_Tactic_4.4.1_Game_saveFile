@@ -7,7 +7,7 @@ signal selected(room: Room)
 const ICONS := {
 	Room.Type.NOT_ASSIGNED: [null, Vector2.ONE],
 	Room.Type.MONSTER: [preload("res://art/Enemy_Icon.png"), Vector2.ONE],
-	Room.Type.TREASURE: [preload("res://art/tile_0089.png"), Vector2.ONE],
+	Room.Type.TREASURE: [preload("res://art/chest_1.png"), Vector2.ONE],
 	Room.Type.CAMPFIRE: [preload("res://art/player_heart.png"), Vector2(0.6, 0.6)],
 	Room.Type.SHOP: [preload("res://art/shop_icon.png"), Vector2.ONE],
 	Room.Type.EVENT: [preload("res://art/room_event_symbol.png"), Vector2.ONE],
