@@ -18,6 +18,7 @@ const HAND_DISCARD_INTERVAL := 0.25
 @export var player: Player
 @export var hand: Hand
 
+var draw_sound: AudioStream = preload("res://art/sfx/draw_card.ogg")
 var character: CharacterStats
 
 
@@ -54,6 +55,7 @@ func end_turn() -> void:
 func draw_card() -> void:
 	reshuffle_deck_from_discard()
 	if hand.get_child_count() <= character.max_hand_size:
+		SFXPlayer.play(draw_sound)
 		hand.add_card(character.draw_pile.draw_card())
 	else:
 		character.discard.add_card(character.draw_pile.draw_card())
