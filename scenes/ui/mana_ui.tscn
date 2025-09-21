@@ -1,16 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://bumjrmkb8nk51"]
+[gd_scene load_steps=6 format=3 uid="uid://bumjrmkb8nk51"]
 
 [ext_resource type="Theme" uid="uid://cao7y1u2su7i5" path="res://main_theme.tres" id="1_dujn5"]
 [ext_resource type="Script" uid="uid://ckwaqu8cfxwyd" path="res://scenes/ui/mana_ui.gd" id="2_2fh3b"]
+[ext_resource type="FontFile" uid="uid://dyuep3t4l8j4" path="res://art/Font Styles/PublicPixel-rv0pA.ttf" id="3_ms5oi"]
+[ext_resource type="AudioStream" uid="uid://cblssqgr4058t" path="res://art/sfx/EnergyGain.wav" id="3_pxfgv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fweom"]
+font = ExtResource("3_ms5oi")
+font_size = 8
 
 [node name="ManaUI" type="Panel"]
+custom_minimum_size = Vector2(30, 30)
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 6.0
-offset_top = -24.0
-offset_right = 24.0
-offset_bottom = -6.0
+offset_left = 5.0
+offset_top = -45.0
+offset_right = 35.0
+offset_bottom = -15.0
 grow_vertical = 0
 theme = ExtResource("1_dujn5")
 script = ExtResource("2_2fh3b")
@@ -20,10 +27,27 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1.0
-offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "3/3"
+label_settings = SubResource("LabelSettings_fweom")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ManaParticles" type="CPUParticles2D" parent="."]
+position = Vector2(14, 14)
+emitting = false
+one_shot = true
+emission_shape = 3
+emission_rect_extents = Vector2(1, 1)
+direction = Vector2(0, -1)
+gravity = Vector2(0, -10)
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+scale_amount_min = 0.5
+scale_amount_max = 1.5
+color = Color(0, 1, 1, 1)
+
+[node name="ManaGainAudio" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_pxfgv")
