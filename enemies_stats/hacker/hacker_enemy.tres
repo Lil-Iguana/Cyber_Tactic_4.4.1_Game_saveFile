@@ -1,11 +1,18 @@
-[gd_resource type="Resource" script_class="EnemyStats" load_steps=3 format=3 uid="uid://bn8ywn1pg6sn7"]
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=8 format=3 uid="uid://bn8ywn1pg6sn7"]
 
 [ext_resource type="PackedScene" uid="uid://ctwl4w40643t6" path="res://art/3d_models/hacker_model.tscn" id="1_cvpt6"]
+[ext_resource type="PackedScene" uid="uid://xxhla226qpvh" path="res://enemies_stats/hacker/hacker_ai.tscn" id="1_jh3e4"]
 [ext_resource type="Script" uid="uid://d0tnal1w0vdan" path="res://custom_resources/enemy_stats.gd" id="1_vaswa"]
+[ext_resource type="Texture2D" uid="uid://dihw40qmr12sw" path="res://art/attackIntent.png" id="2_iv6ic"]
+[ext_resource type="Texture2D" uid="uid://p0yqsrixsboc" path="res://art/tile_0102.png" id="3_yen7q"]
+[ext_resource type="Texture2D" uid="uid://dqop85qprnndt" path="res://art/junk_icon.png" id="4_wst3k"]
+[ext_resource type="Texture2D" uid="uid://1akv3tgrwtux" path="res://art/damage_up.png" id="5_aded6"]
 
 [resource]
 script = ExtResource("1_vaswa")
+ai = ExtResource("1_jh3e4")
 max_health = 80
 enemy_name = "Hacker"
 model = ExtResource("1_cvpt6")
+intent_icons = Array[Texture]([ExtResource("2_iv6ic"), ExtResource("3_yen7q"), ExtResource("4_wst3k"), ExtResource("5_aded6")])
 metadata/_custom_type_script = "uid://d0tnal1w0vdan"

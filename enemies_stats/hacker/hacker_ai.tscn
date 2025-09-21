@@ -1,0 +1,72 @@
+[gd_scene load_steps=18 format=3 uid="uid://xxhla226qpvh"]
+
+[ext_resource type="Script" uid="uid://dych0ejsny60v" path="res://scenes/enemy/enemy_action_picker.gd" id="1_5q482"]
+[ext_resource type="Script" uid="uid://fefnblp345hc" path="res://enemies_stats/hacker/hacker_attack_action.gd" id="2_ecib0"]
+[ext_resource type="Script" uid="uid://vah6rxbwhicp" path="res://enemies_stats/hacker/hacker_block_action.gd" id="3_jsi4u"]
+[ext_resource type="Script" uid="uid://bbgc7263cmqaf" path="res://enemies_stats/hacker/hacker_attack_card_debuff_action.gd" id="3_l32w7"]
+[ext_resource type="Texture2D" uid="uid://dihw40qmr12sw" path="res://art/attackIntent.png" id="3_x4lfg"]
+[ext_resource type="Texture2D" uid="uid://p0yqsrixsboc" path="res://art/tile_0102.png" id="4_0poqd"]
+[ext_resource type="Texture2D" uid="uid://dqop85qprnndt" path="res://art/junk_icon.png" id="4_gcu0q"]
+[ext_resource type="Script" uid="uid://dly8oycd8fytg" path="res://custom_resources/intent.gd" id="5_nqc7c"]
+[ext_resource type="AudioStream" uid="uid://cd0601td0wexj" path="res://art/sfx/enemy_block.wav" id="6_cinlo"]
+[ext_resource type="AudioStream" uid="uid://botagqmrc08m5" path="res://art/sfx/enemy_attack.wav" id="6_jsi4u"]
+[ext_resource type="Script" uid="uid://bynv4qllqbcmo" path="res://enemies_stats/hacker/hacker_buff_action.gd" id="10_luxhx"]
+[ext_resource type="Texture2D" uid="uid://1akv3tgrwtux" path="res://art/damage_up.png" id="11_ecib0"]
+[ext_resource type="AudioStream" uid="uid://cyltxn5tlirtk" path="res://art/sfx/powerUp.wav" id="12_x4lfg"]
+
+[sub_resource type="Resource" id="Resource_ecib0"]
+script = ExtResource("5_nqc7c")
+base_text = "%s"
+icon = ExtResource("3_x4lfg")
+metadata/_custom_type_script = "uid://dly8oycd8fytg"
+
+[sub_resource type="Resource" id="Resource_luxhx"]
+script = ExtResource("5_nqc7c")
+base_text = "10"
+icon = ExtResource("4_0poqd")
+metadata/_custom_type_script = "uid://dly8oycd8fytg"
+
+[sub_resource type="Resource" id="Resource_0poqd"]
+script = ExtResource("5_nqc7c")
+base_text = "%s"
+icon = ExtResource("4_gcu0q")
+metadata/_custom_type_script = "uid://dly8oycd8fytg"
+
+[sub_resource type="Resource" id="Resource_1wauk"]
+script = ExtResource("5_nqc7c")
+icon = ExtResource("11_ecib0")
+metadata/_custom_type_script = "uid://dly8oycd8fytg"
+
+[node name="HackerAI" type="Node"]
+script = ExtResource("1_5q482")
+metadata/_custom_type_script = "uid://dych0ejsny60v"
+
+[node name="AttackAction" type="Node" parent="."]
+script = ExtResource("2_ecib0")
+intent = SubResource("Resource_ecib0")
+sound = ExtResource("6_jsi4u")
+type = 1
+chance_weight = 8.5
+metadata/_custom_type_script = "uid://fffrdohulik0"
+
+[node name="BlockAction" type="Node" parent="."]
+script = ExtResource("3_jsi4u")
+intent = SubResource("Resource_luxhx")
+sound = ExtResource("6_cinlo")
+type = 1
+chance_weight = 3.5
+metadata/_custom_type_script = "uid://fffrdohulik0"
+
+[node name="AttackCardDebuffAction" type="Node" parent="."]
+script = ExtResource("3_l32w7")
+intent = SubResource("Resource_0poqd")
+sound = ExtResource("6_jsi4u")
+type = 1
+chance_weight = 6.5
+metadata/_custom_type_script = "uid://fffrdohulik0"
+
+[node name="BuffAction" type="Node" parent="."]
+script = ExtResource("10_luxhx")
+intent = SubResource("Resource_1wauk")
+sound = ExtResource("12_x4lfg")
+metadata/_custom_type_script = "uid://fffrdohulik0"
