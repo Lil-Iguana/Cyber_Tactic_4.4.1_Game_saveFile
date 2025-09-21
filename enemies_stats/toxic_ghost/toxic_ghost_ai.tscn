@@ -4,10 +4,10 @@
 [ext_resource type="Script" uid="uid://b6iykvxu5l13p" path="res://enemies_stats/toxic_ghost/toxic_muscle_buff_action.gd" id="2_hje63"]
 [ext_resource type="Texture2D" uid="uid://pgnrffkpyidd" path="res://art/tile_0127.png" id="3_wgnq7"]
 [ext_resource type="Script" uid="uid://dly8oycd8fytg" path="res://custom_resources/intent.gd" id="4_3fyun"]
-[ext_resource type="AudioStream" uid="uid://cd0601td0wexj" path="res://art/enemy_block.wav" id="5_03teb"]
+[ext_resource type="AudioStream" uid="uid://cd0601td0wexj" path="res://art/sfx/enemy_block.wav" id="5_03teb"]
 [ext_resource type="Script" uid="uid://clukreby1bj1e" path="res://enemies_stats/toxic_ghost/toxic_ghost_attack_action.gd" id="6_6b6ny"]
 [ext_resource type="Texture2D" uid="uid://dqop85qprnndt" path="res://art/junk_icon.png" id="7_0j80q"]
-[ext_resource type="AudioStream" uid="uid://botagqmrc08m5" path="res://art/enemy_attack.wav" id="8_gdijk"]
+[ext_resource type="AudioStream" uid="uid://botagqmrc08m5" path="res://art/sfx/enemy_attack.wav" id="8_gdijk"]
 [ext_resource type="Script" uid="uid://otuio6yjoknb" path="res://enemies_stats/toxic_ghost/toxic_ghost_block_action.gd" id="9_1mqy8"]
 [ext_resource type="Texture2D" uid="uid://p0yqsrixsboc" path="res://art/tile_0102.png" id="10_t8x2w"]
 

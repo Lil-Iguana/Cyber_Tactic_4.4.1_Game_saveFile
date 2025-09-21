@@ -6,9 +6,9 @@
 [ext_resource type="Script" uid="uid://ce2byutsh6430" path="res://enemies_stats/virus/virus_block_action.gd" id="3_wxsdj"]
 [ext_resource type="Script" uid="uid://bqrwimm758ylv" path="res://enemies_stats/virus/virus_mega_block_action.gd" id="4_2s2a2"]
 [ext_resource type="Script" uid="uid://dly8oycd8fytg" path="res://custom_resources/intent.gd" id="4_6rf4d"]
-[ext_resource type="AudioStream" uid="uid://botagqmrc08m5" path="res://art/enemy_attack.wav" id="5_21wbc"]
+[ext_resource type="AudioStream" uid="uid://botagqmrc08m5" path="res://art/sfx/enemy_attack.wav" id="5_21wbc"]
 [ext_resource type="Texture2D" uid="uid://p0yqsrixsboc" path="res://art/tile_0102.png" id="6_yhqum"]
-[ext_resource type="AudioStream" uid="uid://cd0601td0wexj" path="res://art/enemy_block.wav" id="8_4s7fq"]
+[ext_resource type="AudioStream" uid="uid://cd0601td0wexj" path="res://art/sfx/enemy_block.wav" id="8_4s7fq"]
 [ext_resource type="Texture2D" uid="uid://cds6dtdll7g04" path="res://art/megablock.png" id="8_55l1a"]
 
 [sub_resource type="Resource" id="Resource_3lw5v"]

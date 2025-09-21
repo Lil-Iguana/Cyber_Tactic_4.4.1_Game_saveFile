@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://cd0601td0wexj"
-path="res://.godot/imported/enemy_block.wav-7963f8ad8b2e7a002f5decff801c5163.sample"
+uid="uid://mld5qltxsv80"
+path="res://.godot/imported/synth.wav-24f21ee382e700524c6497ef78e989de.sample"
 
 [deps]
 
-source_file="res://art/enemy_block.wav"
-dest_files=["res://.godot/imported/enemy_block.wav-7963f8ad8b2e7a002f5decff801c5163.sample"]
+source_file="res://art/sfx/synth.wav"
+dest_files=["res://.godot/imported/synth.wav-24f21ee382e700524c6497ef78e989de.sample"]
 
 [params]
 
