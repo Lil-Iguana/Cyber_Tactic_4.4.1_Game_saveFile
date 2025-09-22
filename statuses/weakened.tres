@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="WeakenedStatus" load_steps=3 format=3 uid="uid://drtm7ydpbaqnb"]
+
+[ext_resource type="Texture2D" uid="uid://p6xhxssy0yfq" path="res://art/weak.png" id="1_i4mdn"]
+[ext_resource type="Script" uid="uid://da300ets8c0st" path="res://statuses/weakened.gd" id="2_i4mdn"]
+
+[resource]
+script = ExtResource("2_i4mdn")
+id = "weakened"
+type = 1
+stack_type = 2
+can_expire = true
+duration = 1
+icon = ExtResource("1_i4mdn")
+tooltip = "Weakened: deals 25%% less damage with attacks for %s turn(s)."
+metadata/_custom_type_script = "uid://v7sfotas0ox0"
