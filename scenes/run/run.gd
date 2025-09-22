@@ -234,6 +234,8 @@ func _on_treasure_room_exited(thread: ThreadPassive) -> void:
 func _on_campfire_entered() -> void:
 	var campfire := _change_view(CAMPFIRE_SCENE) as Campfire
 	campfire.char_stats = character
+	if not DialogueState.has_shown("campfire_shown"):
+		DialogueManager.start_dialogue_from_file("res://dialogues/campfire_convo.json", "campfire_shown")
 
 
 func _on_shop_entered() -> void:
