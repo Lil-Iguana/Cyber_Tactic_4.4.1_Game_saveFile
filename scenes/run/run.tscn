@@ -106,7 +106,7 @@ texture = ExtResource("8_wgm62")
 layout_mode = 2
 text = "Boss"
 
-[node name="DesiredPath" type="RichTextLabel" parent="MapLabels"]
+[node name="MessageLabel" type="RichTextLabel" parent="MapLabels"]
 unique_name_in_owner = true
 anchors_preset = 11
 anchor_left = 1.0

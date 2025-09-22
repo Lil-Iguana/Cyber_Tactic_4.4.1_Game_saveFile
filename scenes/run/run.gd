@@ -31,7 +31,7 @@ const BOSS_MUSIC_02 := preload("res://art/music/Updating.mp3")
 @onready var bestiary_view: BestiaryView = %BestiaryView
 @onready var pause_menu: PauseMenu = $PauseMenu
 @onready var map_labels: VBoxContainer = %MapLabels
-@onready var desired_path: RichTextLabel = %DesiredPath
+@onready var message_label: RichTextLabel = %MessageLabel
 
 
 var stats: RunStats
@@ -145,7 +145,7 @@ func _change_view(scene: PackedScene) -> Node:
 	current_view.add_child(new_view)
 	map.hide_map()
 	map_labels.hide()
-	desired_path.hide()
+	message_label.hide()
 	
 	return new_view
 
@@ -157,7 +157,7 @@ func _show_map() -> void:
 	map.show_map()
 	map.unlock_next_rooms()
 	map_labels.show()
-	desired_path.show()
+	message_label.show()
 	
 	_save_run(true)
 
