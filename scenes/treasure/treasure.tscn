@@ -7,7 +7,7 @@
 [ext_resource type="Resource" uid="uid://44a423e8clh1" path="res://threads/extra_energy.tres" id="4_knoyn"]
 [ext_resource type="Resource" uid="uid://c014g8rpo2k1t" path="res://threads/reinforced_block.tres" id="5_ypb2i"]
 [ext_resource type="Resource" uid="uid://chqxc7ly6cg54" path="res://threads/confusing_staff.tres" id="6_8auyv"]
-[ext_resource type="Texture2D" uid="uid://dgrl3uj53d0b" path="res://art/background_battle.png" id="7_8auyv"]
+[ext_resource type="Texture2D" uid="uid://lugennxj0o6x" path="res://art/battle_background1.png" id="7_8auyv"]
 [ext_resource type="Texture2D" uid="uid://c1uiov8rpeocw" path="res://art/chest_1.png" id="9_bbvtr"]
 [ext_resource type="Texture2D" uid="uid://c1kxfntpop5p6" path="res://art/chest_2.png" id="10_ko1oj"]
 [ext_resource type="Texture2D" uid="uid://b43l4dvdk1uos" path="res://art/chest_3.png" id="11_ab3yx"]
