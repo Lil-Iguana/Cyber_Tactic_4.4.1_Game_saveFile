@@ -115,6 +115,15 @@ func discard_cards() -> void:
 			Events.player_hand_discarded.emit()
 	)
 
+# Return a card from your hand to the bottom of the draw pile
+func return_to_bottom_deck(card: Card) -> void:
+	var card_to_return: CardUI
+	for checked_card: CardUI in hand.get_children():
+		if checked_card.card == card:
+			card_to_return = checked_card
+	card_to_return.queue_free()
+	character.draw_pile.add_card(card)
+	Events.card_returned_to_bottom_deck.emit(card)
 
 func reshuffle_deck_from_discard() -> void:
 	if not character.draw_pile.empty():
