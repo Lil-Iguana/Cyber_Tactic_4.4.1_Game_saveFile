@@ -64,7 +64,7 @@ color = Color(0, 0, 0, 0.588235)
 offset_top = 22.0
 offset_bottom = 38.0
 
-[node name="IntentUI" parent="." instance=ExtResource("5_ebuml")]
+[node name="IntentUI" parent="." groups=["intent"] instance=ExtResource("5_ebuml")]
 offset_top = -49.0
 offset_bottom = -20.0
 
