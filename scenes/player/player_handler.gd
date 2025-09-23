@@ -87,6 +87,17 @@ func draw_cards_from_effect(amount: int) -> void:
 	)
 	
 
+# The following function is used by discard effects of cards.
+# It emits a signal so other items can react to a card being discarded during the player's turn.
+func discard_card_with_signal(card: Card) -> void:
+	var card_to_discard: CardUI
+	for checked_card: CardUI in hand.get_children():
+		if checked_card.card == card:
+			card_to_discard = checked_card
+	if card_to_discard:
+		hand.discard_card(card_to_discard)
+		character.discard.add_card(card)
+		Events.card_discarded.emit()
 
 func discard_cards() -> void:
 	if hand.get_child_count() == 0:
