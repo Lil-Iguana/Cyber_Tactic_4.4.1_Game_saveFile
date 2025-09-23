@@ -16,5 +16,5 @@ func execute(targets: Array[Node]) -> void:
 	if not Events.card_chosen.is_connected(player_handler.exhaust_card_with_signal):
 		Events.card_chosen.connect(player_handler.exhaust_card_with_signal, CONNECT_ONE_SHOT)
 		
-	Events.hand_choice_requested.emit("Exhaust a card")
+	Events.hand_choice_requested.emit("Remove a card")
 	

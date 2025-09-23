@@ -36,6 +36,8 @@ signal card_removed
 @warning_ignore("unused_signal")
 signal card_reward_selected(card: Card)
 @warning_ignore("unused_signal")
+signal card_exhausted
+@warning_ignore("unused_signal")
 signal shop_card_selected(card: Card)
 
 
