@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcjbunymsjbfc"]
+
+[ext_resource type="Script" uid="uid://dych0ejsny60v" path="res://scenes/enemy/enemy_action_picker.gd" id="1_butds"]
+[ext_resource type="Script" uid="uid://fffrdohulik0" path="res://scenes/enemy/enemy_action.gd" id="2_hftu1"]
+
+[node name="TrojanAI" type="Node"]
+script = ExtResource("1_butds")
+metadata/_custom_type_script = "uid://dych0ejsny60v"
+
+[node name="AttackAction" type="Node" parent="."]
+script = ExtResource("2_hftu1")
+metadata/_custom_type_script = "uid://fffrdohulik0"
+
+[node name="BlockAction" type="Node" parent="."]
+script = ExtResource("2_hftu1")
+metadata/_custom_type_script = "uid://fffrdohulik0"
