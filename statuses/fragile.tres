@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Status" load_steps=3 format=3 uid="uid://6xhleq1af8io"]
+
+[ext_resource type="Texture2D" uid="uid://b3ft6d6c1umcx" path="res://art/fragile.png" id="1_a2b73"]
+[ext_resource type="Script" uid="uid://v7sfotas0ox0" path="res://custom_resources/status.gd" id="1_yxyoo"]
+
+[resource]
+script = ExtResource("1_yxyoo")
+id = "fragile"
+type = 1
+stack_type = 2
+can_expire = true
+duration = 1
+icon = ExtResource("1_a2b73")
+tooltip = "Fragile: gain 25%% less Defense from cards for %s turn(s)."
+metadata/_custom_type_script = "uid://v7sfotas0ox0"
