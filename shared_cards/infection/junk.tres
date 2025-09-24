@@ -8,7 +8,7 @@
 script = ExtResource("1_v0oho")
 name = "Junk"
 id = "junk"
-type = 1
+type = 3
 cost = 1
 remove = true
 icon = ExtResource("1_5480i")

@@ -1,7 +1,7 @@
 class_name Card
 extends Resource
 
-enum Type {ATTACK, SKILL, POWER}
+enum Type {ATTACK, SKILL, POWER, INFECTION}
 enum Rarity {COMMON, UNCOMMON, RARE}
 enum Target {SELF, SINGLE_ENEMY, ALL_ENEMIES, EVERYONE}
 
@@ -20,6 +20,8 @@ static func type_color(t: int) -> Color:
 			return Color(0.15, 0.8, 0.15)   # green
 		Type.SKILL:
 			return Color(0.15, 0.15, 0.8)   # blue
+		Type.INFECTION:
+			return Color(0.707, 0.001, 0.773, 1.0)   # violet
 		_:
 			return Color(1,1,1)
 
