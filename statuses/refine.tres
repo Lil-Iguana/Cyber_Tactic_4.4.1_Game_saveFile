@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="Status" load_steps=3 format=3 uid="uid://dmxpsq5njebvs"]
+[gd_resource type="Resource" script_class="RefineStatus" load_steps=3 format=3 uid="uid://dmxpsq5njebvs"]
 
 [ext_resource type="Texture2D" uid="uid://27b6yqhjax8u" path="res://art/refine.png" id="1_01cjh"]
-[ext_resource type="Script" uid="uid://v7sfotas0ox0" path="res://custom_resources/status.gd" id="1_d5idl"]
+[ext_resource type="Script" uid="uid://c5kvcb86lrc2f" path="res://statuses/refine.gd" id="2_01cjh"]
 
 [resource]
-script = ExtResource("1_d5idl")
+script = ExtResource("2_01cjh")
 id = "refine"
 type = 2
 effect_type = 1
