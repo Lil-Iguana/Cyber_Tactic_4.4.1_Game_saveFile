@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://ycoq6542ba5m"]
+
+[ext_resource type="PackedScene" uid="uid://bcf72c4g4aen2" path="res://art/3d_models/TrojanHorse.glb" id="1_0kc32"]
+
+[node name="TrojanHorse" instance=ExtResource("1_0kc32")]
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/position = Vector3(3.446548e-12, -0.5593355, 1.6018733)
+bones/0/rotation = Quaternion(-0.36367327, 1.110466e-07, -4.335323e-08, 0.9315266)
+bones/1/rotation = Quaternion(0.08605856, -3.6683237e-10, -3.6063912e-09, 0.99629015)
+bones/2/rotation = Quaternion(0.08591473, -3.907985e-14, 2.048366e-08, 0.99630255)
+bones/3/rotation = Quaternion(-0.099375606, -6.0479993e-05, 4.7526402e-05, 0.9950501)
+bones/4/rotation = Quaternion(0.74114925, 2.421678e-14, 1.7670375e-07, 0.6713403)
+bones/5/rotation = Quaternion(0.80867594, -0.175606, -0.25324905, 0.5010697)
+bones/6/rotation = Quaternion(-0.4019021, 0.0038332087, 0.27668837, 0.872871)
+bones/7/rotation = Quaternion(0.80867594, 0.17560592, 0.25324917, 0.5010697)
+bones/8/rotation = Quaternion(-0.40190202, -0.0038330923, -0.27668825, 0.8728709)
+bones/9/position = Vector3(0.23603196, 0.2145071, 0.23874037)
+bones/9/rotation = Quaternion(0.8455257, -0.050438322, 0.0289595, 0.5307576)
+bones/10/rotation = Quaternion(-0.22870101, 0.013772386, -0.0632333, 0.9713433)
+bones/11/position = Vector3(-0.23603207, 0.21450709, 0.23874025)
+bones/11/rotation = Quaternion(0.84554917, 0.05043948, -0.028957037, 0.5307203)
+bones/12/rotation = Quaternion(-0.228739, -0.0137743065, 0.06323261, 0.97133434)
+bones/13/rotation = Quaternion(0.9705434, -4.368834e-05, 2.1787486e-05, -0.24092649)
+bones/14/rotation = Quaternion(-0.54664326, -0.007836805, 0.16355221, 0.82120067)
+bones/15/rotation = Quaternion(-0.59386426, 0.0005785996, -0.00030925707, 0.804565)
+bones/16/rotation = Quaternion(0.08142874, -1.0766882e-11, 1.1661762e-07, 0.99667925)
+bones/17/rotation = Quaternion(0.21886972, -2.7435197e-14, 3.1309557e-07, 0.9757541)
+bones/18/rotation = Quaternion(0.31512576, -6.76792e-13, 4.5015906e-07, 0.94905)
+
+[node name="Camera3D" type="Camera3D" parent="." index="2"]
+transform = Transform3D(0.6720437, 0, 0.7405115, 0, 1, 0, -0.7405115, 0, 0.6720437, 0.35534823, 0.5466514, 0.3462596)
+projection = 1
+size = 1.2390162
