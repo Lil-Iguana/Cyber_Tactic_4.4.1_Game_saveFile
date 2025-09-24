@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="Status" load_steps=3 format=3 uid="uid://6xhleq1af8io"]
+[gd_resource type="Resource" script_class="FragileStatus" load_steps=3 format=3 uid="uid://6xhleq1af8io"]
 
 [ext_resource type="Texture2D" uid="uid://b3ft6d6c1umcx" path="res://art/fragile.png" id="1_a2b73"]
-[ext_resource type="Script" uid="uid://v7sfotas0ox0" path="res://custom_resources/status.gd" id="1_yxyoo"]
+[ext_resource type="Script" uid="uid://lkpqij8xl4vh" path="res://statuses/fragile.gd" id="2_a2b73"]
 
 [resource]
-script = ExtResource("1_yxyoo")
+script = ExtResource("2_a2b73")
 id = "fragile"
 type = 1
 stack_type = 2
