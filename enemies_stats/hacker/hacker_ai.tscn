@@ -46,7 +46,7 @@ script = ExtResource("2_ecib0")
 intent = SubResource("Resource_ecib0")
 sound = ExtResource("6_jsi4u")
 type = 1
-chance_weight = 8.5
+chance_weight = 2.5
 metadata/_custom_type_script = "uid://fffrdohulik0"
 
 [node name="BlockAction" type="Node" parent="."]
@@ -54,7 +54,7 @@ script = ExtResource("3_jsi4u")
 intent = SubResource("Resource_luxhx")
 sound = ExtResource("6_cinlo")
 type = 1
-chance_weight = 3.5
+chance_weight = 2.5
 metadata/_custom_type_script = "uid://fffrdohulik0"
 
 [node name="AttackCardDebuffAction" type="Node" parent="."]
@@ -62,7 +62,7 @@ script = ExtResource("3_l32w7")
 intent = SubResource("Resource_0poqd")
 sound = ExtResource("6_jsi4u")
 type = 1
-chance_weight = 6.5
+chance_weight = 2.5
 metadata/_custom_type_script = "uid://fffrdohulik0"
 
 [node name="BuffAction" type="Node" parent="."]
