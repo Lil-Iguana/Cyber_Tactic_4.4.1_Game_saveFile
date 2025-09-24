@@ -5,7 +5,8 @@ var data: Dictionary = {
 	"intro_shown": false,
 	"first_battle_shown": false,
 	"post_battle_shown": false,
-	"campfire_shown": false
+	"campfire_shown": false,
+	"boss_post_shown": false
 }
 
 func _ready() -> void:
