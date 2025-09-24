@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=3 format=3 uid="uid://hsknuplexv7p"]
+
+[ext_resource type="Script" uid="uid://d0tnal1w0vdan" path="res://custom_resources/enemy_stats.gd" id="1_ailic"]
+[ext_resource type="PackedScene" uid="uid://ycoq6542ba5m" path="res://art/3d_models/trojan_horse.tscn" id="1_rtssv"]
+
+[resource]
+script = ExtResource("1_ailic")
+max_health = 25
+enemy_name = "Trojan"
+model = ExtResource("1_rtssv")
+metadata/_custom_type_script = "uid://d0tnal1w0vdan"
