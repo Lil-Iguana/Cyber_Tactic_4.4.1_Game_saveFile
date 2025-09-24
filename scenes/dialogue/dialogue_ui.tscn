@@ -18,6 +18,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sh47r")
 
+[node name="TransparentBlock" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
 [node name="BlackBlock" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -111,6 +120,3 @@ offset_top = 199.0
 offset_right = 414.0
 offset_bottom = 214.0
 text = "Skip"
-
-[node name="TypingTimer" type="Timer" parent="."]
-unique_name_in_owner = true

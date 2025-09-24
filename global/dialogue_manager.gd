@@ -53,12 +53,17 @@ func start_dialogue_from_file(file_path: String, state_key: String = "", callbac
 
 	var dialogue_data: Dictionary = parsed as Dictionary
 	
+	# Immediately show the black block (no delay)
+	_ui_node.call_deferred("show_block_immediately")
+	
 	await get_tree().create_timer(1.0).timeout
 	
 	start_dialogue(dialogue_data, state_key, callback)
 
 # Public API: start from a Dictionary
 func start_dialogue(dialogue_data: Dictionary, state_key: String = "", callback: Callable = Callable()) -> void:
+	# Immediately show the black block (no delay)
+	_ui_node.call_deferred("show_block_immediately")
 	if _ui_node == null:
 		_try_resolve_ui_by_search()
 	if _ui_node == null:

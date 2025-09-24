@@ -4,6 +4,8 @@ extends Control
 signal dialogue_finished()
 
 # Expose node paths so you can set them in the inspector if your tree differs
+@export var transparent_block_path: NodePath = NodePath("TransparentBlock")
+@export var black_block_path: NodePath = NodePath("BlackBlock")
 @export var panel_path: NodePath = NodePath("Panel")
 @export var speaker_icon_path: NodePath = NodePath("Panel/HBoxContainer/Icon")  # TextureRect for small portrait
 @export var name_label_path: NodePath = NodePath("Panel/HBoxContainer/VBoxContainer/NameLabel")
@@ -15,6 +17,8 @@ signal dialogue_finished()
 @export_range(0.001, 0.2, 0.001) var char_delay: float = 0.02
 
 # Typed onready nodes
+@onready var transparent_block: ColorRect = get_node(transparent_block_path) as ColorRect
+@onready var black_block: ColorRect = get_node(black_block_path) as ColorRect
 @onready var panel: Control = get_node(panel_path) as Control
 @onready var speaker_icon: TextureRect = get_node(speaker_icon_path) as TextureRect
 @onready var name_label: Label = get_node(name_label_path) as Label
@@ -47,12 +51,46 @@ func _ready() -> void:
 	if skip_button:
 		skip_button.pressed.connect(_on_skip_pressed)
 
+func show_block_immediately() -> void:
+	# Show the whole UI root (so BlackBlock is visible)
+	visible = true
+	# Make sure TransparentBlock is visible immediately
+	if transparent_block:
+		transparent_block.visible = true
+	
+	if black_block:
+		black_block.visible = false
+	# Hide the actual dialogue panel and other visual elements until reveal
+	if panel:
+		panel.visible = false
+	# Clear any existing textures/text so nothing flashes
+	if image_panel:
+		image_panel.visible = false
+	
+	if next_button:
+		next_button.visible = false
+	if skip_button:
+		skip_button.visible = false
+
 func show_dialogue(dialogue_data: Dictionary) -> void:
 	_lines = dialogue_data.get("lines", [])
 	_index = 0
 	if _lines.size() == 0:
 		_emit_finished()
 		return
+	
+	if panel:
+		panel.visible = true
+	# Clear any existing textures/text so nothing flashes
+	if black_block:
+		black_block.visible = true
+	if image_panel:
+		image_panel.visible = true
+	
+	if next_button:
+		next_button.visible = true
+	if skip_button:
+		skip_button.visible = true
 
 	# Show entire UI (root Control). This hides/show everything at once.
 	visible = true
