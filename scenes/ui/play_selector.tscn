@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bkfrpm4r80sf2" path="res://scenes/ui/play_selector.gd" id="1_8ha05"]
 [ext_resource type="Texture2D" uid="uid://c65soght4j8py" path="res://art/tile_0087.png" id="2_1jh0v"]
 [ext_resource type="Resource" uid="uid://cj8wg6pkgahdr" path="res://scenes/run/run_startup.tres" id="2_osesr"]
-[ext_resource type="Texture2D" uid="uid://wy0km0q1cnv8" path="res://art/tile_0119.png" id="3_a4gkq"]
+[ext_resource type="Texture2D" uid="uid://bjo47ds8vcbi3" path="res://art/pixil-frame-0.png" id="4_gmg85"]
 [ext_resource type="Texture2D" uid="uid://48dvyc5h4mpb" path="res://art/question_mark.png" id="5_gmg85"]
 
 [sub_resource type="Gradient" id="Gradient_d3fc5"]
@@ -25,13 +25,13 @@ shadow_color = Color(0, 0, 0, 0.341176)
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_8tgp3"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gmg85"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4srqf"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dw1ou"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4srqf"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gmg85"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="PlaySelector" type="Control"]
@@ -149,7 +149,7 @@ offset_right = 10.0
 offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_a4gkq")
+texture = ExtResource("4_gmg85")
 expand_mode = 1
 stretch_mode = 5
 
@@ -208,9 +208,9 @@ offset_left = 226.0
 offset_top = 205.0
 offset_right = 285.0
 offset_bottom = 229.0
-theme_override_styles/hover = SubResource("StyleBoxFlat_gmg85")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_dw1ou")
 theme_override_styles/normal = SubResource("StyleBoxFlat_4srqf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dw1ou")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gmg85")
 button_pressed = true
 text = "Tutorial"
 alignment = 1
