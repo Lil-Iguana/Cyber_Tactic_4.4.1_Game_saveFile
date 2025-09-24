@@ -8,6 +8,7 @@ static var PORTRAITS: Dictionary = {
 	"cortana_sleep": preload("res://art/cortana_sleep.png"),
 	"cortana_look_down": preload("res://art/cortana_lookdown.png"),
 	"student": preload("res://art/pixil-frame-0.png"),
+	"hacker": preload("res://art/hacker.png"),
 	"default": preload("res://art/question_mark.png")
 }
 
