@@ -20,10 +20,3 @@ intent_descriptions = Array[String](["[color=orange]Attack[/color]
 Deal [color=yellow]7[/color] [color=red]damage.[/color]", "[color=orange]Block[/color]
 Gains [color=yellow]6[/color] [color=cyan]block.[/color]", "[color=orange]MegaBlock[/color]
 If the Virus health is less than or equal to [color=pink]6[/color].  Gains [color=yellow]15[/color] [color=cyan]block.[/color]  [color=light_slate_gray]This move only triggers once.[/color]"])
-elemental_multipliers = {
-0: 1.0,
-1: 0.5,
-2: 1.5,
-3: 1.0,
-4: 1.0
-}
