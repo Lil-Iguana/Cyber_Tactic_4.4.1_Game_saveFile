@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://xxhla226qpvh" path="res://enemies_stats/hacker/hacker_ai.tscn" id="1_jh3e4"]
 [ext_resource type="Script" uid="uid://d0tnal1w0vdan" path="res://custom_resources/enemy_stats.gd" id="1_vaswa"]
 [ext_resource type="Texture2D" uid="uid://dihw40qmr12sw" path="res://art/attackIntent.png" id="2_iv6ic"]
-[ext_resource type="Texture2D" uid="uid://p0yqsrixsboc" path="res://art/tile_0102.png" id="3_yen7q"]
+[ext_resource type="Texture2D" uid="uid://dvcosekbvrfth" path="res://art/block_debuff.png" id="3_iv6ic"]
 [ext_resource type="Texture2D" uid="uid://dqop85qprnndt" path="res://art/junk_icon.png" id="4_wst3k"]
 [ext_resource type="Texture2D" uid="uid://1akv3tgrwtux" path="res://art/damage_up.png" id="5_aded6"]
 
@@ -14,5 +14,12 @@ ai = ExtResource("1_jh3e4")
 max_health = 80
 enemy_name = "Hacker"
 model = ExtResource("1_cvpt6")
-intent_icons = Array[Texture]([ExtResource("2_iv6ic"), ExtResource("3_yen7q"), ExtResource("4_wst3k"), ExtResource("5_aded6")])
+intent_icons = Array[Texture]([ExtResource("2_iv6ic"), ExtResource("3_iv6ic"), ExtResource("4_wst3k"), ExtResource("5_aded6")])
+intent_descriptions = Array[String](["[color=orange]Attack[/color]
+Deal [color=yellow]8[/color] [color=red]damage.[/color]", "[color=orange]Incoming![/color]
+Gain [color=yellow]12[/color] [color=cyan]block[/color] and [color=yellow]Weakened[/color]
+[color=light_slate_gray]Weakened: Deal 25% less damage[/color]
+", "[color=orange]Take This![/color]
+Deal [color=yellow]6[/color] [color=red]damage.[/color] And add a [color=yellow]Junk[/color] card in the draw deck.", "[color=orange]Watch Me![/color]
+Gain [color=yellow]2[/color] stacks of [color=yellow]Power Up[/color]"])
 metadata/_custom_type_script = "uid://d0tnal1w0vdan"

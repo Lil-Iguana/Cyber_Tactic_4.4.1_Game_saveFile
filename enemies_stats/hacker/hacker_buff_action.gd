@@ -21,6 +21,8 @@ func perform_action() -> void:
 	if not enemy or not target:
 		return
 	
+	enemy.play_animation("Casting")
+	
 	usages += 1
 	var status_effect := StatusEffect.new()
 	var power := POWER_STATUS.duplicate()

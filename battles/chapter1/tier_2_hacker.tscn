@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://djd647l87sx5p"]
+[gd_scene load_steps=3 format=3 uid="uid://djd647l87sx5p"]
 
 [ext_resource type="PackedScene" uid="uid://bfbt36aogisw5" path="res://scenes/enemy/large_enemy.tscn" id="1_pg7ho"]
+[ext_resource type="Resource" uid="uid://bn8ywn1pg6sn7" path="res://enemies_stats/hacker/hacker_enemy.tres" id="2_j215s"]
 
 [node name="Tier2Hacker" type="Node2D"]
 
 [node name="Enemy" parent="." instance=ExtResource("1_pg7ho")]
 position = Vector2(328, 111)
+stats = ExtResource("2_j215s")
