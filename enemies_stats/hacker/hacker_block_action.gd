@@ -11,7 +11,6 @@ func perform_action() -> void:
 	if not enemy or not target:
 		return
 	
-	enemy.play_animation("Casting")
 	var player := target as Player
 	if not player:
 		return
@@ -32,6 +31,7 @@ func perform_action() -> void:
 	frail.duration = status_duration
 	status_effect_02.status = frail
 	status_effect_02.execute([player])
+	
 	
 	get_tree().create_timer(0.6, false).timeout.connect(
 		func():
