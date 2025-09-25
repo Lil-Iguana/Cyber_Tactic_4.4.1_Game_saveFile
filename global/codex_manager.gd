@@ -8,7 +8,8 @@ var discovered_ids: Array = []
 const _FORCE_INCLUDE_CODEX := [
 	preload("res://custom_resources/codex/malware_codex.tres"),
 	preload("res://custom_resources/codex/toxic_ghost_codex.tres"),
-	preload("res://custom_resources/codex/virus_codex.tres")
+	preload("res://custom_resources/codex/virus_codex.tres"),
+	preload("res://custom_resources/codex/trojan_codex.tres")
 ]
 
 signal entry_unlocked(id: String)

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CodexEntry" load_steps=3 format=3 uid="uid://dwrmjgd7igqyr"]
+
+[ext_resource type="Script" uid="uid://8upc5fsyrvob" path="res://custom_resources/codex_entry.gd" id="1_4yli0"]
+[ext_resource type="Texture2D" uid="uid://cpa2uwptqku75" path="res://art/trojan_icon.png" id="1_ofiqc"]
+
+[resource]
+script = ExtResource("1_4yli0")
+id = "trojan"
+name = "Trojan Horse"
+art = ExtResource("1_ofiqc")
+tooltip_text = "Be sure to be aware of your shield, it deals some damage. But look for an opening."
+tooltip_text_real = "A type of malware that disguises itself as legitimate software to trick users into installing it, then performs malicious actions in the background."
+metadata/_custom_type_script = "uid://8upc5fsyrvob"
