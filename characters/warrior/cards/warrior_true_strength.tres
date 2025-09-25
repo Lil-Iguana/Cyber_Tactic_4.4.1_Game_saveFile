@@ -9,7 +9,6 @@ name = "Overclock"
 id = "warrior_true_strength"
 type = 2
 rarity = 2
-target = 0
 cost = 3
 remove = true
 icon = ExtResource("1_oe66v")

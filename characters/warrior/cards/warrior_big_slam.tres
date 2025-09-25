@@ -5,10 +5,8 @@
 
 [resource]
 script = ExtResource("1_o4fty")
-element = 2
 name = "Bit Flip"
 id = "warrior_big_slam"
-type = 0
 rarity = 1
 target = 1
 cost = 1
