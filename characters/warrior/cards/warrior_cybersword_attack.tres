@@ -6,19 +6,12 @@
 
 [resource]
 script = ExtResource("2_cvsc0")
-element = 1
 name = "Port Probe"
 id = "warrior_cybersword_attack"
-type = 0
-rarity = 0
 target = 1
 cost = 1
-remove = false
 icon = ExtResource("1_5vaqh")
-tooltip_text = "[center][color=\"#FFA500\"]---- Card Description ----[/color][/center]
-[center]Affinity: [color=\"#9acd32\"]Scanwave[/color][/center]
-[center]Target [color=\"#FFFF00\"]single[/color] enemy to deal [color=\"ff0000\"]%s[/color] damage.[/center]
-Sends a precision request to test for weak spots in enemy defenses."
+tooltip_text = "[center]Target [color=\"#FFFF00\"]single[/color] enemy to deal [color=\"ff0000\"]%s[/color] damage.[/center]"
 real_world_text = "[center][color=\"#FFA500\"]---- Real-World Description ----[/color][/center]
 A port probe scans specific ports on a network to detect open services a common recon technique used in early-stage cyber attacks."
 sound = ExtResource("3_f525k")
