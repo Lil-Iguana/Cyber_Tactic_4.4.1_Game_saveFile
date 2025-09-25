@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bww55fdwfblxx"
-path="res://.godot/imported/shopkeeper_blink.png-4bc74f46012c21969f57d15c9993baa4.ctex"
+uid="uid://dtwal56x2wcr7"
+path="res://.godot/imported/shopkeeper.png-7fcf1666748db887b397f142c5e105dd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/shopkeeper_blink.png"
-dest_files=["res://.godot/imported/shopkeeper_blink.png-4bc74f46012c21969f57d15c9993baa4.ctex"]
+source_file="res://art/shopkeeper.png"
+dest_files=["res://.godot/imported/shopkeeper.png-7fcf1666748db887b397f142c5e105dd.ctex"]
 
 [params]
 
