@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c8006h0o0nmgw"]
+[gd_scene load_steps=24 format=3 uid="uid://c8006h0o0nmgw"]
 
 [ext_resource type="Script" uid="uid://2ju4bjvgrm1i" path="res://scenes/shop/shop.gd" id="1_qxddl"]
 [ext_resource type="Script" uid="uid://jie6cbv6kc3m" path="res://custom_resources/thread_passive.gd" id="2_k4e0x"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b2fri1atjmojb" path="res://scenes/shop/shop_thread.tscn" id="6_tgpmw"]
 [ext_resource type="Resource" uid="uid://chqxc7ly6cg54" path="res://threads/confusing_staff.tres" id="7_xoc10"]
 [ext_resource type="Resource" uid="uid://bnkqajtby3ffr" path="res://threads/satchel.tres" id="8_k5co3"]
+[ext_resource type="Resource" uid="uid://cmurop76a7qrj" path="res://threads/firewall.tres" id="9_6kbe7"]
 [ext_resource type="Texture2D" uid="uid://dtwal56x2wcr7" path="res://art/shopkeeper.png" id="9_k5co3"]
 [ext_resource type="PackedScene" uid="uid://bb71f8mjtb5fh" path="res://scenes/modifier_handler/modifier_handler.tscn" id="13_dqlyb"]
 [ext_resource type="PackedScene" uid="uid://0nnepaeuhgih" path="res://scenes/modifier_handler/modifier.tscn" id="14_w60y6"]
@@ -78,7 +79,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_qxddl")
-shop_threads = Array[ExtResource("2_k4e0x")]([ExtResource("3_1p8uf"), ExtResource("4_7rtu0"), ExtResource("5_72muf"), ExtResource("6_kcjqd"), ExtResource("7_xoc10"), ExtResource("8_k5co3")])
+shop_threads = Array[ExtResource("2_k4e0x")]([ExtResource("3_1p8uf"), ExtResource("4_7rtu0"), ExtResource("5_72muf"), ExtResource("6_kcjqd"), ExtResource("7_xoc10"), ExtResource("8_k5co3"), ExtResource("9_6kbe7")])
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = 0
