@@ -1,9 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://mpnkn13856x1"]
+[gd_scene load_steps=19 format=3 uid="uid://mpnkn13856x1"]
 
 [ext_resource type="Script" uid="uid://b2pd8thhd1l7e" path="res://scenes/campfire/campfire.gd" id="1_wduac"]
 [ext_resource type="FontFile" uid="uid://bojuhq17w6srl" path="res://art/Font Styles/m3x6.ttf" id="2_1nk4i"]
 [ext_resource type="Texture2D" uid="uid://uqdfrrdigtec" path="res://art/line.png" id="2_yyc03"]
-[ext_resource type="FontFile" uid="uid://7ucfniysa1ko" path="res://art/Font Styles/pixel_rpg.ttf" id="3_igcod"]
+[ext_resource type="FontFile" uid="uid://dyuep3t4l8j4" path="res://art/Font Styles/PublicPixel-rv0pA.ttf" id="5_6jn8c"]
 [ext_resource type="PackedScene" uid="uid://df1tufvp2h0o5" path="res://scenes/ui/card_pile_view.tscn" id="5_cj7qx"]
 
 [sub_resource type="Gradient" id="Gradient_bdoxw"]
@@ -51,6 +51,14 @@ color_ramp = SubResource("GradientTexture1D_ccnj2")
 [sub_resource type="LabelSettings" id="LabelSettings_xke4x"]
 font = ExtResource("2_1nk4i")
 font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_auago"]
+font = ExtResource("5_6jn8c")
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_8pjve"]
+font = ExtResource("5_6jn8c")
+font_size = 8
 
 [sub_resource type="Animation" id="Animation_4h8fk"]
 length = 0.001
@@ -200,9 +208,8 @@ text = "Rest
 
 [node name="Description" type="Label" parent="UILayer/UI/HBoxContainer/Rest"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_igcod")
-theme_override_font_sizes/font_size = 6
 text = "+30% HP"
+label_settings = SubResource("LabelSettings_auago")
 horizontal_alignment = 1
 
 [node name="Remove" type="VBoxContainer" parent="UILayer/UI/HBoxContainer"]
@@ -217,10 +224,9 @@ text = "Drop"
 
 [node name="Description" type="Label" parent="UILayer/UI/HBoxContainer/Remove"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_igcod")
-theme_override_font_sizes/font_size = 6
 text = "Drop a card
 in your deck"
+label_settings = SubResource("LabelSettings_8pjve")
 horizontal_alignment = 1
 
 [node name="DeckViewLayer" type="CanvasLayer" parent="."]
