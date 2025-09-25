@@ -1,17 +1,20 @@
-[gd_resource type="Resource" script_class="CardPile" load_steps=11 format=3 uid="uid://ch4gjbmnndb6c"]
+[gd_resource type="Resource" script_class="CardPile" load_steps=14 format=3 uid="uid://ch4gjbmnndb6c"]
 
 [ext_resource type="Script" uid="uid://db7gxbb4g4qbl" path="res://custom_resources/card.gd" id="1_wcluk"]
 [ext_resource type="Resource" uid="uid://djdrm0hdg5b23" path="res://shared_cards/infection/junk.tres" id="2_mxn01"]
 [ext_resource type="Script" uid="uid://do5h7q7uufehy" path="res://custom_resources/card_pile.gd" id="2_yp6aw"]
-[ext_resource type="Resource" uid="uid://c5wwjjw0cns1t" path="res://characters/warrior/cards/siro.tres" id="3_mxn01"]
-[ext_resource type="Resource" uid="uid://kyu5l54a2ljg" path="res://characters/warrior/cards/student_cybersword_slash.tres" id="4_jsvv0"]
-[ext_resource type="Resource" uid="uid://cavj5bacvpmrd" path="res://characters/warrior/cards/warrior_big_slam.tres" id="5_ck2rw"]
+[ext_resource type="Resource" uid="uid://c1xm34jv8s6vc" path="res://characters/warrior/cards/antivirus.tres" id="6_0rq4v"]
 [ext_resource type="Resource" uid="uid://cusemvfvh0inm" path="res://characters/warrior/cards/warrior_block.tres" id="6_8mulo"]
 [ext_resource type="Resource" uid="uid://daiht3oljvjoj" path="res://characters/warrior/cards/warrior_cybersword_attack.tres" id="7_0rq4v"]
+[ext_resource type="Resource" uid="uid://depyntk1v77gr" path="res://characters/warrior/cards/backup.tres" id="7_j3uos"]
 [ext_resource type="Resource" uid="uid://bl66ldjcrh1ii" path="res://characters/warrior/cards/warrior_true_strength.tres" id="8_j3uos"]
-[ext_resource type="Resource" uid="uid://nstmqsyj4ugp" path="res://characters/warrior/cards/warrior_one_two.tres" id="9_mxn01"]
+[ext_resource type="Resource" uid="uid://c11pyx27p6vnm" path="res://characters/warrior/cards/refresh.tres" id="8_rnimo"]
+[ext_resource type="Resource" uid="uid://ble1sxqsjuq5" path="res://characters/warrior/cards/scanwave.tres" id="9_0lr1w"]
+[ext_resource type="Resource" uid="uid://dnig3k5quv58u" path="res://characters/warrior/cards/strong_password.tres" id="10_6sqv3"]
+[ext_resource type="Resource" uid="uid://duyq7ex24ysyc" path="res://characters/warrior/cards/student_exercise.tres" id="11_yrams"]
+[ext_resource type="Resource" uid="uid://b1n4f1qher61y" path="res://characters/warrior/cards/update.tres" id="12_3x8vn"]
 
 [resource]
 script = ExtResource("2_yp6aw")
-cards = Array[ExtResource("1_wcluk")]([ExtResource("2_mxn01"), ExtResource("3_mxn01"), ExtResource("4_jsvv0"), ExtResource("5_ck2rw"), ExtResource("6_8mulo"), ExtResource("7_0rq4v"), ExtResource("8_j3uos"), ExtResource("9_mxn01")])
+cards = Array[ExtResource("1_wcluk")]([ExtResource("2_mxn01"), ExtResource("6_8mulo"), ExtResource("7_0rq4v"), ExtResource("8_j3uos"), ExtResource("6_0rq4v"), ExtResource("7_j3uos"), ExtResource("8_rnimo"), ExtResource("9_0lr1w"), ExtResource("10_6sqv3"), ExtResource("11_yrams"), ExtResource("12_3x8vn")])
 metadata/_custom_type_script = "uid://do5h7q7uufehy"

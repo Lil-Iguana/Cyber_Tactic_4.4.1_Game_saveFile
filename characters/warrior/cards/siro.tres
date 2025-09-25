@@ -8,9 +8,6 @@ script = ExtResource("2_7unnv")
 name = "Service in Random Order"
 id = "service_in_random order"
 type = 1
-rarity = 0
-target = 0
-cost = 0
 remove = true
 icon = ExtResource("1_wcu3v")
 tooltip_text = "[center][color=\"#FFA500\"]---- Card Description ----[/color][/center]
