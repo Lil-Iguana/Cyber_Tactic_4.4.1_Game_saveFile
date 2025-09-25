@@ -1,16 +1,57 @@
-[gd_scene load_steps=3 format=3 uid="uid://bcjbunymsjbfc"]
+[gd_scene load_steps=15 format=3 uid="uid://bcjbunymsjbfc"]
 
 [ext_resource type="Script" uid="uid://dych0ejsny60v" path="res://scenes/enemy/enemy_action_picker.gd" id="1_butds"]
-[ext_resource type="Script" uid="uid://fffrdohulik0" path="res://scenes/enemy/enemy_action.gd" id="2_hftu1"]
+[ext_resource type="Script" uid="uid://bq08y1jlandit" path="res://enemies_stats/trojan/trojan_attack_action.gd" id="2_pfu0n"]
+[ext_resource type="AudioStream" uid="uid://cd0601td0wexj" path="res://art/sfx/enemy_block.wav" id="3_irkf1"]
+[ext_resource type="Texture2D" uid="uid://dihw40qmr12sw" path="res://art/attackIntent.png" id="3_xbc8w"]
+[ext_resource type="Script" uid="uid://dly8oycd8fytg" path="res://custom_resources/intent.gd" id="4_jhbbn"]
+[ext_resource type="Script" uid="uid://cvwimkkh2f4ce" path="res://enemies_stats/trojan/trojan_attack_debuff_action.gd" id="5_pfu0n"]
+[ext_resource type="Texture2D" uid="uid://b3ft6d6c1umcx" path="res://art/fragile.png" id="6_irkf1"]
+[ext_resource type="AudioStream" uid="uid://botagqmrc08m5" path="res://art/sfx/enemy_attack.wav" id="6_jtgol"]
+[ext_resource type="Script" uid="uid://ce0kqxcbepjsk" path="res://enemies_stats/trojan/trojan_buff_action.gd" id="9_ywhax"]
+[ext_resource type="Texture2D" uid="uid://bvsas8spv76vk" path="res://art/buff_shield.png" id="10_btxm2"]
+[ext_resource type="AudioStream" uid="uid://thywpalb0dr3" path="res://art/sfx/power_up2.wav" id="11_tqe2i"]
+
+[sub_resource type="Resource" id="Resource_1vffr"]
+script = ExtResource("4_jhbbn")
+base_text = "%s"
+icon = ExtResource("3_xbc8w")
+metadata/_custom_type_script = "uid://dly8oycd8fytg"
+
+[sub_resource type="Resource" id="Resource_jtgol"]
+script = ExtResource("4_jhbbn")
+base_text = "%s"
+icon = ExtResource("6_irkf1")
+metadata/_custom_type_script = "uid://dly8oycd8fytg"
+
+[sub_resource type="Resource" id="Resource_u8u2i"]
+script = ExtResource("4_jhbbn")
+icon = ExtResource("10_btxm2")
+metadata/_custom_type_script = "uid://dly8oycd8fytg"
 
 [node name="TrojanAI" type="Node"]
 script = ExtResource("1_butds")
 metadata/_custom_type_script = "uid://dych0ejsny60v"
 
 [node name="AttackAction" type="Node" parent="."]
-script = ExtResource("2_hftu1")
+script = ExtResource("2_pfu0n")
+block_sound = ExtResource("3_irkf1")
+intent = SubResource("Resource_1vffr")
+sound = ExtResource("6_jtgol")
+type = 1
+chance_weight = 2.0
 metadata/_custom_type_script = "uid://fffrdohulik0"
 
-[node name="BlockAction" type="Node" parent="."]
-script = ExtResource("2_hftu1")
+[node name="AttackDebuffAction" type="Node" parent="."]
+script = ExtResource("5_pfu0n")
+intent = SubResource("Resource_jtgol")
+sound = ExtResource("6_jtgol")
+type = 1
+chance_weight = 1.0
+metadata/_custom_type_script = "uid://fffrdohulik0"
+
+[node name="BuffAction" type="Node" parent="."]
+script = ExtResource("9_ywhax")
+intent = SubResource("Resource_u8u2i")
+sound = ExtResource("11_tqe2i")
 metadata/_custom_type_script = "uid://fffrdohulik0"

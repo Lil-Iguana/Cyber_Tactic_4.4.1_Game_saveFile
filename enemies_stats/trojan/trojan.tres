@@ -1,11 +1,23 @@
-[gd_resource type="Resource" script_class="EnemyStats" load_steps=3 format=3 uid="uid://hsknuplexv7p"]
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=7 format=3 uid="uid://hsknuplexv7p"]
 
+[ext_resource type="Texture2D" uid="uid://dihw40qmr12sw" path="res://art/attackIntent.png" id="1_18gnt"]
 [ext_resource type="Script" uid="uid://d0tnal1w0vdan" path="res://custom_resources/enemy_stats.gd" id="1_ailic"]
+[ext_resource type="PackedScene" uid="uid://bcjbunymsjbfc" path="res://enemies_stats/trojan/trojan_ai.tscn" id="1_rlmg7"]
 [ext_resource type="PackedScene" uid="uid://ycoq6542ba5m" path="res://art/3d_models/trojan_horse.tscn" id="1_rtssv"]
+[ext_resource type="Texture2D" uid="uid://b3ft6d6c1umcx" path="res://art/fragile.png" id="2_rlmg7"]
+[ext_resource type="Texture2D" uid="uid://bvsas8spv76vk" path="res://art/buff_shield.png" id="3_ku2or"]
 
 [resource]
 script = ExtResource("1_ailic")
+ai = ExtResource("1_rlmg7")
 max_health = 25
 enemy_name = "Trojan"
 model = ExtResource("1_rtssv")
+intent_icons = Array[Texture]([ExtResource("1_18gnt"), ExtResource("2_rlmg7"), ExtResource("3_ku2or")])
+intent_descriptions = Array[String](["[color=orange]Attack[/color]
+Deal [color=yellow]8[/color] [color=red]damage[/color] and gain [color=yellow]4[/color] [color=cyan]block[/color]", "[color=orange]Trick[/color]
+Deal [color=yellow]6[/color] [color=red]damage[/color] and infict [color=yellow]Fragile[/color]
+[color=light_slate_gray]Fragile: gain 25%% less Defense from cards for 1 turn [/color]", "[color=yellow]Neigh!![/color]
+Gain1 stack of [color=yellow]Power Up[/color] and gain [color=yellow]10[/color] [color=cyan]block[/color]
+[color=light_slate_gray]Power Up: attacks deal 1 more damage[/color]"])
 metadata/_custom_type_script = "uid://d0tnal1w0vdan"
