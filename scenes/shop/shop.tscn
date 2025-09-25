@@ -1,7 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://c8006h0o0nmgw"]
 
 [ext_resource type="Script" uid="uid://2ju4bjvgrm1i" path="res://scenes/shop/shop.gd" id="1_qxddl"]
-[ext_resource type="Texture2D" uid="uid://c058pylbagr4t" path="res://art/tile_0086.png" id="2_063ck"]
 [ext_resource type="Script" uid="uid://jie6cbv6kc3m" path="res://custom_resources/thread_passive.gd" id="2_k4e0x"]
 [ext_resource type="Resource" uid="uid://44a423e8clh1" path="res://threads/extra_energy.tres" id="3_1p8uf"]
 [ext_resource type="Texture2D" uid="uid://bww55fdwfblxx" path="res://art/shopkeeper_blink.png" id="3_ho6rr"]
@@ -14,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b2fri1atjmojb" path="res://scenes/shop/shop_thread.tscn" id="6_tgpmw"]
 [ext_resource type="Resource" uid="uid://chqxc7ly6cg54" path="res://threads/confusing_staff.tres" id="7_xoc10"]
 [ext_resource type="Resource" uid="uid://bnkqajtby3ffr" path="res://threads/satchel.tres" id="8_k5co3"]
+[ext_resource type="Texture2D" uid="uid://dtwal56x2wcr7" path="res://art/shopkeeper.png" id="9_k5co3"]
 [ext_resource type="PackedScene" uid="uid://bb71f8mjtb5fh" path="res://scenes/modifier_handler/modifier_handler.tscn" id="13_dqlyb"]
 [ext_resource type="PackedScene" uid="uid://0nnepaeuhgih" path="res://scenes/modifier_handler/modifier.tscn" id="14_w60y6"]
 
@@ -39,7 +39,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_063ck")]
+"values": [ExtResource("9_k5co3")]
 }
 
 [sub_resource type="Animation" id="Animation_vbb02"]
@@ -56,7 +56,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.15),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("3_ho6rr"), ExtResource("2_063ck")]
+"values": [ExtResource("3_ho6rr"), ExtResource("9_k5co3")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3v51k"]
@@ -102,7 +102,7 @@ offset_top = -151.0
 offset_right = 160.0
 offset_bottom = -35.0
 grow_vertical = 0
-texture = ExtResource("2_063ck")
+texture = ExtResource("9_k5co3")
 expand_mode = 1
 stretch_mode = 5
 
