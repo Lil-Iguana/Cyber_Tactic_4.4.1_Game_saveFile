@@ -20,15 +20,5 @@ cards_per_turn = 4
 max_mana = 3
 starting_thread = ExtResource("5_at0b3")
 max_health = 35
-enemy_name = ""
 art = ExtResource("1_4dwfv")
 model = ExtResource("3_4dwfv")
-intent_icons = Array[Texture]([])
-intent_descriptions = Array[String]([])
-elemental_multipliers = {
-0: 1.0,
-1: 1.0,
-2: 1.0,
-3: 1.0,
-4: 1.0
-}
