@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://do5h7q7uufehy" path="res://custom_resources/card_pile.gd" id="2_ydpsy"]
 [ext_resource type="Resource" uid="uid://kyu5l54a2ljg" path="res://characters/warrior/cards/student_cybersword_slash.tres" id="3_we4c3"]
 [ext_resource type="Resource" uid="uid://cusemvfvh0inm" path="res://characters/warrior/cards/warrior_block.tres" id="3_xu32s"]
-[ext_resource type="Resource" uid="uid://depyntk1v77gr" path="res://characters/warrior/cards/backup.tres" id="5_mt3oe"]
+[ext_resource type="Resource" uid="uid://c11pyx27p6vnm" path="res://characters/warrior/cards/refresh.tres" id="5_mt3oe"]
 
 [resource]
 script = ExtResource("2_ydpsy")
