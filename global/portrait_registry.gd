@@ -4,10 +4,11 @@ extends Node
 # Using preloads guarantees the resources are included in exported builds.
 # Map keys can be friendly names you use in JSON (e.g. "cortana", "battle_ui").
 static var PORTRAITS: Dictionary = {
-	"cortana": preload("res://art/cortana.png"),
-	"cortana_sleep": preload("res://art/cortana_sleep.png"),
-	"cortana_look_down": preload("res://art/cortana_lookdown.png"),
-	"student": preload("res://art/pixil-frame-0.png"),
+	"cortana": preload("res://art/portrait_cortana.jpg"),
+	"cortana_sleep": preload("res://art/portrait_cortana_sleep.jpg"),
+	"cortana_look_down": preload("res://art/portrait_cortana_lookdown.jpg"),
+	"cortana_serious": preload("res://art/portrait_cortana_serious.jpg"),
+	"student": preload("res://art/portrait_student.jpg"),
 	"hacker": preload("res://art/hacker.png"),
 	"default": preload("res://art/question_mark.png")
 }
