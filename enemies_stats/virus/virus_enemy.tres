@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EnemyStats" load_steps=8 format=3 uid="uid://di1u2yn8ru2vi"]
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=7 format=3 uid="uid://di1u2yn8ru2vi"]
 
 [ext_resource type="Script" uid="uid://d0tnal1w0vdan" path="res://custom_resources/enemy_stats.gd" id="1_00qpd"]
 [ext_resource type="PackedScene" uid="uid://pi6b7mp1b2gx" path="res://enemies_stats/virus/virus_enemy_ai.tscn" id="1_lem3m"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://dihw40qmr12sw" path="res://art/attackIntent.png" id="3_da56k"]
 [ext_resource type="PackedScene" uid="uid://d6sv5u62ahn3" path="res://art/3d_models/virus_m_exp.tscn" id="3_j4yco"]
 [ext_resource type="Texture2D" uid="uid://p0yqsrixsboc" path="res://art/tile_0102.png" id="4_3eu0v"]
-[ext_resource type="Texture2D" uid="uid://cds6dtdll7g04" path="res://art/megablock.png" id="5_cml4t"]
 
 [resource]
 script = ExtResource("1_00qpd")
@@ -15,8 +14,7 @@ max_health = 15
 enemy_name = "Virus"
 art = ExtResource("2_j4yco")
 model = ExtResource("3_j4yco")
-intent_icons = Array[Texture]([ExtResource("3_da56k"), ExtResource("4_3eu0v"), ExtResource("5_cml4t")])
+intent_icons = Array[Texture]([ExtResource("3_da56k"), ExtResource("4_3eu0v")])
 intent_descriptions = Array[String](["[color=orange]Attack[/color]
 Deal [color=yellow]7[/color] [color=red]damage.[/color]", "[color=orange]Block[/color]
-Gains [color=yellow]6[/color] [color=cyan]block.[/color]", "[color=orange]MegaBlock[/color]
-If the Virus health is less than or equal to [color=pink]6[/color].  Gains [color=yellow]15[/color] [color=cyan]block.[/color]  [color=light_slate_gray]This move only triggers once.[/color]"])
+Gains [color=yellow]6[/color] [color=cyan]block.[/color]"])
