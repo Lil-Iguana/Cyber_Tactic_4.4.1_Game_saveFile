@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BattleStats" load_steps=3 format=3 uid="uid://5c1l8stvmgs8"]
+
+[ext_resource type="PackedScene" uid="uid://boi86cu80p5ou" path="res://battles/chapter1/tier_1_trojan.tscn" id="1_762v6"]
+[ext_resource type="Script" uid="uid://dedae26v8t7fi" path="res://custom_resources/battle_stats.gd" id="1_l8ubo"]
+
+[resource]
+script = ExtResource("1_l8ubo")
+battle_tier = 1
+weight = 0.5
+gold_reward_min = 80
+gold_reward_max = 190
+enemies = ExtResource("1_762v6")
+metadata/_custom_type_script = "uid://dedae26v8t7fi"
