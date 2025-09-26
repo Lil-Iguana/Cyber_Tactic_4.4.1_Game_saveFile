@@ -6,6 +6,8 @@ signal threads_activated(type: ThreadPassive.Type)
 const THREAD_APPLY_INTERVAL := 0.5
 const THREAD_UI = preload("res://scenes/thread_handler/thread_ui.tscn")
 
+@export var thread_state_dictionary: Dictionary = {}
+
 @onready var threads_control: ThreadsControl = $ThreadsControl
 @onready var threads_hold: HBoxContainer = %ThreadsHold
 
@@ -38,6 +40,10 @@ func add_threads(threads_array: Array[ThreadPassive]) -> void:
 	for thread: ThreadPassive in threads_array:
 		add_thread(thread)
 
+func add_threads_from_save(threads_array: Array[ThreadPassive]) -> void:
+	for thread: ThreadPassive in threads_array:
+		add_thread_from_save(thread)
+
 
 func add_thread(thread: ThreadPassive) -> void:
 	if has_thread(thread.id):
@@ -48,6 +54,17 @@ func add_thread(thread: ThreadPassive) -> void:
 	new_thread_ui.thread_passive = thread
 	new_thread_ui.thread_passive.initialize_thread(new_thread_ui)
 
+#This function checks if the thread has a saved state in the thread state dictionary before adding it.
+#Used only when loading a save to avoid switches and variables resetting upon rebooting the game.
+func add_thread_from_save(thread: ThreadPassive) -> void:
+	var new_thread: ThreadPassive = thread.duplicate()
+	for thread_id in thread_state_dictionary:
+		if thread_id == new_thread.id:
+			for variable_name in thread_state_dictionary[thread_id]:
+				var stored_thread_var_value = thread_state_dictionary[thread_id][variable_name]
+				new_thread.set_state_value(variable_name, stored_thread_var_value)
+
+	add_thread(new_thread)
 
 func has_thread(id: String) -> bool:
 	for thread_ui: ThreadUI in threads_hold.get_children():
