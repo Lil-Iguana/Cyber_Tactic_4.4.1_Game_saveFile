@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://beiavyau8sogm"]
+
+[ext_resource type="VideoStream" uid="uid://cl1g31x144j6u" path="res://art/video/untitled.ogv" id="1_25iqp"]
+[ext_resource type="Script" uid="uid://b3w56kg6gghtr" path="res://video.gd" id="1_p518d"]
+
+[node name="Video" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p518d")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+stream = ExtResource("1_25iqp")
+autoplay = true
+
+[connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]

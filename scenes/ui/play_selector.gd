@@ -1,6 +1,6 @@
 extends Control
 
-const INTRO_SCENE = preload("res://intro_screen.tscn")
+const INTRO_SCENE = preload("res://video.tscn")
 const ASSASSIN_STATS := preload("res://characters/assassin/assassin.tres")
 const WARRIOR_STATS := preload("res://characters/warrior/warrior.tres")
 const WIZARD_STATS := preload("res://characters/wizard/wizard.tres")
@@ -55,8 +55,7 @@ func _on_start_button_pressed() -> void:
 	run_startup.picked_character = current_character
 
 	# Manually load and instance the intro screen scene
-	var intro_screen = INTRO_SCENE.instantiate()
-	intro_screen.character = current_character  # Pass selected character
+	var intro_screen = INTRO_SCENE.instantiate()  # Pass selected character
 
 	# Replace the current scene
 	get_tree().root.add_child(intro_screen)     # Add to scene tree
