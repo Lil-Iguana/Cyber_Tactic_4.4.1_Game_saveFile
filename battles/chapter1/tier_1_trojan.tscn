@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://boi86cu80p5ou"]
 
-[ext_resource type="PackedScene" uid="uid://306utgcvnsbs" path="res://scenes/enemy/enemy.tscn" id="1_qlila"]
 [ext_resource type="Resource" uid="uid://hsknuplexv7p" path="res://enemies_stats/trojan/trojan.tres" id="2_6ai0d"]
+[ext_resource type="PackedScene" uid="uid://p3y0nwmsq643" path="res://scenes/enemy/medium_enemy.tscn" id="3_qquij"]
 
 [node name="Tier1Trojan" type="Node2D"]
 
-[node name="Enemy" parent="." instance=ExtResource("1_qlila")]
-position = Vector2(350, 120)
+[node name="Enemy3" parent="." instance=ExtResource("3_qquij")]
+position = Vector2(331, 127)
 stats = ExtResource("2_6ai0d")
