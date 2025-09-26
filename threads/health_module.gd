@@ -1,21 +1,24 @@
 extends ThreadPassive
 
-var member_var := 0
+var already_initialized := false
 
+@export var amount := 7
 
-func initialize_thread(_owner: ThreadUI) -> void:
-	print("this happens once when we gain a new thread")
+func initialize_relic(owner: ThreadUI) -> void:
+	# makes sure we don't have extra HP when we
+	# keep saving and loading the game
+	if already_initialized:
+		print("heart module already initialized")
+		return
 
+	var run := owner.get_tree().get_first_node_in_group("run") as Run
+	run.character.max_health += amount
+	already_initialized = true
+	
+	run.thread_handler.relic_state_dictionary[id] = {
+		"already_initialized" : true
+	}
 
-func activate_thread(_owner: ThreadUI) -> void:
-	print("this happens at a specific times based on the Thread.Type property")
-
-
-func deactivate_thread(_owner: ThreadUI) -> void:
-	print("this gets called when a ThreadUI is exiting the SceneTree i.e. getting deleted")
-	print("Event-based Relics should disconnect from the EventBus here.")
-
-
-func get_tooltip() -> String:
-	return tooltip
-
+func set_state_value(name: String, value: Variant) -> void:
+	if name == "already_initialized":
+		self.already_initialized = value
