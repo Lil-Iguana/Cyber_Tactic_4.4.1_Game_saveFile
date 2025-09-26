@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ThreadPassive" load_steps=3 format=3 uid="uid://bgonfdnsivdou"]
+
+[ext_resource type="Texture2D" uid="uid://b8n1qw3ntf662" path="res://art/recycle_bin.png" id="1_8uwjj"]
+[ext_resource type="Script" uid="uid://jie6cbv6kc3m" path="res://custom_resources/thread_passive.gd" id="1_hfi3t"]
+
+[resource]
+script = ExtResource("1_hfi3t")
+thread_name = "Recycle Bin"
+id = "recycle_bin"
+type = 4
+icon = ExtResource("1_8uwjj")
+tooltip = "[color=\"ffdf00\"]Recycle Bin[/color]
+Whenever you remove a card, deal 3 damage to all enemies.
+
+-
+Remember to empty your recycle bin"
+metadata/_custom_type_script = "uid://jie6cbv6kc3m"
