@@ -10,6 +10,7 @@ static var PORTRAITS: Dictionary = {
 	"cortana_serious": preload("res://art/portrait_cortana_serious.jpg"),
 	"student": preload("res://art/portrait_student.jpg"),
 	"hacker": preload("res://art/hacker.png"),
+	"shopkeeper": preload("res://art/shopkeeper.png"),
 	"default": preload("res://art/question_mark.png")
 }
 
