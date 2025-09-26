@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ddky077xerok0" path="res://scenes/treasure/treasure.gd" id="1_xmwdt"]
 [ext_resource type="Script" uid="uid://jie6cbv6kc3m" path="res://custom_resources/thread_passive.gd" id="2_3ynfn"]
-[ext_resource type="Resource" uid="uid://cwxlm3oyg546w" path="res://threads/kabluey.tres" id="3_72l3w"]
+[ext_resource type="Resource" uid="uid://cwxlm3oyg546w" path="res://threads/shockwave.tres" id="3_72l3w"]
 [ext_resource type="Texture2D" uid="uid://dnudqtw3tv2h7" path="res://art/Cache16.png" id="4_hk1q6"]
 [ext_resource type="Resource" uid="uid://44a423e8clh1" path="res://threads/extra_energy.tres" id="4_knoyn"]
 [ext_resource type="Resource" uid="uid://c014g8rpo2k1t" path="res://threads/reinforced_block.tres" id="5_ypb2i"]

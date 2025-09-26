@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://jie6cbv6kc3m" path="res://custom_resources/thread_passive.gd" id="2_k4e0x"]
 [ext_resource type="Resource" uid="uid://44a423e8clh1" path="res://threads/extra_energy.tres" id="3_1p8uf"]
 [ext_resource type="Texture2D" uid="uid://bww55fdwfblxx" path="res://art/shopkeeper_blink.png" id="3_ho6rr"]
-[ext_resource type="Resource" uid="uid://cwxlm3oyg546w" path="res://threads/kabluey.tres" id="4_7rtu0"]
+[ext_resource type="Resource" uid="uid://cwxlm3oyg546w" path="res://threads/shockwave.tres" id="4_7rtu0"]
 [ext_resource type="FontFile" uid="uid://d3fuaowohtamf" path="res://art/Font Styles/PressStart2P-Regular.ttf" id="4_a2yby"]
 [ext_resource type="Resource" uid="uid://hmap8l86svk1" path="res://threads/coupons.tres" id="5_72muf"]
 [ext_resource type="PackedScene" uid="uid://c4levpjon1c5s" path="res://scenes/shop/shop_card.tscn" id="5_npuc3"]
