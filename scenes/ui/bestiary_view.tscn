@@ -19,13 +19,13 @@ font_color = Color(0, 1, 0, 1)
 font = ExtResource("3_3bfrl")
 font_color = Color(0, 1, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yc6pm"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lokbv"]
 bg_color = Color(0, 0, 0, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(0, 0.341176, 0, 1)
+border_color = Color(0, 1, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gdjkv"]
 bg_color = Color(0.0941176, 0.521569, 0, 1)
@@ -35,13 +35,13 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0, 1, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lokbv"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yc6pm"]
 bg_color = Color(0, 0, 0, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(0, 1, 0, 1)
+border_color = Color(0, 0.341176, 0, 1)
 
 [node name="BestiaryView" type="Control"]
 layout_mode = 3
@@ -71,7 +71,7 @@ offset_top = 5.0
 offset_right = 64.0
 offset_bottom = 21.0
 grow_horizontal = 2
-text = "Bestiary"
+text = "Cyberthreats"
 label_settings = SubResource("LabelSettings_6e57x")
 horizontal_alignment = 1
 
@@ -188,7 +188,7 @@ theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0.341176, 0, 1)
 theme_override_fonts/font = ExtResource("4_n654e")
 theme_override_font_sizes/font_size = 6
-theme_override_styles/hover = SubResource("StyleBoxFlat_yc6pm")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_gdjkv")
 theme_override_styles/normal = SubResource("StyleBoxFlat_lokbv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gdjkv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yc6pm")
 text = "Back"
