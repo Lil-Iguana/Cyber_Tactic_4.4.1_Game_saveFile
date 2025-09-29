@@ -12,8 +12,8 @@ func initialize_relic(owner: ThreadUI) -> void:
 func deactivate_relic(_owner: ThreadUI) -> void:
 	Events.player_press_end_turn_button.disconnect(_on_player_press_end_turn_button)
 
-func _on_player_press_end_turn_button() -> void:
-	var player := thread_ui.get_tree().get_first_node_in_group("player")
+func _on_player_press_end_turn_button(targets: Array[Node]) -> void:
+	var player := targets[0].get_tree().get_nodes_in_group("player")[0] as Player
 	if player.stats.block == 0:
 		var block_effect := BlockEffect.new()
 		block_effect.amount = block

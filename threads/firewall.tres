@@ -7,7 +7,7 @@
 script = ExtResource("2_k1jsa")
 thread_name = "Firewall"
 id = "firewall"
-type = 4
+type = 2
 icon = ExtResource("1_k1jsa")
 tooltip = "[color=\"ffdf00\"]Firewall[/color]
 At the end of your turn, if you have no Defense, gain 5 Defense.
