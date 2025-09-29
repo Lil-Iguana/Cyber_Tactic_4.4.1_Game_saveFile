@@ -1,6 +1,6 @@
 extends Card
 
-const POWER_UP_STATUS := preload("res://statuses/powering_up.tres")
+const POWER_UP_STATUS := preload("res://statuses/power_up.tres")
 
 var power_stacks := 2
 

@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://c11pyx27p6vnm"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c11pyx27p6vnm"]
 
 [ext_resource type="Texture2D" uid="uid://bido825jt4h16" path="res://art/refresh.png" id="1_627ik"]
-[ext_resource type="Script" uid="uid://db7gxbb4g4qbl" path="res://custom_resources/card.gd" id="1_h8oqa"]
+[ext_resource type="Script" uid="uid://calit5jr1jg2" path="res://characters/warrior/cards/refresh.gd" id="2_627ik"]
 
 [resource]
-script = ExtResource("1_h8oqa")
+script = ExtResource("2_627ik")
 name = "Refresh"
 id = "refresh"
 type = 1
