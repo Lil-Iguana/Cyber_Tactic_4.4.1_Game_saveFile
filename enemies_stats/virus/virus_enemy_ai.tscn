@@ -34,4 +34,4 @@ script = ExtResource("3_wxsdj")
 intent = SubResource("Resource_nx1d7")
 sound = ExtResource("8_4s7fq")
 type = 1
-chance_weight = 1.0
+chance_weight = 0.8
