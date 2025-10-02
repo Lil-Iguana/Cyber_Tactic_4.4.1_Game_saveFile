@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="ThreadPassive" load_steps=3 format=3 uid="uid://bgonfdnsivdou"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bgonfdnsivdou"]
 
 [ext_resource type="Texture2D" uid="uid://b8n1qw3ntf662" path="res://art/recycle_bin.png" id="1_8uwjj"]
-[ext_resource type="Script" uid="uid://jie6cbv6kc3m" path="res://custom_resources/thread_passive.gd" id="1_hfi3t"]
+[ext_resource type="Script" uid="uid://w6mtyj6wjj7i" path="res://threads/recycle_bin.gd" id="2_8uwjj"]
 
 [resource]
-script = ExtResource("1_hfi3t")
+script = ExtResource("2_8uwjj")
 thread_name = "Recycle Bin"
 id = "recycle_bin"
 type = 4
