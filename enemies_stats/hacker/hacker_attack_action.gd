@@ -7,7 +7,7 @@ func perform_action() -> void:
 	if not enemy or not target:
 		return
 	
-	enemy.play_animation("Attack")
+	enemy.play_attack()
 	
 	var tween := create_tween().set_trans(Tween.TRANS_QUINT)
 	var start := enemy.global_position
@@ -25,7 +25,7 @@ func perform_action() -> void:
 	tween.finished.connect(
 		func():
 			Events.enemy_action_completed.emit(enemy)
-			enemy.play_animation("Idle")
+			enemy.play_idle()
 	)
 
 

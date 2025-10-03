@@ -109,13 +109,13 @@ func take_damage(damage: int, which_modifier: Modifier.Type) -> void:
 	tween.tween_callback(Shaker.shake.bind(self, 16, 0.15))
 	tween.tween_callback(stats.take_damage.bind(modified_damage))
 	tween.tween_interval(0.17)
-	play_hurt_animation()
+	play_hurt()
 	
 	tween.finished.connect(
 		func():
 			sprite_2d.material = null
 			model_3d_flash.material = null
-			play_idle_animation()
+			play_idle()
 			
 			if stats.health <= 0:
 				Events.enemy_died.emit(self)
@@ -157,46 +157,100 @@ func _on_area_exited(_area: Area2D) -> void:
 	arrow.hide()
 
 
-func play_idle_animation() -> void:
+# --- model / animation helpers -------------------------------------------
+
+func _get_model_node():
+	# return first meaningful child (placeholder or real model)
 	if model_3d.get_child_count() > 0:
-		var model_node = model_3d.get_child(0)
-		if model_node.has_node("AnimationPlayer"):
-			var anim = model_node.get_node("AnimationPlayer") as AnimationPlayer
-			if anim.has_animation("Idle"):
-				anim.play("Idle")
+		return model_3d.get_child(0)
+	return null
 
 
-func play_hurt_animation() -> void:
-	if model_3d.get_child_count() > 0:
-		var model_node = model_3d.get_child(0)
-		if model_node.has_node("AnimationPlayer"):
-			var anim = model_node.get_node("AnimationPlayer") as AnimationPlayer
-			if anim.has_animation("Hurt"):
-				anim.play("Hurt")
-			else:
-				push_warning("No ‘Hurt’ on this AnimationPlayer!")
-		else:
-			push_warning("Model has no AnimationPlayer!")
+func _find_animation_player(model_node):
+	if not model_node:
+		return null
+	# try direct child first
+	var ap = model_node.get_node_or_null("AnimationPlayer")
+	if ap:
+		return ap
+	# search recursively for AnimationPlayer (works if nested)
+	var found = model_node.find_node("AnimationPlayer", true, false)
+	return found as AnimationPlayer
 
 
-func play_animation(animation_name: String) -> void:
-	if model_3d.get_child_count() > 0:
-		var model_node = model_3d.get_child(0)
-		if model_node.has_node("AnimationPlayer"):
-			var anim = model_node.get_node("AnimationPlayer") as AnimationPlayer
-			if anim.has_animation(animation_name):
-				anim.play(animation_name)
-			else:
-				push_warning("No animation named '%s' found!" % animation_name)
-		else:
-			push_warning("Model has no AnimationPlayer!")
+func _setup_model_animation() -> void:
+	var model_node = _get_model_node()
+	var anim = _find_animation_player(model_node)
+	if anim:
+		# ensure Idle plays by default if available
+		if anim.has_animation("Idle"):
+			anim.play("Idle")
+	else:
+		push_warning("No AnimationPlayer found on model.")
+
+
+# public helpers to trigger animations ------------------------------------
+
+func play_idle() -> void:
+	var model_node = _get_model_node()
+	var anim = _find_animation_player(model_node)
+	if not anim:
+		push_warning("Can't play idle — no AnimationPlayer found.")
+		return
+	if anim.has_animation("Idle"):
+		anim.play("Idle")
+	else:
+		push_warning("No 'Idle' animation found; falling back to Idle.")
+		if anim.has_animation("Idle"):
+			anim.play("Idle")
+
+func play_attack() -> void:
+	var model_node = _get_model_node()
+	var anim = _find_animation_player(model_node)
+	if not anim:
+		push_warning("Can't play attack — no AnimationPlayer found.")
+		return
+	if anim.has_animation("Attack"):
+		anim.play("Attack")
+	else:
+		push_warning("No 'Attacking' animation found; falling back to Idle.")
+		if anim.has_animation("Idle"):
+			anim.play("Idle")
+
+
+func play_casting() -> void:
+	var model_node = _get_model_node()
+	var anim = _find_animation_player(model_node)
+	if not anim:
+		push_warning("Can't play casting — no AnimationPlayer found.")
+		return
+	if anim.has_animation("Casting"):
+		anim.play("Casting")
+	else:
+		push_warning("No 'Casting' animation found; falling back to Idle.")
+		if anim.has_animation("Idle"):
+			anim.play("Idle")
+
+
+func play_hurt() -> void:
+	var model_node = _get_model_node()
+	var anim = _find_animation_player(model_node)
+	if not anim:
+		push_warning("Can't play hurt — no AnimationPlayer found.")
+		return
+	if anim.has_animation("Hurt"):
+		anim.play("Hurt")
+	else:
+		push_warning("No 'Hurt' animation found; falling back to Idle.")
+		if anim.has_animation("Idle"):
+			anim.play("Idle")
 
 
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		_replace_editor_placeholder_with_model()
 	
-	play_idle_animation()
+	play_idle()
 	
 	connect("input_event", Callable(self, "_on_input_event"))
 	status_handler.status_owner = self

@@ -21,7 +21,7 @@ func perform_action() -> void:
 	if not enemy or not target:
 		return
 	
-	enemy.play_animation("Casting")
+	enemy.play_casting()
 	
 	usages += 1
 	var status_effect := StatusEffect.new()
@@ -32,4 +32,8 @@ func perform_action() -> void:
 	
 	SFXPlayer.play(sound)
 	
-	Events.enemy_action_completed.emit(enemy)
+	get_tree().create_timer(1.0, false).timeout.connect(
+		func():
+			Events.enemy_action_completed.emit(enemy)
+			enemy.play_idle()
+	)
