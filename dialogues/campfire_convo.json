@@ -6,7 +6,7 @@
 	  "text": "What is this place? What's burning?"
 	},
 	{
-	  "speaker": "Cortana",
+	  "speaker": "Kortica",
 	  "portrait": "cortana",
 	  "text": "I have scanned and surveillance the area here. We are safe here for the time being. You can rest here by the campfire, or make modifications to your deck."
 	},
@@ -16,12 +16,12 @@
 	  "text": "....What is happening right now? Where even am I right now?"
 	},
 	{
-	  "speaker": "Cortana",
+	  "speaker": "Kortica",
 	  "portrait": "cortana_look_down",
 	  "text": "Well this is a good time to explain our situation."
 	},
 	{
-	  "speaker": "Cortana",
+	  "speaker": "Kortica",
 	  "portrait": "cortana",
 	  "text": "We are in cyberspace of your device. This is not just a normal cyberspace, this is a virtual cyberspace created by an unknown software found in this device."
 	},
@@ -31,7 +31,7 @@
 	  "text": "A software? How did it get into my pc?"
 	},
 	{
-	  "speaker": "Cortana",
+	  "speaker": "Kortica",
 	  "portrait": "cortana",
 	  "text": "I dont know. I detected the unknown software a while ago, and then I was shut off. After that I awoken with no memory, and you infront of me."
 	},
@@ -41,7 +41,7 @@
 	  "text": "...."
 	},
 	{
-	  "speaker": "Cortana",
+	  "speaker": "Kortica",
 	  "portrait": "cortana",
 	  "text": "Do you have any idea of this mysterious occurance?"
 	},
@@ -51,7 +51,7 @@
 	  "text": "I may or may not installed a game from a uhhhh website."
 	},
 	{
-	  "speaker": "Cortana",
+	  "speaker": "Kortica",
 	  "portrait": "cortana",
 	  "text": "You have installed a unknown program from an untrustworthy distributor?!"
 	},
@@ -61,12 +61,12 @@
 	  "text": "It is a free game, how can I not pass that offer?"
 	},
 	{
-	  "speaker": "Cortana",
+	  "speaker": "Kortica",
 	  "portrait": "cortana",
 	  "text": "Even if it is not an offical program or from a distributor? Now there are viruses and malwares scattering in your device."
 	},
 	{
-	  "speaker": "Cortana",
+	  "speaker": "Kortica",
 	  "portrait": "cortana",
 	  "text": "Do you have any idea what you have done?"
 	},
@@ -76,7 +76,7 @@
 	  "text": "...."
 	},
 	{
-	  "speaker": "Cortana",
+	  "speaker": "Kortica",
 	  "portrait": "cortana",
 	  "text": "We should be on the move. We can not stay here any longer, rest up or fix your deck."
 	}
