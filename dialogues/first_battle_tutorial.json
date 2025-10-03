@@ -6,24 +6,24 @@
 	  "text": "What is this around my wrist? Who are they?!"
 	},
 	{
-	  "speaker": "Cortana",
+	  "speaker": "Kortica",
 	  "portrait": "cortana",
 	  "text": "I have given you a bracelet for you to combat this viruses. I will explain our situation after we have exterminate them."
 	},
 	{
-	  "speaker": "Cortana",
+	  "speaker": "Kortica",
 	  "portrait": "cortana_look_down",
 	  "image": "cards_demo",
 	  "text": "Defeat the enemies by playing cards from your hand! Cards require Energy to play. Once you are out, end your turn. At the start of your turn, new cards are drawn and your Energy is replenished."
 	},
 	{
-	  "speaker": "Cortana",
+	  "speaker": "Kortica",
 	  "portrait": "cortana_look_down",
 	  "image": "icons_demo",
 	  "text": "Your Energy is displays your current Energy. You can click on your Draw Pile to view your cards. Same goes to the Discard Pile, your played cards will go in there."
 	},
 	{
-	  "speaker": "Cortana",
+	  "speaker": "Kortica",
 	  "portrait": "cortana",
 	  "text": "If there are no cards in the Draw Pile, your Discard Pile is shuffled into the Draw Pile."
 	}
