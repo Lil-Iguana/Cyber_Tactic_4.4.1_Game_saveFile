@@ -11,7 +11,7 @@ func _on_player_gain_block(target):
 	damage_effect.amount = stacks
 	# The damage is not affected by modifiers such as Exposed.
 	damage_effect.receiver_modifier_type = Modifier.Type.NO_MODIFIER
-	damage_effect.execute(random_target)
+	damage_effect.execute([random_target])
 
 func get_tooltip() -> String:
 	return tooltip % stacks
