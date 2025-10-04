@@ -13,7 +13,7 @@ func perform_action() -> void:
 	block_effect.sound = sound
 	block_effect.execute([enemy])
 	
-	get_tree().create_timer(2.6, false).timeout.connect(
+	get_tree().create_timer(1.0, false).timeout.connect(
 		func():
 			Events.enemy_action_completed.emit(enemy)
 			enemy.play_idle()
