@@ -122,16 +122,30 @@ func _show_current_line() -> void:
 	_start_typing_bbcode(_full_bbcode_text)
 
 func _start_typing_bbcode(full_bbcode_text: String) -> void:
-	# Ensure bbcode parsing is enabled
-	if dialogue_label:
-		dialogue_label.bbcode_enabled = true
-		# Set the full bbcode text up-front so tags are parsed before revealing
-		dialogue_label.bbcode_text = full_bbcode_text
-		# Start with zero visible characters
-		dialogue_label.visible_characters = 0
-		_typing = true
-		# Kick off the coroutine
-		_typewriter_bbcode()
+	if not dialogue_label:
+		return
+	# 1) Set full text first so layout and wrapping are computed once
+	dialogue_label.bbcode_enabled = true
+	dialogue_label.bbcode_text = full_bbcode_text
+	# 2) start invisible
+	dialogue_label.visible_characters = 0
+	_typing = true
+
+	# 3) reveal by visible_characters (this will NOT change layout because engine already computed it)
+	var total_chars: int = dialogue_label.get_total_character_count()
+	if total_chars <= 0:
+		_typing = false
+		return
+
+	for i in range(1, total_chars + 1):
+		if not _typing:
+			break
+		dialogue_label.visible_characters = i
+		await get_tree().create_timer(char_delay).timeout
+
+	# ensure fully visible at the end
+	dialogue_label.visible_characters = total_chars
+	_typing = false
 
 func _typewriter_bbcode() -> void:
 	if dialogue_label == null:
