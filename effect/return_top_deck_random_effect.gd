@@ -1,10 +1,20 @@
-class_name NameEffect
+class_name ReturnTopDeckRandomEffect
 extends Effect
 
-var member_var := 0
-
+var amount := 1
 
 func execute(targets: Array[Node]) -> void:
-	print("My effect targets them: %s" % targets)
-	print("It does %s something" % member_var)
+	if targets.is_empty():
+		return
 
+	var player_handler := targets[0].get_tree().get_first_node_in_group("player_handler") as PlayerHandler
+
+	if not player_handler:
+		return
+
+	var hand_randomized := player_handler.hand.get_children().duplicate()
+	RNG.array_shuffle(hand_randomized)
+	var cards := hand_randomized.slice(0, amount)
+
+	for card in cards:
+		player_handler.return_to_top_deck(card.card)
