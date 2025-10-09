@@ -6,22 +6,23 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_va8am"]
 font = ExtResource("3_nj0h8")
+font_size = 32
 
 [node name="StatusTooltip" type="HBoxContainer"]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(450, 0)
 offset_right = 300.0
 offset_bottom = 73.0
 script = ExtResource("1_n50un")
 
 [node name="Icon" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(30, 10)
+custom_minimum_size = Vector2(60, 10)
 layout_mode = 2
 texture = ExtResource("1_rw8mh")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="."]
-custom_minimum_size = Vector2(110, 0)
+custom_minimum_size = Vector2(450, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Vulnerable: take 50%% more damage from attacks for %s turn(s)."

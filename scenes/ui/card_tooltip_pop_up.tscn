@@ -82,7 +82,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Description" type="VBoxContainer" parent="HBoxContainer"]
-custom_minimum_size = Vector2(350, 0)
+custom_minimum_size = Vector2(350, 300)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
