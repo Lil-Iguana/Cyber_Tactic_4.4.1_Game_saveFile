@@ -13,29 +13,33 @@ grow_vertical = 2
 script = ExtResource("1_p518d")
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 stream = ExtResource("1_25iqp")
 autoplay = true
 
 [node name="SkipButton" type="Button" parent="."]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(50, 0)
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 148.0
-offset_top = -20.0
-offset_right = 198.0
-offset_bottom = -5.0
-grow_horizontal = 2
+offset_left = -81.0
+offset_top = -36.0
+offset_right = -11.0
+offset_bottom = -8.0
+grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_font_sizes/font_size = 32
 text = "Skip"
 
 [connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
