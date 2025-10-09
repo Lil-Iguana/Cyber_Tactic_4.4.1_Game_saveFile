@@ -7,10 +7,9 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_fweom"]
 font = ExtResource("3_ms5oi")
-font_size = 8
 
 [node name="ManaUI" type="Panel"]
-custom_minimum_size = Vector2(30, 30)
+custom_minimum_size = Vector2(60, 60)
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -35,7 +34,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ManaParticles" type="CPUParticles2D" parent="."]
-position = Vector2(14, 14)
+position = Vector2(28, 28)
 emitting = false
 one_shot = true
 emission_shape = 3

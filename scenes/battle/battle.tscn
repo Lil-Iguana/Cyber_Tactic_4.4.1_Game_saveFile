@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dn52uptr8vtiu"]
+[gd_scene load_steps=29 format=3 uid="uid://dn52uptr8vtiu"]
 
 [ext_resource type="Script" uid="uid://cfsvercw8jdkv" path="res://scenes/battle/battle.gd" id="1_tgtwy"]
 [ext_resource type="PackedScene" uid="uid://306utgcvnsbs" path="res://scenes/enemy/enemy.tscn" id="2_7kg7y"]
@@ -27,7 +27,13 @@
 [ext_resource type="PackedScene" uid="uid://b4o366c13h18p" path="res://scenes/ui/hand_choice_view.tscn" id="25_8eh2s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ubsi8"]
-size = Vector2(420, 172)
+size = Vector2(641, 222)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8eh2s"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_e48mi"]
+font_size = 32
 
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_tgtwy")
@@ -37,7 +43,7 @@ metadata/_edit_lock_ = true
 
 [node name="Background" type="Sprite2D" parent="."]
 self_modulate = Color(0.47816715, 0.47816715, 0.47816715, 1)
-scale = Vector2(0.33096924, 0.3374827)
+scale = Vector2(0.5051221, 0.4979253)
 texture = ExtResource("4_8eh2s")
 centered = false
 
@@ -45,7 +51,7 @@ centered = false
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CardDropArea"]
-position = Vector2(210, 109)
+position = Vector2(320.5, 134)
 shape = SubResource("RectangleShape2D_ubsi8")
 debug_color = Color(0, 0.6, 0.701961, 0.129412)
 
@@ -65,7 +71,7 @@ position = Vector2(360, 120)
 stats = ExtResource("8_kd15x")
 
 [node name="Player" parent="." instance=ExtResource("3_arrrb")]
-position = Vector2(71, 125)
+position = Vector2(71, 171)
 stats = ExtResource("4_nhdv7")
 
 [node name="CardTargetSelector" parent="." instance=ExtResource("3_jsmm7")]
@@ -95,8 +101,9 @@ script = ExtResource("2_dybx0")
 player = NodePath("../../Player")
 
 [node name="ManaUI" parent="BattleUI" instance=ExtResource("11_2bebn")]
-offset_top = -43.0
-offset_bottom = -25.0
+offset_top = -102.0
+offset_right = 65.0
+offset_bottom = -42.0
 char_stats = ExtResource("4_nhdv7")
 
 [node name="EndTurnButton" type="Button" parent="BattleUI"]
@@ -106,13 +113,14 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -51.0
-offset_top = -43.0
+offset_left = -96.0
+offset_top = -68.0
 offset_right = -6.0
-offset_bottom = -28.0
+offset_bottom = -38.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("12_ml4cj")
+theme_override_font_sizes/font_size = 32
 text = "End Turn"
 
 [node name="DrawPileButton" parent="BattleUI" node_paths=PackedStringArray("counter") instance=ExtResource("17_0r3mo")]
@@ -120,20 +128,21 @@ unique_name_in_owner = true
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 7.0
-offset_top = -20.0
-offset_right = 23.0
+offset_left = 4.0
+offset_top = -36.0
+offset_right = 36.0
 offset_bottom = -4.0
 grow_vertical = 0
 counter = NodePath("Counter")
 
 [node name="Counter" type="Label" parent="BattleUI/DrawPileButton"]
 layout_mode = 0
-offset_left = 10.0
-offset_top = 6.0
-offset_right = 18.0
-offset_bottom = 19.0
+offset_left = 19.0
+offset_top = 11.0
+offset_right = 35.0
+offset_bottom = 37.000034
 text = "99"
+label_settings = SubResource("LabelSettings_8eh2s")
 
 [node name="DiscardPileButton" parent="BattleUI" node_paths=PackedStringArray("counter") instance=ExtResource("17_0r3mo")]
 unique_name_in_owner = true
@@ -142,10 +151,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -24.0
-offset_top = -20.0
+offset_left = -40.0
+offset_top = -35.0
 offset_right = -8.0
-offset_bottom = -4.0
+offset_bottom = -3.0
 grow_horizontal = 0
 grow_vertical = 0
 texture_normal = ExtResource("18_5fl16")
@@ -154,16 +163,17 @@ counter = NodePath("Counter")
 
 [node name="Counter" type="Label" parent="BattleUI/DiscardPileButton"]
 layout_mode = 0
-offset_left = -2.0
-offset_top = 6.0
-offset_right = 6.0
-offset_bottom = 19.0
+offset_left = -1.0
+offset_top = 10.0
+offset_right = 15.0
+offset_bottom = 36.0
 text = "99"
+label_settings = SubResource("LabelSettings_e48mi")
 
 [node name="Tooltip" parent="BattleUI" instance=ExtResource("12_1gfg2")]
-offset_left = -209.0
+offset_left = -320.0
 offset_top = 19.0
-offset_right = 38.0
+offset_right = -73.0
 offset_bottom = 74.0
 
 [node name="EnemyTooltipPopup" parent="BattleUI" instance=ExtResource("20_pyfix")]
