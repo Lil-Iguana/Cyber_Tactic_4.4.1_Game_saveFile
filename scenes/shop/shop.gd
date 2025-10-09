@@ -50,7 +50,7 @@ func _generate_shop_cards() -> void:
 	var shop_card_array: Array[Card] = []
 	var available_cards : Array[Card] = char_stats.draftable_cards.duplicate_cards()
 	RNG.array_shuffle(available_cards)
-	shop_card_array = available_cards.slice(0, 3)
+	shop_card_array = available_cards.slice(0, 4)
 	
 	for card: Card in shop_card_array:
 		var new_shop_card := SHOP_CARD.instantiate() as ShopCard
@@ -71,7 +71,7 @@ func _generate_shop_threads() -> void:
 	)
 	
 	RNG.array_shuffle(available_threads)
-	shop_threads_array = available_threads.slice(0, 3)
+	shop_threads_array = available_threads.slice(0, 4)
 	
 	for thread: ThreadPassive in shop_threads_array:
 		var new_shop_thread := SHOP_THREAD.instantiate() as ShopThread
