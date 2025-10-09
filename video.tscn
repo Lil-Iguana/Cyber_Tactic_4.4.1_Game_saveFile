@@ -21,6 +21,7 @@ grow_horizontal = 2
 grow_vertical = 2
 stream = ExtResource("1_25iqp")
 autoplay = true
+expand = true
 
 [node name="SkipButton" type="Button" parent="."]
 unique_name_in_owner = true

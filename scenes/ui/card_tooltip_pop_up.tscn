@@ -8,11 +8,11 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_uas1f"]
 font = ExtResource("2_wgmuf")
-font_size = 8
 outline_size = 2
 outline_color = Color(0.184314, 0, 1, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_h63ux"]
+font_size = 32
 
 [node name="CardTooltipPopUp" type="Control"]
 layout_mode = 3
@@ -42,7 +42,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="CardVisuals" type="VBoxContainer" parent="HBoxContainer"]
-custom_minimum_size = Vector2(150, 0)
+custom_minimum_size = Vector2(250, 90)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
@@ -82,7 +82,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Description" type="VBoxContainer" parent="HBoxContainer"]
-custom_minimum_size = Vector2(250, 0)
+custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -94,7 +94,7 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/line_separation = 2
 theme_override_fonts/normal_font = ExtResource("4_t0kks")
-theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "Card Description 
 Card Description
@@ -109,7 +109,7 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/line_separation = 2
 theme_override_fonts/normal_font = ExtResource("4_t0kks")
-theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "Card Description 
 Card Description
@@ -119,32 +119,34 @@ scroll_active = false
 
 [node name="ChooseButton" type="Button" parent="."]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(40, 14)
+custom_minimum_size = Vector2(90, 25)
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 140.0
-offset_top = -28.0
-offset_right = 180.0
-offset_bottom = -14.0
-grow_horizontal = 2
+offset_left = -58.0
+offset_top = -25.0
+offset_right = -8.0
+offset_bottom = -5.0
+grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("4_wmmgr")
-theme_override_font_sizes/font_size = 6
+theme_override_font_sizes/font_size = 12
 text = "Select"
 
 [node name="BackButton" type="Button" parent="."]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 0
 offset_left = 12.0
 offset_top = 27.0
 offset_right = 52.0
 offset_bottom = 42.0
+theme_override_font_sizes/font_size = 32
 text = "Back"
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
