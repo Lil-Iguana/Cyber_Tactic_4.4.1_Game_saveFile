@@ -172,9 +172,9 @@ label_settings = SubResource("LabelSettings_e48mi")
 
 [node name="Tooltip" parent="BattleUI" instance=ExtResource("12_1gfg2")]
 offset_left = -320.0
-offset_top = 19.0
+offset_top = 86.0
 offset_right = -73.0
-offset_bottom = 74.0
+offset_bottom = 141.0
 
 [node name="EnemyTooltipPopup" parent="BattleUI" instance=ExtResource("20_pyfix")]
 visible = false

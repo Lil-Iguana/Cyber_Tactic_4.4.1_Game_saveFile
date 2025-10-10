@@ -16,5 +16,4 @@ func execute(targets: Array[Node]) -> void:
 	if not Events.card_chosen.is_connected(player_handler.return_to_top_deck):
 		Events.card_chosen.connect(player_handler.return_to_top_deck, CONNECT_ONE_SHOT)
 	
-	print("test")
 	Events.hand_choice_requested.emit("Choose a card")
