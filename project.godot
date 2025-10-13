@@ -34,6 +34,7 @@ CodexManager="*res://global/codex_manager.gd"
 DialogueState="*res://global/dialogue_state.gd"
 DialogueManager="*res://global/dialogue_manager.gd"
 PortraitRegistry="*res://global/portrait_registry.gd"
+ModelRegistry="*res://global/model_registry.gd"
 
 [display]
 
