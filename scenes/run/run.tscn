@@ -28,7 +28,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_7yo0l"]
 font = ExtResource("10_g42ja")
-font_size = 8
+font_size = 24
 
 [node name="Run" type="Node"]
 script = ExtResource("1_x1ycp")
@@ -204,7 +204,6 @@ visible = false
 [node name="PauseMenu" type="CanvasLayer" parent="."]
 process_mode = 3
 layer = 5
-visible = false
 script = ExtResource("10_cnkn7")
 
 [node name="ColorRect" type="ColorRect" parent="PauseMenu"]
@@ -238,22 +237,23 @@ vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PauseMenu/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_constants/separation = 10
 
 [node name="BackToGameButton" type="Button" parent="PauseMenu/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(40, 0)
+custom_minimum_size = Vector2(100, 30)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("11_cnkn7")
-theme_override_font_sizes/font_size = 6
+theme_override_font_sizes/font_size = 18
 text = "Resume"
 
 [node name="SaveAndQuitButton" type="Button" parent="PauseMenu/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(55, 14)
+custom_minimum_size = Vector2(150, 14)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("11_cnkn7")
-theme_override_font_sizes/font_size = 6
+theme_override_font_sizes/font_size = 18
 text = "Save & Exit"
 
 [node name="DialogueLayer" type="CanvasLayer" parent="."]
