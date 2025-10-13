@@ -204,6 +204,7 @@ visible = false
 [node name="PauseMenu" type="CanvasLayer" parent="."]
 process_mode = 3
 layer = 5
+visible = false
 script = ExtResource("10_cnkn7")
 
 [node name="ColorRect" type="ColorRect" parent="PauseMenu"]
@@ -258,6 +259,5 @@ text = "Save & Exit"
 
 [node name="DialogueLayer" type="CanvasLayer" parent="."]
 layer = 4
-visible = false
 
 [node name="DialogueUI" parent="DialogueLayer" instance=ExtResource("24_vqexm")]

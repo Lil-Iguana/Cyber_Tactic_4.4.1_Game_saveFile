@@ -8,7 +8,7 @@
 	{
 	  "speaker": "Kortica",
 	  "portrait": "cortana",
-	  "text": "You’re not imagining things. You’ve been pulled inside your own computer’s cyberspace."
+	  "text": "You're not imagining things. You've been pulled inside your own computer's cyberspace."
 	},
 	{
 	  "speaker": "Student",
@@ -18,7 +18,12 @@
 	{
 	  "speaker": "Kortica",
 	  "portrait": "cortana",
-	  "text": "I checked your activity logs. It looks like you clicked on a suspicious link and downloaded a file without verifying it. Based on internet search archives I’ve accessed, that’s the same behavior that leads to real-world infections—viruses, malware, even trojans spreading from shady downloads. In your case, that reckless click created a gateway… and it dragged you inside."
+	  "text": "I checked your activity logs. It looks like you clicked on a suspicious link and downloaded a file without verifying it."
+	},
+	{
+	  "speaker": "Kortica",
+	  "portrait": "cortana",
+	  "text": "Based on internet search archives I've accessed, that's the same behavior that leads to real-world infections-viruses, malware, even trojans spreading from shady downloads. In your case, that reckless click created a gateway... and it dragged you inside."
 	},
 	{
 	  "speaker": "Student",
