@@ -258,5 +258,6 @@ text = "Save & Exit"
 
 [node name="DialogueLayer" type="CanvasLayer" parent="."]
 layer = 4
+visible = false
 
 [node name="DialogueUI" parent="DialogueLayer" instance=ExtResource("24_vqexm")]
