@@ -17,7 +17,7 @@ intent_icons = Array[Texture]([ExtResource("1_18gnt"), ExtResource("2_rlmg7"), E
 intent_descriptions = Array[String](["[color=orange]Attack[/color]
 Deal [color=yellow]8[/color] [color=red]damage[/color] and gain [color=yellow]4[/color] [color=cyan]block[/color]", "[color=orange]Trick[/color]
 Deal [color=yellow]6[/color] [color=red]damage[/color] and infict [color=yellow]Fragile[/color]
-[color=light_slate_gray]Fragile: gain 25%% less Defense from cards for 1 turn [/color]", "[color=yellow]Neigh!![/color]
+[color=light_slate_gray]Fragile: gain 25%% less Defense from cards for 1 turn [/color]", "[color=orange]Neigh!![/color]
 Gain1 stack of [color=yellow]Power Up[/color] and gain [color=yellow]10[/color] [color=cyan]block[/color]
 [color=light_slate_gray]Power Up: attacks deal 1 more damage[/color]"])
 metadata/_custom_type_script = "uid://d0tnal1w0vdan"
