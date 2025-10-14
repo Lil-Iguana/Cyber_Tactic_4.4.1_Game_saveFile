@@ -3,7 +3,8 @@ extends Node
 # Preload your character model scenes here. Update paths/keys to match your project.
 # Using preloads guarantees the resources are included in exported builds.
 static var MODELS: Dictionary = {
-	"cortana": preload("res://art/3d_models/cortana_3DModel.tscn")
+	"cortana_model": preload("res://art/3d_models/cortana_3DModel.tscn"),
+	"student_model": preload("res://art/3d_models/student_3D_Model.tscn")
 	# add more keys here...
 }
 

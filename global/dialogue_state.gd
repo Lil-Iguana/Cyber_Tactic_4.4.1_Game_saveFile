@@ -3,6 +3,7 @@ extends Node
 var _path: String = "user://dialogue_state.json"
 var data: Dictionary = {
 	"intro_shown": false,
+	"Scene1": false,
 	"first_battle_shown": false,
 	"post_battle_shown": false,
 	"campfire_shown": false,

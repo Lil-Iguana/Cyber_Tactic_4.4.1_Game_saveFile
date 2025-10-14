@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://beiavyau8sogm"]
+[gd_scene load_steps=4 format=3 uid="uid://beiavyau8sogm"]
 
-[ext_resource type="VideoStream" uid="uid://cl1g31x144j6u" path="res://art/video/untitled.ogv" id="1_25iqp"]
 [ext_resource type="Script" uid="uid://b3w56kg6gghtr" path="res://video.gd" id="1_p518d"]
+[ext_resource type="VideoStream" uid="uid://cq2v7m4y7njl0" path="res://art/video/Cutscene1_Part1.ogv" id="2_32ecl"]
+[ext_resource type="PackedScene" uid="uid://i315oax6po0n" path="res://scenes/dialogue/dialogue_ui.tscn" id="3_32ecl"]
 
 [node name="Video" type="Control"]
 layout_mode = 3
@@ -12,16 +13,22 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_p518d")
 
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-stream = ExtResource("1_25iqp")
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="AspectRatioContainer"]
+custom_minimum_size = Vector2(640, 0)
+layout_mode = 2
+stream = ExtResource("2_32ecl")
 autoplay = true
 expand = true
+
+[node name="DialogueLayer" type="CanvasLayer" parent="."]
+layer = 4
+
+[node name="DialogueUI" parent="DialogueLayer" instance=ExtResource("3_32ecl")]
 
 [node name="SkipButton" type="Button" parent="."]
 unique_name_in_owner = true
@@ -43,5 +50,4 @@ size_flags_vertical = 4
 theme_override_font_sizes/font_size = 32
 text = "Skip"
 
-[connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
 [connection signal="pressed" from="SkipButton" to="." method="_on_skip_button_pressed"]
