@@ -4,6 +4,14 @@ var _path: String = "user://dialogue_state.json"
 var data: Dictionary = {
 	"intro_shown": false,
 	"Scene1": false,
+	"Scene2": false,
+	"Scene3": false,
+	"Scene4": false,
+	"Scene5": false,
+	"Scene6": false,
+	"Scene7": false,
+	"Scene8": false,
+	"Scene9": false,
 	"first_battle_shown": false,
 	"post_battle_shown": false,
 	"campfire_shown": false,
@@ -42,6 +50,15 @@ func mark_shown(key: String) -> void:
 func reset_all() -> void:
 	data = {
 		"intro_shown": false,
+		"Scene1": false,
+		"Scene2": false,
+		"Scene3": false,
+		"Scene4": false,
+		"Scene5": false,
+		"Scene6": false,
+		"Scene7": false,
+		"Scene8": false,
+		"Scene9": false,
 		"first_battle_shown": false,
 		"post_battle_shown": false
 	}

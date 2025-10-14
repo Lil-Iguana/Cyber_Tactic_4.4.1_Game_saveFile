@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://b075htsk7wghv"]
+
+[ext_resource type="VideoStream" uid="uid://15ahirh5iut7" path="res://art/video/Cutscene2_Part2.ogv" id="1_63lin"]
+[ext_resource type="Script" uid="uid://dywpr5tv5f20a" path="res://art/video/scene_6.gd" id="1_b2sel"]
+[ext_resource type="PackedScene" uid="uid://i315oax6po0n" path="res://scenes/dialogue/dialogue_ui.tscn" id="1_rwgh2"]
+
+[node name="Video" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b2sel")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="AspectRatioContainer"]
+custom_minimum_size = Vector2(640, 0)
+layout_mode = 2
+stream = ExtResource("1_63lin")
+autoplay = true
+expand = true
+
+[node name="DialogueLayer" type="CanvasLayer" parent="."]
+layer = 4
+
+[node name="DialogueUI" parent="DialogueLayer" instance=ExtResource("1_rwgh2")]
+
+[node name="SkipButton" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -81.0
+offset_top = -36.0
+offset_right = -11.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 32
+text = "Skip"
+
+[connection signal="pressed" from="SkipButton" to="." method="_on_skip_button_pressed"]

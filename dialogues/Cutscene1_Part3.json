@@ -1,0 +1,13 @@
+{
+  "post_scene": "res://art/video/Scene4.tscn",
+  "post_scene_delay": 0.15,
+  "lines": [
+	{
+	  "speaker": "Student",
+	  "portrait": "student",
+	  "model": "student_model",
+	  "anim": "Idle",
+	  "text": "Ughh, another update? What's with the school lately? I have just updated my account."
+	}
+  ]
+}

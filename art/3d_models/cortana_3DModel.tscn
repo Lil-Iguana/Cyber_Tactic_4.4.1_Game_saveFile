@@ -4,6 +4,29 @@
 
 [node name="Cortana2" instance=ExtResource("1_b37lp")]
 
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/position = Vector3(0, 0.2766878, 0)
+bones/0/rotation = Quaternion(0.025340956, 0.0029133416, 0.005695335, 0.99965847)
+bones/1/position = Vector3(1.3939972e-14, 0.41325283, 0.6452358)
+bones/2/position = Vector3(-1.6685271e-07, 0.084278464, -0.29570186)
+bones/6/position = Vector3(-0.40838075, 1.0752097, 0.9404569)
+bones/7/position = Vector3(-0.13035451, -0.48733178, 1.0464711)
+bones/8/position = Vector3(0.594511, 0.70987165, 0.94045705)
+bones/9/position = Vector3(-0.45738944, 0.25127387, 0.94045705)
+bones/10/position = Vector3(8.732644e-15, 0.41486484, 0.87808216)
+bones/10/rotation = Quaternion(0.2969549, 0.6417302, 0.6417304, 0.2969549)
+bones/10/scale = Vector3(1.1048717, 1.1048716, 1.1048716)
+bones/11/position = Vector3(2.1081485e-14, 0.3526184, 0.8826945)
+
+[node name="Static_2" parent="Armature/Skeleton3D" index="0"]
+transform = Transform3D(-0.72455865, 0.006754331, 0.8340927, 0.8328142, -0.05594147, 0.723901, 0.046656877, 1.1034338, 0.03159447, 0.00070529897, 0.6465343, 0.8979723)
+
+[node name="Danger" parent="Armature/Skeleton3D" index="1"]
+transform = Transform3D(0.99991816, 0.006113343, 0.011237846, 0.011533155, -0.050631408, -0.9986508, -0.005536107, 0.9986987, -0.05069777, 0.0014330922, 0.5841384, 0.8994228)
+
+[node name="Spine" parent="Armature/Skeleton3D" index="2"]
+transform = Transform3D(0.99991816, -0.011239125, 0.006113343, 0.011534433, 0.9986508, -0.050631408, -0.005536042, 0.050697777, 0.9986987, 0, 0.2766878, 0)
+
 [node name="Camera3D" type="Camera3D" parent="." index="2"]
 transform = Transform3D(0.9952274, 0, -0.0975829, 0, 1, 0, 0.0975829, 0, 0.9952274, -0.289, 0.135, 3.444)
 fov = 60.0

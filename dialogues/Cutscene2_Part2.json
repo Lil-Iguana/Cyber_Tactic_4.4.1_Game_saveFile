@@ -1,0 +1,111 @@
+{
+  "post_scene": "res://art/video/Scene7.tscn",
+  "post_scene_delay": 0.15,
+  "lines": [
+	{
+	  "speaker": "Kortica",
+	  "portrait": "cortana",
+	  "model": "cortana_model",
+	  "anim": "Idle",
+	  "text": "You're not imagining things. You've been pulled inside your own computer's cyberspace."
+	},
+	{
+	  "speaker": "Student",
+	  "portrait": "student",
+	  "model": "student_model",
+	  "anim": "Idle",
+	  "text": "What?! How's that even possible?"
+	},
+	{
+	  "speaker": "Kortica",
+	  "portrait": "cortana",
+	  "model": "cortana_model",
+	  "anim": "Warning",
+	  "text": "I checked your activity logs. It looks like you clicked on a suspicious link and downloaded a file without verifying it."
+	},
+	{
+	  "speaker": "Kortica",
+	  "portrait": "cortana",
+	  "model": "cortana_model",
+	  "anim": "Idle",
+	  "text": "Based on internet search archives I've accessed, that's the same behavior that leads to real-world infections-viruses, malware, even trojans spreading from shady downloads. In your case, that reckless click created a gateway... and it dragged you inside."
+	},
+	{
+	  "speaker": "Student",
+	  "portrait": "student",
+	  "model": "student_model",
+	  "anim": "Idle",
+	  "text": "So... I'm stuck here because I was careless?"
+	},
+	{
+	  "speaker": "Kortica",
+	  "portrait": "cortana",
+	  "model": "cortana_model",
+	  "anim": "Idle",
+	  "text": "Exactly. Many people outside get tricked the same way. You just paid the price more directly."
+	},
+	{
+	  "speaker": "Student",
+	  "portrait": "student",
+	  "model": "student_model",
+	  "anim": "Idle",
+	  "text": "Alright... if this place is infected, what kind of dangers are in here?"
+	},
+	{
+	  "speaker": "Kortica",
+	  "portrait": "cortana",
+	  "model": "cortana_model",
+	  "anim": "Idle",
+	  "text": "Good question. Again, let me reference some common cases from the internet:"
+	},
+	{
+	  "speaker": "Kortica",
+	  "portrait": "cortana",
+	  "model": "cortana_model",
+	  "anim": "Idle",
+	  "text": "Worms - I found reports of them spreading endlessly through networks. They act fast, multiplying until the system crashes."
+	},
+	{
+	  "speaker": "Kortica",
+	  "portrait": "cortana",
+	  "model": "cortana_model",
+	  "anim": "Idle",
+	  "text": "Malware - Search results show countless cases where it sabotages files, steals, data, or slows everything down."
+	},
+	{
+	  "speaker": "Kortica",
+	  "portrait": "cortana",
+	  "model": "cortana_model",
+	  "anim": "Idle",
+	  "text": "Trojans - They appear safe, but articles describe how they trick people, then secretly unleash other threats."
+	},
+	{
+	  "speaker": "Kortica",
+	  "portrait": "cortana",
+	  "model": "cortana_model",
+	  "anim": "Idle",
+	  "text": "Hackers - Real cases show how they exploit weaknesses, just like intruders breaking into unlocked houses."
+	},
+	{
+	  "speaker": "Student",
+	  "portrait": "student",
+	  "model": "student_model",
+	  "anim": "Idle",
+	  "text": "So all of those could be crawling around my PC right now?"
+	},
+	{
+	  "speaker": "Kortica",
+	  "portrait": "cortana",
+	  "model": "cortana_model",
+	  "anim": "Idle",
+	  "text": "The same way you would protect your real computer:"
+	},
+	{
+	  "speaker": "Kortica",
+	  "portrait": "cortana",
+	  "model": "cortana_model",
+	  "anim": "Idle",
+	  "text": "Use antivirus software to detect and remove threats. Build firewalls to block suspicious traffic. Add multi-factor authentication to keep intruders out. And secure everything with encryption, so even if attackers get in, your data is unreadable."
+	}
+  ]
+}

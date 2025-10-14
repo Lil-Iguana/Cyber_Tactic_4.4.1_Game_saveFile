@@ -1,0 +1,13 @@
+{
+  "post_scene": "res://scenes/run/run.tscn",
+  "post_scene_delay": 0.15,
+  "lines": [
+	{
+	  "speaker": "Student",
+	  "portrait": "student",
+	  "model": "student_model",
+	  "anim": "Idle",
+	  "text": "Not really... but I guess I don't have much of a choice. Let's do this."
+	}
+  ]
+}

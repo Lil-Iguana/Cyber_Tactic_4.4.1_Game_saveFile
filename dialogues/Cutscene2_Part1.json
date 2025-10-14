@@ -1,0 +1,13 @@
+{
+  "post_scene": "res://art/video/Scene6.tscn",
+  "post_scene_delay": 0.15,
+  "lines": [
+	{
+	  "speaker": "Student",
+	  "portrait": "student",
+	  "model": "student_model",
+	  "anim": "Idle",
+	  "text": "Ugh... my head... Where am I? This doesn't look like my room or my PC screen."
+	}
+  ]
+}

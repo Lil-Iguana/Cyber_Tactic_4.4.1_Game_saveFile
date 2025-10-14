@@ -1,0 +1,13 @@
+{
+  "post_scene": "res://art/video/Scene3.tscn",
+  "post_scene_delay": 0.15,
+  "lines": [
+	{
+	  "speaker": "Student",
+	  "portrait": "student",
+	  "model": "student_model",
+	  "anim": "Idle",
+	  "text": "Huh? An email? From the school, I hope classes are cancelled."
+	}
+  ]
+}

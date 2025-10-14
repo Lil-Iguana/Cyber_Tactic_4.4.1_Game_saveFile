@@ -114,6 +114,10 @@ func _show_current_line() -> void:
 	# 1) Speaker name
 	if name_label:
 		name_label.text = str(line.get("speaker", ""))
+	
+	# Portrait is shown if portrait key/path present (always set portrait first)
+	var portrait_key_or_path: String = str(line.get("portrait", ""))
+	_set_portrait_from_key_or_path(portrait_key_or_path)
 
 	# 2) Model or portrait selection
 	var model_key_or_path: String = str(line.get("model", ""))

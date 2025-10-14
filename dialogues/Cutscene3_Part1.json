@@ -1,0 +1,20 @@
+{
+  "post_scene": "res://art/video/Scene8.tscn",
+  "post_scene_delay": 0.15,
+  "lines": [
+	{
+	  "speaker": "Student",
+	  "portrait": "student",
+	  "model": "student_model",
+	  "anim": "Idle",
+	  "text": "So... basically, I'll need to learn how to defend myself hust like protecting a real PC?"
+	},
+	{
+	  "speaker": "Kortica",
+	  "portrait": "cortana",
+	  "model": "cortana_model",
+	  "anim": "Happy",
+	  "text": "Correct. Think of this as practice. Every move you make here is a lesson you can apply outsi-"
+	}
+  ]
+}

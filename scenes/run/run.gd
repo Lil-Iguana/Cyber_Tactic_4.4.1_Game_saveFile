@@ -80,14 +80,6 @@ func _start_run() -> void:
 	
 	save_data = SaveGame.new()
 	_save_run(true)
-	
-	# show Cortana intro once (deferred so UI exists in scene)
-	if not DialogueState.has_shown("intro_shown"):
-		DialogueManager.call_deferred(
-			"start_dialogue_from_file",
-			"res://dialogues/intro.json",
-			"intro_shown"
-		)
 
 
 func _save_run(was_on_map: bool) -> void:

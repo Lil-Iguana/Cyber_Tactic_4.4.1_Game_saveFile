@@ -1,0 +1,13 @@
+{
+  "post_scene": "res://art/video/Scene9.tscn",
+  "post_scene_delay": 0.15,
+  "lines": [
+	{
+	  "speaker": "Kortica",
+	  "portrait": "cortana",
+	  "model": "cortana_model",
+	  "anim": "Danger",
+	  "text": "Ready to begin?"
+	}
+  ]
+}
