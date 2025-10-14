@@ -78,8 +78,7 @@ bones/158/rotation = Quaternion(-0.039277747, 0.9762633, -0.20778906, -0.0468084
 bones/159/rotation = Quaternion(-0.6834687, 0.69449353, -0.13052967, -0.18306123)
 
 [node name="Camera3D" type="Camera3D" parent="." index="2"]
-transform = Transform3D(0.9952274, 0, -0.0975829, 0, 1, 0, 0.0975829, 0, 0.9952274, -0.289, 2.228, 2.315)
-fov = 59.4
+transform = Transform3D(0.9952274, 0, -0.0975829, 0, 1, 0, 0.0975829, 0, 0.9952274, -0.289, 2.0497253, 2.162213)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="3"]
 transform = Transform3D(0.9003188, 0.03490507, -0.43382916, 0, 0.9967789, 0.08019893, 0.4352311, -0.072204605, 0.8974188, -4.805, 1.201, 4.45)
