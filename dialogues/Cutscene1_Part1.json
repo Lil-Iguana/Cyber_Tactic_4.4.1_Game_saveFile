@@ -1,0 +1,13 @@
+{
+  "post_scene": "res://art/video/Scene2.tscn",
+  "post_scene_delay": 0.15,
+  "lines": [
+	{
+	  "speaker": "Student",
+	  "portrait": "student",
+	  "model": "student_model",
+	  "anim": "Idle",
+	  "text": "(Sigh) So much homework and activites, when will it ever end?"
+	}
+  ]
+}
