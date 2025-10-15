@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://by2aol274h7i0"]
 
-[ext_resource type="VideoStream" uid="uid://bpglk5s7posos" path="res://art/video/Cutscene1_Part3.ogv" id="1_4sw35"]
+[ext_resource type="VideoStream" uid="uid://of6h6senrfnr" path="res://art/video/Cutscene1_Part3.ogv" id="1_4sw35"]
 [ext_resource type="Script" uid="uid://brte7uqbnuxgq" path="res://art/video/scene_3.gd" id="1_21ses"]
 [ext_resource type="PackedScene" uid="uid://i315oax6po0n" path="res://scenes/dialogue/dialogue_ui.tscn" id="2_21ses"]
 

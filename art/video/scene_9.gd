@@ -3,7 +3,7 @@ extends Control
 const RUN_SCENE := preload("res://scenes/run/run.tscn")
 
 func _ready() -> void:
-	await get_tree().create_timer(10.0).timeout
+	await get_tree().create_timer(3.0).timeout
 	
 	if not DialogueState.has_shown("Scene9"):
 		DialogueManager.start_dialogue_from_file(
