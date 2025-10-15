@@ -3,11 +3,11 @@ extends Control
 const RUN_SCENE := preload("res://scenes/run/run.tscn")
 
 func _ready() -> void:
-	await get_tree().create_timer(11.0).timeout
+	await get_tree().create_timer(2.0).timeout
 	
 	if not DialogueState.has_shown("Scene8"):
 		DialogueManager.start_dialogue_from_file(
-	"res://dialogues/Cutscene3_Part2.json",
+	"res://dialogues/Cutscene3_Part3.json",
 	"Scene8",
 	Callable(),            # no custom callback
 	1.0                   # optional small delay before scene change
