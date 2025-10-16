@@ -12,5 +12,6 @@ rarity = 2
 cost = 2
 icon = ExtResource("1_b0er6")
 tooltip_text = "Antivirus: whenever you gain Defense, deal 4 damage to a random enemy"
-real_world_text = "A type of cybersecurity program that prevents, detects, and removes malware—such as viruses, ransomware, and spyware—from computers and mobile devices."
+real_world_text = "[center][color=\"#FFA500\"]---- Real-World Description ----[/color][/center]
+A type of cybersecurity program that prevents, detects, and removes malware—such as viruses, ransomware, and spyware—from computers and mobile devices."
 metadata/_custom_type_script = "uid://db7gxbb4g4qbl"

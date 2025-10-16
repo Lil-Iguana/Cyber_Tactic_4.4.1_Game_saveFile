@@ -79,7 +79,7 @@ func _on_timer_tick() -> void:
 		timer_bar.value = time_left
 	else:
 		countdown_timer.stop()
-		_show_aftermath(false, "[center][color=red]⏰ Time’s up! You failed.[/color][/center]")
+		_show_aftermath(false, "[center][color=red]⏰ Time’s up! You failed.\nThe main cons of a bad password include unauthorized access to accounts, which can lead to data breaches, identity theft, and financial losses.[/color][/center]")
 
 # ——— STEP 3: Check current requirement ———
 func _on_check_pressed() -> void:

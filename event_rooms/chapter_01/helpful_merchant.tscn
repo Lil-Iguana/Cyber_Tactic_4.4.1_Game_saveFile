@@ -97,6 +97,6 @@ text = "Continue"
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 5
 
-[node name="CardPileView" parent="CanvasLayer" instance=ExtResource("3_mbtdp")]
+[node name="DeckView" parent="CanvasLayer" instance=ExtResource("3_mbtdp")]
 unique_name_in_owner = true
 visible = false

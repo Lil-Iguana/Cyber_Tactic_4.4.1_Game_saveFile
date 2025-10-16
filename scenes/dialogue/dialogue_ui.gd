@@ -28,7 +28,7 @@ signal dialogue_finished()
 @onready var skip_button: Button = get_node(skip_button_path) as Button
 
 @onready var default_portrait: Texture2D = preload("res://art/question_mark.png")
-#@onready var _debug_log_path: String = "user://dialogue_assets_debug.log"
+var _debug_log_path: String = "user://dialogue_debug.log"
 @onready var default_tutorial_image: Texture2D = preload("res://art/question_mark.png")
 
 @onready var model_viewport_container: SubViewportContainer = get_node_or_null("ModelViewportContainer") as SubViewportContainer
@@ -97,8 +97,6 @@ func show_dialogue(dialogue_data: Dictionary) -> void:
 	
 	if next_button:
 		next_button.visible = true
-	if skip_button:
-		skip_button.visible = true
 
 	# Show entire UI (root Control). This hides/show everything at once.
 	visible = true
@@ -211,174 +209,155 @@ func _on_next_pressed() -> void:
 func _on_skip_pressed() -> void:
 	_emit_finished()
 
+# Force hide the black blocker and allow input again
+func force_hide_block() -> void:
+	if black_block:
+		black_block.visible = false
+		black_block.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+# Ensure UI is fully hidden/unblocked and emit finished
 func _emit_finished() -> void:
-	# Hide entire UI root (children will be hidden automatically)
 	visible = false
-
-	# clear textures rather than toggling child visibility so next show is clean
-	if speaker_icon:
-		speaker_icon.texture = null
-	if image_panel:
-		image_panel.texture = null
-
-	_lines = []
-	_index = 0
-	_full_bbcode_text = ""
-	_typing = false
+	force_hide_block()
+	_write_debug("DialogueUI: finished dialogue emitted")
 	emit_signal("dialogue_finished")
 
-"""
+
+# --- portrait & image helpers ---
 func _write_debug(msg: String) -> void:
-	var f: FileAccess = FileAccess.open(_debug_log_path, FileAccess.WRITE_READ)
+	var path: String = _debug_log_path
+	var ts_text: String = ""
+
+	# Get OS singleton dynamically to avoid static method references
+	if Engine.has_singleton("OS"):
+		var os_singleton := Engine.get_singleton("OS")
+		if os_singleton != null:
+			# call guarded methods dynamically (call avoids static analyzer errors)
+			if os_singleton.has_method("get_unix_time"):
+				ts_text = str(os_singleton.call("get_unix_time"))
+			elif os_singleton.has_method("get_unix_time_msec"):
+				ts_text = str(os_singleton.call("get_unix_time_msec"))
+			elif os_singleton.has_method("get_ticks_msec"):
+				ts_text = str(os_singleton.call("get_ticks_msec"))
+
+	# Final fallback: frames drawn (always available)
+	if ts_text == "":
+		ts_text = "frame:%s" % str(Engine.get_frames_drawn())
+
+	var line: String = "[%s] %s\n" % [ts_text, msg]
+
+	# Append to the user:// log file. Try WRITE_READ then WRITE.
+	var f: FileAccess = FileAccess.open(path, FileAccess.WRITE_READ)
+	if not f:
+		f = FileAccess.open(path, FileAccess.WRITE)
 	if f:
 		f.seek_end()
-		f.store_string(msg + "\n")
+		f.store_string(line)
 		f.close()
-"""
+	else:
+		# In editor you'll still see this if writing fails
+		push_error("DialogueUI: Failed to open debug log '%s' — msg: %s" % [path, msg])
+
 
 func _get_texture_from_registry_or_path(key_or_path: String) -> Texture2D:
-	# Attempt 1: static class (requires `class_name PortraitRegistry` inside portrait_registry.gd)
-	if ClassDB.class_exists("PortraitRegistry"):
-		# Safe static call: returns Texture2D or null
-		var t_static := PortraitRegistry.get_portrait(key_or_path) if typeof(PortraitRegistry.get_portrait) != TYPE_NIL else null
-		if t_static and t_static is Texture2D:
-			#_write_debug("RESOLVE(stat): '%s' -> static registry" % key_or_path)
-			return t_static
-
-	# Attempt 2: autoload instance (if you registered the registry as an autoload singleton named 'PortraitRegistry')
-	# When an autoload is present, its name is available as a global variable.
-	if typeof(PortraitRegistry) != TYPE_NIL and PortraitRegistry is Object:
-		# avoid static-on-instance warning by calling instance method if available
-		if PortraitRegistry.has_method("get_portrait"):
-			var t_inst := PortraitRegistry.get_portrait(key_or_path)
-			if t_inst and t_inst is Texture2D:
-				#_write_debug("RESOLVE(autoload): '%s' -> autoload instance" % key_or_path)
-				return t_inst
-
-	# Attempt 3: treat argument as res:// path and try to load
-	if key_or_path != "" and ResourceLoader.exists(key_or_path):
-		var loaded: Resource = ResourceLoader.load(key_or_path)
-		if loaded and loaded is Texture2D:
-			#_write_debug("RESOLVE(path): '%s' -> loaded from path" % key_or_path)
-			return loaded
-
-	# Not found
-	#_write_debug("MISS: '%s' -> falling back to default" % key_or_path)
-	return null
-
-# Helper that returns a Texture2D OR null.
-func _resolve_tutorial_texture(key_or_path: String) -> Texture2D:
-	# 1) If the key is empty, explicitly return null (clear the panel).
-	if key_or_path == "" or key_or_path == null:
-		#_write_debug("RESOLVE: image key empty -> returning NULL")
+	if key_or_path == "":
 		return null
-
-	# 2) If a static registry class exists, try it (must expose get_tutorial_image)
-	if ClassDB.class_exists("PortraitRegistry"):
-		# static method:
-		if PortraitRegistry.has_method("get_tutorial_image"):
-			var from_static := PortraitRegistry.get_tutorial_image(key_or_path)
-			if from_static and from_static is Texture2D:
-				#_write_debug("RESOLVE: '%s' -> static registry" % key_or_path)
-				return from_static
-
-	# 3) If an autoload instance exists with same name, try calling instance method.
-	#    This covers projects where registry was autoloaded but class_name may be missing.
-	if typeof(PortraitRegistry) != TYPE_NIL and PortraitRegistry is Object:
-		if PortraitRegistry.has_method("get_tutorial_image"):
-			var from_instance := PortraitRegistry.get_tutorial_image(key_or_path)
-			if from_instance and from_instance is Texture2D:
-				#_write_debug("RESOLVE: '%s' -> autoload registry instance" % key_or_path)
-				return from_instance
-
-	# 4) Try to treat the value as a res:// path and load it.
+	if ClassDB.class_exists("PortraitRegistry") and PortraitRegistry.has_method("get_portrait"):
+		var t_static := PortraitRegistry.get_portrait(key_or_path)
+		if t_static and t_static is Texture2D:
+			return t_static as Texture2D
+	if typeof(PortraitRegistry) != TYPE_NIL and PortraitRegistry is Object and PortraitRegistry.has_method("get_portrait"):
+		var t_inst := PortraitRegistry.get_portrait(key_or_path)
+		if t_inst and t_inst is Texture2D:
+			return t_inst as Texture2D
 	if ResourceLoader.exists(key_or_path):
 		var loaded := ResourceLoader.load(key_or_path)
 		if loaded and loaded is Texture2D:
-			#_write_debug("RESOLVE: '%s' -> loaded from res path" % key_or_path)
-			return loaded
-		else:
-			#_write_debug("FOUND path but not a Texture2D: '%s'" % key_or_path)
-			return null
-
-	# 5) Not found: log and return null (do NOT return portrait default)
-	#_write_debug("MISS: tutorial image '%s' not found; will clear image panel" % key_or_path)
+			return loaded as Texture2D
 	return null
 
 
 func _set_portrait_from_key_or_path(key_or_path: String) -> void:
 	var tex: Texture2D = _get_texture_from_registry_or_path(key_or_path)
 	if tex == null:
-		# Use default portrait if nothing resolved
 		tex = default_portrait
-	# assign
 	if speaker_icon:
 		speaker_icon.texture = tex
 
-# Sets or clears the image_panel texture (no portrait-default fallback).
+
 func _set_image_from_key_or_path(key_or_path: String) -> void:
-	# Always clear previous texture first (prevents stale images)
+	# Clear previous texture first
 	if image_panel:
 		image_panel.texture = null
 
-	var tex := _resolve_tutorial_texture(key_or_path)
+	if key_or_path == "" or key_or_path == null:
+		return
+
+	var tex: Texture2D = null
+	# static registry for tutorial images (optional)
+	if ClassDB.class_exists("PortraitRegistry") and PortraitRegistry.has_method("get_tutorial_image"):
+		var t := PortraitRegistry.get_tutorial_image(key_or_path)
+		if t and t is Texture2D:
+			tex = t as Texture2D
+
+	# fallback to loading path
+	if tex == null and ResourceLoader.exists(key_or_path):
+		var loaded := ResourceLoader.load(key_or_path)
+		if loaded and loaded is Texture2D:
+			tex = loaded as Texture2D
+
 	if tex:
 		if image_panel:
 			image_panel.texture = tex
 	else:
-		# If you want a visual default banner instead of empty, uncomment next line:
+		# leave cleared (preferred) or use default tutorial image:
 		# if image_panel: image_panel.texture = default_tutorial_image
-		# Otherwise leave it cleared (preferred).
-		pass
+		_write_debug("MISS: tutorial image '%s' not found" % key_or_path)
 
-# -------------------- Model (3D) support --------------------
+
+# --- model (3D) support ---
 func _bind_model_nodes() -> void:
-	# Attempt common paths
 	if model_viewport_container:
 		model_viewport = get_node_or_null("ModelViewportContainer/ModelViewport") as Viewport
 		model_root = get_node_or_null("ModelViewportContainer/ModelViewport/ModelRoot") as Node3D
-	# fallback direct names
 	if model_viewport == null:
 		model_viewport = get_node_or_null("ModelViewport") as Viewport
 	if model_root == null:
 		model_root = get_node_or_null("ModelRoot") as Node3D
 
-	# If container exists but required nodes are missing, hide the container
 	if model_viewport_container and (model_viewport == null or model_root == null):
 		model_viewport_container.visible = false
 
-# recursive search for AnimationPlayer
+
 func _find_animation_player(node: Node) -> AnimationPlayer:
 	if node == null:
 		return null
 	if node is AnimationPlayer:
 		return node as AnimationPlayer
 	for c in node.get_children():
-		var found := _find_animation_player(c)
-		if found:
-			return found
+		var f := _find_animation_player(c)
+		if f:
+			return f
 	return null
 
-# recursive search for Camera3D
+
 func _find_camera3d(node: Node) -> Camera3D:
 	if node == null:
 		return null
 	if node is Camera3D:
 		return node as Camera3D
 	for c in node.get_children():
-		var found := _find_camera3d(c)
-		if found:
-			return found
+		var f := _find_camera3d(c)
+		if f:
+			return f
 	return null
 
-# capture and restore viewport camera helpers
+
 func _capture_viewport_camera() -> void:
 	_previous_viewport_camera = null
 	if model_viewport == null:
 		return
-	# find a Camera3D already in the viewport subtree (this is the previous camera)
 	_previous_viewport_camera = _find_camera3d(model_viewport)
-	# if nothing found, previous stays null
 
 
 func _restore_previous_viewport_camera() -> void:
@@ -392,93 +371,79 @@ func _restore_previous_viewport_camera() -> void:
 
 
 func _clear_current_model() -> void:
-	# Free any instance we tracked
+	# free the tracked instance
 	if _current_model_instance:
 		if _current_model_instance.is_inside_tree():
 			_current_model_instance.queue_free()
 		_current_model_instance = null
 
-	# ALSO free any other children that might have been left in model_root
+	# free all children of model_root (defensive cleanup)
 	if model_root:
 		for child in model_root.get_children():
-			# skip if somehow child is null
 			if child:
 				child.queue_free()
 
-	# restore previous camera (if any)
+	# restore camera and hide viewport
 	_restore_previous_viewport_camera()
-
-	# hide viewport container when no model
 	if model_viewport_container:
 		model_viewport_container.visible = false
 
 
-# Try to show a model if it's available; otherwise keep portrait only.
-# This tries ModelRegistry (static/autoload) then res:// path.
 func _show_model_if_available(key_or_path: String, anim_name: String = "Idle") -> void:
-	# First clear any previous model and capture previous camera
 	_clear_current_model()
 	_capture_viewport_camera()
 
-	# Resolve model scene via ModelRegistry (static or autoload) or as path
+	# resolve model via registry or path
 	var model_scene: PackedScene = null
 	if ClassDB.class_exists("ModelRegistry") and ModelRegistry.has_method("get_model"):
 		var s := ModelRegistry.get_model(key_or_path)
 		if s and s is PackedScene:
 			model_scene = s as PackedScene
-
-	if model_scene == null and typeof(ModelRegistry) != TYPE_NIL and ModelRegistry is Object:
-		if ModelRegistry.has_method("get_model"):
-			var s2 := ModelRegistry.get_model(key_or_path)
-			if s2 and s2 is PackedScene:
-				model_scene = s2 as PackedScene
-
-	# fallback path load
+	if model_scene == null and typeof(ModelRegistry) != TYPE_NIL and ModelRegistry is Object and ModelRegistry.has_method("get_model"):
+		var s2 := ModelRegistry.get_model(key_or_path)
+		if s2 and s2 is PackedScene:
+			model_scene = s2 as PackedScene
 	if model_scene == null and key_or_path != "" and ResourceLoader.exists(key_or_path):
 		var loaded := ResourceLoader.load(key_or_path)
 		if loaded and loaded is PackedScene:
 			model_scene = loaded as PackedScene
 
-	# If no model found -> keep portrait visible, hide viewport container and restore camera
 	if model_scene == null:
-		#_write_debug("MODEL MISS: '%s' -> no model found; keeping portrait only" % key_or_path)
+		_write_debug("DialogueUI: model miss for %s; keeping portrait only" % key_or_path)
 		if model_viewport_container:
 			model_viewport_container.visible = false
 		_restore_previous_viewport_camera()
 		return
 
-	# Ensure nodes bound
 	if model_viewport == null or model_root == null:
 		_bind_model_nodes()
 		if model_viewport == null or model_root == null:
-			#_write_debug("MODEL ERROR: viewport nodes missing; cannot show model")
+			_write_debug("DialogueUI: viewport nodes missing; cannot show model")
 			if model_viewport_container:
 				model_viewport_container.visible = false
 			_restore_previous_viewport_camera()
 			return
 
-	# instantiate model
 	_current_model_instance = model_scene.instantiate()
 	if _current_model_instance == null:
-		#_write_debug("MODEL ERROR: failed to instantiate '%s'" % key_or_path)
+		_write_debug("DialogueUI: failed instantiate %s" % key_or_path)
+		_restore_previous_viewport_camera()
 		if model_viewport_container:
 			model_viewport_container.visible = false
-		_restore_previous_viewport_camera()
 		return
 
-	# add to model_root and reset transform if Node3D
+	# add and reset transform
 	if _current_model_instance is Node3D:
 		var md := _current_model_instance as Node3D
-		md.transform = Transform3D() # identity - change per-model if needed
+		md.transform = Transform3D()
 		model_root.add_child(md)
 	else:
 		model_root.add_child(_current_model_instance)
 
-	# show viewport container
 	if model_viewport_container:
 		model_viewport_container.visible = true
 
-	# Attempt to use the camera inside the model if present
+	# prefer model camera if present
 	var model_cam: Camera3D = _find_camera3d(_current_model_instance)
 	if model_cam:
 		if model_cam.has_method("make_current"):
@@ -487,7 +452,7 @@ func _show_model_if_available(key_or_path: String, anim_name: String = "Idle") -
 			if "current" in model_cam:
 				model_cam.current = true
 
-	# play animation if present
+	# play animation if available
 	var anim_player: AnimationPlayer = _find_animation_player(_current_model_instance)
 	if anim_player:
 		if anim_name != "" and anim_player.has_animation(anim_name):

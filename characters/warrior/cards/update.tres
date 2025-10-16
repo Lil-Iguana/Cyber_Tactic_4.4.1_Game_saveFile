@@ -12,5 +12,6 @@ rarity = 1
 cost = 2
 icon = ExtResource("1_0ti5q")
 tooltip_text = "[center]Double your Defense.[/center]"
-real_world_text = "A patch, upgrade, or other modification to code that corrects security and/or functionality problems in software"
+real_world_text = "[center][color=\"#FFA500\"]---- Real-World Description ----[/color][/center]
+A patch, upgrade, or other modification to code that corrects security and/or functionality problems in software"
 metadata/_custom_type_script = "uid://db7gxbb4g4qbl"

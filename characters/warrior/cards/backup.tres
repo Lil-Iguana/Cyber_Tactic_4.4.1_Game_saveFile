@@ -12,5 +12,6 @@ rarity = 1
 remove = true
 icon = ExtResource("1_y153a")
 tooltip_text = "[center]Place a card from your hand to the bottom of your draw pile. It costs 0. Remove.[/center]"
-real_world_text = "A backup is a copy of your data, such as files, photos, or entire systems, stored in a separate location to protect it from loss or corruption."
+real_world_text = "[center][color=\"#FFA500\"]---- Real-World Description ----[/color][/center]
+A backup is a copy of your data, such as files, photos, or entire systems, stored in a separate location to protect it from loss or corruption."
 metadata/_custom_type_script = "uid://db7gxbb4g4qbl"

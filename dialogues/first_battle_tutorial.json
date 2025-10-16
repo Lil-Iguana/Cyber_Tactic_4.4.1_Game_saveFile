@@ -35,14 +35,14 @@
 	},
 	{
 	  "speaker": "Kortica",
-	  "portrait": "cortana_model",
+	  "portrait": "cortana",
 	  "model": "cortana_model",
 	  "anim": "Idle",
 	  "text": "You can also hover your mouse, and right click on the enemies to see their movesets."
 	},
 	{
 	  "speaker": "Kortica",
-	  "portrait": "cortana_model",
+	  "portrait": "cortana",
 	  "model": "cortana_model",
 	  "anim": "Mad",
 	  "text": "Now, pick a card and drag it to the field to play. Remember to block incoming attacks, and strike when you have the chance!"

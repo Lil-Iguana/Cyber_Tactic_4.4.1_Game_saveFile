@@ -118,112 +118,163 @@ func start_dialogue(dialogue_data: Dictionary, state_key: String = "", callback:
 	# Finally show the dialogue (deferred to be safe)
 	_ui_node.call_deferred("show_dialogue", dialogue_data)
 
-# Handler when DialogueUI signals it finished
+func _find_node_in_tree_by_name(start_node: Node, target_name: String) -> Node:
+	if start_node == null:
+		return null
+	# check the node itself first
+	if start_node.name == target_name:
+		return start_node
+	# then recurse children
+	for child in start_node.get_children():
+		# cast to Node to satisfy typed analyzer
+		var cnode: Node = child as Node
+		if cnode == null:
+			continue
+		var found: Node = _find_node_in_tree_by_name(cnode, target_name)
+		if found:
+			return found
+	return null
+
+# Called when UI finished emitting its signal
 func _on_ui_finished() -> void:
-	# Mark persistent key
+	# Try to resolve the UI reference if we don't have one
+	if _ui_node == null:
+		_try_resolve_ui_by_search()
+
+	# Force unblock DialogueUI (deferred in case it's being freed)
+	if _ui_node and _ui_node.has_method("force_hide_block"):
+		_ui_node.call_deferred("force_hide_block")
+
+	_write_debug("DialogueManager: _on_ui_finished called; persist_key=%s" % _persist_key)
+
+	# persist the dialog state if requested
 	if _persist_key != "":
-		if DialogueState and not DialogueState.has_shown(_persist_key):
+		if typeof(DialogueState) != TYPE_NIL and DialogueState and DialogueState.has_method("mark_shown"):
 			DialogueState.mark_shown(_persist_key)
 	_persist_key = ""
 
-	# Call any pending callback (user-provided custom action)
+	# call callback if provided
 	if _pending_callback.is_valid():
 		_pending_callback.call()
 	_pending_callback = Callable()
 
-	# If a post_scene was specified, wait optional delay then change scene
 	if _post_scene != "":
+		_write_debug("DialogueManager: post_scene requested: %s (delay=%f)" % [_post_scene, _post_delay_seconds])
+		# ensure not paused before waiting for post delay
+		get_tree().paused = false
 		if _post_delay_seconds > 0.0:
 			await get_tree().create_timer(_post_delay_seconds).timeout
 
-		if FileAccess.file_exists(_post_scene):
-			# Defer scene changing to avoid doing it inside this signal handler
-			call_deferred("_change_scene_deferred", _post_scene)
-		else:
-			push_error("DialogueManager: Requested post_scene not found: %s" % _post_scene)
+		# ensure unblocked before scene change: search root for DialogueUI safely
+		var root_node: Node = get_tree().get_root()
+		var root_ui_node: Node = _find_node_in_tree_by_name(root_node, "DialogueUI")
+		var root_ui: Control = root_ui_node as Control
+		if root_ui and root_ui.has_method("force_hide_block"):
+			root_ui.call_deferred("force_hide_block")
+
+		call_deferred("_perform_scene_change", _post_scene)
+	else:
+		_write_debug("DialogueManager: no post_scene to change to")
 
 	_post_scene = ""
 	_post_delay_seconds = 0.0
 
 	emit_signal("dialogue_finished")
 
-# Diagnostic helper: prints where DialogueUI is parented (useful for debugging leftovers)
-func _diag_print_dialogueui_location() -> void:
-	var found_ui: Control = _find_dialogue_ui_in(get_tree().root)
-	if found_ui:
-		var parent_node: Node = found_ui.get_parent()
-		@warning_ignore("incompatible_ternary")
-		var parent_path: String = parent_node.get_path() if parent_node else "null"
-		print("DialogueUI found at: ", found_ui.get_path(), " parent: ", parent_path)
+
+# Robust scene changer: tries change_scene_to_file, falls back to PackedScene instantiate, and cleans leftovers.
+func _perform_scene_change(scene_path: String) -> void:
+	_write_debug("DialogueManager: _perform_scene_change -> %s" % scene_path)
+
+	# unpause to be safe
+	get_tree().paused = false
+
+	# try engine API first
+	var err: int = get_tree().change_scene_to_file(scene_path)
+	if err == OK:
+		_write_debug("DialogueManager: change_scene_to_file succeeded for %s" % scene_path)
+		return
 	else:
-		print("DialogueUI not found in the root tree.")
+		_write_debug("DialogueManager: change_scene_to_file returned %s; falling back" % str(err))
 
-# Robust scene changer (force cleanup of leftover root children not on whitelist)
-func _change_scene_deferred(scene_path: String) -> void:
-	# Load PackedScene
-	var packed: PackedScene = ResourceLoader.load(scene_path) as PackedScene
-	if packed == null:
-		push_error("DialogueManager: _change_scene_deferred - scene not found or not a PackedScene: %s" % scene_path)
+	# fallback: manual load/instantiate
+	if not ResourceLoader.exists(scene_path):
+		_write_debug("DialogueManager: ResourceLoader.exists false for %s" % scene_path)
 		return
 
-	# Remember old current scene
+	var packed: Resource = ResourceLoader.load(scene_path)
+	if packed == null or not (packed is PackedScene):
+		_write_debug("DialogueManager: ResourceLoader.load failed or returned not PackedScene for %s" % scene_path)
+		return
+
 	var old_scene: Node = get_tree().current_scene
-
-	# Instantiate new scene
-	var new_scene: Node = packed.instantiate()
+	var new_scene: Node = (packed as PackedScene).instantiate()
 	if new_scene == null:
-		push_error("DialogueManager: Failed to instantiate scene: %s" % scene_path)
+		_write_debug("DialogueManager: instantiate returned null for %s" % scene_path)
 		return
 
-	# Add new scene to root and set as current
+	# Add and set current
 	get_tree().root.add_child(new_scene)
 	get_tree().current_scene = new_scene
 
-	# Wait one frame for visuals/input to stabilize
+	# let a frame pass to settle
 	await get_tree().process_frame
 
-	# --- 1) Remove leftover DialogueUI nodes that are NOT descendants of new_scene (as before) ---
-	var found_ui_nodes: Array = []
-	_collect_dialogue_ui_nodes(get_tree().root, found_ui_nodes)
-
-	for ui in found_ui_nodes:
+	# Remove leftover DialogueUI nodes not in new_scene
+	var collected: Array = []
+	_collect_dialogue_ui_nodes(get_tree().root, collected)
+	for ui in collected:
 		if ui and ui.is_inside_tree():
-			# check if ui is a descendant of new_scene
-			var ancestor: Node = ui
+			# ensure typed var
+			var ui_node: Node = ui as Node
+			var ancestor: Node = ui_node
 			var is_descendant: bool = false
-			while ancestor:
+			while ancestor != null:
 				if ancestor == new_scene:
 					is_descendant = true
 					break
 				ancestor = ancestor.get_parent()
 			if not is_descendant:
-				print("DialogueManager: Removing leftover DialogueUI at ", ui.get_path())
-				ui.queue_free()
+				_write_debug("DialogueManager: freeing leftover DialogueUI at %s" % ui_node.get_path())
+				ui_node.queue_free()
 
-	# --- 2) Free the old scene subtree if it still exists and is different from new_scene ---
+	# free old scene if different
 	if old_scene and old_scene != new_scene and old_scene.is_inside_tree():
-		print("DialogueManager: queue_free old scene: ", old_scene.get_path())
+		_write_debug("DialogueManager: queue_free old_scene %s" % old_scene.get_path())
 		old_scene.queue_free()
 
-	# Wait a frame to let old_scene and UI nodes be removed
-	await get_tree().process_frame
+	_write_debug("DialogueManager: finished scene change to %s" % scene_path)
 
-	# --- 3) FORCE cleanup of root children (only remove those NOT on whitelist and NOT new_scene) ---
-	# This is aggressive: it removes leftover root children that would otherwise remain visible.
-	# Be sure to add autoload names (singletons) to `root_protected_nodes` to avoid removing them.
-	var root_children := get_tree().root.get_children()
-	for child in root_children:
-		# skip the newly created scene
-		if child == new_scene:
-			continue
-		# skip protected nodes by name
-		if child and child.name in root_protected_nodes:
-			continue
-		# skip nodes that are likely singletons by checking their script path? (optional)
-		# If you need to preserve more nodes, add their names to the root_protected_nodes array.
-		# Remove anything else that is still a direct child of root (these are likely leftovers)
-		print("DialogueManager: FORCE removing root child: ", child.get_path())
-		child.queue_free()
 
-	# final small delay to let frees apply
-	await get_tree().process_frame
+func _write_debug(msg: String) -> void:
+	var path: String = "user://dialogue_debug.log"
+	var ts_text: String = ""
+
+	# Get OS singleton dynamically to avoid static method references
+	if Engine.has_singleton("OS"):
+		var os_singleton := Engine.get_singleton("OS")
+		# call guarded methods dynamically (call avoids static analyzer errors)
+		if os_singleton and os_singleton.has_method("get_unix_time"):
+			ts_text = str(os_singleton.call("get_unix_time"))
+		elif os_singleton and os_singleton.has_method("get_unix_time_msec"):
+			ts_text = str(os_singleton.call("get_unix_time_msec"))
+		elif os_singleton and os_singleton.has_method("get_ticks_msec"):
+			ts_text = str(os_singleton.call("get_ticks_msec"))
+
+	# Final fallback: frames drawn (always available)
+	if ts_text == "":
+		ts_text = "frame:%s" % str(Engine.get_frames_drawn())
+
+	var line: String = "[%s] %s\n" % [ts_text, msg]
+
+	# Append to the user:// log file. Try WRITE_READ then WRITE.
+	var f: FileAccess = FileAccess.open(path, FileAccess.WRITE_READ)
+	if not f:
+		f = FileAccess.open(path, FileAccess.WRITE)
+	if f:
+		f.seek_end()
+		f.store_string(line)
+		f.close()
+	else:
+		# In editor you'll still see this if writing fails
+		push_error("Failed to open debug log '%s' — msg: %s" % [path, msg])

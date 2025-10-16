@@ -1,7 +1,6 @@
-class_name HelpfulMerchant
 extends EventRoom
 
-@onready var duplicate_last_card_button: EventRoomButton = %DuplicateLastCardButton
+@onready var duplicate_last_card_button: EventRoomButton = %DuplicateCardButton
 @onready var plus_max_hp_button: EventRoomButton = %PlusMaxHPButton
 @onready var skip_button: EventRoomButton = %SkipButton
 @onready var event_menu: VBoxContainer = %EventMenu

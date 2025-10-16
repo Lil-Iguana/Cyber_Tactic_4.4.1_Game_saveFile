@@ -10,7 +10,7 @@
 [resource]
 script = ExtResource("1_00qpd")
 ai = ExtResource("1_lem3m")
-max_health = 15
+max_health = 20
 enemy_name = "Virus"
 art = ExtResource("2_j4yco")
 model = ExtResource("3_j4yco")

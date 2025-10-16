@@ -10,7 +10,7 @@
 [resource]
 script = ExtResource("1_ailic")
 ai = ExtResource("1_rlmg7")
-max_health = 25
+max_health = 30
 enemy_name = "Trojan"
 model = ExtResource("5_rlmg7")
 intent_icons = Array[Texture]([ExtResource("1_18gnt"), ExtResource("2_rlmg7"), ExtResource("3_ku2or")])
