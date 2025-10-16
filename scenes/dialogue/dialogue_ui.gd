@@ -392,11 +392,18 @@ func _restore_previous_viewport_camera() -> void:
 
 
 func _clear_current_model() -> void:
-	# free model instance
+	# Free any instance we tracked
 	if _current_model_instance:
 		if _current_model_instance.is_inside_tree():
 			_current_model_instance.queue_free()
 		_current_model_instance = null
+
+	# ALSO free any other children that might have been left in model_root
+	if model_root:
+		for child in model_root.get_children():
+			# skip if somehow child is null
+			if child:
+				child.queue_free()
 
 	# restore previous camera (if any)
 	_restore_previous_viewport_camera()
