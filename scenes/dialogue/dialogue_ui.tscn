@@ -141,6 +141,7 @@ text = "Next"
 
 [node name="SkipButton" type="Button" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 446.0
 offset_top = 345.0
