@@ -19,6 +19,6 @@ library_cards = ExtResource("3_imjtc")
 cards_per_turn = 4
 max_mana = 3
 starting_thread = ExtResource("5_at0b3")
-max_health = 35
+max_health = 50
 art = ExtResource("1_4dwfv")
 model = ExtResource("3_4dwfv")
