@@ -3,11 +3,15 @@
 	{
 	  "speaker": "Student",
 	  "portrait": "student",
+	  "model": "student_model",
+	  "anim": "Idle",
 	  "text": "What is this around my wrist? Who are they?!"
 	},
 	{
 	  "speaker": "Kortica",
 	  "portrait": "cortana",
+	  "model": "cortana_model",
+	  "anim": "Idle",
 	  "text": "I have given you a bracelet for you to combat this viruses. I will explain our situation after we have exterminate them."
 	},
 	{
