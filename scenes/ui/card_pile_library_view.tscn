@@ -8,7 +8,6 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_inlig"]
 font = ExtResource("1_cmnhj")
-font_size = 8
 
 [node name="CardPileLibraryView" type="Control"]
 layout_mode = 3
