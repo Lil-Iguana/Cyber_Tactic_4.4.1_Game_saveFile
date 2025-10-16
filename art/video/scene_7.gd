@@ -5,10 +5,10 @@ const RUN_SCENE := preload("res://scenes/run/run.tscn")
 func _ready() -> void:
 	await get_tree().create_timer(9.0).timeout
 	
-	if not DialogueState.has_shown("Scene9"):
+	if not DialogueState.has_shown("Scene7"):
 		DialogueManager.start_dialogue_from_file(
 	"res://dialogues/Cutscene3_Part1.json",
-	"Scene9",
+	"Scene7",
 	Callable(),            # no custom callback
 	1.0                   # optional small delay before scene change
 )
