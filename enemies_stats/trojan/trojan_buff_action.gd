@@ -17,6 +17,8 @@ func perform_action():
 	if not enemy or not target:
 		return
 	
+	enemy.play_casting()
+	
 	var block_effect := BlockEffect.new()
 	block_effect.amount = base_block
 	block_effect.sound = sound
