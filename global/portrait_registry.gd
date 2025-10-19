@@ -20,25 +20,24 @@ static var TUTORIAL_IMAGES: Dictionary = {
 	"testing": preload("res://art/illustrations/testing_placeholder.png")
 }
 
-func get_portrait(key_or_path: String) -> Texture2D:
-	if key_or_path == "":
-		return PORTRAITS.get("default", null)
-	if PORTRAITS.has(key_or_path):
-		return PORTRAITS[key_or_path]
-	# fallback to load path if it exists
-	if ResourceLoader.exists(key_or_path):
-		var r = ResourceLoader.load(key_or_path)
-		if r and r is Texture2D:
-			return r
-	return PORTRAITS.get("default", null)
-
-func get_tutorial_image(key_or_path: String) -> Texture2D:
-	if key_or_path == "":
+# Static access (recommended)
+func get_portrait(key: String) -> Texture2D:
+	if key == null or key == "":
 		return null
-	if TUTORIAL_IMAGES.has(key_or_path):
-		return TUTORIAL_IMAGES[key_or_path]
-	if ResourceLoader.exists(key_or_path):
-		var r = ResourceLoader.load(key_or_path)
-		if r and r is Texture2D:
-			return r
+	if PORTRAITS.has(key):
+		return PORTRAITS[key] as Texture2D
 	return null
+
+func get_tutorial_image(key: String) -> Texture2D:
+	if key == null or key == "":
+		return null
+	if TUTORIAL_IMAGES.has(key):
+		return TUTORIAL_IMAGES[key] as Texture2D
+	return null
+
+# Instance access (useful if you add to Autoload)
+func get_portrait_instance(key: String) -> Texture2D:
+	return PortraitRegistry.get_portrait(key)
+
+func get_tutorial_image_instance(key: String) -> Texture2D:
+	return PortraitRegistry.get_tutorial_image(key)

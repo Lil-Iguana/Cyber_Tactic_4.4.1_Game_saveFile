@@ -129,9 +129,6 @@ func _show_current_line() -> void:
 		_clear_current_model()
 		if model_viewport_container:
 			model_viewport_container.visible = false
-
-	if image_panel:
-		image_panel.texture = null
 	
 	# 3) Tutorial image (large image panel) - use the helper
 	var image_key_or_path: String = str(line.get("image", ""))
@@ -259,60 +256,95 @@ func _write_debug(msg: String) -> void:
 		push_error("DialogueUI: Failed to open debug log '%s' — msg: %s" % [path, msg])
 
 
+# Robust texture resolver used by both portrait and image panel
 func _get_texture_from_registry_or_path(key_or_path: String) -> Texture2D:
-	if key_or_path == "":
+	# empty -> null
+	if key_or_path == null or key_or_path.strip_edges() == "":
 		return null
-	if ClassDB.class_exists("PortraitRegistry") and PortraitRegistry.has_method("get_portrait"):
-		var t_static := PortraitRegistry.get_portrait(key_or_path)
-		if t_static and t_static is Texture2D:
-			return t_static as Texture2D
-	if typeof(PortraitRegistry) != TYPE_NIL and PortraitRegistry is Object and PortraitRegistry.has_method("get_portrait"):
-		var t_inst := PortraitRegistry.get_portrait(key_or_path)
-		if t_inst and t_inst is Texture2D:
-			return t_inst as Texture2D
+
+	# 1) Try static class lookup (fast)
+	if ClassDB.class_exists("PortraitRegistry"):
+		# static call
+		if PortraitRegistry.has_method("get_portrait"):
+			var t := PortraitRegistry.get_portrait(key_or_path)
+			if t and t is Texture2D:
+				_write_debug("PortraitRegistry (static) hit: %s" % key_or_path)
+				return t
+		# also try tutorial image static method
+		if PortraitRegistry.has_method("get_tutorial_image"):
+			var tt := PortraitRegistry.get_tutorial_image(key_or_path)
+			if tt and tt is Texture2D:
+				_write_debug("PortraitRegistry (static tutorial) hit: %s" % key_or_path)
+				return tt
+
+	# 2) Try autoload instance (if user registered as autoload named PortraitRegistry)
+	if typeof(PortraitRegistry) != TYPE_NIL and PortraitRegistry is Object:
+		if PortraitRegistry.has_method("get_portrait_instance"):
+			var t2 := PortraitRegistry.get_portrait_instance(key_or_path)
+			if t2 and t2 is Texture2D:
+				_write_debug("PortraitRegistry (autoload instance) hit: %s" % key_or_path)
+				return t2
+		# fallback to static-like instance method name
+		if PortraitRegistry.has_method("get_portrait"):
+			var t3 := PortraitRegistry.get_portrait(key_or_path)
+			if t3 and t3 is Texture2D:
+				_write_debug("PortraitRegistry (autoload get_portrait) hit: %s" % key_or_path)
+				return t3
+
+	# 3) Try direct resource path (res://...). This helps if you used a path in JSON
 	if ResourceLoader.exists(key_or_path):
 		var loaded := ResourceLoader.load(key_or_path)
 		if loaded and loaded is Texture2D:
+			_write_debug("ResourceLoader loaded texture from path: %s" % key_or_path)
 			return loaded as Texture2D
+
+	# Not found
+	_write_debug("Texture MISS for key/path: %s" % key_or_path)
 	return null
 
 
 func _set_portrait_from_key_or_path(key_or_path: String) -> void:
 	var tex: Texture2D = _get_texture_from_registry_or_path(key_or_path)
 	if tex == null:
-		tex = default_portrait
+		# fallback to default portrait (preloaded earlier)
+		tex = default_portrait if default_portrait != null else null
 	if speaker_icon:
 		speaker_icon.texture = tex
 
 
 func _set_image_from_key_or_path(key_or_path: String) -> void:
-	# Clear previous texture first
+	# clear previous
 	if image_panel:
 		image_panel.texture = null
 
 	if key_or_path == "" or key_or_path == null:
 		return
 
+	# first try tutorial image registry (explicit)
 	var tex: Texture2D = null
-	# static registry for tutorial images (optional)
+	# prefer static method (if exists)
 	if ClassDB.class_exists("PortraitRegistry") and PortraitRegistry.has_method("get_tutorial_image"):
-		var t := PortraitRegistry.get_tutorial_image(key_or_path)
-		if t and t is Texture2D:
-			tex = t as Texture2D
+		var t_stat := PortraitRegistry.get_tutorial_image(key_or_path)
+		if t_stat and t_stat is Texture2D:
+			tex = t_stat as Texture2D
 
-	# fallback to loading path
-	if tex == null and ResourceLoader.exists(key_or_path):
-		var loaded := ResourceLoader.load(key_or_path)
-		if loaded and loaded is Texture2D:
-			tex = loaded as Texture2D
+	# try autoload instance
+	if tex == null and typeof(PortraitRegistry) != TYPE_NIL and PortraitRegistry is Object:
+		if PortraitRegistry.has_method("get_tutorial_image_instance"):
+			var t_inst := PortraitRegistry.get_tutorial_image_instance(key_or_path)
+			if t_inst and t_inst is Texture2D:
+				tex = t_inst as Texture2D
+
+	# fallback to general resolver (covers both registry portrait and resource paths)
+	if tex == null:
+		tex = _get_texture_from_registry_or_path(key_or_path)
 
 	if tex:
 		if image_panel:
 			image_panel.texture = tex
+		_write_debug("ImagePanel set to: %s" % key_or_path)
 	else:
-		# leave cleared (preferred) or use default tutorial image:
-		# if image_panel: image_panel.texture = default_tutorial_image
-		_write_debug("MISS: tutorial image '%s' not found" % key_or_path)
+		_write_debug("ImagePanel MISS for: %s" % key_or_path)
 
 
 # --- model (3D) support ---
