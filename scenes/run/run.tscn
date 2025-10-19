@@ -30,7 +30,7 @@
 font = ExtResource("10_g42ja")
 font_size = 24
 
-[node name="Run" type="Node"]
+[node name="Run" type="Node" groups=["run"]]
 script = ExtResource("1_x1ycp")
 run_startup = ExtResource("2_yiexl")
 
