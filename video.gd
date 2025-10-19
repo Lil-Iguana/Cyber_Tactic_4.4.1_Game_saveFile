@@ -1,7 +1,5 @@
 extends Control
 
-const RUN_SCENE := preload("res://scenes/run/run.tscn")
-
 func _ready() -> void:
 	await get_tree().create_timer(1.0).timeout
 
@@ -27,10 +25,6 @@ func _on_dialogue_complete() -> void:
 
 # Helper: change to run scene then queue_free this node safely
 func _go_to_run_and_free() -> void:
-	# Attempt to change the scene (safe API)
-	var err: int = get_tree().change_scene_to_packed(RUN_SCENE)
-	if err != OK:
-		push_error("Failed to change to RUN_SCENE (err=%s). Will still attempt to free." % str(err))
 
 	# Wait one frame to let the scene system settle (defensive; prevents race in exported builds)
 	await get_tree().process_frame
