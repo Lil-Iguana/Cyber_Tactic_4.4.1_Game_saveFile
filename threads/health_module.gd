@@ -2,9 +2,9 @@ extends ThreadPassive
 
 var already_initialized := false
 
-@export var amount := 7
+@export var amount := 10
 
-func initialize_relic(owner: ThreadUI) -> void:
+func initialize_thread(owner: ThreadUI) -> void:
 	# makes sure we don't have extra HP when we
 	# keep saving and loading the game
 	if already_initialized:
@@ -15,7 +15,7 @@ func initialize_relic(owner: ThreadUI) -> void:
 	run.character.max_health += amount
 	already_initialized = true
 	
-	run.thread_handler.relic_state_dictionary[id] = {
+	run.thread_handler.thread_state_dictionary[id] = {
 		"already_initialized" : true
 	}
 

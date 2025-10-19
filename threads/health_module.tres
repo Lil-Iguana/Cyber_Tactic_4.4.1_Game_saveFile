@@ -10,5 +10,5 @@ id = "health_module"
 type = 4
 icon = ExtResource("1_1dwd1")
 tooltip = "[color=\"ffdf00\"]Health Module[/color]
-Gain 10 max HP."
+Gain 10 max HP"
 metadata/_custom_type_script = "uid://jie6cbv6kc3m"
