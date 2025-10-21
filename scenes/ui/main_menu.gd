@@ -3,6 +3,8 @@ extends Control
 const CHAR_SELECTOR_SCENE := preload("res://scenes/ui/play_selector.tscn")
 const RUN_SCENE = preload("res://scenes/run/run.tscn")
 
+@onready var settings_menu: CanvasLayer = %SettingsMenu
+
 @export var run_startup: RunStartup
 
 @onready var continue_button: Button = %Continue
@@ -24,3 +26,7 @@ func _on_new_run_pressed() -> void:
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_settings_pressed() -> void:
+	settings_menu.show()
