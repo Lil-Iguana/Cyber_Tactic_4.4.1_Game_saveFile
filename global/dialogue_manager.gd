@@ -9,7 +9,7 @@ var _pending_callback: Callable = Callable()
 var _post_scene: String = ""      # optional scene file path to change to after dialogue
 var _post_delay_seconds: float = 0.0  # optional small delay before scene change (seconds)
 # Add an exported whitelist array near the top of the file (so you can edit it in the Inspector)
-@export var root_protected_nodes: Array = ["DialogueManager", "PortraitRegistry", "Events", "Shaker", "MusicPlayer", "SFXPlayer", "RNG", "GlobalTurnNumber", "CardLibrary", "CodexManager", "DialogueState", "ModelRegistry"]
+@export var root_protected_nodes: Array = ["DialogueManager", "PortraitRegistry", "Events", "Shaker", "MusicPlayer", "SFXPlayer", "RNG", "GlobalTurnNumber", "CardLibrary", "CodexManager", "DialogueState", "ModelRegistry", "SettingsManager"]
 
 func _ready() -> void:
 	# Fallback listener: when the active scene changes, the root viewport gets a new child.
