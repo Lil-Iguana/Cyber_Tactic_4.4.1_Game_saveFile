@@ -212,6 +212,8 @@ func play_attack() -> void:
 		return
 	if anim.has_animation("Attack"):
 		anim.play("Attack")
+	elif anim.has_animation("Attacking"):
+		anim.play("Attacking")
 	else:
 		push_warning("No 'Attacking' animation found; falling back to Idle.")
 		if anim.has_animation("Idle"):
