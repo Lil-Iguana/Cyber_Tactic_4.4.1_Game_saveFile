@@ -4,9 +4,9 @@ extends Control
 const CARD_REWARDS = preload("res://scenes/ui/card_rewards.tscn")
 const REWARD_BUTTON = preload("res://scenes/ui/reward_button.tscn")
 const GOLD_ICON := preload("res://art/Cache10.png")
-const GOLD_TEXT := "%s cache"
+const GOLD_TEXT := "%s cache (Click to claim)"
 const CARD_ICON := preload("res://art/rarity.png")
-const CARD_TEXT := "Add New Card"
+const CARD_TEXT := "Add New Card (Click to claim)"
 
 @export var run_stats: RunStats
 @export var character_stats: CharacterStats
