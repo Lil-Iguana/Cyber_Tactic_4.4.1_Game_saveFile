@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://o0erus520lr"]
+[gd_scene load_steps=10 format=3 uid="uid://o0erus520lr"]
 
 [ext_resource type="Script" uid="uid://bhiuvtb3fos5h" path="res://global/settings_menu.gd" id="1_etgbf"]
 
@@ -10,6 +10,15 @@ font_size = 32
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bbbdm"]
 bg_color = Color(0.3515629, 0.3515629, 0.35156286, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_etgbf"]
+bg_color = Color(0.3529412, 0.3529412, 0.3529412, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c4p4f"]
+bg_color = Color(0.3529412, 0.3529412, 0.3529412, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jakrp"]
+bg_color = Color(0.3529412, 0.3529412, 0.3529412, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_c4p4f"]
 font_size = 32
@@ -62,6 +71,9 @@ label_settings = SubResource("LabelSettings_etgbf")
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_bbbdm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_etgbf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_c4p4f")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_jakrp")
 
 [node name="Spacer2" type="Control" parent="ColorRect/VBoxContainer"]
 custom_minimum_size = Vector2(0, 10)
