@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_l8ubo")
 battle_tier = 1
-weight = 0.5
+weight = 1.0
 gold_reward_min = 80
 gold_reward_max = 190
 enemies = ExtResource("1_762v6")
