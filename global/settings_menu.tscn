@@ -1,0 +1,143 @@
+[gd_scene load_steps=6 format=3 uid="uid://o0erus520lr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2cj0d"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_etgbf"]
+font_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bbbdm"]
+bg_color = Color(0.3515629, 0.3515629, 0.35156286, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_c4p4f"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_jakrp"]
+font_size = 32
+
+[node name="SettingsMenu" type="CanvasLayer"]
+process_mode = 3
+layer = 5
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.3854925, 0.38549247, 0.38549247, 0.74509805)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Settings" type="Label" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Settings"
+label_settings = SubResource("LabelSettings_2cj0d")
+
+[node name="Spacer" type="Control" parent="ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Fullscreen" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/Fullscreen"]
+layout_mode = 2
+text = "Fullscreen"
+label_settings = SubResource("LabelSettings_etgbf")
+
+[node name="FullScreenCheck" type="CheckBox" parent="ColorRect/VBoxContainer/Fullscreen"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_bbbdm")
+
+[node name="Spacer2" type="Control" parent="ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Master Volume" type="Label" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+text = "Master Volume"
+label_settings = SubResource("LabelSettings_c4p4f")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="MasterSlider" type="HSlider" parent="ColorRect/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="MasterValueLabel" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "80%"
+label_settings = SubResource("LabelSettings_jakrp")
+
+[node name="Spacer3" type="Control" parent="ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Music Volume" type="Label" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+text = "Music Volume"
+label_settings = SubResource("LabelSettings_c4p4f")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="MusicSlider" type="HSlider" parent="ColorRect/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="MusicValueLabel" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "80%"
+label_settings = SubResource("LabelSettings_jakrp")
+
+[node name="Spacer4" type="Control" parent="ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="SFX Volume" type="Label" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+text = "SFX Volume"
+label_settings = SubResource("LabelSettings_c4p4f")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="SFXSlider" type="HSlider" parent="ColorRect/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="SFXValueLabel" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "80%"
+label_settings = SubResource("LabelSettings_jakrp")
+
+[node name="Spacer5" type="Control" parent="ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Back" type="Button" parent="ColorRect/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "Back"
