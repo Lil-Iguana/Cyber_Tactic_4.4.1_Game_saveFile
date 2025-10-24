@@ -16,10 +16,10 @@
 [ext_resource type="PackedScene" uid="uid://bumjrmkb8nk51" path="res://scenes/ui/mana_ui.tscn" id="14_ml47f"]
 [ext_resource type="Theme" uid="uid://cao7y1u2su7i5" path="res://main_theme.tres" id="15_x2t68"]
 [ext_resource type="PackedScene" uid="uid://ookdkrpepxa2" path="res://scenes/ui/tooltip.tscn" id="19_52umt"]
+[ext_resource type="PackedScene" uid="uid://bi4v4t57vfs03" path="res://scenes/ui/battle_over_panel_sim.tscn" id="19_tg886"]
 [ext_resource type="PackedScene" uid="uid://i315oax6po0n" path="res://scenes/dialogue/dialogue_ui.tscn" id="19_wp5al"]
 [ext_resource type="PackedScene" uid="uid://c2vbx7gpljslx" path="res://scenes/ui/enemy_tooltip_popup.tscn" id="20_4hjvj"]
 [ext_resource type="Script" uid="uid://baxry1dnkxqpr" path="res://scenes/ui/red_flash.gd" id="21_mmino"]
-[ext_resource type="PackedScene" uid="uid://dnjdeotl4lhvh" path="res://scenes/ui/battle_over_panel.tscn" id="22_ui7wm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ubsi8"]
 size = Vector2(641, 222)
@@ -132,8 +132,7 @@ one_shot = true
 [node name="BattleOverLayer" type="CanvasLayer" parent="."]
 layer = 2
 
-[node name="BattleOverPanel" parent="BattleOverLayer" instance=ExtResource("22_ui7wm")]
-visible = false
+[node name="BattleOverPanelSim" parent="BattleOverLayer" instance=ExtResource("19_tg886")]
 
 [node name="DialogueLayer" type="CanvasLayer" parent="."]
 layer = 4
