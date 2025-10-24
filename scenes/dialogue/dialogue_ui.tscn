@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://i315oax6po0n"]
+[gd_scene load_steps=8 format=3 uid="uid://i315oax6po0n"]
 
 [ext_resource type="Texture2D" uid="uid://c65soght4j8py" path="res://art/tile_0087.png" id="1_c5aah"]
 [ext_resource type="Script" uid="uid://brjcvx65iqdsf" path="res://scenes/dialogue/dialogue_ui.gd" id="1_sh47r"]
 [ext_resource type="AudioStream" uid="uid://cwoxv1xu28p0l" path="res://art/sfx/speechSFX.wav" id="2_hskrx"]
 [ext_resource type="FontFile" uid="uid://dyuep3t4l8j4" path="res://art/Font Styles/PublicPixel-rv0pA.ttf" id="2_sh47r"]
 [ext_resource type="FontFile" uid="uid://ctwqex6ybxuav" path="res://art/Font Styles/m5x7.ttf" id="4_d3qot"]
+[ext_resource type="Texture2D" uid="uid://xle2duoyu8ft" path="res://art/cards_demo.png" id="6_ft10b"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d3qot"]
 font = ExtResource("2_sh47r")
@@ -118,18 +119,15 @@ scroll_active = false
 [node name="ImagePanel" type="TextureRect" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -190.0
-offset_top = -271.0
-offset_right = 190.0
-offset_bottom = -171.0
+offset_left = -242.5
+offset_top = 29.0
+offset_right = 242.5
+offset_bottom = 244.0
 grow_horizontal = 2
-grow_vertical = 0
-expand_mode = 1
+texture = ExtResource("6_ft10b")
 stretch_mode = 5
 
 [node name="NextButton" type="Button" parent="."]
