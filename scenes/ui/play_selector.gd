@@ -1,6 +1,6 @@
 extends Control
 
-const INTRO_SCENE = preload("res://art/video/Scene1.tscn")
+const INTRO_SCENE = preload("res://cutscene.tscn")
 const ASSASSIN_STATS := preload("res://characters/assassin/assassin.tres")
 const WARRIOR_STATS := preload("res://characters/warrior/warrior.tres")
 const WIZARD_STATS := preload("res://characters/wizard/wizard.tres")
