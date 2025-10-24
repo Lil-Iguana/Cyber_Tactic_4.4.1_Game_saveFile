@@ -8,16 +8,21 @@ var videos: Array = [
 ]
 
 # Define dialogue triggers: {video_index: [{time: seconds, dialogue: path}]}
-# ADJUST THESE TIMESTAMPS TO MATCH YOUR VIDEOS!
 var dialogue_triggers: Dictionary = {
 	0: [  # Video 1: Cyber-tactic-game-cutscenes_1.ogv
 		{"time": 3.5, "dialogue": "res://dialogues/Cutscene1_Part1.json"},
-		{"time": 8.0, "dialogue": "res://dialogues/Cutscene1_Part2.json"}
+		{"time": 6.0, "dialogue": "res://dialogues/Cutscene1_Part2.json"},
+		{"time": 8.5, "dialogue": "res://dialogues/Cutscene1_Part3.json"}
 	],
 	1: [  # Video 2: Cutscene2-cybertactics.ogv
-		{"time": 2.0, "dialogue": "res://dialogues/Cutscene1_Part3.json"}
+		{"time": 5.0, "dialogue": "res://dialogues/Cutscene2_Part1.json"},
+		{"time": 16.0, "dialogue": "res://dialogues/Cutscene2_Part2.json"}
 	],
-	2: []  # Video 3: encounter3-cybertactics_1.ogv - no dialogues, just plays
+	2: [  # Video 3: encounter3-cybertactics_1.og
+		{"time": 9.0, "dialogue": "res://dialogues/Cutscene3_Part1.json"},
+		{"time": 20.0, "dialogue": "res://dialogues/Cutscene3_Part2.json"},
+		{"time": 23.0, "dialogue": "res://dialogues/Cutscene3_Part3.json"}
+	] 
 }
 
 @onready var video_stream_player: VideoStreamPlayer = %VideoStreamPlayer
