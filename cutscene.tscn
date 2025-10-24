@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://4a0a4smeof5j"]
+[gd_scene load_steps=3 format=3 uid="uid://4a0a4smeof5j"]
 
 [ext_resource type="Script" uid="uid://cbp2cnh166fjj" path="res://cutscene.gd" id="1_8vcau"]
-[ext_resource type="VideoStream" uid="uid://cq2v7m4y7njl0" path="res://art/video/Cutscene1_Part1.ogv" id="1_ix241"]
 [ext_resource type="PackedScene" uid="uid://i315oax6po0n" path="res://scenes/dialogue/dialogue_ui.tscn" id="2_8vcau"]
 
 [node name="Cutscene" type="Control"]
@@ -22,7 +21,6 @@ offset_bottom = 360.0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(640, 0)
 layout_mode = 2
-stream = ExtResource("1_ix241")
 autoplay = true
 expand = true
 
