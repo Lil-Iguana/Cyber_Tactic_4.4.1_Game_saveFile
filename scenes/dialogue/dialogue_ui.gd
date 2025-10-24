@@ -62,6 +62,7 @@ func _ready() -> void:
 func show_block_immediately() -> void:
 	# Show the whole UI root (so BlackBlock is visible)
 	visible = true
+	_clear_current_model()
 	# Make sure TransparentBlock is visible immediately
 	if transparent_block:
 		transparent_block.visible = true
