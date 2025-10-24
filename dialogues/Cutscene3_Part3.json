@@ -1,6 +1,4 @@
 {
-  "post_scene": "res://scenes/run/run.tscn",
-  "post_scene_delay": 0.15,
   "lines": [
 	{
 	  "speaker": "Student",

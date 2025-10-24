@@ -1,6 +1,4 @@
 {
-  "post_scene": "res://art/video/Scene3.tscn",
-  "post_scene_delay": 0.15,
   "lines": [
 	{
 	  "speaker": "Student",
