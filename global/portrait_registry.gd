@@ -21,6 +21,8 @@ static var TUTORIAL_IMAGES: Dictionary = {
 	"trojan_shadow": preload("res://art/illustrations/Trojan_Shad.png"),
 	"virus_shadow": preload("res://art/illustrations/Virus_Shad.png"),
 	"worm_shadow": preload("res://art/illustrations/Worm_Shad.png"),
+	"draw_discard_icon": preload("res://art/illustrations/DrawDiscardIcon.png"),
+	"energy_icon": preload("res://art/illustrations/energy_icon.png"),
 	"testing": preload("res://art/illustrations/testing_placeholder.png")
 }
 
