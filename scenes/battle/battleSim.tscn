@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://ci8e17xab2tc6"]
+[gd_scene load_steps=22 format=3 uid="uid://ci8e17xab2tc6"]
 
 [ext_resource type="Script" uid="uid://be8vqlh435fgm" path="res://scenes/battle/battle_sim.gd" id="1_op63c"]
 [ext_resource type="Resource" uid="uid://co6ar47di3crh" path="res://characters/warrior/warrior.tres" id="2_hqfvi"]
+[ext_resource type="Resource" uid="uid://byywdf8pnmwa4" path="res://characters/warrior/warrior_tutorial.tres" id="2_tg886"]
 [ext_resource type="AudioStream" uid="uid://bfoo1bs3kkc51" path="res://art/music/Updating.mp3" id="3_upk6d"]
 [ext_resource type="Texture2D" uid="uid://lugennxj0o6x" path="res://art/battle_background1.png" id="4_qy2ry"]
 [ext_resource type="Script" uid="uid://cgojt0i5spdq4" path="res://scenes/enemy/enemy_handler.gd" id="5_p36ud"]
@@ -25,7 +26,7 @@ size = Vector2(641, 222)
 
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_op63c")
-char_stats = ExtResource("2_hqfvi")
+char_stats = ExtResource("2_tg886")
 music = ExtResource("3_upk6d")
 metadata/_edit_lock_ = true
 
