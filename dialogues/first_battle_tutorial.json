@@ -25,20 +25,8 @@
 	{
 	  "speaker": "Kortica",
 	  "portrait": "cortana_look_down",
-	  "image": "icons_demo",
-	  "text": "Your Energy is displays your current Energy. You can click on your Draw Pile to view your cards. Same goes to the Discard Pile, your played cards will go in there."
-	},
-	{
-	  "speaker": "Kortica",
-	  "portrait": "cortana",
-	  "text": "If there are no cards in the Draw Pile, your Discard Pile is shuffled into the Draw Pile."
-	},
-	{
-	  "speaker": "Kortica",
-	  "portrait": "cortana",
-	  "model": "cortana_model",
-	  "anim": "Idle",
-	  "text": "You can also hover your mouse, and right click on the enemies to see their movesets."
+	  "image": "energy_icon",
+	  "text": "This is your Energy. It displays the current and maximum energy you currently have."
 	},
 	{
 	  "speaker": "Kortica",
