@@ -140,3 +140,4 @@ layer = 4
 
 [node name="DialogueUI" parent="DialogueLayer" instance=ExtResource("19_wp5al")]
 unique_name_in_owner = true
+visible = false
