@@ -42,6 +42,15 @@ var _index: int = 0
 var _full_bbcode_text: String = ""
 var _typing: bool = false
 
+# ---------------- Typewriter / SFX config ----------------
+# Speech SFX: plays every sfx_interval visible characters (skips whitespace)
+@export var speech_sfx: AudioStream = null
+@export_range(1, 10) var sfx_interval: int = 2
+@export_range(0.0, 0.5, 0.01) var sfx_random_pitch: float = 0.06
+@export_range(-40.0, 6.0, 0.5) var sfx_volume_db: float = -6.0
+@export var enable_speech_sfx: bool = true
+var _sfx_player: AudioStreamPlayer = null
+
 func _ready() -> void:
 	# Hide/show the entire DialogueUI root instead of individual children.
 	# Set this Control invisible initially.
@@ -140,30 +149,51 @@ func _show_current_line() -> void:
 	_start_typing_bbcode(_full_bbcode_text)
 
 func _start_typing_bbcode(full_bbcode_text: String) -> void:
-	if not dialogue_label:
+	if dialogue_label == null:
 		return
-	# 1) Set full text first so layout and wrapping are computed once
+
+	# ensure BBCode mode
 	dialogue_label.bbcode_enabled = true
+	# set the bbcode text once so layout is stable
 	dialogue_label.bbcode_text = full_bbcode_text
-	# 2) start invisible
 	dialogue_label.visible_characters = 0
 	_typing = true
 
-	# 3) reveal by visible_characters (this will NOT change layout because engine already computed it)
-	var total_chars: int = dialogue_label.get_total_character_count()
+	# get plain text by stripping tags (so we can test for whitespace)
+	var plain_text: String = _strip_bbcode(full_bbcode_text)
+	var total_chars: int = plain_text.length()
 	if total_chars <= 0:
 		_typing = false
 		return
 
+	# ensure SFX available if needed
+	if enable_speech_sfx and speech_sfx and _sfx_player == null:
+		_ensure_sfx_player()
+
+	# show characters one by one using visible_characters (indices 1..total_chars)
 	for i in range(1, total_chars + 1):
 		if not _typing:
 			break
 		dialogue_label.visible_characters = i
+
+		# play speech blip every sfx_interval visible characters, skipping whitespace
+		if enable_speech_sfx and speech_sfx and sfx_interval > 0 and (i % sfx_interval) == 0:
+			# plain_text index is i-1
+			if i - 1 < plain_text.length():
+				var ch: String = plain_text[i - 1]
+				if ch != " " and ch != "\n" and ch != "\t":
+					_play_speech_sfx()
+
 		await get_tree().create_timer(char_delay).timeout
 
-	# ensure fully visible at the end
+	# finalize
 	dialogue_label.visible_characters = total_chars
 	_typing = false
+	# stop any lingering sfx (stop autoload SFXPlayer too)
+	if typeof(SFXPlayer) != TYPE_NIL and SFXPlayer and SFXPlayer.has_method("stop"):
+		SFXPlayer.stop()
+	if _sfx_player:
+		_sfx_player.stop()
 
 func _typewriter_bbcode() -> void:
 	if dialogue_label == null:
@@ -195,6 +225,8 @@ func _on_next_pressed() -> void:
 		_typing = false
 		if dialogue_label:
 			dialogue_label.visible_characters = dialogue_label.get_total_character_count()
+		if _sfx_player:
+			_sfx_player.stop()
 		return
 
 	# advance
@@ -219,6 +251,8 @@ func _emit_finished() -> void:
 	force_hide_block()
 	_write_debug("DialogueUI: finished dialogue emitted")
 	emit_signal("dialogue_finished")
+	if _sfx_player:
+		_sfx_player.stop()
 
 
 # --- portrait & image helpers ---
@@ -496,3 +530,45 @@ func _show_model_if_available(key_or_path: String, anim_name: String = "Idle") -
 			var anims := anim_player.get_animation_list()
 			if anims.size() > 0:
 				anim_player.play(anims[0])
+
+# ---------------- Speech SFX helpers ----------------
+func _ensure_sfx_player() -> void:
+	if _sfx_player != null:
+		return
+	_sfx_player = AudioStreamPlayer.new()
+	# attach to this Control so it gets freed with UI; positioned audio not required
+	add_child(_sfx_player)
+	_sfx_player.stream = speech_sfx
+	_sfx_player.volume_db = sfx_volume_db
+	_sfx_player.autoplay = false
+	# ensure it uses your main bus; change if you have a dedicated SFX bus
+	_sfx_player.bus = "SFX"
+
+func _play_speech_sfx() -> void:
+	if not enable_speech_sfx or speech_sfx == null:
+		return
+	if _sfx_player == null:
+		_ensure_sfx_player()
+	# retrigger cleanly
+	_sfx_player.stop()
+	_sfx_player.pitch_scale = 1.0 + randf_range(-sfx_random_pitch, sfx_random_pitch)
+	_sfx_player.play()
+
+func _strip_bbcode(bb: String) -> String:
+	if bb == null or bb == "":
+		return ""
+	var out := String()
+	var in_tag := false
+	for i in bb:
+		# i is a one-character string
+		if not in_tag:
+			if i == "[":
+				in_tag = true
+				continue
+			out += i
+		else:
+			# we are inside a tag; wait for closing bracket
+			if i == "]":
+				in_tag = false
+			# else skip chars inside tag
+	return out

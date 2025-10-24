@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://i315oax6po0n"]
+[gd_scene load_steps=7 format=3 uid="uid://i315oax6po0n"]
 
 [ext_resource type="Texture2D" uid="uid://c65soght4j8py" path="res://art/tile_0087.png" id="1_c5aah"]
 [ext_resource type="Script" uid="uid://brjcvx65iqdsf" path="res://scenes/dialogue/dialogue_ui.gd" id="1_sh47r"]
+[ext_resource type="AudioStream" uid="uid://cwoxv1xu28p0l" path="res://art/sfx/speechSFX.wav" id="2_hskrx"]
 [ext_resource type="FontFile" uid="uid://dyuep3t4l8j4" path="res://art/Font Styles/PublicPixel-rv0pA.ttf" id="2_sh47r"]
 [ext_resource type="FontFile" uid="uid://ctwqex6ybxuav" path="res://art/Font Styles/m5x7.ttf" id="4_d3qot"]
 
@@ -17,6 +18,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sh47r")
+speech_sfx = ExtResource("2_hskrx")
 
 [node name="TransparentBlock" type="ColorRect" parent="."]
 layout_mode = 1
