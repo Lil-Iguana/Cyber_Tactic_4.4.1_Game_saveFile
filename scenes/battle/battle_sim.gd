@@ -11,6 +11,8 @@ extends Node2D
 
 
 func _ready() -> void:
+	if not DialogueState.has_shown("first_battle_shown"):
+		DialogueManager.start_dialogue_from_file("res://dialogues/first_battle_tutorial.json", "first_battle_shown")
 	var new_stats: CharacterStats = char_stats.create_instance()
 	battle_ui.char_stats = new_stats
 	player.stats = new_stats
