@@ -17,6 +17,10 @@ static var PORTRAITS: Dictionary = {
 static var TUTORIAL_IMAGES: Dictionary = {
 	"cards_demo": preload("res://art/cards_demo.png"),
 	"icons_demo": preload("res://art/icons_demo.png"),
+	"ransom_shadow": preload("res://art/illustrations/Ransom_Shad.png"),
+	"trojan_shadow": preload("res://art/illustrations/Trojan_Shad.png"),
+	"virus_shadow": preload("res://art/illustrations/Virus_Shad.png"),
+	"worm_shadow": preload("res://art/illustrations/Worm_Shad.png"),
 	"testing": preload("res://art/illustrations/testing_placeholder.png")
 }
 
