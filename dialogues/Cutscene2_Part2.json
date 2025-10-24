@@ -61,6 +61,7 @@
 	  "portrait": "cortana",
 	  "model": "cortana_model",
 	  "anim": "Idle",
+	  "image": "worm_shadow",
 	  "text": "Worms - I found reports of them spreading endlessly through networks. They act fast, multiplying until the system crashes."
 	},
 	{
@@ -68,6 +69,7 @@
 	  "portrait": "cortana",
 	  "model": "cortana_model",
 	  "anim": "Idle",
+	  "image": "virus_shadow",
 	  "text": "Virus - Search results show countless cases where it sabotages files, steals, data, or slows everything down."
 	},
 	{
@@ -75,6 +77,7 @@
 	  "portrait": "cortana",
 	  "model": "cortana_model",
 	  "anim": "Idle",
+	  "image": "trojan_shadow",
 	  "text": "Trojans - They appear safe, but articles describe how they trick people, then secretly unleash other threats."
 	},
 	{
@@ -82,6 +85,7 @@
 	  "portrait": "cortana",
 	  "model": "cortana_model",
 	  "anim": "Idle",
+	  "image": "ransom_shadow",
 	  "text": "Ransomware - Real cases show how they exploit weaknesses, just like intruders breaking into unlocked houses."
 	},
 	{
