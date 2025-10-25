@@ -180,7 +180,7 @@ func _setup_top_bar():
 	
 	card_library_button.card_library = character.card_library
 	card_library_view.card_pile = character.card_library
-	card_library_button.pressed.connect(card_library_view.show_current_view.bind("Card Library"))
+	card_library_button.pressed.connect(card_library_view.show_current_view.bind("Codex"))
 	
 	bestiary_opener_button.pressed.connect(bestiary_view.show)
 	
