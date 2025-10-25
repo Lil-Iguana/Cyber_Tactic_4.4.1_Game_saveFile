@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://b64l6yr4kj78t"]
+
+[ext_resource type="Script" uid="uid://c3b4vuv63s1hp" path="res://scenes/tutorial/tutorial_overlay.gd" id="1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_border"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.8, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="TutorialOverlay" type="CanvasLayer"]
+layer = 5
+script = ExtResource("1")
+
+[node name="DimOverlay" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.7)
+
+[node name="Spotlight" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7)
+
+[node name="HighlightBorder" type="NinePatchRect" parent="."]
+visible = false
+offset_right = 100.0
+offset_bottom = 50.0
+
+[node name="Panel" type="Panel" parent="HighlightBorder"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_border")
