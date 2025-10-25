@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bhuc3qfelrj6f"]
+[gd_scene load_steps=11 format=3 uid="uid://bhuc3qfelrj6f"]
 
 [ext_resource type="Script" uid="uid://md6f0hgtphpk" path="res://scenes/ui/card_rewards.gd" id="1_jycrj"]
 [ext_resource type="PackedScene" uid="uid://rsk8d12egnnf" path="res://scenes/ui/card_menu_ui.tscn" id="1_u1hn7"]
@@ -7,7 +7,11 @@
 [ext_resource type="Resource" uid="uid://kyu5l54a2ljg" path="res://characters/warrior/cards/student_cybersword_slash.tres" id="3_pfit7"]
 [ext_resource type="Resource" uid="uid://cavj5bacvpmrd" path="res://characters/warrior/cards/warrior_big_slam.tres" id="4_j87tl"]
 [ext_resource type="Resource" uid="uid://bl66ldjcrh1ii" path="res://characters/warrior/cards/warrior_true_strength.tres" id="5_5vnx4"]
+[ext_resource type="FontFile" uid="uid://dyuep3t4l8j4" path="res://art/Font Styles/PublicPixel-rv0pA.ttf" id="6_14wmn"]
 [ext_resource type="FontFile" uid="uid://7ucfniysa1ko" path="res://art/Font Styles/pixel_rpg.ttf" id="7_tigeo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_27adq"]
+font = ExtResource("6_14wmn")
 
 [node name="CardRewards" type="ColorRect"]
 anchors_preset = 15
@@ -18,6 +22,19 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.666667)
 script = ExtResource("1_jycrj")
 rewards = Array[ExtResource("2_cvuw6")]([ExtResource("3_pfit7"), ExtResource("4_j87tl"), ExtResource("5_5vnx4")])
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -65.5
+offset_top = 101.0
+offset_right = 65.5
+offset_bottom = 114.0
+grow_horizontal = 2
+text = "Pick a Card to add to your deck!"
+label_settings = SubResource("LabelSettings_27adq")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -58,6 +75,7 @@ theme_override_font_sizes/font_size = 6
 text = "Skip"
 
 [node name="CardTooltipPopUp" parent="." instance=ExtResource("2_db3cx")]
+visible = false
 layout_mode = 1
 background_color = Color(0, 0, 0, 0.690196)
 

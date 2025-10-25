@@ -1,10 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cr6oeapjhsnjt"]
+[gd_scene load_steps=7 format=3 uid="uid://cr6oeapjhsnjt"]
 
 [ext_resource type="Script" uid="uid://bex0kkfy7ai5n" path="res://scenes/battle_reward/battle_reward.gd" id="1_q0wnb"]
 [ext_resource type="Texture2D" uid="uid://lugennxj0o6x" path="res://art/battle_background1.png" id="2_gdsnt"]
-[ext_resource type="PackedScene" uid="uid://d1h161tcghnyh" path="res://scenes/ui/reward_button.tscn" id="3_08i2o"]
-[ext_resource type="Texture2D" uid="uid://vytb7q5g8iyr" path="res://art/Cache.png" id="4_isejm"]
-[ext_resource type="Texture2D" uid="uid://dxjqjw61iqcea" path="res://art/rarity.png" id="5_y72du"]
 [ext_resource type="FontFile" uid="uid://7ucfniysa1ko" path="res://art/Font Styles/pixel_rpg.ttf" id="6_sfqgb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ykgm0"]
@@ -12,6 +9,12 @@ font_size = 48
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qbeej"]
 bg_color = Color(0, 0, 0, 0.501961)
+
+[sub_resource type="LabelSettings" id="LabelSettings_feedback"]
+font_size = 32
+font_color = Color(1, 0.85, 0.2, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [node name="BattleReward" type="Control"]
 layout_mode = 3
@@ -82,23 +85,38 @@ theme_override_constants/margin_bottom = 5
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="GoldReward" parent="VBoxContainer/RewardContainer/MarginContainer/Rewards" instance=ExtResource("3_08i2o")]
-layout_mode = 2
-reward_icon = ExtResource("4_isejm")
-reward_text = "127 gold"
-
-[node name="CardReward" parent="VBoxContainer/RewardContainer/MarginContainer/Rewards" instance=ExtResource("3_08i2o")]
-layout_mode = 2
-reward_icon = ExtResource("5_y72du")
-reward_text = "Add New Card"
-
-[node name="BackButton" type="Button" parent="VBoxContainer"]
+[node name="ClaimAllButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 30)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("6_sfqgb")
 theme_override_font_sizes/font_size = 18
-text = "Continue
-"
+text = "Claim All"
 
-[connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[node name="ContinueButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("6_sfqgb")
+theme_override_font_sizes/font_size = 18
+text = "Continue"
+
+[node name="FeedbackLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 50.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_feedback")
+horizontal_alignment = 1
+vertical_alignment = 1

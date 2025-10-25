@@ -4,15 +4,18 @@ extends Control
 const CARD_REWARDS = preload("res://scenes/ui/card_rewards.tscn")
 const REWARD_BUTTON = preload("res://scenes/ui/reward_button.tscn")
 const GOLD_ICON := preload("res://art/Cache10.png")
-const GOLD_TEXT := "%s cache (Click to claim)"
+const GOLD_TEXT := "%s cache"
 const CARD_ICON := preload("res://art/rarity.png")
-const CARD_TEXT := "Add New Card (Click to claim)"
+const CARD_TEXT := "New Card"
 
 @export var run_stats: RunStats
 @export var character_stats: CharacterStats
 @export var thread_handler: ThreadHandler
 
 @onready var rewards: VBoxContainer = %Rewards
+@onready var claim_all_button: Button = %ClaimAllButton
+@onready var continue_button: Button = %ContinueButton
+@onready var feedback_label: Label = %FeedbackLabel
 
 var card_reward_total_weight := 0.0
 var card_rarity_weights := {
@@ -21,41 +24,126 @@ var card_rarity_weights := {
 	Card.Rarity.RARE: 0.0
 }
 
+var pending_gold := 0
+var pending_threads: Array[ThreadPassive] = []
+var has_card_reward := false
+var rewards_claimed := false
+
 
 func _ready() -> void:
 	for node: Node in rewards.get_children():
 		node.queue_free()
+	
+	claim_all_button.pressed.connect(_on_claim_all_pressed)
+	continue_button.pressed.connect(_on_continue_pressed)
+	
+	# Initially hide continue button and feedback
+	continue_button.hide()
+	feedback_label.hide()
 
 
 func add_gold_reward(amount: int) -> void:
+	pending_gold += amount
+	
 	var gold_reward := REWARD_BUTTON.instantiate() as RewardButton
 	gold_reward.reward_icon = GOLD_ICON
 	gold_reward.reward_text = GOLD_TEXT % amount
-	gold_reward.pressed.connect(_on_gold_reward_taken.bind(amount))
+	# Don't connect pressed - it will be claimed by Claim All button
 	rewards.add_child.call_deferred(gold_reward)
 
 
 func add_thread_award(thread: ThreadPassive) -> void:
 	if not thread:
 		return
-
+	
+	pending_threads.append(thread)
+	
 	var thread_reward := REWARD_BUTTON.instantiate() as RewardButton
 	thread_reward.reward_icon = thread.icon
 	thread_reward.reward_text = thread.thread_name
-	thread_reward.pressed.connect(_on_thread_reward_taken.bind(thread))
+	# Don't connect pressed - it will be claimed by Claim All button
 	rewards.add_child.call_deferred(thread_reward)
 
 
 func add_card_reward() -> void:
+	has_card_reward = true
+	
 	var card_reward := REWARD_BUTTON.instantiate() as RewardButton
 	card_reward.reward_icon = CARD_ICON
 	card_reward.reward_text = CARD_TEXT
-	card_reward.pressed.connect(_show_card_rewards)
+	# Don't connect pressed - card selection will be shown by Claim All button
 	rewards.add_child.call_deferred(card_reward)
+
+
+func _on_claim_all_pressed() -> void:
+	if rewards_claimed:
+		return
+	
+	rewards_claimed = true
+	claim_all_button.hide()
+	
+	# Clear all reward buttons from display
+	for node: Node in rewards.get_children():
+		node.queue_free()
+	
+	# Claim all gold
+	if pending_gold > 0:
+		_claim_gold()
+	
+	# Claim all threads
+	for thread in pending_threads:
+		_claim_thread(thread)
+	
+	# Show feedback animation
+	await _show_feedback_animation()
+	
+	# If there's a card reward, show card selection
+	if has_card_reward:
+		_show_card_rewards()
+	else:
+		# No card reward, just show continue button
+		continue_button.show()
+
+
+func _claim_gold() -> void:
+	if run_stats:
+		run_stats.gold += pending_gold
+
+
+func _claim_thread(thread: ThreadPassive) -> void:
+	if thread_handler:
+		thread_handler.add_thread(thread)
+
+
+func _show_feedback_animation() -> void:
+	feedback_label.show()
+	feedback_label.modulate = Color.TRANSPARENT
+	
+	var feedback_text := ""
+	
+	if pending_gold > 0:
+		feedback_text += "+%d Cache\n" % pending_gold
+	
+	for thread in pending_threads:
+		feedback_text += "+%s\n" % thread.thread_name
+	
+	feedback_label.text = feedback_text.strip_edges()
+	
+	# Fade in animation
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(feedback_label, "modulate", Color.WHITE, 0.3)
+	tween.tween_interval(1.5)
+	tween.tween_property(feedback_label, "modulate", Color.TRANSPARENT, 0.3)
+	
+	await tween.finished
+	feedback_label.hide()
 
 
 func _show_card_rewards() -> void:
 	if not run_stats or not character_stats:
+		continue_button.show()
 		return
 	
 	var card_rewards := CARD_REWARDS.instantiate() as CardRewards
@@ -65,6 +153,7 @@ func _show_card_rewards() -> void:
 	var card_reward_array: Array[Card] = []
 	var available_cards: Array[Card] = character_stats.draftable_cards.duplicate_cards()
 	
+	# Generate only the number of cards specified by run_stats.card_rewards
 	for i in run_stats.card_rewards:
 		_setup_card_chances()
 		var roll := RNG.instance.randf_range(0.0, card_reward_total_weight)
@@ -103,27 +192,14 @@ func _get_random_available_card(available_cards: Array[Card], with_rarity: Card.
 	return RNG.array_pick_random(all_possible_cards)
 
 
-func _on_gold_reward_taken(amount: int) -> void:
-	if not run_stats:
-		return
-	
-	run_stats.gold += amount
-
-
 func _on_card_reward_taken(card: Card) -> void:
-	if not character_stats or not card:
-		return
-		
-	character_stats.deck.add_card(card)
-	Events.card_reward_selected.emit(card)
-
-
-func _on_thread_reward_taken(thread: ThreadPassive) -> void:
-	if not thread or not thread_handler:
-		return
+	if card and character_stats:
+		character_stats.deck.add_card(card)
+		Events.card_reward_selected.emit(card)
 	
-	thread_handler.add_thread(thread)
+	# After card selection (or skip), show continue button
+	continue_button.show()
 
 
-func _on_back_button_pressed() -> void:
+func _on_continue_pressed() -> void:
 	Events.battle_reward_exited.emit()
