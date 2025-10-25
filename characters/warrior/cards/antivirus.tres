@@ -10,8 +10,10 @@ id = "antivirus"
 type = 2
 rarity = 2
 cost = 2
+remove = true
 icon = ExtResource("1_b0er6")
-tooltip_text = "Antivirus: whenever you gain Defense, deal 4 damage to a random enemy"
+tooltip_text = "[center]Antivirus: whenever you gain a Block, deal 4 damage to a random enemy.[/center]
+[center][color=light_slate_gray]Remove - removed from combat when played. Returns to deck at the end of combat[/color][/center]"
 real_world_text = "[center][color=\"#FFA500\"]---- Real-World Description ----[/color][/center]
 A type of cybersecurity program that prevents, detects, and removes malware—such as viruses, ransomware, and spyware—from computers and mobile devices."
 metadata/_custom_type_script = "uid://db7gxbb4g4qbl"

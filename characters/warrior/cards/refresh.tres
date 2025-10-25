@@ -10,5 +10,6 @@ id = "refresh"
 type = 1
 remove = true
 icon = ExtResource("1_627ik")
-tooltip_text = "[center]Draw 1 card. Put a card from your hand on top of your draw pile. Remove.[/center]"
+tooltip_text = "[center]Draw 1 card. Put a card from your hand on top of your draw pile[/center]
+[center][color=light_slate_gray]Remove - removed from combat when played. Returns to deck at the end of combat[/color][/center]"
 metadata/_custom_type_script = "uid://db7gxbb4g4qbl"
