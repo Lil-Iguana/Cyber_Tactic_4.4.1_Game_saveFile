@@ -21,4 +21,3 @@ func show_screen(text: String, type: Type) -> void:
 	continue_button.visible = type == Type.WIN
 	main_menu_button.visible = type == Type.LOSE
 	show()
-	get_tree().paused = true
