@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="PoweringUpStatus" load_steps=3 format=3 uid="uid://cbw1pr3xjnk8n"]
 
-[ext_resource type="Texture2D" uid="uid://pgnrffkpyidd" path="res://art/tile_0127.png" id="1_e3rdm"]
+[ext_resource type="Texture2D" uid="uid://doiceq8b6xa4n" path="res://art/damage_up_plus.png" id="1_fp27r"]
 [ext_resource type="Script" uid="uid://c04yxxgcp5kep" path="res://statuses/powering_up.gd" id="2_sx1pq"]
 
 [resource]
 script = ExtResource("2_sx1pq")
 id = "powering_up"
 effect_type = 1
-icon = ExtResource("1_e3rdm")
+icon = ExtResource("1_fp27r")
 tooltip = "Powering Up: At the end of turn, gain 2 Power Up"
