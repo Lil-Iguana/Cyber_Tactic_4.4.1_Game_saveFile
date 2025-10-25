@@ -45,5 +45,3 @@ layout_mode = 2
 size_flags_vertical = 1
 text = "99 gold"
 label_settings = SubResource("LabelSettings_y2wrr")
-
-[connection signal="pressed" from="." to="." method="_on_pressed"]
