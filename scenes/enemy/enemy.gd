@@ -3,6 +3,7 @@ extends Area2D
 
 const ARROW_OFFSET := 5
 const WHITE_SPRITE_MATERIAL := preload("res://art/white_sprite_material.tres")
+const HOVER_DELAY := 1.5  # seconds to wait before showing tooltip
 
 @export var stats: EnemyStats : set = set_enemy_stats
 
@@ -17,6 +18,8 @@ const WHITE_SPRITE_MATERIAL := preload("res://art/white_sprite_material.tres")
 
 var enemy_action_picker: EnemyActionPicker
 var current_action: EnemyAction : set = set_current_action
+var hover_timer: Timer = null
+var is_showing_tooltip := false
 
 
 func _replace_editor_placeholder_with_model() -> void:
@@ -149,6 +152,72 @@ func gain_block(block: int, which_modifier: Modifier.Type) -> void:
 	stats.block += modified_block
 
 
+func _setup_hover_timer() -> void:
+	hover_timer = Timer.new()
+	hover_timer.wait_time = HOVER_DELAY
+	hover_timer.one_shot = true
+	hover_timer.timeout.connect(_on_hover_timer_timeout)
+	add_child(hover_timer)
+
+
+func _on_hover_timer_timeout() -> void:
+	if stats:
+		is_showing_tooltip = true
+		Events.enemy_tooltip_requested.emit(stats.art, stats.enemy_name, stats.intent_icons, stats.intent_descriptions)
+
+
+func _show_tooltip_immediately() -> void:
+	if hover_timer:
+		hover_timer.stop()
+	if stats:
+		is_showing_tooltip = true
+		Events.enemy_tooltip_requested.emit(stats.art, stats.enemy_name, stats.intent_icons, stats.intent_descriptions)
+
+
+func _on_enemy_hovered(enemy: Enemy) -> void:
+	# Another enemy is being hovered
+	if enemy != self:
+		# Stop our timer if it's running
+		if hover_timer and not hover_timer.is_stopped():
+			hover_timer.stop()
+		
+		# Hide our tooltip if it's showing
+		if is_showing_tooltip:
+			is_showing_tooltip = false
+			Events.tooltip_hide_requested.emit()
+
+
+func _on_mouse_entered() -> void:
+	# Notify all enemies that this one is being hovered
+	Events.enemy_hovered.emit(self)
+	
+	# Check if any tooltip is currently visible
+	var any_tooltip_showing := false
+	for enemy in get_tree().get_nodes_in_group("enemies"):
+		if enemy is Enemy and enemy.is_showing_tooltip:
+			any_tooltip_showing = true
+			break
+	
+	# If a tooltip is already showing, show ours immediately
+	if any_tooltip_showing:
+		_show_tooltip_immediately()
+	else:
+		# Otherwise, start the hover timer
+		if hover_timer:
+			hover_timer.start()
+
+
+func _on_mouse_exited() -> void:
+	# Stop the timer if it's running
+	if hover_timer and not hover_timer.is_stopped():
+		hover_timer.stop()
+	
+	# Hide tooltip if it's showing
+	if is_showing_tooltip:
+		is_showing_tooltip = false
+		Events.tooltip_hide_requested.emit()
+
+
 func _on_area_entered(_area: Area2D) -> void:
 	arrow.show()
 
@@ -195,7 +264,7 @@ func play_idle() -> void:
 	var model_node = _get_model_node()
 	var anim = _find_animation_player(model_node)
 	if not anim:
-		push_warning("Can't play idle — no AnimationPlayer found.")
+		push_warning("Can't play idle – no AnimationPlayer found.")
 		return
 	if anim.has_animation("Idle"):
 		anim.play("Idle")
@@ -208,7 +277,7 @@ func play_attack() -> void:
 	var model_node = _get_model_node()
 	var anim = _find_animation_player(model_node)
 	if not anim:
-		push_warning("Can't play attack — no AnimationPlayer found.")
+		push_warning("Can't play attack – no AnimationPlayer found.")
 		return
 	if anim.has_animation("Attack"):
 		anim.play("Attack")
@@ -224,7 +293,7 @@ func play_casting() -> void:
 	var model_node = _get_model_node()
 	var anim = _find_animation_player(model_node)
 	if not anim:
-		push_warning("Can't play casting — no AnimationPlayer found.")
+		push_warning("Can't play casting – no AnimationPlayer found.")
 		return
 	if anim.has_animation("Casting"):
 		anim.play("Casting")
@@ -238,7 +307,7 @@ func play_hurt() -> void:
 	var model_node = _get_model_node()
 	var anim = _find_animation_player(model_node)
 	if not anim:
-		push_warning("Can't play hurt — no AnimationPlayer found.")
+		push_warning("Can't play hurt – no AnimationPlayer found.")
 		return
 	if anim.has_animation("Hurt"):
 		anim.play("Hurt")
@@ -254,12 +323,12 @@ func _ready() -> void:
 	
 	play_idle()
 	
-	connect("input_event", Callable(self, "_on_input_event"))
+	_setup_hover_timer()
 	status_handler.status_owner = self
-
-
-func _on_input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
-	if event is InputEventMouseButton:
-		if event.button_index == 2 and event.pressed:
-			if stats:
-				Events.enemy_tooltip_requested.emit(stats.art, stats.enemy_name, stats.intent_icons, stats.intent_descriptions)
+	
+	# Connect mouse signals for tooltip hovering
+	mouse_entered.connect(_on_mouse_entered)
+	mouse_exited.connect(_on_mouse_exited)
+	
+	# Listen for other enemies being hovered
+	Events.enemy_hovered.connect(_on_enemy_hovered)

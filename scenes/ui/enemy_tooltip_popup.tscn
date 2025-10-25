@@ -1,6 +1,5 @@
-[gd_scene load_steps=6 format=3 uid="uid://c2vbx7gpljslx"]
+[gd_scene load_steps=5 format=3 uid="uid://c2vbx7gpljslx"]
 
-[ext_resource type="Texture2D" uid="uid://w0k3g0fmd32b" path="res://art/close.png" id="1_4hcer"]
 [ext_resource type="Script" uid="uid://ccrclt4rl25cc" path="res://scenes/ui/enemy_tooltip_popup.gd" id="1_5i7e6"]
 [ext_resource type="Texture2D" uid="uid://wy0km0q1cnv8" path="res://art/tile_0119.png" id="2_5i7e6"]
 [ext_resource type="FontFile" uid="uid://d3fuaowohtamf" path="res://art/Font Styles/PressStart2P-Regular.ttf" id="3_tj8xd"]
@@ -15,6 +14,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -427.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5i7e6")
@@ -30,7 +31,7 @@ scale = Vector2(1.646, 1.833)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 clip_contents = true
-layout_mode = 2
+layout_mode = 0
 offset_left = 8.0
 offset_top = 30.0
 offset_right = 207.0
@@ -67,14 +68,3 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 2
-
-[node name="CloseButton" type="TextureButton" parent="."]
-unique_name_in_owner = true
-layout_mode = 2
-offset_left = 192.0
-offset_top = 23.0
-offset_right = 208.0
-offset_bottom = 39.0
-size_flags_horizontal = 8
-size_flags_vertical = 0
-texture_normal = ExtResource("1_4hcer")

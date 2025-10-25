@@ -3,10 +3,9 @@ extends Control
 
 @export var fade_seconds := 0.2
 
-@onready var close_button: TextureButton = %CloseButton
 @onready var tooltip_icon: TextureRect = %EnemyIcon
 @onready var enemy_name: Label = %EnemyName
-@onready var intent_grid: GridContainer  = %IntentGrid
+@onready var intent_grid: GridContainer = %IntentGrid
 
 var tween: Tween
 var is_visible_now := false
@@ -15,7 +14,6 @@ var is_visible_now := false
 func _ready() -> void:
 	Events.enemy_tooltip_requested.connect(show_tooltip)
 	Events.tooltip_hide_requested.connect(hide_tooltip)
-	close_button.pressed.connect(hide)
 	modulate = Color.TRANSPARENT
 
 
@@ -39,21 +37,21 @@ func show_tooltip(icon: Texture, name_text: String, icons: Array, descs: Array) 
 		iconS.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		intent_grid.add_child(iconS)
 
-		 # — Description cell as RichTextLabel —
+		# – Description cell as RichTextLabel –
 		var rt = RichTextLabel.new()
-		rt.bbcode_enabled        = true            # enable [color] tags :contentReference[oaicite:0]{index=0}
-		rt.fit_content           = true            # auto‑resize to its text height :contentReference[oaicite:1]{index=1}
-		rt.scroll_active         = false           # disable its built‑in scrollbar
+		rt.bbcode_enabled = true
+		rt.fit_content = true
+		rt.scroll_active = false
 		rt.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		rt.size_flags_vertical   = Control.SIZE_SHRINK_CENTER
+		rt.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 
-		rt.bbcode_text = descs[i]                  # your BBCode string (e.g. “[color=red]Slash[/color]: Deals 5 damage.”)
+		rt.bbcode_text = descs[i]
 
 		intent_grid.add_child(rt)
 
 	# Reset scroll to top if wrapped in ScrollContainer
 	if has_node("IntentScroll"):
-		$IntentScroll.scroll_vertical   = 0
+		$IntentScroll.scroll_vertical = 0
 		$IntentScroll.scroll_horizontal = 0
 	
 	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
