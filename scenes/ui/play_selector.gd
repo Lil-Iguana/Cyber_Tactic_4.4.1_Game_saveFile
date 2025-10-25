@@ -1,5 +1,6 @@
 extends Control
 
+const MAIN_MENU_PATH = "res://scenes/ui/main_menu.tscn"
 const INTRO_SCENE = preload("res://cutscene.tscn")
 const ASSASSIN_STATS := preload("res://characters/assassin/assassin.tres")
 const WARRIOR_STATS := preload("res://characters/warrior/warrior.tres")
@@ -11,6 +12,7 @@ const WIZARD_STATS := preload("res://characters/wizard/wizard.tres")
 @onready var description: Label = %Description
 @onready var character_portrait: TextureRect = %CharacterPotrait
 @onready var tutorial_check_box: CheckBox = %TutorialCheckBox
+@onready var back_button: Button = %BackButton
 
 var current_character: CharacterStats : set = set_current_character
 
@@ -72,3 +74,7 @@ func _on_wizard_button_2_pressed() -> void:
 
 func _on_assassin_button_3_pressed() -> void:
 	current_character = ASSASSIN_STATS
+
+
+func _on_back_button_pressed() -> void:
+	get_tree().change_scene_to_file(MAIN_MENU_PATH)

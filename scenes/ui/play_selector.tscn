@@ -217,7 +217,17 @@ button_pressed = true
 text = "Tutorial"
 alignment = 1
 
+[node name="BackButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 7.0
+offset_top = 9.0
+offset_right = 57.0
+offset_bottom = 29.0
+text = "Back"
+
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="PlayerButtons/StudentButton" to="." method="_on_student_button_pressed"]
 [connection signal="pressed" from="PlayerButtons/WizardButton2" to="." method="_on_wizard_button_2_pressed"]
 [connection signal="pressed" from="PlayerButtons/AssassinButton3" to="." method="_on_assassin_button_3_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
