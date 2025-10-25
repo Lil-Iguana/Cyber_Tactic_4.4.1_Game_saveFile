@@ -18,7 +18,7 @@ static func create_steps() -> Array[TutorialStep]:
 	step1.narration_text = "This is your DRAW PILE. It shows how many cards are left to draw."
 	step1.highlight_node_path = "BattleUI/DrawPileButton"
 	step1.action_type = TutorialStep.ActionType.NONE
-	step1.auto_advance_delay = 3.0
+	step1.auto_advance_delay = 4.0
 	step1.block_all_except_highlight = true
 	steps.append(step1)
 	
@@ -27,7 +27,7 @@ static func create_steps() -> Array[TutorialStep]:
 	step3.narration_text = "This is your DISCARD PILE. Cards you play go here."
 	step3.highlight_node_path = "BattleUI/DiscardPileButton"
 	step3.action_type = TutorialStep.ActionType.NONE
-	step3.auto_advance_delay = 3.0
+	step3.auto_advance_delay = 4.0
 	step3.block_all_except_highlight = true
 	steps.append(step3)
 	
@@ -44,7 +44,7 @@ static func create_steps() -> Array[TutorialStep]:
 	step5.narration_text = "The card you played has been addded to your discard pile!"
 	step5.highlight_node_path = "BattleUI/DiscardPileButton"
 	step5.action_type = TutorialStep.ActionType.NONE
-	step5.auto_advance_delay = 3.0
+	step5.auto_advance_delay = 4.0
 	step5.block_all_except_highlight = false
 	steps.append(step5)
 	
@@ -52,7 +52,7 @@ static func create_steps() -> Array[TutorialStep]:
 	var step6 := TutorialStep.new()
 	step6.narration_text = "When your Draw Pile is empty, your Discard Pile shuffles back into it!"
 	step6.action_type = TutorialStep.ActionType.NONE
-	step6.auto_advance_delay = 3.5
+	step6.auto_advance_delay = 4.0
 	step6.block_all_except_highlight = true
 	steps.append(step6)
 	
@@ -60,7 +60,7 @@ static func create_steps() -> Array[TutorialStep]:
 	var step7 := TutorialStep.new()
 	step7.narration_text = "Managing your deck is key! Know what cards you have available."
 	step7.action_type = TutorialStep.ActionType.NONE
-	step7.auto_advance_delay = 3.0
+	step7.auto_advance_delay = 4.0
 	step7.block_all_except_highlight = true
 	steps.append(step7)
 	
@@ -84,7 +84,7 @@ static func create_steps() -> Array[TutorialStep]:
 	step10.narration_text = "Notice your Draw Pile decreased as you drew new cards!"
 	step10.highlight_node_path = "BattleUI/DrawPileButton"
 	step10.action_type = TutorialStep.ActionType.NONE
-	step10.auto_advance_delay = 3.0
+	step10.auto_advance_delay = 4.0
 	step10.block_all_except_highlight = true
 	steps.append(step10)
 	
@@ -92,7 +92,7 @@ static func create_steps() -> Array[TutorialStep]:
 	var step11 := TutorialStep.new()
 	step11.narration_text = "You're ready! Use your deck wisely to win the battle!"
 	step11.action_type = TutorialStep.ActionType.NONE
-	step11.auto_advance_delay = 3.0
+	step11.auto_advance_delay = 4.0
 	step11.block_all_except_highlight = false
 	steps.append(step11)
 	
