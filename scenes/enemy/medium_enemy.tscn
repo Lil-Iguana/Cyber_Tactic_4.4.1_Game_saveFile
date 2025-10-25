@@ -71,9 +71,9 @@ offset_bottom = -36.0
 
 [node name="StatusHandler" parent="." node_paths=PackedStringArray("status_owner") instance=ExtResource("7_grnsc")]
 offset_left = -25.0
-offset_top = 37.0
+offset_top = 76.0
 offset_right = -25.0
-offset_bottom = 37.0
+offset_bottom = 76.0
 status_owner = NodePath("..")
 
 [node name="ModifierHandler" parent="." instance=ExtResource("8_vhqbh")]
