@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://byywdf8pnmwa4" path="res://characters/warrior/warrior_tutorial.tres" id="2_tg886"]
 [ext_resource type="AudioStream" uid="uid://bfoo1bs3kkc51" path="res://art/music/Updating.mp3" id="3_upk6d"]
 [ext_resource type="Texture2D" uid="uid://lugennxj0o6x" path="res://art/battle_background1.png" id="4_qy2ry"]
-[ext_resource type="Script" uid="uid://cgojt0i5spdq4" path="res://scenes/enemy/enemy_handler.gd" id="5_p36ud"]
+[ext_resource type="Script" uid="uid://drdg52gxcma04" path="res://scenes/battle/enemy_handler_sim.gd" id="5_tg886"]
 [ext_resource type="PackedScene" uid="uid://306utgcvnsbs" path="res://scenes/enemy/enemy.tscn" id="6_o4ubv"]
 [ext_resource type="Resource" uid="uid://bdcc0k712cgou" path="res://enemies_stats/malware/malware_enemy.tres" id="7_qbokf"]
 [ext_resource type="PackedScene" uid="uid://b25jnn2o0ion1" path="res://scenes/player/player.tscn" id="9_mtyt1"]
@@ -45,7 +45,7 @@ shape = SubResource("RectangleShape2D_ubsi8")
 debug_color = Color(0, 0.6, 0.701961, 0.129412)
 
 [node name="EnemyHandler" type="Node2D" parent="." groups=["enemy_handler"]]
-script = ExtResource("5_p36ud")
+script = ExtResource("5_tg886")
 
 [node name="MalwareEnemy" parent="EnemyHandler" instance=ExtResource("6_o4ubv")]
 position = Vector2(511, 185)
@@ -81,9 +81,9 @@ script = ExtResource("13_u4nv1")
 player = NodePath("../../Player")
 
 [node name="ManaUI" parent="BattleUI" instance=ExtResource("14_ml47f")]
-offset_top = -71.0
+offset_top = -103.0
 offset_right = 65.0
-offset_bottom = -11.0
+offset_bottom = -43.0
 char_stats = ExtResource("2_hqfvi")
 
 [node name="EndTurnButton" type="Button" parent="BattleUI"]
@@ -94,9 +94,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -96.0
-offset_top = -37.0
+offset_top = -69.0
 offset_right = -6.0
-offset_bottom = -7.0
+offset_bottom = -39.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("15_x2t68")

@@ -6,7 +6,7 @@ extends Node2D
 
 @onready var battle_ui: BattleUISim = $BattleUI 
 @onready var player_handler: PlayerHandlerSim = $PlayerHandler
-@onready var enemy_handler: EnemyHandler = $EnemyHandler
+@onready var enemy_handler: EnemyHandlerSim = $EnemyHandler
 @onready var player: Player = $Player
 
 
