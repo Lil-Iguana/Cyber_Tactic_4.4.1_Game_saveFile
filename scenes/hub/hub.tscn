@@ -1,0 +1,156 @@
+[gd_scene load_steps=5 format=3 uid="uid://vw5r2e2gcgui"]
+
+[ext_resource type="Script" uid="uid://dcrryo68nw3np" path="res://scenes/hub/hub.gd" id="1_abcyb"]
+[ext_resource type="PackedScene" uid="uid://istosvrl2ng1" path="res://scenes/ui/card_tooltip_pop_up.tscn" id="3_tooltip"]
+
+[sub_resource type="Gradient" id="Gradient_bdoxw"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0.00392157, 0.486275, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bocl7"]
+gradient = SubResource("Gradient_bdoxw")
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 8
+
+[node name="Hub" type="Node2D"]
+script = ExtResource("1_abcyb")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_bocl7")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "HUB - Prepare for Your Next Run"
+horizontal_alignment = 1
+
+[node name="TopBar" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="GoldLabel" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/TopBar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Gold: 0"
+
+[node name="HealthLabel" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/TopBar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Max HP: 72 (+0)"
+
+[node name="HealthUpgradeButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/TopBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Upgrade HP (+10) - 100g"
+
+[node name="HSplitContainer" type="HSplitContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DeckPanel" type="PanelContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/HSplitContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/HSplitContainer/VBoxContainer/DeckPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/HSplitContainer/VBoxContainer/DeckPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="DeckCountLabel" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/HSplitContainer/VBoxContainer/DeckPanel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Starting Deck (0 cards)"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/HSplitContainer/VBoxContainer/DeckPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DeckGrid" type="GridContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/HSplitContainer/VBoxContainer/DeckPanel/MarginContainer/VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 4
+
+[node name="StartRunButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/HSplitContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "START RUN"
+
+[node name="LibraryPanel" type="PanelContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/HSplitContainer/LibraryPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/HSplitContainer/LibraryPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/HSplitContainer/LibraryPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Card Library (Discovered Cards)"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/HSplitContainer/LibraryPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LibraryGrid" type="GridContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/HSplitContainer/LibraryPanel/MarginContainer/VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 5
+
+[node name="DeckWarningLabel" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "⚠ Add more cards to reach 11 card minimum"
+horizontal_alignment = 1
+
+[node name="Tooltip" type="CanvasLayer" parent="CanvasLayer"]
+unique_name_in_owner = true
+
+[node name="CardTooltipPopUp" parent="CanvasLayer/Tooltip" instance=ExtResource("3_tooltip")]
+unique_name_in_owner = true
+visible = false
