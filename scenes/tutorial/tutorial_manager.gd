@@ -99,13 +99,24 @@ func _execute_step(step: TutorialStep) -> void:
 		if node and node is Control:
 			overlay.highlight_node(node as Control)
 			
+			# Only block input if step requires it
 			if step.block_all_except_highlight:
 				overlay.block_input_except_node(node as Control)
 				_block_all_except_highlighted(node as Control)
+			else:
+				# Allow all input when not blocking
+				overlay.allow_all_input()
+				_enable_all_inputs()  # Re-enable everything!
+				print("TutorialManager: Step %d allows all input" % current_step_index)
 		else:
 			push_warning("TutorialManager: Could not find node at path: " + step.highlight_node_path)
 	else:
 		overlay.clear_highlight()
+		if step.block_all_except_highlight:
+			overlay.block_input_except_node(null)
+		else:
+			overlay.allow_all_input()
+			_enable_all_inputs()
 	
 	# Handle auto-advance
 	if step.auto_advance_delay > 0.0 and step.action_type == TutorialStep.ActionType.NONE:
@@ -130,12 +141,14 @@ func _block_all_except_highlighted(allowed_node: Control) -> void:
 		if end_turn_button is Button:
 			end_turn_button.disabled = true
 	
-	# Disable hand cards if not in allowed action
+	# Disable hand cards ONLY if hand is NOT the highlighted node
 	var hand := battle_node.get_node_or_null("BattleUI/Hand")
 	if hand:
 		var current_step := steps[current_step_index]
+		# Only disable hand if we're NOT waiting for card play and hand is NOT highlighted
 		if current_step.action_type != TutorialStep.ActionType.PLAY_CARD and \
-		   current_step.action_type != TutorialStep.ActionType.PLAY_CARD_TYPE:
+		   current_step.action_type != TutorialStep.ActionType.PLAY_CARD_TYPE and \
+		   hand != allowed_node:
 			_disable_hand(hand)
 	
 	# Disable draw/discard pile buttons if not highlighted

@@ -4,6 +4,10 @@ extends Node
 @warning_ignore("unused_signal")
 signal music_set
 
+# Tutorial-related signals
+@warning_ignore("unused_signal")
+signal card_pile_view_closed  # Emitted when player closes draw/discard pile view
+
 # Card-related events
 @warning_ignore("unused_signal")
 signal card_drag_started(card_ui: CardUI)

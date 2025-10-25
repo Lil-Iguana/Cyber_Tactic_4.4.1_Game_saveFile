@@ -137,7 +137,7 @@ func _transition_to_run() -> void:
 	await get_tree().create_timer(0.5).timeout
 	
 	# Change scene first
-	var result = get_tree().change_scene_to_file("res://scenes/run/run.tscn")
+	var result = get_tree().change_scene_to_file("res://scenes/battle/battleSim.tscn")
 	
 	if result == OK:
 		# Queue free this cutscene node after scene change

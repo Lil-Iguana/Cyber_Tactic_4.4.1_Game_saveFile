@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://lugennxj0o6x" path="res://art/battle_background1.png" id="4_qy2ry"]
 [ext_resource type="Script" uid="uid://drdg52gxcma04" path="res://scenes/battle/enemy_handler_sim.gd" id="5_tg886"]
 [ext_resource type="PackedScene" uid="uid://306utgcvnsbs" path="res://scenes/enemy/enemy.tscn" id="6_o4ubv"]
-[ext_resource type="Resource" uid="uid://bdcc0k712cgou" path="res://enemies_stats/malware/malware_enemy.tres" id="7_qbokf"]
+[ext_resource type="Resource" uid="uid://2e386jpkqqkl" path="res://enemies_stats/malware/malware_enemy_sim.tres" id="7_tg886"]
 [ext_resource type="PackedScene" uid="uid://b25jnn2o0ion1" path="res://scenes/player/player.tscn" id="9_mtyt1"]
 [ext_resource type="Script" uid="uid://cq68em2mncrct" path="res://scenes/battle/player_handler_sim.gd" id="9_op63c"]
 [ext_resource type="PackedScene" uid="uid://neowwkxk87rp" path="res://scenes/card_target_selector/card_target_selector.tscn" id="10_hnocq"]
@@ -49,11 +49,11 @@ script = ExtResource("5_tg886")
 
 [node name="MalwareEnemy" parent="EnemyHandler" instance=ExtResource("6_o4ubv")]
 position = Vector2(511, 185)
-stats = ExtResource("7_qbokf")
+stats = ExtResource("7_tg886")
 
 [node name="Player" parent="." instance=ExtResource("9_mtyt1")]
 position = Vector2(71, 171)
-stats = ExtResource("2_hqfvi")
+stats = ExtResource("2_tg886")
 
 [node name="CardTargetSelector" parent="." instance=ExtResource("10_hnocq")]
 

@@ -201,10 +201,6 @@ func _on_battle_room_entered(room: Room) -> void:
 	battle_scene.battle_stats = room.battle_stats
 	battle_scene.threads = thread_handler
 	battle_scene.start_battle()
-	
-	# If first battle tutorial not shown, show it *before* starting the battle
-	if not DialogueState.has_shown("first_battle_shown"):
-		DialogueManager.start_dialogue_from_file("res://dialogues/first_battle_tutorial.json", "first_battle_shown")
 
 
 func _on_treasure_room_entered() -> void:

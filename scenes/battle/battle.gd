@@ -15,6 +15,8 @@ extends Node2D
 
 @onready var map: Map = get_node_or_null("../../Map")
 
+var tutorial_manager: TutorialManager
+
 
 func _ready() -> void:
 	enemy_handler.child_order_changed.connect(_on_enemies_child_order_changed)
@@ -42,6 +44,27 @@ func start_battle() -> void:
 	
 	threads.threads_activated.connect(_on_threads_activated)
 	threads.activate_threads_by_type(ThreadPassive.Type.START_OF_COMBAT)
+	
+	# Check if tutorial should be shown (only for first non-tutorial battle)
+	if not DialogueState.has_shown("battle_full_tutorial"):
+		_setup_tutorial()
+
+
+func _setup_tutorial() -> void:
+	# Load tutorial steps
+	var BattleFullTutorialSteps = load("res://scenes/tutorial/battle_full_tutorial_steps.gd")
+	var tutorial_steps: Array[TutorialStep] = BattleFullTutorialSteps.create_steps()
+	
+	# Create tutorial manager
+	tutorial_manager = TutorialManager.new()
+	tutorial_manager.steps = tutorial_steps
+	tutorial_manager.tutorial_key = "battle_full_tutorial"
+	add_child(tutorial_manager)
+	
+	# Start tutorial after player's first turn starts
+	await Events.player_hand_drawn
+	await get_tree().create_timer(0.5).timeout
+	tutorial_manager.start_tutorial()
 
 
 func _on_enemies_child_order_changed() -> void:

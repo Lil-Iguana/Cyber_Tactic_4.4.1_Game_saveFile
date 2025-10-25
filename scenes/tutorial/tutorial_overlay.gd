@@ -36,7 +36,7 @@ void fragment() {
 	vec2 uv = SCREEN_UV;
 	float dist = distance(uv, spotlight_position);
 	float alpha = smoothstep(spotlight_radius - spotlight_softness, spotlight_radius + spotlight_softness, dist);
-	COLOR = vec4(0.0, 0.0, 0.0, alpha * 0.7);
+	COLOR = vec4(0.0, 0.0, 0.0, alpha * 0.4);  // Changed from 0.7 to 0.4 for lighter dimming
 }
 """
 	
@@ -48,7 +48,11 @@ void fragment() {
 func show_overlay() -> void:
 	show()
 	
-	# Fade in dim overlay
+	# Show overlays initially
+	dim_overlay.show()
+	spotlight.show()
+	
+	# Fade in dim overlay (lighter now - 0.4 instead of 0.7)
 	dim_overlay.modulate.a = 0.0
 	var tween := create_tween()
 	tween.tween_property(dim_overlay, "modulate:a", 1.0, 0.3)
@@ -150,24 +154,29 @@ func _process(_delta: float) -> void:
 		_update_highlight_border()
 
 
-func block_input_except_node(node: Control) -> void:
-	# Make dim overlay consume input except at highlighted node position
+func block_input_except_node(_node: Control) -> void:
+	# Make overlays visible and actively block input
+	dim_overlay.show()
+	spotlight.show()
 	dim_overlay.mouse_filter = Control.MOUSE_FILTER_STOP
 	spotlight.mouse_filter = Control.MOUSE_FILTER_STOP
 	input_blocker_active = true
 
 
 func allow_all_input() -> void:
+	# Keep overlays visible (for visual effect) but make them ignore all input
 	dim_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	spotlight.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	input_blocker_active = false
+	print("TutorialOverlay: Allowing all input - cards should be draggable")
 
 
 func _input(event: InputEvent) -> void:
+	# If input blocker is not active, don't block anything
 	if not input_blocker_active:
 		return
 	
-	# Block all input except clicks on highlighted node
+	# Block all input except clicks on highlighted node or its children
 	if event is InputEventMouseButton or event is InputEventMouseMotion:
 		if highlighted_node and is_instance_valid(highlighted_node):
 			var mouse_pos := get_viewport().get_mouse_position()
@@ -175,7 +184,21 @@ func _input(event: InputEvent) -> void:
 			
 			# Allow input if mouse is over highlighted node
 			if node_rect.has_point(mouse_pos):
-				return
+				return  # Don't block!
+			
+			# IMPORTANT: Also allow input for children of highlighted node (like cards in hand)
+			if highlighted_node.get_child_count() > 0:
+				for child in highlighted_node.get_children():
+					if child is Control:
+						var child_rect := (child as Control).get_global_rect()
+						if child_rect.has_point(mouse_pos):
+							return  # Don't block!
+					elif child is Node2D:
+						# For Node2D children (might be card nodes), check approximate bounds
+						var child_node2d := child as Node2D
+						var approx_rect := Rect2(child_node2d.global_position - Vector2(50, 50), Vector2(100, 100))
+						if approx_rect.has_point(mouse_pos):
+							return  # Don't block!
 		
 		# Block all other input
 		get_viewport().set_input_as_handled()

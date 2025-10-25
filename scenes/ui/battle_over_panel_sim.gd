@@ -18,4 +18,3 @@ func show_screen(text: String, type: Type) -> void:
 	label.text = text
 	continue_button.visible = type == Type.WIN
 	show()
-	get_tree().paused = true

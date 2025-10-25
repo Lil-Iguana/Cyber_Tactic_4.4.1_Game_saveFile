@@ -9,10 +9,14 @@ extends Node2D
 @onready var enemy_handler: EnemyHandlerSim = $EnemyHandler
 @onready var player: Player = $Player
 
+var tutorial_manager: TutorialManager
+
 
 func _ready() -> void:
-	if not DialogueState.has_shown("first_battle_shown"):
-		DialogueManager.start_dialogue_from_file("res://dialogues/first_battle_tutorial.json", "first_battle_shown")
+	# Check if tutorial should be shown
+	if not DialogueState.has_shown("battle_sim_tutorial"):
+		_setup_tutorial()
+	
 	var new_stats: CharacterStats = char_stats.create_instance()
 	battle_ui.char_stats = new_stats
 	player.stats = new_stats
@@ -27,6 +31,22 @@ func _ready() -> void:
 	Events.music_set.connect(_on_music_set)
 	
 	start_battle(new_stats)
+
+
+func _setup_tutorial() -> void:
+	# Load the tutorial steps script
+	var tutorial_steps_script = preload("res://scenes/tutorial/battle_sim_tutorial_steps.gd")
+	var tutorial_steps := tutorial_steps_script.create_steps()
+	
+	# Create tutorial manager
+	tutorial_manager = TutorialManager.new()
+	tutorial_manager.steps = tutorial_steps
+	tutorial_manager.tutorial_key = "battle_sim_tutorial"
+	add_child(tutorial_manager)
+	
+	# Start tutorial after a short delay
+	await get_tree().create_timer(1.0).timeout
+	tutorial_manager.start_tutorial()
 
 
 func start_battle(stats: CharacterStats) -> void:
