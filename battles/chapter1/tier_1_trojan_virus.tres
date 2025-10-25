@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BattleStats" load_steps=3 format=3 uid="uid://b5pmt0ehn7hqd"]
+
+[ext_resource type="PackedScene" uid="uid://bjm1f48j82ave" path="res://battles/chapter1/tier_1_trojan_virus.tscn" id="1_h022n"]
+[ext_resource type="Script" uid="uid://dedae26v8t7fi" path="res://custom_resources/battle_stats.gd" id="1_wd4wm"]
+
+[resource]
+script = ExtResource("1_wd4wm")
+battle_tier = 1
+weight = 1.0
+gold_reward_min = 90
+gold_reward_max = 150
+enemies = ExtResource("1_h022n")
+metadata/_custom_type_script = "uid://dedae26v8t7fi"
