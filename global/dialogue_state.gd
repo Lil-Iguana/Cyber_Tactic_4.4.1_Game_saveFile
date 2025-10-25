@@ -60,7 +60,9 @@ func reset_all() -> void:
 		"Scene8": false,
 		"Scene9": false,
 		"first_battle_shown": false,
-		"post_battle_shown": false
+		"post_battle_shown": false,
+		"battle_sim_tutorial": false,      # ← Add this
+		"battle_full_tutorial": false
 	}
 	_save()
 
@@ -69,6 +71,8 @@ func complete_all() -> void:
 	data = {
 		"intro_shown": true,
 		"first_battle_shown": true,
-		"post_battle_shown": true
+		"post_battle_shown": true,
+		"battle_sim_tutorial": true,       # ← Add this
+		"battle_full_tutorial": true
 	}
 	_save()
