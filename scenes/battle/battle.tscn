@@ -174,9 +174,9 @@ label_settings = SubResource("LabelSettings_e48mi")
 
 [node name="Tooltip" parent="BattleUI" instance=ExtResource("12_1gfg2")]
 offset_left = -123.0
-offset_top = 20.0
+offset_top = 19.0
 offset_right = 124.0
-offset_bottom = 80.0
+offset_bottom = 79.0
 
 [node name="RedFlash" type="CanvasLayer" parent="."]
 layer = 2
