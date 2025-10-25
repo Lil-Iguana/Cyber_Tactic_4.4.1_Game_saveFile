@@ -81,9 +81,9 @@ script = ExtResource("13_u4nv1")
 player = NodePath("../../Player")
 
 [node name="ManaUI" parent="BattleUI" instance=ExtResource("14_ml47f")]
-offset_top = -103.0
+offset_top = -69.0
 offset_right = 65.0
-offset_bottom = -43.0
+offset_bottom = -9.0
 char_stats = ExtResource("2_hqfvi")
 
 [node name="EndTurnButton" type="Button" parent="BattleUI"]
@@ -94,9 +94,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -96.0
-offset_top = -69.0
+offset_top = -35.0
 offset_right = -6.0
-offset_bottom = -39.0
+offset_bottom = -5.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("15_x2t68")
