@@ -12,7 +12,7 @@
 script = ExtResource("1_vaswa")
 ai = ExtResource("1_jh3e4")
 max_health = 80
-enemy_name = "Hacker"
+enemy_name = "Ransomware"
 model = ExtResource("1_cvpt6")
 intent_icons = Array[Texture]([ExtResource("2_iv6ic"), ExtResource("3_iv6ic"), ExtResource("4_wst3k"), ExtResource("5_aded6")])
 intent_descriptions = Array[String](["[color=orange]Attack[/color]
