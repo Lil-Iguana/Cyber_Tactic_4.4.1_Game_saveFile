@@ -59,6 +59,9 @@ func _ready() -> void:
 			_start_run()
 		RunStartup.Type.CONTINUED_RUN:
 			_load_run()
+	
+	if not DialogueState.has_shown("map_explain"):
+		DialogueManager.start_dialogue_from_file("res://dialogues/map_explain.json", "map_explain")
 
 
 func _start_run() -> void:

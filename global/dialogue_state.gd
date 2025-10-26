@@ -15,6 +15,7 @@ var data: Dictionary = {
 	"first_battle_shown": false,
 	"post_battle_shown": false,
 	"campfire_shown": false,
+	"map_explain": false,
 	"boss_post_shown": false
 }
 
@@ -61,7 +62,8 @@ func reset_all() -> void:
 		"Scene9": false,
 		"first_battle_shown": false,
 		"post_battle_shown": false,
-		"battle_sim_tutorial": false,      # ← Add this
+		"battle_sim_tutorial": false,
+		"map_explain": false,      # ← Add this
 		"battle_full_tutorial": false
 	}
 	_save()

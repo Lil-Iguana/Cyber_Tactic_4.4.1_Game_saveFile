@@ -5,35 +5,35 @@
 	  "portrait": "student",
 	  "model": "student_model",
 	  "anim": "Idle",
-	  "text": "Whew!"
-	},
-	{
-	  "speaker": "Kortica",
-	  "portrait": "cortana",
-	  "model": "cortana_model",
-	  "anim": "Happy",
-	  "text": "Well done. You have survived an battle, but we must navigate to terminate the source of the infection."
+	  "text": "Where are we?"
 	},
 	{
 	  "speaker": "Kortica",
 	  "portrait": "cortana",
 	  "model": "cortana_model",
 	  "anim": "Idle",
-	  "text": "It is located at the top of the map."
+	  "text": "This is a node map. You can navigate it by using the scroll wheel."
 	},
 	{
 	  "speaker": "Kortica",
 	  "portrait": "cortana",
 	  "model": "cortana_model",
-	  "anim": "Happy",
-	  "text": "I will assist you through here."
+	  "anim": "Idle",
+	  "text": "Navigate the node by clicking on the nodes that are availabale."
+	},
+	{
+	  "speaker": "Kortica",
+	  "portrait": "cortana",
+	  "model": "cortana_model",
+	  "anim": "Idle",
+	  "text": "Once we entered that node. We cannot go back the previous node."
 	},
 	{
 	  "speaker": "Student",
 	  "portrait": "student",
 	  "model": "student_model",
 	  "anim": "Idle",
-	  "text": "Alright... I'll do my best!"
+	  "text": "Ok! I'll choose wisely."
 	}
   ]
 }
