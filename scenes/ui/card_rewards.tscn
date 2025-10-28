@@ -19,7 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.666667)
+color = Color(0, 0, 0, 1)
 script = ExtResource("1_jycrj")
 rewards = Array[ExtResource("2_cvuw6")]([ExtResource("3_pfit7"), ExtResource("4_j87tl"), ExtResource("5_5vnx4")])
 
