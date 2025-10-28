@@ -22,6 +22,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_aur4j")
+background_color = Color(0, 0, 0, 1)
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -84,7 +85,6 @@ vertical_alignment = 1
 [node name="Description" type="VBoxContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="CardDescription" type="RichTextLabel" parent="HBoxContainer/Description"]
@@ -114,6 +114,10 @@ Card Description
 "
 fit_content = true
 scroll_active = false
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
 
 [node name="ChooseButton" type="Button" parent="."]
 unique_name_in_owner = true
