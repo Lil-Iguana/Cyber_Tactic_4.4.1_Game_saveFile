@@ -9,8 +9,8 @@
 
 [node name="Enemy" parent="." instance=ExtResource("1_pmtx1")]
 position = Vector2(547, 145)
-stats = ExtResource("2_6nr6h")
+stats = ExtResource("4_j4swt")
 
 [node name="Enemy2" parent="." instance=ExtResource("3_l2qta")]
 position = Vector2(385, 165)
-stats = ExtResource("4_j4swt")
+stats = ExtResource("2_6nr6h")
