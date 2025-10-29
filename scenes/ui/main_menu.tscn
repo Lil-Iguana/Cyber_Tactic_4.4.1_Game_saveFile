@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bu3dhos1m15kj"]
+[gd_scene load_steps=10 format=3 uid="uid://bu3dhos1m15kj"]
 
 [ext_resource type="Script" uid="uid://buds01dk4wjrb" path="res://scenes/ui/main_menu.gd" id="1_7m5q3"]
 [ext_resource type="Resource" uid="uid://cj8wg6pkgahdr" path="res://scenes/run/run_startup.tres" id="2_fe2o3"]
 [ext_resource type="PackedScene" uid="uid://o0erus520lr" path="res://global/settings_menu.tscn" id="3_1g8jr"]
 [ext_resource type="AudioStream" uid="uid://dnhly0amy2idb" path="res://art/music/main_menu_music.wav" id="3_m1kxf"]
+[ext_resource type="PackedScene" uid="uid://c0l5iyci0njrv" path="res://art/3d_models/Cortana.glb" id="4_x2yvf"]
 
 [sub_resource type="Gradient" id="Gradient_d3fc5"]
 colors = PackedColorArray(0.0925943, 0.108696, 0.555451, 1, 0.225601, 0.34753, 1, 1)
@@ -11,6 +12,10 @@ colors = PackedColorArray(0.0925943, 0.108696, 0.555451, 1, 0.225601, 0.34753, 1
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_3olvj"]
 gradient = SubResource("Gradient_d3fc5")
 width = 50
+
+[sub_resource type="Environment" id="Environment_x2yvf"]
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_2wnys"]
 font_size = 80
@@ -37,19 +42,30 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture1D_3olvj")
 
-[node name="Title" type="Label" parent="."]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -102.0
-offset_top = -74.0
-offset_right = 102.0
-offset_bottom = -23.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+size = Vector2i(640, 360)
+
+[node name="Cortana2" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_x2yvf")]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.80337906, 0, 0.595468, 0, 1, 0, -0.595468, 0, 0.80337906, 0.7877791, 0, 2.9068968)
+environment = SubResource("Environment_x2yvf")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+offset_left = 25.0
+offset_top = 42.0
+offset_right = 280.0
+offset_bottom = 106.0
 text = "Cyber Tactics"
 label_settings = SubResource("LabelSettings_2wnys")
 horizontal_alignment = 1
@@ -57,17 +73,14 @@ vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -60.0
-offset_top = -11.0
-offset_right = 60.0
-offset_bottom = 113.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -151.0
+offset_right = 144.0
+offset_bottom = -27.0
+grow_vertical = 0
 theme_override_constants/separation = 4
 
 [node name="Continue" type="Button" parent="VBoxContainer"]
@@ -100,13 +113,8 @@ text = "Exit
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 3.0
-offset_top = -13.0
-offset_right = 43.0
-grow_vertical = 0
+offset_right = 40.0
+offset_bottom = 13.0
 text = "1.0.1"
 
 [node name="SettingsMenu" parent="." instance=ExtResource("3_1g8jr")]
