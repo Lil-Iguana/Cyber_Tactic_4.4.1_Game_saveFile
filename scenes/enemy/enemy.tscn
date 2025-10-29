@@ -54,9 +54,9 @@ texture = ExtResource("3_resti")
 shape = SubResource("RectangleShape2D_ylwbw")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -29.0
+offset_left = -36.0
 offset_top = 22.0
-offset_right = 27.0
+offset_right = 35.0
 offset_bottom = 38.0
 color = Color(0, 0, 0, 0.588235)
 

@@ -21,6 +21,7 @@ var data: Dictionary = {
 
 func _ready() -> void:
 	_load()
+	_save()
 
 func _load() -> void:
 	if FileAccess.file_exists(_path):
@@ -62,9 +63,7 @@ func reset_all() -> void:
 		"Scene9": false,
 		"first_battle_shown": false,
 		"post_battle_shown": false,
-		"battle_sim_tutorial": false,
-		"map_explain": false,      # ← Add this
-		"battle_full_tutorial": false
+		"battle_sim_tutorial": false
 	}
 	_save()
 
@@ -76,5 +75,19 @@ func complete_all() -> void:
 		"post_battle_shown": true,
 		"battle_sim_tutorial": true,       # ← Add this
 		"battle_full_tutorial": true
+	}
+	_save()
+
+func reset_full_battle() -> void:
+	data = {
+		"battle_full_tutorial": false,
+		"map_explain": false
+	}
+	_save()
+
+func complete_full_battle() -> void:
+	data = {
+		"battle_full_tutorial": true,
+		"map_explain": true
 	}
 	_save()

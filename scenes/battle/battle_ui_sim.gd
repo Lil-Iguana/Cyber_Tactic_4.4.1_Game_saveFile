@@ -9,6 +9,7 @@ extends CanvasLayer
 
 
 func _ready() -> void:
+	DialogueState.reset_full_battle()
 	Events.player_hand_drawn.connect(_on_player_hand_drawn)
 	end_turn_button.pressed.connect(_on_end_turn_button_pressed)
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bu3dhos1m15kj"]
+[gd_scene load_steps=10 format=3 uid="uid://bu3dhos1m15kj"]
 
 [ext_resource type="Script" uid="uid://buds01dk4wjrb" path="res://scenes/ui/main_menu.gd" id="1_7m5q3"]
 [ext_resource type="Resource" uid="uid://cj8wg6pkgahdr" path="res://scenes/run/run_startup.tres" id="2_fe2o3"]
@@ -13,10 +13,6 @@ colors = PackedColorArray(0.0925943, 0.108696, 0.555451, 1, 0.225601, 0.34753, 1
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_3olvj"]
 gradient = SubResource("Gradient_d3fc5")
 width = 50
-
-[sub_resource type="Environment" id="Environment_x2yvf"]
-ambient_light_source = 3
-ambient_light_color = Color(1, 1, 1, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_2wnys"]
 font_size = 80
@@ -62,7 +58,6 @@ render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(0.80337906, 0, 0.595468, 0, 1, 0, -0.595468, 0, 0.80337906, 0.7877791, 0, 2.9068968)
-environment = SubResource("Environment_x2yvf")
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1

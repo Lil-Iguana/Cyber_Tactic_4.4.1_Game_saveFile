@@ -84,3 +84,6 @@ autoplay = "Idle"
 transform = Transform3D(0.897258, 0, -0.441506, 0, 1.37194, 0, 0.441506, 0, 0.897258, -0.981, 1.662, 2.047)
 projection = 1
 size = 3.368
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="3"]
+light_energy = 0.5

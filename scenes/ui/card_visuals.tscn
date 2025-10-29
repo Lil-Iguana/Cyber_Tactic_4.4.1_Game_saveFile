@@ -26,11 +26,10 @@ mouse_filter = 2
 theme_override_styles/panel = ExtResource("2_ssooe")
 
 [node name="Cost" type="Label" parent="."]
-layout_mode = 0
-offset_top = -3.0
+layout_mode = 1
+offset_top = -2.0
 offset_right = 10.0
-offset_bottom = 10.0
-pivot_offset = Vector2(2, 2)
+offset_bottom = 14.0
 text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -58,10 +57,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -8.0
+offset_left = -11.0
 offset_top = 2.0
 offset_right = -2.0
-offset_bottom = 8.0
+offset_bottom = 11.0
 grow_horizontal = 0
 texture = ExtResource("4_7vuyd")
 expand_mode = 1

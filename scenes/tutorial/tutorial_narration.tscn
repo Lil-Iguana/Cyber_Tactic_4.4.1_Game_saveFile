@@ -4,7 +4,6 @@
 [ext_resource type="Theme" uid="uid://cao7y1u2su7i5" path="res://main_theme.tres" id="2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_r1l44"]
-font_size = 32
 
 [node name="TutorialNarration" type="CenterContainer"]
 anchors_preset = 8

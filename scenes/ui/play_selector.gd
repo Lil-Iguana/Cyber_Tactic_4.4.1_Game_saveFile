@@ -31,12 +31,14 @@ func _on_start_button_pressed() -> void:
 		# If checked => player wants tutorials => reset flags
 		if tutorial_check_box.button_pressed:
 			DialogueState.reset_all()
+			DialogueState.complete_full_battle()
 		else:
 			# If unchecked => skip tutorials
 			DialogueState.complete_all()
 	else:
 		# If the checkbutton isn't present for any reason, default to showing tutorials
 		DialogueState.reset_all()
+		DialogueState.complete_full_battle()
 
 	CardLibrary.discovered_cards.clear()
 
