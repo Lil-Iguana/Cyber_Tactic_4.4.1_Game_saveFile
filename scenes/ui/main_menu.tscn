@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bu3dhos1m15kj"]
+[gd_scene load_steps=8 format=3 uid="uid://bu3dhos1m15kj"]
 
 [ext_resource type="Script" uid="uid://buds01dk4wjrb" path="res://scenes/ui/main_menu.gd" id="1_7m5q3"]
 [ext_resource type="Resource" uid="uid://cj8wg6pkgahdr" path="res://scenes/run/run_startup.tres" id="2_fe2o3"]
 [ext_resource type="PackedScene" uid="uid://o0erus520lr" path="res://global/settings_menu.tscn" id="3_1g8jr"]
+[ext_resource type="AudioStream" uid="uid://dnhly0amy2idb" path="res://art/music/main_menu_music.wav" id="3_m1kxf"]
 
 [sub_resource type="Gradient" id="Gradient_d3fc5"]
 colors = PackedColorArray(0.0925943, 0.108696, 0.555451, 1, 0.225601, 0.34753, 1, 1)
@@ -25,6 +26,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7m5q3")
 run_startup = ExtResource("2_fe2o3")
+music = ExtResource("3_m1kxf")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
