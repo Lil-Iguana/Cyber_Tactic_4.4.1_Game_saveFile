@@ -2,7 +2,7 @@
 
 [ext_resource type="StyleBox" uid="uid://c0fyew77uhmuv" path="res://scenes/card_ui/card_hover_stylebox.tres" id="1_1lc1g"]
 [ext_resource type="StyleBox" uid="uid://ds5g4omx1jbhl" path="res://scenes/card_ui/card_base_stylebox.tres" id="1_eut0t"]
-[ext_resource type="FontFile" uid="uid://bojuhq17w6srl" path="res://art/Font Styles/m3x6.ttf" id="3_mouuc"]
+[ext_resource type="FontFile" uid="uid://dkc0wbxtwj6ao" path="res://art/Font Styles/MedodicaRegular.otf" id="3_0omi4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_irul0"]
 bg_color = Color(0.14902, 0.309804, 0.764706, 0.501961)
@@ -23,7 +23,7 @@ border_width_bottom = 1
 border_color = Color(0.0653659, 0, 0.763149, 1)
 
 [resource]
-default_font = ExtResource("3_mouuc")
+default_font = ExtResource("3_0omi4")
 default_font_size = 16
 Button/styles/disabled = SubResource("StyleBoxFlat_irul0")
 Button/styles/focus = SubResource("StyleBoxEmpty_5wplq")
