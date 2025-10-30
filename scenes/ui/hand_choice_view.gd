@@ -32,6 +32,7 @@ func _on_hand_choice_requested(reason: String = "test") -> void:
 	elif hand.get_child_count() == 1:
 		var only_card := hand.get_child(0)
 		await get_tree().process_frame
+		print("AUTO-SELECTING only card: ", only_card.card.name)  # ADD THIS
 		Events.card_chosen.emit(only_card.card)
 		print("only card to choose from: ", only_card.card)
 	else:

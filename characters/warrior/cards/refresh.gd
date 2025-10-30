@@ -10,4 +10,3 @@ func apply_effects(targets: Array[Node], _modifiers: ModifierHandler) -> void:
 	
 	var return_top_deck_effect := ReturnTopDeckEffect.new()
 	return_top_deck_effect.execute(targets)
-	
