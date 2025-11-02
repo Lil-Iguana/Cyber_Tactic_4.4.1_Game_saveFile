@@ -62,6 +62,7 @@ func _on_enemies_child_order_changed() -> void:
 
 
 func _on_enemy_turn_ended() -> void:
+	GlobalTurnNumber.turn_number_increase()
 	player_handler.start_turn()
 	enemy_handler.reset_enemy_actions()
 
