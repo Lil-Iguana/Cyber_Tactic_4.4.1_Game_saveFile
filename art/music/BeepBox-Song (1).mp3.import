@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bdor7qf2njhcn"
+path="res://.godot/imported/BeepBox-Song (1).mp3-d7c29c5d20308bfac0ba4b529b8da64e.mp3str"
+
+[deps]
+
+source_file="res://art/music/BeepBox-Song (1).mp3"
+dest_files=["res://.godot/imported/BeepBox-Song (1).mp3-d7c29c5d20308bfac0ba4b529b8da64e.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

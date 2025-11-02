@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://buds01dk4wjrb" path="res://scenes/ui/main_menu.gd" id="1_7m5q3"]
 [ext_resource type="Resource" uid="uid://cj8wg6pkgahdr" path="res://scenes/run/run_startup.tres" id="2_fe2o3"]
 [ext_resource type="PackedScene" uid="uid://o0erus520lr" path="res://global/settings_menu.tscn" id="3_1g8jr"]
-[ext_resource type="AudioStream" uid="uid://b6gdybrfxpvon" path="res://art/music/mainmenu_music.mp3" id="3_uhagc"]
+[ext_resource type="AudioStream" uid="uid://bdor7qf2njhcn" path="res://art/music/BeepBox-Song (1).mp3" id="3_uhagc"]
 [ext_resource type="AudioStream" uid="uid://c1y26cwodui50" path="res://art/sfx/blipSelect.wav" id="4_uhagc"]
 [ext_resource type="PackedScene" uid="uid://c0l5iyci0njrv" path="res://art/3d_models/Cortana.glb" id="4_x2yvf"]
 
