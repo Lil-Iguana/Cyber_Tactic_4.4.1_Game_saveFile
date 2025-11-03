@@ -9,7 +9,7 @@ extends Control
 
 # Bar colors
 const HP_COLOR = Color("#ff0000")  # Red
-const SHIELD_COLOR = Color("#383858")  # Dark blue/purple
+const SHIELD_COLOR = Color("808080ff")  # Dark blue/purple
 
 
 func update_stats(stats: Stats) -> void:
