@@ -1,8 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3qmpcpjguoq"]
+[gd_scene load_steps=5 format=3 uid="uid://b3qmpcpjguoq"]
 
 [ext_resource type="PackedScene" uid="uid://sgjm6fgfx7l" path="res://art/3d_models/Trojan-Horse.glb" id="1_uifu4"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_orqy5"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_avn37"]
+sky_material = SubResource("ProceduralSkyMaterial_orqy5")
+
+[sub_resource type="Environment" id="Environment_np4uy"]
+background_mode = 2
+sky = SubResource("Sky_avn37")
+tonemap_mode = 2
+glow_enabled = true
+
 [node name="Trojan-Horse" instance=ExtResource("1_uifu4")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="0"]
+environment = SubResource("Environment_np4uy")
 
 [node name="Skeleton3D" parent="Armature" index="0"]
 bones/0/position = Vector3(-3.6378564e-16, -0.5593458, 1.6018631)
@@ -29,10 +45,10 @@ bones/16/rotation = Quaternion(0.08142875, 9.094516e-14, 1.1648482e-07, 0.996679
 bones/17/rotation = Quaternion(0.21886972, -2.7435197e-14, 3.1309557e-07, 0.9757541)
 bones/18/rotation = Quaternion(0.31512576, 4.4195272e-14, 4.5079108e-07, 0.94905)
 
-[node name="AnimationPlayer" parent="." index="1"]
+[node name="AnimationPlayer" parent="." index="2"]
 autoplay = "Idle"
 
-[node name="Camera3D" type="Camera3D" parent="." index="2"]
+[node name="Camera3D" type="Camera3D" parent="." index="3"]
 transform = Transform3D(0.7563903, 0, 0.65412056, 0, 1, 0, -0.65412056, 0, 0.7563903, 0.80184764, 0.34780204, 0.9081675)
 projection = 1
 size = 0.705
