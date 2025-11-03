@@ -56,6 +56,7 @@ texture = ExtResource("3_resti")
 shape = SubResource("RectangleShape2D_ylwbw")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_left = -36.0
 offset_top = 22.0
 offset_right = 35.0
