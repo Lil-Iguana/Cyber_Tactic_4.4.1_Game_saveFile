@@ -1,8 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://b7kumxdfd0gb5"]
+[gd_scene load_steps=5 format=3 uid="uid://b7kumxdfd0gb5"]
 
 [ext_resource type="PackedScene" uid="uid://cmk0vxhy4ybc5" path="res://art/3d_models/StudentMExp.glb" id="1_e7w04"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_e7w04"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_vbual"]
+sky_material = SubResource("ProceduralSkyMaterial_e7w04")
+
+[sub_resource type="Environment" id="Environment_tdvxp"]
+background_mode = 2
+sky = SubResource("Sky_vbual")
+tonemap_mode = 2
+glow_enabled = true
+
 [node name="StudentMExp" instance=ExtResource("1_e7w04")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="0"]
+environment = SubResource("Environment_tdvxp")
 
 [node name="Skeleton3D" parent="rig" index="0"]
 bones/0/position = Vector3(-1.0099495e-05, 0.68015623, -0.03714529)
@@ -77,13 +93,10 @@ bones/157/rotation = Quaternion(-0.55439496, -0.0086383335, 0.016254826, 0.83205
 bones/158/rotation = Quaternion(-0.039277744, 0.9762633, -0.20778906, -0.04680841)
 bones/159/rotation = Quaternion(-0.6834687, 0.69449353, -0.13052967, -0.18306123)
 
-[node name="AnimationPlayer" parent="." index="1"]
+[node name="AnimationPlayer" parent="." index="2"]
 autoplay = "Idle"
 
-[node name="Camera3D" type="Camera3D" parent="." index="2"]
+[node name="Camera3D" type="Camera3D" parent="." index="3"]
 transform = Transform3D(0.897258, 0, -0.441506, 0, 1.37194, 0, 0.441506, 0, 0.897258, -0.981, 1.662, 2.047)
 projection = 1
 size = 3.368
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="3"]
-light_energy = 0.5

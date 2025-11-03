@@ -1,8 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://d6sv5u62ahn3"]
+[gd_scene load_steps=5 format=3 uid="uid://d6sv5u62ahn3"]
 
 [ext_resource type="PackedScene" uid="uid://cn1rpop62rwtg" path="res://art/3d_models/VirusMExp.glb" id="1_1iklr"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1iklr"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_a6isi"]
+sky_material = SubResource("ProceduralSkyMaterial_1iklr")
+
+[sub_resource type="Environment" id="Environment_jid07"]
+background_mode = 2
+sky = SubResource("Sky_a6isi")
+tonemap_mode = 2
+glow_enabled = true
+
 [node name="VirusMExp" instance=ExtResource("1_1iklr")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="0"]
+environment = SubResource("Environment_jid07")
 
 [node name="Skeleton3D" parent="Controls" index="0"]
 bones/0/position = Vector3(0, -0.14080323, 0)
@@ -33,16 +49,16 @@ bones/9/position = Vector3(-0.30381754, -0.46560094, 0.92176455)
 bones/9/rotation = Quaternion(0.7228668, 0.10893179, 0.45086494, 0.51217014)
 bones/9/scale = Vector3(0.9685687, 0.9685687, 0.96856886)
 bones/10/position = Vector3(0.6909054, -0.45700857, -0.51827484)
-bones/10/rotation = Quaternion(-0.31384563, 0.0998241, -0.78549165, 0.5239646)
+bones/10/rotation = Quaternion(-0.3138457, 0.09982408, -0.7854916, 0.5239646)
 bones/10/scale = Vector3(0.96856886, 0.9685687, 0.96856874)
 bones/12/position = Vector3(-0.30037114, -0.5152246, -0.8747904)
 bones/12/rotation = Quaternion(0.8148472, -0.2512681, 0.1786649, -0.4908842)
 bones/12/scale = Vector3(1, 0.99999994, 0.99999994)
 
-[node name="AnimationPlayer" parent="." index="1"]
+[node name="AnimationPlayer" parent="." index="2"]
 autoplay = "Idle"
 
-[node name="Camera3D" type="Camera3D" parent="." index="2"]
+[node name="Camera3D" type="Camera3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.25)
 projection = 1
 size = 4.222

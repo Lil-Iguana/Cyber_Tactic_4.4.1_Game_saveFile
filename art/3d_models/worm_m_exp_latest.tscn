@@ -1,8 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://cuhfndeacxiwn"]
+[gd_scene load_steps=5 format=3 uid="uid://cuhfndeacxiwn"]
 
 [ext_resource type="PackedScene" uid="uid://bew2vdwvusb0k" path="res://art/3d_models/WormMExp_Latest.glb" id="1_a1u2e"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a1u2e"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_3vwt0"]
+sky_material = SubResource("ProceduralSkyMaterial_a1u2e")
+
+[sub_resource type="Environment" id="Environment_liofw"]
+background_mode = 2
+sky = SubResource("Sky_3vwt0")
+tonemap_mode = 2
+glow_enabled = true
+
 [node name="WormMExp_Latest" instance=ExtResource("1_a1u2e")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="0"]
+environment = SubResource("Environment_liofw")
 
 [node name="Skeleton3D" parent="Armature" index="0"]
 bones/0/position = Vector3(0.851962, -0.0132105, -0.687361)
@@ -59,47 +75,45 @@ bones/38/rotation = Quaternion(0.0290823, 0.932479, 0.030685, 0.358741)
 bones/38/scale = Vector3(1, 1, 1)
 
 [node name="2C1_2" parent="Armature/Skeleton3D" index="0"]
-transform = Transform3D(-0.218238, -0.286719, -0.215553, -0.241023, 0.304078, -0.160446, 0.265667, 0.0403398, -0.322634, 0.160729, 0.0174919, 0.702308)
+transform = Transform3D(-0.21823777, -0.2867192, -0.215553, -0.2410231, 0.3040782, -0.1604464, 0.26566684, 0.040339634, -0.3226338, 0.16072877, 0.017491966, 0.70230824)
 
 [node name="2C2_2" parent="Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.0644292, -0.376811, -0.173669, 0.228637, 0.114414, -0.333067, 0.346227, -0.145676, 0.187628, -1.03107, -0.0791782, -0.0516877)
+transform = Transform3D(-0.06442931, -0.37681118, -0.1736691, 0.22863683, 0.11441398, -0.33306673, 0.3462266, -0.14567608, 0.1876284, -1.0310721, -0.07917771, -0.051688075)
 
 [node name="2C3_2" parent="Armature/Skeleton3D" index="2"]
-transform = Transform3D(0.206372, -0.365234, -0.0177089, 0.190189, 0.12458, -0.352997, 0.31231, 0.165477, 0.226668, -1.13402, 0.0148864, 0.752306)
+transform = Transform3D(0.20637172, -0.365234, -0.017708883, 0.19018923, 0.124580026, -0.35299668, 0.31230998, 0.1654772, 0.22666836, -1.1340151, 0.014886357, 0.75230587)
 
 [node name="2C4_2" parent="Armature/Skeleton3D" index="3"]
-transform = Transform3D(-0.136418, 0.349633, 0.0215648, 0.206943, 0.09911, -0.297776, -0.282636, -0.0961879, -0.228436, 1.02987, 0.306598, -0.45363)
+transform = Transform3D(-0.1364181, 0.34963334, 0.021564685, 0.20694259, 0.09910997, -0.29777583, -0.2826364, -0.09618804, -0.22843596, 1.0298654, 0.30659816, -0.4536304)
 
 [node name="2C5_2" parent="Armature/Skeleton3D" index="4"]
-transform = Transform3D(-0.13054, 0.371445, -0.1459, 0.356826, 0.177379, 0.132327, 0.178699, -0.0828502, -0.370812, 0.0942684, 0.0876692, -0.00931054)
+transform = Transform3D(-0.13053949, 0.3714447, -0.14590032, 0.35682625, 0.17737894, 0.13232705, 0.17869861, -0.08285037, -0.37081173, 0.094268665, 0.0876697, -0.009310901)
 
 [node name="2C6_2" parent="Armature/Skeleton3D" index="5"]
-transform = Transform3D(0.324133, -0.243285, 0.109769, 0.207259, 0.120626, -0.344662, 0.168167, 0.320251, 0.213208, -0.408345, 0.150234, 0.165331)
+transform = Transform3D(0.32413316, -0.24328431, 0.10976884, 0.20725884, 0.120625585, -0.3446622, 0.1681672, 0.32025144, 0.21320784, -0.40834457, 0.15023433, 0.16533142)
 
 [node name="2C7_2" parent="Armature/Skeleton3D" index="6"]
-transform = Transform3D(0.0146636, -0.400869, -0.124048, 0.219592, 0.113102, -0.339538, 0.35758, -0.0530174, 0.213599, -1.07597, 0.214746, -0.812113)
+transform = Transform3D(0.014663547, -0.4008689, -0.1240477, 0.21959157, 0.113101676, -0.33953825, 0.35757974, -0.053017616, 0.21359915, -1.0759697, 0.21474561, -0.8121133)
 
 [node name="2C8_2" parent="Armature/Skeleton3D" index="7"]
-transform = Transform3D(-0.361184, 0.141179, -0.160976, 0.202507, 0.122719, -0.346742, -0.069539, -0.375909, -0.173654, 0.276666, 0.164937, -1.10201)
+transform = Transform3D(-0.36118433, 0.14117877, -0.1609757, 0.20250678, 0.122718744, -0.34674183, -0.06953861, -0.3759087, -0.17365405, 0.27666467, 0.16493723, -1.1020088)
 
 [node name="2C9_2" parent="Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.336362, -0.12006, -0.220782, 0.188266, 0.123973, -0.354239, 0.166479, -0.382773, -0.045481, -0.689443, 0.399737, -1.19087)
+transform = Transform3D(-0.33636197, -0.12006046, -0.22078231, 0.18826585, 0.123972975, -0.35423917, 0.16647908, -0.38277268, -0.04548098, -0.68944305, 0.39973718, -1.1908741)
 
 [node name="2C10_2" parent="Armature/Skeleton3D" index="9"]
-transform = Transform3D(0.353501, 0.166608, 0.242311, 0.201064, 0.139546, -0.389276, -0.214584, 0.405221, 0.0344275, 0.787358, -0.319373, 1.05494)
+transform = Transform3D(0.3535005, 0.16660863, 0.24231091, 0.20106414, 0.13954568, -0.389276, -0.21458381, 0.40522105, 0.034427375, 0.7873583, -0.31937325, 1.0549375)
 
 [node name="2S1_2" parent="Armature/Skeleton3D" index="10"]
-transform = Transform3D(-0.153572, 0.066458, -0.0648375, 0.0854282, 0.0520535, -0.148988, -0.0363676, -0.158363, -0.0761816, 0.414326, 0.65862, -1.15266)
+transform = Transform3D(-0.1535721, 0.06645794, -0.06483758, 0.085428216, 0.052053474, -0.14898796, -0.03636748, -0.15836264, -0.07618156, 0.41432554, 0.65861964, -1.1526611)
 
 [node name="AB1_2" parent="Armature/Skeleton3D" index="11"]
-transform = Transform3D(-0.18244, 0.378121, 0.00624491, 0.239888, 0.121073, -0.322636, -0.292349, -0.136619, -0.268637, 1.13043, -0.823496, -0.783123)
+transform = Transform3D(-0.18244009, 0.37812078, 0.006245166, 0.23988819, 0.12107275, -0.3226358, -0.29234916, -0.13661909, -0.2686372, 1.13043, -0.8234979, -0.78312135)
 
-[node name="AnimationPlayer" parent="." index="1"]
+[node name="AnimationPlayer" parent="." index="2"]
 autoplay = "Idle"
 
-[node name="Camera3D" type="Camera3D" parent="." index="2"]
+[node name="Camera3D" type="Camera3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78069, 5.29721)
 projection = 1
 size = 6.66552
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="3"]
