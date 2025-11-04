@@ -63,6 +63,7 @@ func _on_start_button_pressed() -> void:
 
 	# Replace the current scene
 	get_tree().root.add_child(intro_screen)     # Add to scene tree
+	MusicPlayer.stop()
 	get_tree().current_scene.queue_free()       # Remove current scene
 
 
