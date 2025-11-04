@@ -82,7 +82,7 @@ static func create_steps() -> Array[TutorialStep]:
 	step8.action_type = TutorialStep.ActionType.NONE
 	step8.auto_advance_delay = 3.0
 	step8.block_all_except_highlight = true
-	step8.append(step8)
+	steps.append(step8)
 	
 	# Step 9: End Turn Part 2
 	var step9 := TutorialStep.new()
