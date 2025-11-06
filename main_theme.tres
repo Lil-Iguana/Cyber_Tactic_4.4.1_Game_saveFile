@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://cao7y1u2su7i5"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://cao7y1u2su7i5"]
 
 [ext_resource type="StyleBox" uid="uid://c0fyew77uhmuv" path="res://scenes/card_ui/card_hover_stylebox.tres" id="1_1lc1g"]
 [ext_resource type="StyleBox" uid="uid://ds5g4omx1jbhl" path="res://scenes/card_ui/card_base_stylebox.tres" id="1_eut0t"]
@@ -22,6 +22,14 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.0653659, 0, 0.763149, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0omi4"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_58jnp"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_466ly"]
+
 [resource]
 default_font = ExtResource("3_0omi4")
 default_font_size = 16
@@ -30,5 +38,13 @@ Button/styles/focus = SubResource("StyleBoxEmpty_5wplq")
 Button/styles/hover = ExtResource("1_1lc1g")
 Button/styles/normal = ExtResource("1_eut0t")
 Button/styles/pressed = SubResource("StyleBoxFlat_2uwmw")
+OptionButton/colors/font_color = Color(0, 0, 0, 1)
+OptionButton/colors/font_focus_color = Color(0, 0, 0, 1)
+OptionButton/colors/font_hover_color = Color(0.13725491, 0.13725491, 0.13725491, 1)
+OptionButton/colors/font_hover_pressed_color = Color(0.13725491, 0.13725491, 0.13725491, 1)
+OptionButton/colors/font_pressed_color = Color(0, 0, 0, 1)
+OptionButton/styles/hover = SubResource("StyleBoxFlat_0omi4")
+OptionButton/styles/normal = SubResource("StyleBoxFlat_58jnp")
+OptionButton/styles/pressed = SubResource("StyleBoxFlat_466ly")
 Panel/styles/panel = ExtResource("1_eut0t")
 PanelContainer/styles/panel = ExtResource("1_eut0t")
