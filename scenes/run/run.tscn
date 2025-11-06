@@ -201,6 +201,7 @@ visible = false
 [node name="BestiaryView" parent="TopBar" instance=ExtResource("15_0pc8y")]
 unique_name_in_owner = true
 visible = false
+show_back_button = true
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
 process_mode = 3

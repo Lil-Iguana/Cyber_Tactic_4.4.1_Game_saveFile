@@ -4,6 +4,8 @@ extends Control
 const ENTRY_BTN_SCENE := preload("res://scenes/ui/bestiary_entry_button.tscn")
 const GRAY_MATERIAL := preload("res://art/gray_sprite_material.tres")
 
+@export var show_back_button: bool
+
 @onready var list_root: VBoxContainer = %EntryList
 @onready var icon: TextureRect = %IconPreview
 @onready var name_label: Label = %NameLabel
@@ -18,6 +20,7 @@ func _ready() -> void:
 	CodexManager.entry_unlocked.connect(_on_entry_unlocked)
 	# Initialize detail pane as locked
 	_show_locked_detail()
+	back_button.visible = show_back_button
 
 func _populate_list() -> void:
 	# Clear previous entries
