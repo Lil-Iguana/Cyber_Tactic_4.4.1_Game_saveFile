@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dn52uptr8vtiu"]
+[gd_scene load_steps=31 format=3 uid="uid://dn52uptr8vtiu"]
 
 [ext_resource type="Script" uid="uid://cfsvercw8jdkv" path="res://scenes/battle/battle.gd" id="1_tgtwy"]
 [ext_resource type="PackedScene" uid="uid://306utgcvnsbs" path="res://scenes/enemy/enemy.tscn" id="2_7kg7y"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://exakf52t7siy" path="res://art/discard.png" id="18_5fl16"]
 [ext_resource type="Texture2D" uid="uid://b6lqhfwxxweht" path="res://art/discardHover.png" id="19_5ng34"]
 [ext_resource type="PackedScene" uid="uid://c2vbx7gpljslx" path="res://scenes/ui/enemy_tooltip_popup.tscn" id="20_pyfix"]
+[ext_resource type="Script" uid="uid://dl2wjln70kf86" path="res://scenes/battle/turn_indicator.gd" id="21_e48mi"]
 [ext_resource type="PackedScene" uid="uid://df1tufvp2h0o5" path="res://scenes/ui/card_pile_view.tscn" id="22_ems6g"]
 [ext_resource type="PackedScene" uid="uid://0ghovce46nd1" path="res://scenes/ui/status_view.tscn" id="23_83k76"]
 [ext_resource type="PackedScene" uid="uid://b4o366c13h18p" path="res://scenes/ui/hand_choice_view.tscn" id="25_8eh2s"]
@@ -34,6 +35,11 @@ font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_e48mi"]
 font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_ueicy"]
+font_size = 64
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_tgtwy")
@@ -178,6 +184,21 @@ offset_left = -123.0
 offset_top = 19.0
 offset_right = 124.0
 offset_bottom = 79.0
+
+[node name="TurnIndicator" type="Label" parent="BattleUI"]
+custom_minimum_size = Vector2(300, 0)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -300.0
+offset_top = 23.0
+offset_bottom = 87.0
+grow_horizontal = 0
+text = "ENEMY TURN"
+label_settings = SubResource("LabelSettings_ueicy")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("21_e48mi")
 
 [node name="RedFlash" type="CanvasLayer" parent="."]
 layer = 2
