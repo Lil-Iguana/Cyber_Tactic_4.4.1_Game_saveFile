@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 @onready var full_screen_check: CheckBox = %FullScreenCheck
+@onready var resolution_option: OptionButton = %ResolutionOption
 @onready var master_slider: HSlider = %MasterSlider
 @onready var music_slider: HSlider = %MusicSlider
 @onready var sfx_slider: HSlider = %SFXSlider
@@ -11,11 +12,15 @@ extends CanvasLayer
 
 
 func _ready() -> void:
+	# Populate resolution dropdown
+	populate_resolution_options()
+	
 	# Load current settings into UI
 	load_current_settings()
 	
 	# Connect signals
 	full_screen_check.toggled.connect(_on_fullscreen_toggled)
+	resolution_option.item_selected.connect(_on_resolution_selected)
 	master_slider.value_changed.connect(_on_master_volume_changed)
 	music_slider.value_changed.connect(_on_music_volume_changed)
 	sfx_slider.value_changed.connect(_on_sfx_volume_changed)
@@ -25,9 +30,25 @@ func _ready() -> void:
 	update_value_labels()
 
 
+func populate_resolution_options() -> void:
+	resolution_option.clear()
+	
+	# Add each resolution to the dropdown
+	for res_name in SettingsManager.RESOLUTIONS.keys():
+		resolution_option.add_item(res_name)
+
+
 func load_current_settings() -> void:
 	# Load values from SettingsManager
 	full_screen_check.button_pressed = SettingsManager.config.fullscreen
+	
+	# Select the current resolution
+	var current_res = SettingsManager.config.resolution
+	for i in range(resolution_option.item_count):
+		if resolution_option.get_item_text(i) == current_res:
+			resolution_option.select(i)
+			break
+	
 	master_slider.value = SettingsManager.config.master_volume * 100
 	music_slider.value = SettingsManager.config.music_volume * 100
 	sfx_slider.value = SettingsManager.config.sfx_volume * 100
@@ -42,6 +63,12 @@ func update_value_labels() -> void:
 # Signal callbacks
 func _on_fullscreen_toggled(toggled: bool) -> void:
 	SettingsManager.set_fullscreen(toggled)
+	SettingsManager.save_settings()
+
+
+func _on_resolution_selected(index: int) -> void:
+	var selected_res = resolution_option.get_item_text(index)
+	SettingsManager.set_resolution(selected_res)
 	SettingsManager.save_settings()
 
 
