@@ -77,7 +77,6 @@ text = "Skip"
 [node name="CardTooltipPopUp" parent="." instance=ExtResource("2_db3cx")]
 visible = false
 layout_mode = 1
-background_color = Color(0, 0, 0, 0.690196)
 
 [node name="TakeButton" type="Button" parent="CardTooltipPopUp"]
 unique_name_in_owner = true
