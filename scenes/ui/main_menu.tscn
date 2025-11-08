@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bu3dhos1m15kj"]
+[gd_scene load_steps=11 format=3 uid="uid://bu3dhos1m15kj"]
 
 [ext_resource type="Script" uid="uid://buds01dk4wjrb" path="res://scenes/ui/main_menu.gd" id="1_7m5q3"]
 [ext_resource type="Resource" uid="uid://cj8wg6pkgahdr" path="res://scenes/run/run_startup.tres" id="2_fe2o3"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://bdor7qf2njhcn" path="res://art/music/BeepBox-Song (1).mp3" id="3_uhagc"]
 [ext_resource type="AudioStream" uid="uid://c1y26cwodui50" path="res://art/sfx/blipSelect.wav" id="4_uhagc"]
 [ext_resource type="VideoStream" uid="uid://cb8dyjkpbac8f" path="res://art/video/MenuBGScene0001-0680.ogv" id="5_uhagc"]
+[ext_resource type="PackedScene" uid="uid://d3hawibt7cho4" path="res://scenes/compendium/compendium_view.tscn" id="7_btxxm"]
 
 [sub_resource type="Gradient" id="Gradient_d3fc5"]
 colors = PackedColorArray(0.0925943, 0.108696, 0.555451, 1, 0.225601, 0.34753, 1, 1)
@@ -91,6 +92,9 @@ theme_override_font_sizes/font_size = 32
 text = "New Game
 "
 
+[node name="Compendium" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+
 [node name="Settings" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
@@ -121,10 +125,18 @@ horizontal_alignment = 1
 [node name="SettingsMenu" parent="." instance=ExtResource("3_1g8jr")]
 unique_name_in_owner = true
 
+[node name="CompendiumLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="CompendiumView" parent="CompendiumLayer" instance=ExtResource("7_btxxm")]
+unique_name_in_owner = true
+visible = false
+
 [connection signal="mouse_entered" from="VBoxContainer/Continue" to="." method="_on_button_entered"]
 [connection signal="pressed" from="VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="mouse_entered" from="VBoxContainer/NewRun" to="." method="_on_button_entered"]
 [connection signal="pressed" from="VBoxContainer/NewRun" to="." method="_on_new_run_pressed"]
+[connection signal="pressed" from="VBoxContainer/Compendium" to="." method="_on_compendium_pressed"]
 [connection signal="mouse_entered" from="VBoxContainer/Settings" to="." method="_on_button_entered"]
 [connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="mouse_entered" from="VBoxContainer/Exit" to="." method="_on_button_entered"]

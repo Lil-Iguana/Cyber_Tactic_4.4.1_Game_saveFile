@@ -5,6 +5,7 @@ const RUN_SCENE = preload("res://scenes/run/run.tscn")
 
 @onready var settings_menu: CanvasLayer = %SettingsMenu
 @onready var continue_button: Button = %Continue
+@onready var compendium_view: Control = %CompendiumView
 
 @export var run_startup: RunStartup
 @export var music: AudioStream
@@ -14,7 +15,12 @@ const RUN_SCENE = preload("res://scenes/run/run.tscn")
 func _ready() -> void:
 	get_tree().paused = false
 	continue_button.disabled = SaveGame.load_data() == null
+	continue_button.visible = SaveGame.load_data() == null
 	MusicPlayer.play_music(music, true)
+	
+	# Hide compendium initially
+	if compendium_view:
+		compendium_view.hide()
 
 func _on_continue_pressed() -> void:
 	run_startup.type = RunStartup.Type.CONTINUED_RUN
@@ -35,4 +41,9 @@ func _on_settings_pressed() -> void:
 	SFXPlayer.play(button_sfx)
 
 func _on_button_entered() -> void:
+	SFXPlayer.play(button_sfx)
+
+func _on_compendium_pressed() -> void:
+	if compendium_view:
+		compendium_view.show()
 	SFXPlayer.play(button_sfx)
