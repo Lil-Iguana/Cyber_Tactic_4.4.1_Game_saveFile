@@ -11,6 +11,19 @@ const META_SAVE_PATH := "user://meta_progression.tres"
 # Starting deck composition (card IDs with quantities)
 @export var starting_deck_composition: Dictionary = {}
 
+# First-time playthrough tracking
+@export var has_seen_intro: bool = false
+
+# Lifetime stats across all runs
+@export var total_enemies_defeated: int = 0
+@export var total_floors_climbed: int = 0
+@export var total_runs_started: int = 0
+@export var total_runs_won: int = 0
+@export var total_runs_lost: int = 0
+
+# Codex/Bestiary unlocks (persistent across runs)
+@export var codex_discovered: Array[String] = []
+
 
 func save_meta() -> void:
 	var err := ResourceSaver.save(self, META_SAVE_PATH)
@@ -123,3 +136,51 @@ func remove_card_from_starting_deck(card_id: String) -> bool:
 
 func get_card_count_in_starting_deck(card_id: String) -> int:
 	return starting_deck_composition.get(card_id, 0)
+
+
+# ===== NEW METHODS FOR STATS TRACKING =====
+
+func mark_intro_seen() -> void:
+	has_seen_intro = true
+	save_meta()
+
+
+func increment_enemies_defeated(count: int = 1) -> void:
+	total_enemies_defeated += count
+	save_meta()
+
+
+func increment_floors_climbed(count: int = 1) -> void:
+	total_floors_climbed += count
+	save_meta()
+
+
+func increment_runs_started() -> void:
+	total_runs_started += 1
+	save_meta()
+
+
+func increment_runs_won() -> void:
+	total_runs_won += 1
+	save_meta()
+
+
+func increment_runs_lost() -> void:
+	total_runs_lost += 1
+	save_meta()
+
+
+# ===== CODEX PERSISTENCE =====
+
+func unlock_codex_entry(id: String) -> void:
+	if id not in codex_discovered:
+		codex_discovered.append(id)
+		save_meta()
+
+
+func is_codex_entry_unlocked(id: String) -> bool:
+	return id in codex_discovered
+
+
+func get_all_unlocked_codex_entries() -> Array[String]:
+	return codex_discovered.duplicate()
