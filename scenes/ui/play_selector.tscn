@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://3ryyux5dk14m"]
+[gd_scene load_steps=11 format=3 uid="uid://3ryyux5dk14m"]
 
 [ext_resource type="Script" uid="uid://bkfrpm4r80sf2" path="res://scenes/ui/play_selector.gd" id="1_8ha05"]
 [ext_resource type="Texture2D" uid="uid://c65soght4j8py" path="res://art/tile_0087.png" id="2_1jh0v"]
@@ -24,15 +24,6 @@ shadow_size = 4
 shadow_color = Color(0, 0, 0, 0.341176)
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_8tgp3"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4srqf"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dw1ou"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gmg85"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="PlaySelector" type="Control"]
 layout_mode = 3
@@ -201,21 +192,6 @@ grow_vertical = 2
 texture = ExtResource("5_gmg85")
 expand_mode = 1
 stretch_mode = 5
-
-[node name="TutorialCheckBox" type="CheckBox" parent="."]
-unique_name_in_owner = true
-visible = false
-layout_mode = 0
-offset_left = 435.0
-offset_top = 320.0
-offset_right = 494.0
-offset_bottom = 344.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_4srqf")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_dw1ou")
-theme_override_styles/hover = SubResource("StyleBoxFlat_gmg85")
-button_pressed = true
-text = "Tutorial"
-alignment = 1
 
 [node name="BackButton" type="Button" parent="."]
 unique_name_in_owner = true

@@ -2,6 +2,7 @@ extends Control
 
 const MAIN_MENU_PATH = "res://scenes/ui/main_menu.tscn"
 const INTRO_SCENE = preload("res://cutscene.tscn")
+const RUN_SCENE = preload("res://scenes/run/run.tscn")
 const ASSASSIN_STATS := preload("res://characters/assassin/assassin.tres")
 const WARRIOR_STATS := preload("res://characters/warrior/warrior.tres")
 const WIZARD_STATS := preload("res://characters/wizard/wizard.tres")
@@ -11,13 +12,14 @@ const WIZARD_STATS := preload("res://characters/wizard/wizard.tres")
 @onready var title: Label = %Title
 @onready var description: Label = %Description
 @onready var character_portrait: TextureRect = %CharacterPotrait
-@onready var tutorial_check_box: CheckBox = %TutorialCheckBox
 @onready var back_button: Button = %BackButton
 
 var current_character: CharacterStats : set = set_current_character
 
+
 func _ready() -> void:
 	set_current_character(WARRIOR_STATS)
+
 
 func set_current_character(new_character: CharacterStats) -> void:
 	current_character = new_character
@@ -25,46 +27,33 @@ func set_current_character(new_character: CharacterStats) -> void:
 	description.text = current_character.description
 	character_portrait.texture = current_character.portrait
 
+
 func _on_start_button_pressed() -> void:
-	# Before starting a new run decide tutorial flags based on the checkbutton
-	if tutorial_check_box:
-		# If checked => player wants tutorials => reset flags
-		if tutorial_check_box.button_pressed:
-			DialogueState.reset_all()
-			DialogueState.complete_full_battle()
-		else:
-			# If unchecked => skip tutorials
-			DialogueState.complete_all()
-	else:
-		# If the checkbutton isn't present for any reason, default to showing tutorials
-		DialogueState.reset_all()
-		DialogueState.complete_full_battle()
-
+	# Clear discovered cards for new run
 	CardLibrary.discovered_cards.clear()
-
-	# --- New: reset the CodexManager state ---
-	for entry in CodexManager.entries.values():
-		entry.is_unlocked = false
-	CodexManager.discovered_ids.clear()
-	var save_res := SaveGame.load_data() if SaveGame.load_data() else SaveGame.new()
-	save_res.codex_discovered.clear()
-	save_res.save_data()
-	# (Optional) Hide any currently open BestiaryView
-	if has_node("/root/Run/CurrentView/BestiaryView"):
-		get_node("/root/Run/CurrentView/BestiaryView").hide()
 
 	print("Start new Run with %s" % current_character.character_name)
 
+	# Set up run startup
 	run_startup.type = RunStartup.Type.NEW_RUN
 	run_startup.picked_character = current_character
 
-	# Manually load and instance the intro screen scene
-	var intro_screen = INTRO_SCENE.instantiate()  # Pass selected character
+	# Load meta progression
+	var meta = MetaProgression.load_meta()
+	meta.increment_runs_started()
 
-	# Replace the current scene
-	get_tree().root.add_child(intro_screen)     # Add to scene tree
-	MusicPlayer.stop()
-	get_tree().current_scene.queue_free()       # Remove current scene
+	# Check if this is the first time playing
+	if not meta.has_seen_intro:
+		# First time - show intro and mark as seen
+		meta.mark_intro_seen()
+		
+		# Load and show intro scene
+		var intro_screen = INTRO_SCENE.instantiate()
+		get_tree().root.add_child(intro_screen)
+		get_tree().current_scene.queue_free()
+	else:
+		# Not first time - go directly to run
+		get_tree().change_scene_to_packed(RUN_SCENE)
 
 
 func _on_student_button_pressed() -> void:
