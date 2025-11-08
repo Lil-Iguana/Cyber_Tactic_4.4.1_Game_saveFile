@@ -99,6 +99,7 @@ func _save_run(was_on_map: bool) -> void:
 	save_data.floors_climbed = map.floors_climbed
 	save_data.was_on_map = was_on_map
 	save_data.discovered_cards = CardLibrary.discovered_cards
+	# No longer save codex_discovered here - it's in MetaProgression now
 	save_data.save_data()
 
 
@@ -114,12 +115,14 @@ func _load_run() -> void:
 	character.health = save_data.current_health
 	thread_handler.add_threads(save_data.threads)
 	
-		# Restore discovered cards
+	# Restore discovered cards
 	CardLibrary.discovered_cards = save_data.discovered_cards.duplicate()
 	# Auto-unlock starter deck cards if missing
 	for card in character.deck.cards:
 		if not CardLibrary.is_discovered(card.id):
 			CardLibrary.discovered_cards.append(card.id)
+	
+	# Codex state is loaded automatically from MetaProgression in CodexManager._ready()
 	
 	_setup_top_bar()
 	_setup_event_connections()
@@ -248,6 +251,10 @@ func _on_event_room_entered(room: Room) -> void:
 
 func _on_battle_won() -> void:
 	if map.floors_climbed == MapGenerator.FLOORS:
+		# Player has completed the entire run!
+		var meta = MetaProgression.load_meta()
+		meta.increment_runs_won()
+		
 		var win_screen := _change_view(WIN_SCREEN_SCENE) as WinScreen
 		win_screen.character = character
 		SaveGame.delete_data()
@@ -257,6 +264,11 @@ func _on_battle_won() -> void:
 
 func _on_map_exited(room: Room) -> void:
 	_save_run(false)
+	
+	# Track floor progression when entering a new room
+	# (This counts each room as "progress" - adjust logic if needed)
+	var meta = MetaProgression.load_meta()
+	meta.increment_floors_climbed()
 	
 	match room.type:
 		Room.Type.MONSTER:
