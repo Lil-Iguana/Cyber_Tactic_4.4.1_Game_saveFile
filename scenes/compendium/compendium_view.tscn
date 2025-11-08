@@ -1,0 +1,122 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3hawibt7cho4"]
+
+[ext_resource type="Script" uid="uid://cmfilex2ucm1k" path="res://scenes/compendium/compendium_view.gd" id="1_4r6nb"]
+[ext_resource type="PackedScene" uid="uid://dwo3o5gqe6pbf" path="res://scenes/ui/bestiary_view.tscn" id="1_wnjv0"]
+
+[node name="CompendiumView" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4r6nb")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_top = 5.0
+offset_right = 80.0
+offset_bottom = 21.0
+grow_horizontal = 2
+text = "Compendium"
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -37.0
+offset_top = 5.0
+offset_right = -7.0
+offset_bottom = 20.0
+grow_horizontal = 0
+text = "Back"
+
+[node name="TabContainer" type="TabContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+
+[node name="BestiaryView" parent="TabContainer" instance=ExtResource("1_wnjv0")]
+unique_name_in_owner = true
+layout_mode = 2
+show_back_button = false
+metadata/_tab_index = 0
+
+[node name="Stats" type="Control" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Stats"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Stats/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="StatsTitle" type="Label" parent="TabContainer/Stats/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Lifetime Statistics"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Stats/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="EnemiesDefeatedLabel" type="Label" parent="TabContainer/Stats/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Enemies Defeated: 0"
+
+[node name="FloorsClimbedLabel" type="Label" parent="TabContainer/Stats/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Floors Climbed: 0"
+
+[node name="HSeparator2" type="HSeparator" parent="TabContainer/Stats/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="RunsStartedLabel" type="Label" parent="TabContainer/Stats/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Runs Started: 0"
+
+[node name="RunsWonLabel" type="Label" parent="TabContainer/Stats/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Runs Won: 0"
+
+[node name="RunsLostLabel" type="Label" parent="TabContainer/Stats/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Runs Lost: 0"
