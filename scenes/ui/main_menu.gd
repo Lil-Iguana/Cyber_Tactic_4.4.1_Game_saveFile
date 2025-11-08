@@ -14,7 +14,7 @@ const RUN_SCENE = preload("res://scenes/run/run.tscn")
 
 func _ready() -> void:
 	get_tree().paused = false
-	continue_button.disabled = SaveGame.load_data() == null
+	continue_button.visible = SaveGame.load_data() != null
 	MusicPlayer.play_music(music, true)
 	
 	# Hide compendium initially
