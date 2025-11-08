@@ -91,9 +91,19 @@ func _on_status_gained() -> void:
 
 
 func _on_battle_over(_text: String, type: BattleOverPanel.Type) -> void:
-	# Only unlock when player wins
+	# Track stats in meta progression
+	var meta = MetaProgression.load_meta()
+	
+	# Only unlock codex and count enemies when player wins
 	if type == BattleOverPanel.Type.WIN:
 		for id in recently_defeated:
 			CodexManager.unlock(id)
+		
+		# Increment total enemies defeated
+		meta.increment_enemies_defeated(recently_defeated.size())
+	elif type == BattleOverPanel.Type.LOSE:
+		# Player lost - increment runs lost
+		meta.increment_runs_lost()
+	
 	# Clear list for next battle
 	recently_defeated.clear()
