@@ -57,9 +57,9 @@ loop = true
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
 offset_left = 25.0
-offset_top = 42.0
-offset_right = 280.0
-offset_bottom = 106.0
+offset_top = 15.0
+offset_right = 440.0
+offset_bottom = 95.0
 text = "Cyber Tactics"
 label_settings = SubResource("LabelSettings_2wnys")
 horizontal_alignment = 1
@@ -93,7 +93,10 @@ text = "New Game
 "
 
 [node name="Compendium" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Compendium"
 
 [node name="Settings" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
