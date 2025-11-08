@@ -33,6 +33,7 @@ var is_dialogue_active: bool = false
 var checked_triggers: Array = []  # Track which triggers we've already fired
 
 func _ready() -> void:
+	DialogueState.reset_all()
 	# Hide dialogue UI initially
 	if dialogue_ui:
 		dialogue_ui.visible = false
