@@ -4,15 +4,31 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_border"]
 bg_color = Color(1, 1, 1, 0)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(1, 0.8, 0, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 0.85, 0, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_size = 8
+shadow_color = Color(1, 0.85, 0, 0.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_patch"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(1, 0.85, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_size = 10
+shadow_color = Color(1, 0.85, 0, 0.6)
 
 [node name="TutorialOverlay" type="CanvasLayer"]
 layer = 5
@@ -41,6 +57,8 @@ color = Color(0, 0, 0, 0.4)
 visible = false
 offset_right = 100.0
 offset_bottom = 50.0
+mouse_filter = 2
+texture = SubResource("StyleBoxFlat_patch")
 
 [node name="Panel" type="Panel" parent="HighlightBorder"]
 layout_mode = 1
