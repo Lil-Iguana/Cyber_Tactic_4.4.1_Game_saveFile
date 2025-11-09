@@ -5,7 +5,6 @@ extends CanvasLayer
 
 var highlighted_node: Control = null
 var pulse_tween: Tween
-var scale_tween: Tween
 var input_blocker_active: bool = false
 var tutorial_pointer: Node2D = null
 
@@ -31,8 +30,6 @@ func show_overlay() -> void:
 func hide_overlay() -> void:
 	if pulse_tween:
 		pulse_tween.kill()
-	if scale_tween:
-		scale_tween.kill()
 	
 	# Just hide everything
 	hide()
@@ -57,8 +54,6 @@ func highlight_node(node: Control) -> void:
 func clear_highlight() -> void:
 	if pulse_tween:
 		pulse_tween.kill()
-	if scale_tween:
-		scale_tween.kill()
 	
 	highlight_border.hide()
 	highlighted_node = null
@@ -73,7 +68,7 @@ func _update_highlight_border() -> void:
 		return
 	
 	var node_rect := highlighted_node.get_global_rect()
-	var padding := 15.0  # Increased from 8 to make it more visible
+	var padding := 15.0  # Increased padding to make it more visible
 	
 	highlight_border.global_position = node_rect.position - Vector2(padding, padding)
 	highlight_border.size = node_rect.size + Vector2(padding * 2, padding * 2)
@@ -83,28 +78,16 @@ func _update_highlight_border() -> void:
 func _start_pulse_animation() -> void:
 	if pulse_tween:
 		pulse_tween.kill()
-	if scale_tween:
-		scale_tween.kill()
 	
-	# More exaggerated pulsing animation
+	# Only pulse opacity - no scale animation
 	pulse_tween = create_tween()
 	pulse_tween.set_loops()
 	pulse_tween.set_ease(Tween.EASE_IN_OUT)
 	pulse_tween.set_trans(Tween.TRANS_SINE)
 	
-	# Pulse opacity more dramatically (0.3 to 1.0 instead of 0.6 to 1.0)
+	# Pulse opacity dramatically (0.3 to 1.0)
 	pulse_tween.tween_property(highlight_border, "modulate:a", 0.3, 0.6)
 	pulse_tween.tween_property(highlight_border, "modulate:a", 1.0, 0.6)
-	
-	# Add scale pulse for extra emphasis
-	scale_tween = create_tween()
-	scale_tween.set_loops()
-	scale_tween.set_ease(Tween.EASE_IN_OUT)
-	scale_tween.set_trans(Tween.TRANS_ELASTIC)
-	
-	# Scale pulse
-	scale_tween.tween_property(highlight_border, "scale", Vector2(1.05, 1.05), 0.6)
-	scale_tween.tween_property(highlight_border, "scale", Vector2(1.0, 1.0), 0.6)
 
 
 func _process(_delta: float) -> void:
@@ -123,7 +106,7 @@ func hide_drag_pointer() -> void:
 		tutorial_pointer.call("hide_pointer")
 
 
-func block_input_except_node(_node: Control) -> void:
+func block_input_except_node(node: Control) -> void:
 	# Only manage input blocking state
 	input_blocker_active = true
 

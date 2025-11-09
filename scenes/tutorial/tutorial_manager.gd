@@ -105,15 +105,20 @@ func _execute_step(step: TutorialStep) -> void:
 				var start_pos := node_rect.get_center()
 				overlay.call("show_drag_pointer", start_pos, step.drag_arrow_end_pos)
 			
-			# Only block input if step requires it
-			if step.block_all_except_highlight:
+			# Check if this step requires card interaction
+			var is_card_play_step := (step.action_type == TutorialStep.ActionType.PLAY_CARD or 
+									  step.action_type == TutorialStep.ActionType.PLAY_CARD_TYPE)
+			
+			if is_card_play_step:
+				# Allow card interactions - don't block hand
+				overlay.allow_all_input()
+				# Only disable non-card UI
+				_disable_non_card_ui()
+				print("TutorialManager: Step %d allows card interaction" % current_step_index)
+			else:
+				# Block all input except the highlighted element
 				overlay.block_input_except_node(node as Control)
 				_block_all_except_highlighted(node as Control)
-			else:
-				# Allow all input when not blocking
-				overlay.allow_all_input()
-				_enable_all_inputs()  # Re-enable everything!
-				print("TutorialManager: Step %d allows all input" % current_step_index)
 		else:
 			push_warning("TutorialManager: Could not find node at path: " + step.highlight_node_path)
 	else:
@@ -140,7 +145,52 @@ func _execute_step(step: TutorialStep) -> void:
 				_connect_to_custom_signal(step.wait_signal_name)
 
 
+func _disable_non_card_ui() -> void:
+	# Disable end turn button
+	var end_turn_button := battle_node.get_node_or_null("BattleUI/EndTurnButton")
+	if end_turn_button and end_turn_button is Button:
+		end_turn_button.disabled = true
+	
+	# Disable draw/discard pile buttons
+	var draw_button := battle_node.get_node_or_null("BattleUI/DrawPileButton")
+	if draw_button and draw_button is Button:
+		draw_button.disabled = true
+	
+	var discard_button := battle_node.get_node_or_null("BattleUI/DiscardPileButton")
+	if discard_button and discard_button is Button:
+		discard_button.disabled = true
+	
+	# Keep hand enabled for card interaction
+
+
 func _block_all_except_highlighted(allowed_node: Control) -> void:
+	# Disable end turn button if not highlighted
+	var end_turn_btn := battle_node.get_node_or_null("BattleUI/EndTurnButton")
+	if end_turn_btn and end_turn_btn != allowed_node:
+		if end_turn_btn is Button:
+			end_turn_btn.disabled = true
+	
+	# Disable hand cards ONLY if hand is NOT the highlighted node
+	var hand_node := battle_node.get_node_or_null("BattleUI/Hand")
+	if hand_node:
+		var current_step := steps[current_step_index]
+		# Only disable hand if we're NOT waiting for card play and hand is NOT highlighted
+		if current_step.action_type != TutorialStep.ActionType.PLAY_CARD and \
+		   current_step.action_type != TutorialStep.ActionType.PLAY_CARD_TYPE and \
+		   hand_node != allowed_node:
+			_disable_hand(hand_node)
+	
+	# Disable draw/discard pile buttons if not highlighted
+	var draw_btn := battle_node.get_node_or_null("BattleUI/DrawPileButton")
+	if draw_btn and draw_btn != allowed_node:
+		if draw_btn is Button:
+			draw_btn.disabled = true
+	
+	var discard_btn := battle_node.get_node_or_null("BattleUI/DiscardPileButton")
+	if discard_btn and discard_btn != allowed_node:
+		if discard_btn is Button:
+			discard_btn.disabled = true
+
 	# Disable end turn button if not highlighted
 	var end_turn_button := battle_node.get_node_or_null("BattleUI/EndTurnButton")
 	if end_turn_button and end_turn_button != allowed_node:
