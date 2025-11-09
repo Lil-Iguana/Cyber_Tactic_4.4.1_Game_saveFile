@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqjjkuxjmkt4o"]
+
+[ext_resource type="Script" uid="uid://bhmrke7ftbxr7" path="res://scenes/tutorial/tutorial_pointer.gd" id="1_3hr4b"]
+
+[node name="TutorialPointer" type="Node2D"]
+z_index = 100
+script = ExtResource("1_3hr4b")
+
+[node name="Arrow" type="Polygon2D" parent="."]
+color = Color(1, 0.85, 0, 1)
+polygon = PackedVector2Array(0, -20, -10, -10, -5, -10, -5, 10, 5, 10, 5, -10, 10, -10)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
