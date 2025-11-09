@@ -99,6 +99,12 @@ func _execute_step(step: TutorialStep) -> void:
 		if node and node is Control:
 			overlay.highlight_node(node as Control)
 			
+			# Show drag arrow if requested
+			if step.show_drag_arrow:
+				var node_rect := (node as Control).get_global_rect()
+				var start_pos := node_rect.get_center()
+				overlay.call("show_drag_pointer", start_pos, step.drag_arrow_end_pos)
+			
 			# Only block input if step requires it
 			if step.block_all_except_highlight:
 				overlay.block_input_except_node(node as Control)

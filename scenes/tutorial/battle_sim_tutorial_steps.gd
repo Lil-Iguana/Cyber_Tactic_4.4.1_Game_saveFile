@@ -37,6 +37,8 @@ static func create_steps() -> Array[TutorialStep]:
 	step3.highlight_node_path = "BattleUI/Hand"
 	step3.action_type = TutorialStep.ActionType.PLAY_CARD_TYPE
 	step3.card_type_required = Card.Type.ATTACK
+	step3.show_drag_arrow = true  # ← Enable arrow
+	step3.drag_arrow_end_pos = Vector2(320, 120)  # ← Where to point
 	step3.block_all_except_highlight = false  # Allow card interactions!
 	steps.append(step3)
 	

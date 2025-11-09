@@ -1,72 +1,41 @@
 class_name TutorialOverlay
 extends CanvasLayer
 
-@onready var dim_overlay: ColorRect = $DimOverlay
-@onready var spotlight: ColorRect = $Spotlight
-@onready var highlight_border: NinePatchRect = $HighlightBorder
+@onready var highlight_border: Panel = $HighlightBorder
 
 var highlighted_node: Control = null
-var spotlight_material: ShaderMaterial
 var pulse_tween: Tween
+var scale_tween: Tween
 var input_blocker_active: bool = false
+var tutorial_pointer: Node2D = null
 
 
 func _ready() -> void:
 	layer = 5  # Above everything else
 	hide()
 	
-	# Setup spotlight shader
-	_setup_spotlight_shader()
-	
 	# Setup highlight border
 	highlight_border.hide()
-
-
-func _setup_spotlight_shader() -> void:
-	# Create a shader material for the spotlight effect
-	var shader := Shader.new()
-	shader.code = """
-shader_type canvas_item;
-
-uniform vec2 spotlight_position = vec2(0.5, 0.5);
-uniform float spotlight_radius = 0.2;
-uniform float spotlight_softness = 0.1;
-
-void fragment() {
-	vec2 uv = SCREEN_UV;
-	float dist = distance(uv, spotlight_position);
-	float alpha = smoothstep(spotlight_radius - spotlight_softness, spotlight_radius + spotlight_softness, dist);
-	COLOR = vec4(0.0, 0.0, 0.0, alpha * 0.4);  // Changed from 0.7 to 0.4 for lighter dimming
-}
-"""
 	
-	spotlight_material = ShaderMaterial.new()
-	spotlight_material.shader = shader
-	spotlight.material = spotlight_material
+	# Setup tutorial pointer
+	var pointer_scene := preload("res://scenes/tutorial/tutorial_pointer.tscn")
+	tutorial_pointer = pointer_scene.instantiate()
+	add_child(tutorial_pointer)
 
 
 func show_overlay() -> void:
 	show()
-	
-	# Show overlays initially
-	dim_overlay.show()
-	spotlight.show()
-	
-	# Fade in dim overlay (lighter now - 0.4 instead of 0.7)
-	dim_overlay.modulate.a = 0.0
-	var tween := create_tween()
-	tween.tween_property(dim_overlay, "modulate:a", 1.0, 0.3)
+	# No dim overlays - just show the canvas layer
 
 
 func hide_overlay() -> void:
 	if pulse_tween:
 		pulse_tween.kill()
+	if scale_tween:
+		scale_tween.kill()
 	
-	# Fade out
-	var tween := create_tween()
-	tween.tween_property(dim_overlay, "modulate:a", 0.0, 0.2)
-	tween.finished.connect(hide)
-	
+	# Just hide everything
+	hide()
 	highlight_border.hide()
 	highlighted_node = null
 
@@ -78,9 +47,6 @@ func highlight_node(node: Control) -> void:
 	
 	highlighted_node = node
 	
-	# Update spotlight position based on node
-	_update_spotlight_position()
-	
 	# Show and position highlight border
 	_update_highlight_border()
 	
@@ -91,35 +57,15 @@ func highlight_node(node: Control) -> void:
 func clear_highlight() -> void:
 	if pulse_tween:
 		pulse_tween.kill()
+	if scale_tween:
+		scale_tween.kill()
 	
 	highlight_border.hide()
 	highlighted_node = null
 	
-	# Reset spotlight to center
-	if spotlight_material:
-		spotlight_material.set_shader_parameter("spotlight_radius", 1.0)
-
-
-func _update_spotlight_position() -> void:
-	if not highlighted_node or not spotlight_material:
-		return
-	
-	# Get node's global rect
-	var node_rect := highlighted_node.get_global_rect()
-	var screen_size := get_viewport().get_visible_rect().size
-	
-	# Calculate center position in screen UV coordinates (0-1)
-	var center := node_rect.get_center()
-	var uv_pos := Vector2(center.x / screen_size.x, center.y / screen_size.y)
-	
-	# Calculate radius to cover the node
-	var node_size := node_rect.size
-	var max_dimension: float = max(node_size.x, node_size.y)
-	var radius: float = (max_dimension / max(screen_size.x, screen_size.y)) * 1.5
-	
-	spotlight_material.set_shader_parameter("spotlight_position", uv_pos)
-	spotlight_material.set_shader_parameter("spotlight_radius", radius)
-	spotlight_material.set_shader_parameter("spotlight_softness", radius * 0.3)
+	# Hide pointer too
+	if tutorial_pointer:
+		tutorial_pointer.call("hide_pointer")
 
 
 func _update_highlight_border() -> void:
@@ -127,7 +73,7 @@ func _update_highlight_border() -> void:
 		return
 	
 	var node_rect := highlighted_node.get_global_rect()
-	var padding := 8.0
+	var padding := 15.0  # Increased from 8 to make it more visible
 	
 	highlight_border.global_position = node_rect.position - Vector2(padding, padding)
 	highlight_border.size = node_rect.size + Vector2(padding * 2, padding * 2)
@@ -137,36 +83,53 @@ func _update_highlight_border() -> void:
 func _start_pulse_animation() -> void:
 	if pulse_tween:
 		pulse_tween.kill()
+	if scale_tween:
+		scale_tween.kill()
 	
+	# More exaggerated pulsing animation
 	pulse_tween = create_tween()
 	pulse_tween.set_loops()
 	pulse_tween.set_ease(Tween.EASE_IN_OUT)
 	pulse_tween.set_trans(Tween.TRANS_SINE)
 	
-	pulse_tween.tween_property(highlight_border, "modulate:a", 0.6, 0.8)
-	pulse_tween.tween_property(highlight_border, "modulate:a", 1.0, 0.8)
+	# Pulse opacity more dramatically (0.3 to 1.0 instead of 0.6 to 1.0)
+	pulse_tween.tween_property(highlight_border, "modulate:a", 0.3, 0.6)
+	pulse_tween.tween_property(highlight_border, "modulate:a", 1.0, 0.6)
+	
+	# Add scale pulse for extra emphasis
+	scale_tween = create_tween()
+	scale_tween.set_loops()
+	scale_tween.set_ease(Tween.EASE_IN_OUT)
+	scale_tween.set_trans(Tween.TRANS_ELASTIC)
+	
+	# Scale pulse
+	scale_tween.tween_property(highlight_border, "scale", Vector2(1.05, 1.05), 0.6)
+	scale_tween.tween_property(highlight_border, "scale", Vector2(1.0, 1.0), 0.6)
 
 
 func _process(_delta: float) -> void:
-	# Update spotlight and highlight if node moves
+	# Update highlight position if node moves
 	if highlighted_node and is_instance_valid(highlighted_node):
-		_update_spotlight_position()
 		_update_highlight_border()
 
 
+func show_drag_pointer(start_pos: Vector2, end_pos: Vector2) -> void:
+	if tutorial_pointer:
+		tutorial_pointer.call("show_pointer", 1, start_pos, end_pos)  # 1 = DRAG type
+
+
+func hide_drag_pointer() -> void:
+	if tutorial_pointer:
+		tutorial_pointer.call("hide_pointer")
+
+
 func block_input_except_node(_node: Control) -> void:
-	# Make overlays visible and actively block input
-	dim_overlay.show()
-	spotlight.show()
-	dim_overlay.mouse_filter = Control.MOUSE_FILTER_STOP
-	spotlight.mouse_filter = Control.MOUSE_FILTER_STOP
+	# Only manage input blocking state
 	input_blocker_active = true
 
 
 func allow_all_input() -> void:
-	# Keep overlays visible (for visual effect) but make them ignore all input
-	dim_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	spotlight.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	# Allow all input to pass through
 	input_blocker_active = false
 	print("TutorialOverlay: Allowing all input - cards should be draggable")
 
