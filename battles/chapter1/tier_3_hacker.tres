@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="BattleStats" load_steps=3 format=3 uid="uid://c2g8b7vmt43qn"]
 
 [ext_resource type="Script" uid="uid://dedae26v8t7fi" path="res://custom_resources/battle_stats.gd" id="1_6amoj"]
-[ext_resource type="PackedScene" uid="uid://djd647l87sx5p" path="res://battles/chapter1/tier_2_hacker.tscn" id="1_fq807"]
+[ext_resource type="PackedScene" uid="uid://djd647l87sx5p" path="res://battles/chapter1/tier_3_hacker.tscn" id="1_fq807"]
 
 [resource]
 script = ExtResource("1_6amoj")
