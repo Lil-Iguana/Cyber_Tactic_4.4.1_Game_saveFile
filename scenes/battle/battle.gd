@@ -100,7 +100,7 @@ func _on_music_set() -> void:
 	boss_music = map.boss_music
 	#print("music copied from map")
 	
-	if battle_stats.battle_tier == 2:
+	if battle_stats.battle_tier == 3:
 		#print("playing boss music")
 		MusicPlayer.play_music(boss_music, true)
 	elif not MusicPlayer.already_playing_music():
