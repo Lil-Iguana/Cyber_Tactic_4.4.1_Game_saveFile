@@ -110,24 +110,16 @@ func _execute_step(step: TutorialStep) -> void:
 									  step.action_type == TutorialStep.ActionType.PLAY_CARD_TYPE)
 			
 			if is_card_play_step:
-				# Allow card interactions - DON'T block input at overlay level
-				overlay.allow_all_input()  # This disables _input() blocking
-				# Only disable non-card UI buttons
+				# DON'T disable hand, only disable other UI
 				_disable_non_card_ui()
-				print("TutorialManager: Step %d allows card interaction" % current_step_index)
+				print("TutorialManager: Step %d - Cards should be FULLY INTERACTIVE")
 			else:
-				# Block all input except the highlighted element
-				overlay.block_input_except_node(node as Control)
+				# Block all UI elements
 				_block_all_except_highlighted(node as Control)
 		else:
 			push_warning("TutorialManager: Could not find node at path: " + step.highlight_node_path)
 	else:
 		overlay.clear_highlight()
-		if step.block_all_except_highlight:
-			overlay.block_input_except_node(null)
-		else:
-			overlay.allow_all_input()
-			_enable_all_inputs()
 	
 	# Handle auto-advance
 	if step.auto_advance_delay > 0.0 and step.action_type == TutorialStep.ActionType.NONE:
@@ -137,7 +129,6 @@ func _execute_step(step: TutorialStep) -> void:
 	match step.action_type:
 		TutorialStep.ActionType.NONE:
 			if step.auto_advance_delay <= 0.0:
-				# No action required and no auto advance, this shouldn't happen
 				push_warning("TutorialManager: Step has no action and no auto advance")
 				_advance_to_next_step()
 		TutorialStep.ActionType.WAIT_SIGNAL:
