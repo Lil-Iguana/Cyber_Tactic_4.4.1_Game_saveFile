@@ -1,7 +1,7 @@
 class_name TutorialOverlay
 extends CanvasLayer
 
-@onready var highlight_border: Panel = $HighlightBorder
+@onready var highlight_border: Control = $HighlightBorder
 
 var highlighted_node: Control = null
 var pulse_tween: Tween
@@ -10,11 +10,12 @@ var tutorial_pointer: Node2D = null
 
 
 func _ready() -> void:
-	layer = 5  # Above everything else
+	layer = 3  # Below BattleUI layer (which is typically 0-2), but above background
 	hide()
 	
 	# Setup highlight border
 	highlight_border.hide()
+	highlight_border.mouse_filter = Control.MOUSE_FILTER_IGNORE  # Ensure it doesn't block input
 	
 	# Setup tutorial pointer
 	var pointer_scene := preload("res://scenes/tutorial/tutorial_pointer.tscn")
@@ -68,10 +69,17 @@ func _update_highlight_border() -> void:
 		return
 	
 	var node_rect := highlighted_node.get_global_rect()
-	var padding := 15.0  # Increased padding to make it more visible
+	var padding := 15.0
 	
+	# Position the border AROUND the element, not over it
 	highlight_border.global_position = node_rect.position - Vector2(padding, padding)
 	highlight_border.size = node_rect.size + Vector2(padding * 2, padding * 2)
+	
+	# CRITICAL: Make sure border is behind the highlighted element
+	# Move it to the very back of its parent's children
+	if highlight_border.get_parent():
+		highlight_border.get_parent().move_child(highlight_border, 0)
+	
 	highlight_border.show()
 
 
@@ -106,21 +114,26 @@ func hide_drag_pointer() -> void:
 		tutorial_pointer.call("hide_pointer")
 
 
-func block_input_except_node(node: Control) -> void:
-	# Only manage input blocking state
+func block_input_except_node(_node: Control) -> void:
+	# Enable input blocking state
 	input_blocker_active = true
+	print("TutorialOverlay: Input blocking ENABLED")
 
 
 func allow_all_input() -> void:
-	# Allow all input to pass through
+	# Allow all input to pass through - disable input blocking
 	input_blocker_active = false
-	print("TutorialOverlay: Allowing all input - cards should be draggable")
+	print("TutorialOverlay: Input blocking DISABLED - cards should be draggable now")
 
 
 func _input(event: InputEvent) -> void:
 	# If input blocker is not active, don't block anything
 	if not input_blocker_active:
-		return
+		return  # Early exit - no blocking when disabled
+	
+	# Debug: This should NOT print during card play steps
+	if event is InputEventMouseButton and event.pressed:
+		print("TutorialOverlay: Blocking input (input_blocker_active = true)")
 	
 	# Block all input except clicks on highlighted node or its children
 	if event is InputEventMouseButton or event is InputEventMouseMotion:

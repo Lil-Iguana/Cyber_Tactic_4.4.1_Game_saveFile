@@ -110,9 +110,9 @@ func _execute_step(step: TutorialStep) -> void:
 									  step.action_type == TutorialStep.ActionType.PLAY_CARD_TYPE)
 			
 			if is_card_play_step:
-				# Allow card interactions - don't block hand
-				overlay.allow_all_input()
-				# Only disable non-card UI
+				# Allow card interactions - DON'T block input at overlay level
+				overlay.allow_all_input()  # This disables _input() blocking
+				# Only disable non-card UI buttons
 				_disable_non_card_ui()
 				print("TutorialManager: Step %d allows card interaction" % current_step_index)
 			else:
