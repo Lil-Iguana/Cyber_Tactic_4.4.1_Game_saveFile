@@ -37,9 +37,9 @@ static func create_steps() -> Array[TutorialStep]:
 	step3.highlight_node_path = "BattleUI/Hand"
 	step3.action_type = TutorialStep.ActionType.PLAY_CARD_TYPE
 	step3.card_type_required = Card.Type.ATTACK
-	step3.show_drag_arrow = true  # ← Enable arrow
-	step3.drag_arrow_end_pos = Vector2(320, 120)  # ← Where to point
-	step3.block_all_except_highlight = false  # Allow card interactions!
+	step3.show_drag_arrow = true
+	step3.drag_arrow_end_pos = Vector2(320, 120)
+	step3.block_all_except_highlight = false
 	steps.append(step3)
 	
 	# Step 4: Explain Enemy Intent
@@ -49,6 +49,7 @@ static func create_steps() -> Array[TutorialStep]:
 	step4.action_type = TutorialStep.ActionType.NONE
 	step4.auto_advance_delay = 3.5
 	step4.block_all_except_highlight = true
+	# NO drag arrow here
 	steps.append(step4)
 	
 	# Step 5: End Turn
@@ -56,7 +57,8 @@ static func create_steps() -> Array[TutorialStep]:
 	step5.narration_text = "When you're done playing cards, press END TURN to let enemies act."
 	step5.highlight_node_path = "BattleUI/EndTurnButton"
 	step5.action_type = TutorialStep.ActionType.END_TURN
-	step5.block_all_except_highlight = false  # Allow clicking end turn
+	step5.block_all_except_highlight = false
+	# NO drag arrow here
 	steps.append(step5)
 	
 	# Step 6: Explain Energy Part 2
@@ -75,6 +77,7 @@ static func create_steps() -> Array[TutorialStep]:
 	step7.action_type = TutorialStep.ActionType.PLAY_CARD_TYPE
 	step7.card_type_required = Card.Type.SKILL
 	step7.block_all_except_highlight = false
+	# NO drag arrow (player knows how to play cards now)
 	steps.append(step7)
 	
 	# Step 8: Explain Block
@@ -91,7 +94,7 @@ static func create_steps() -> Array[TutorialStep]:
 	step9.narration_text = "When you're done playing cards, press END TURN to let enemies act."
 	step9.highlight_node_path = "BattleUI/EndTurnButton"
 	step9.action_type = TutorialStep.ActionType.END_TURN
-	step9.block_all_except_highlight = false  # Allow clicking end turn
+	step9.block_all_except_highlight = false
 	steps.append(step9)
 	
 	# Step 10: Watch Enemy Turn

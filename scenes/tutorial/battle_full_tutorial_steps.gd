@@ -37,6 +37,9 @@ static func create_steps() -> Array[TutorialStep]:
 	step4.highlight_node_path = "BattleUI/Hand"
 	step4.action_type = TutorialStep.ActionType.PLAY_CARD
 	step4.block_all_except_highlight = false
+	# Optional: Add drag arrow to help player
+	step4.show_drag_arrow = true
+	step4.drag_arrow_end_pos = Vector2(320, 120)
 	steps.append(step4)
 	
 	# Step 5: Check Discard Pile

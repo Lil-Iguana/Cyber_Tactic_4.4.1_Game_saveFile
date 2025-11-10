@@ -21,7 +21,7 @@ var original_index := 0
 var parent: Control
 var tween: Tween
 var playable := true : set = _set_playable
-var disabled := false
+var disabled := false : set = _set_disabled
 
 func _ready() -> void:
 	Events.card_aim_started.connect(_on_card_drag_or_aiming_started)
@@ -35,6 +35,9 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
+	# CRITICAL FIX: Check if disabled before processing input
+	if disabled:
+		return
 	card_state_machine.on_input(event)
 
 
@@ -65,19 +68,24 @@ func request_tooltip() -> void:
 
 
 func _on_gui_input(event: InputEvent) -> void:
+	# CRITICAL FIX: Check if disabled before processing input
+	if disabled:
+		return
 	card_state_machine.on_gui_input(event)
 
 
 func _on_mouse_entered() -> void:
+	# Allow hover visual feedback even when disabled
 	card_state_machine.on_mouse_entered()
 
 
 func _on_mouse_exited() -> void:
+	# Allow hover visual feedback even when disabled
 	card_state_machine.on_mouse_exited()
 
 
 func apply_tinted_style(template: StyleBoxFlat) -> void:
-	# — guard: don’t tint if there’s no card yet —
+	# — guard: don't tint if there's no card yet —
 	if card == null:
 		return
 
@@ -106,10 +114,20 @@ func _set_playable(value: bool) -> void:
 		card_visuals.icon.modulate = Color(1, 1, 1, 1)
 
 
+func _set_disabled(value: bool) -> void:
+	disabled = value
+	# Visual feedback when card is disabled
+	if disabled:
+		modulate = Color(0.7, 0.7, 0.7, 0.8)  # Dim the card
+		mouse_filter = Control.MOUSE_FILTER_IGNORE  # Ignore all mouse input
+	else:
+		modulate = Color(1, 1, 1, 1)  # Normal appearance
+		mouse_filter = Control.MOUSE_FILTER_STOP  # Accept mouse input
+
+
 func _set_char_stats(value: CharacterStats) -> void:
 	char_stats = value
 	char_stats.stats_changed.connect(_on_char_stats_changed)
-	
 
 
 func _on_drop_point_detector_area_entered(area: Area2D) -> void:
