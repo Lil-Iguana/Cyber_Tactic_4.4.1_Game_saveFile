@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_6amoj")
-battle_tier = 2
+battle_tier = 3
 weight = 5.0
 enemies = ExtResource("1_fq807")
 metadata/_custom_type_script = "uid://dedae26v8t7fi"

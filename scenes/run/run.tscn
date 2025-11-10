@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://clm7o5ocig46s"]
+[gd_scene load_steps=32 format=3 uid="uid://clm7o5ocig46s"]
 
 [ext_resource type="PackedScene" uid="uid://y5cqwnshg50s" path="res://scenes/map/map.tscn" id="1_imm70"]
 [ext_resource type="Script" uid="uid://bml5rycg8wq3v" path="res://scenes/run/run.gd" id="1_x1ycp"]
@@ -26,6 +26,14 @@
 [ext_resource type="PackedScene" uid="uid://dwo3o5gqe6pbf" path="res://scenes/ui/bestiary_view.tscn" id="15_0pc8y"]
 [ext_resource type="PackedScene" uid="uid://i315oax6po0n" path="res://scenes/dialogue/dialogue_ui.tscn" id="24_vqexm"]
 [ext_resource type="PackedScene" uid="uid://o0erus520lr" path="res://global/settings_menu.tscn" id="25_0bq42"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0bq42"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wgm62"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_aoa3b"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hu4rv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7yo0l"]
 font = ExtResource("10_g42ja")
@@ -62,6 +70,61 @@ texture = ExtResource("4_ymu0v")
 [node name="Label" type="Label" parent="MapLabels/MapLabels/HBoxContainer"]
 layout_mode = 2
 text = "Battle"
+
+[node name="DifficultyLegend" type="VBoxContainer" parent="MapLabels/MapLabels"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Label" type="Label" parent="MapLabels/MapLabels/DifficultyLegend"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Difficulty:"
+label_settings = SubResource("LabelSettings_0bq42")
+
+[node name="EasyHBox" type="HBoxContainer" parent="MapLabels/MapLabels/DifficultyLegend"]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="EasyColor" type="ColorRect" parent="MapLabels/MapLabels/DifficultyLegend/EasyHBox"]
+custom_minimum_size = Vector2(15, 8)
+layout_mode = 2
+color = Color(0.2, 1, 0.2, 1)
+
+[node name="Label" type="Label" parent="MapLabels/MapLabels/DifficultyLegend/EasyHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Easy (1-5)"
+label_settings = SubResource("LabelSettings_wgm62")
+
+[node name="MediumHBox" type="HBoxContainer" parent="MapLabels/MapLabels/DifficultyLegend"]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="MediumColor" type="ColorRect" parent="MapLabels/MapLabels/DifficultyLegend/MediumHBox"]
+custom_minimum_size = Vector2(15, 8)
+layout_mode = 2
+color = Color(1, 1, 0, 1)
+
+[node name="Label" type="Label" parent="MapLabels/MapLabels/DifficultyLegend/MediumHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Medium (6-10)"
+label_settings = SubResource("LabelSettings_aoa3b")
+
+[node name="HardHBox" type="HBoxContainer" parent="MapLabels/MapLabels/DifficultyLegend"]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="HardColor" type="ColorRect" parent="MapLabels/MapLabels/DifficultyLegend/HardHBox"]
+custom_minimum_size = Vector2(15, 8)
+layout_mode = 2
+color = Color(1, 0.2, 0.2, 1)
+
+[node name="Label" type="Label" parent="MapLabels/MapLabels/DifficultyLegend/HardHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Hard (11-14)"
+label_settings = SubResource("LabelSettings_hu4rv")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MapLabels/MapLabels"]
 layout_mode = 2
@@ -201,7 +264,6 @@ visible = false
 [node name="BestiaryView" parent="TopBar" instance=ExtResource("15_0pc8y")]
 unique_name_in_owner = true
 visible = false
-show_back_button = true
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
 process_mode = 3

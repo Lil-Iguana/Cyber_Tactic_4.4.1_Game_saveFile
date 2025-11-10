@@ -14,9 +14,18 @@ const ICONS := {
 	Room.Type.BOSS: [preload("res://art/MalwareBoss.png"), Vector2(1.25, 1.25)],
 }
 
+# Difficulty colors for battle rooms
+const DIFFICULTY_COLORS := {
+	0: Color(0.2, 1.0, 0.2),      # Tier 0: Easy - Green
+	1: Color(1.0, 1.0, 0.0),      # Tier 1: Medium - Yellow
+	2: Color(1.0, 0.2, 0.2),      # Tier 2: Hard - Red
+	3: Color(0.8, 0.2, 1.0),      # Tier 3: Boss - Purple
+}
+
 @onready var sprite_2d: Sprite2D = $Visuals/Sprite2D
 @onready var line_2d: Line2D = $Visuals/Line2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var difficulty_indicator: ColorRect = $Visuals/DifficultyIndicator
 
 var available := false : set = set_available
 var room: Room : set = set_room
@@ -38,6 +47,22 @@ func set_room(new_data: Room) -> void:
 	line_2d.rotation_degrees = randi_range(0, 360)
 	sprite_2d.texture = ICONS[room.type][0]
 	sprite_2d.scale = ICONS[room.type][1]
+	
+	# Show difficulty indicator for battle rooms
+	_update_difficulty_indicator()
+
+
+func _update_difficulty_indicator() -> void:
+	# Only show difficulty for MONSTER and BOSS rooms
+	if room.type == Room.Type.MONSTER or room.type == Room.Type.BOSS:
+		if room.battle_stats:
+			difficulty_indicator.visible = true
+			var tier = room.battle_stats.battle_tier
+			difficulty_indicator.color = DIFFICULTY_COLORS.get(tier, Color.WHITE)
+		else:
+			difficulty_indicator.visible = false
+	else:
+		difficulty_indicator.visible = false
 
 
 func show_selected() -> void:

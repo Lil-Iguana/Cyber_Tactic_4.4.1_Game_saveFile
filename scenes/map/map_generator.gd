@@ -137,7 +137,8 @@ func _setup_boss_room() -> void:
 			current_room.next_rooms.append(boss_room)
 		
 	boss_room.type = Room.Type.BOSS
-	boss_room.battle_stats = battle_stats_pool.get_random_battle_for_tier(2)
+	# Changed to tier 3 for boss
+	boss_room.battle_stats = battle_stats_pool.get_random_battle_for_tier(3)
 
 
 func _setup_random_room_weights() -> void:
@@ -199,15 +200,27 @@ func _set_room_randomly(room_to_set: Room) -> void:
 	room_to_set.type = type_candidate
 	
 	if type_candidate == Room.Type.MONSTER:
-		var tier_for_monster_rooms := 0
-		
-		if room_to_set.row > 2:
-			tier_for_monster_rooms = 1
-			
+		# Updated tier assignment based on floor ranges
+		var tier_for_monster_rooms := _get_tier_for_floor(room_to_set.row)
 		room_to_set.battle_stats = battle_stats_pool.get_random_battle_for_tier(tier_for_monster_rooms)
 	
 	if room_to_set.type == Room.Type.EVENT:
 		room_to_set.event_scene = event_room_pool.get_random()
+
+
+func _get_tier_for_floor(row: int) -> int:
+	# Tier 0: Easy (floors 1-5, rows 0-4)
+	if row <= 4:
+		return 0
+	# Tier 1: Medium (floors 6-10, rows 5-9)
+	elif row <= 9:
+		return 1
+	# Tier 2: Hard (floors 11-14, rows 10-13)
+	elif row <= 13:
+		return 2
+	# Tier 3: Boss (floor 15, row 14)
+	else:
+		return 3
 
 
 func _room_has_parent_of_type(room: Room, type: Room.Type) -> bool:

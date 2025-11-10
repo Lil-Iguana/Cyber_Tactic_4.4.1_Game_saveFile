@@ -3,7 +3,7 @@ extends Resource
 
 @export var pool: Array[BattleStats]
 
-var total_weights_by_tier := [0.0, 0.0, 0.0]
+var total_weights_by_tier := [0.0, 0.0, 0.0, 0.0]
 
 
 func _get_all_battles_for_tier(tier: int) -> Array[BattleStats]:
