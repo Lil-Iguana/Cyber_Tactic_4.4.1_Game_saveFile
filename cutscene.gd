@@ -2,9 +2,9 @@ extends Control
 
 # Video and dialogue configuration
 var videos: Array = [
-	"res://art/video/Cutscenes/Cyber-tactic-game-cutscenes_1.ogv",
-	"res://art/video/Cutscenes/Cutscene2-cybertactic.ogv",
-	"res://art/video/Cutscenes/encounter3-cybertactics_1.ogv"
+	"res://art/video/Cutscenes/CyberScene1.ogv",
+	"res://art/video/Cutscenes/CyberScene2.ogv",
+	"res://art/video/Cutscenes/CyberScene3.ogv"
 ]
 
 # Define dialogue triggers: {video_index: [{time: seconds, dialogue: path}]}
