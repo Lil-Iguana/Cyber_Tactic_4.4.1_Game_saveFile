@@ -18,6 +18,9 @@ var time_remaining: int = 30
 var correct_answer: String = ""
 var question_answered: bool = false
 
+# NEW: Stats tracker reference (passed from run.gd)
+var stats_tracker: RunStatsTracker
+
 # Quiz data
 var question: String = ""
 var answer_a: String = ""
@@ -129,6 +132,10 @@ func correct_answer_given() -> void:
 	
 	run_stats.gold += total_reward
 	
+	# NEW: Track correct trivia answer
+	if is_instance_valid(stats_tracker):
+		stats_tracker.record_trivia_answer(true)
+	
 	var result_text: String = "[center][color=green]Correct![/color]\n\n"
 	result_text += explanation + "\n\n"
 	result_text += "Base Reward: %d gold\n" % reward_gold
@@ -141,6 +148,10 @@ func correct_answer_given() -> void:
 	show_aftermath(result_text)
 
 func wrong_answer_given(selected_answer: String) -> void:
+	# NEW: Track incorrect trivia answer
+	if is_instance_valid(stats_tracker):
+		stats_tracker.record_trivia_answer(false)
+	
 	var result_text: String = "[center][color=red]Incorrect![/color]\n\n"
 	result_text += "You selected: %s\n" % selected_answer
 	result_text += "The correct answer was: %s\n\n" % correct_answer
@@ -151,6 +162,10 @@ func wrong_answer_given(selected_answer: String) -> void:
 
 func time_up() -> void:
 	question_answered = true
+	
+	# NEW: Track incorrect trivia answer (time ran out)
+	if is_instance_valid(stats_tracker):
+		stats_tracker.record_trivia_answer(false)
 	
 	# Disable all buttons
 	answer_a_button.disabled = true

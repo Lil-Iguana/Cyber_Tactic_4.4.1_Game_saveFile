@@ -16,7 +16,8 @@ extends Node2D
 @onready var map: Map = get_node_or_null("../../Map")
 
 var tutorial_manager: TutorialManager
-
+var stats_tracker: RunStatsTracker  # NEW
+var starting_health: int = 0  # NEW
 
 func _ready() -> void:
 	enemy_handler.child_order_changed.connect(_on_enemies_child_order_changed)
@@ -88,7 +89,7 @@ func _on_enemy_turn_ended() -> void:
 
 
 func _on_player_died() -> void:
-	Events.battle_over_screen_requested.emit("Game Over!", BattleOverPanel.Type.LOSE)
+	Events.player_died_run_over.emit()
 	SaveGame.delete_data()
 
 
@@ -98,6 +99,11 @@ func _on_threads_activated(type: ThreadPassive.Type) -> void:
 			player_handler.start_battle(char_stats)
 			battle_ui.initialize_card_pile_ui()
 		ThreadPassive.Type.END_OF_COMBAT:
+			# NEW: Track battle completion
+			var was_perfect = (char_stats.health == starting_health)
+			if is_instance_valid(stats_tracker):
+				stats_tracker.record_battle_won(battle_stats.battle_tier, was_perfect)
+			
 			Events.battle_over_screen_requested.emit("Victorious!", BattleOverPanel.Type.WIN)
 
 

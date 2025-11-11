@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bb100fursvr26"]
+[gd_scene load_steps=4 format=3 uid="uid://bb100fursvr26"]
+
+[ext_resource type="Script" uid="uid://dfradrw0vii5t" path="res://scenes/ui/run_summary_screen.gd" id="1_chnnw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
 bg_color = Color(0.1, 0.1, 0.15, 0.95)
@@ -16,6 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_chnnw")
 
 [node name="Background" type="Panel" parent="."]
 layout_mode = 1
@@ -50,9 +53,16 @@ theme_override_font_sizes/font_size = 32
 text = "Run Statistics"
 horizontal_alignment = 1
 
-[node name="StatsContainer" type="VBoxContainer" parent="MainContainer"]
-unique_name_in_owner = true
+[node name="StatsScrollContainer" type="ScrollContainer" parent="MainContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="StatsContainer" type="VBoxContainer" parent="MainContainer/StatsScrollContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/separation = 5
 
 [node name="HSeparator2" type="HSeparator" parent="MainContainer"]
@@ -88,7 +98,7 @@ layout_mode = 2
 
 [node name="ReturnButton" type="Button" parent="MainContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(120, 30)
+custom_minimum_size = Vector2(150, 30)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Return to Menu"

@@ -5,6 +5,7 @@ const META_SAVE_PATH := "user://meta_progression.tres"
 
 # Persistent data that carries over between runs
 @export var persistent_gold: int = 0
+@export var knowledge_points: int = 0  # Currency for meta upgrades
 @export var health_upgrades_purchased: int = 0  # Max 5
 @export var discovered_cards: Array[String] = []
 
@@ -20,6 +21,12 @@ const META_SAVE_PATH := "user://meta_progression.tres"
 @export var total_runs_started: int = 0
 @export var total_runs_won: int = 0
 @export var total_runs_lost: int = 0
+@export var total_knowledge_points_earned: int = 0  # Lifetime KP
+@export var total_perfect_battles: int = 0  # NEW
+@export var total_trivia_correct: int = 0  # NEW
+@export var total_trivia_attempted: int = 0  # NEW
+@export var best_rank_tier: String = "Bronze"  # NEW: Best rank achieved
+@export var highest_kp_single_run: int = 0  # NEW: Highest KP in a single run
 
 # Codex/Bestiary unlocks (persistent across runs)
 @export var codex_discovered: Array[String] = []
@@ -68,6 +75,26 @@ func add_gold(amount: int) -> void:
 func spend_gold(amount: int) -> bool:
 	if persistent_gold >= amount:
 		persistent_gold -= amount
+		save_meta()
+		return true
+	return false
+
+
+# Knowledge Points management
+func add_knowledge_points(amount: int) -> void:
+	knowledge_points += amount
+	total_knowledge_points_earned += amount
+	
+	# Track highest KP in a single run
+	if amount > highest_kp_single_run:
+		highest_kp_single_run = amount
+	
+	save_meta()
+
+
+func spend_knowledge_points(amount: int) -> bool:
+	if knowledge_points >= amount:
+		knowledge_points -= amount
 		save_meta()
 		return true
 	return false
@@ -138,7 +165,7 @@ func get_card_count_in_starting_deck(card_id: String) -> int:
 	return starting_deck_composition.get(card_id, 0)
 
 
-# ===== NEW METHODS FOR STATS TRACKING =====
+# ===== STATS TRACKING =====
 
 func mark_intro_seen() -> void:
 	has_seen_intro = true
@@ -168,6 +195,52 @@ func increment_runs_won() -> void:
 func increment_runs_lost() -> void:
 	total_runs_lost += 1
 	save_meta()
+
+
+# NEW: Track run completion stats from RunStatsTracker
+func record_run_completion(stats_tracker: RunStatsTracker, rank_data: Dictionary) -> void:
+	# Add perfect battles to lifetime total
+	total_perfect_battles += stats_tracker.perfect_battles
+	
+	# Add trivia stats to lifetime total
+	total_trivia_correct += stats_tracker.trivia_correct
+	total_trivia_attempted += stats_tracker.trivia_total
+	
+	# Update best rank if this run's rank is better
+	var rank_tier = rank_data["tier"]
+	if _is_rank_better(rank_tier, best_rank_tier):
+		best_rank_tier = rank_tier
+	
+	save_meta()
+
+
+# Helper function to compare ranks
+func _is_rank_better(new_rank: String, current_rank: String) -> bool:
+	var rank_values = {
+		"Bronze": 0,
+		"Silver": 1,
+		"Gold": 2,
+		"Platinum": 3
+	}
+	
+	var new_value = rank_values.get(new_rank, 0)
+	var current_value = rank_values.get(current_rank, 0)
+	
+	return new_value > current_value
+
+
+# Get win rate percentage
+func get_win_rate() -> float:
+	if total_runs_started == 0:
+		return 0.0
+	return (float(total_runs_won) / float(total_runs_started)) * 100.0
+
+
+# Get trivia accuracy percentage
+func get_trivia_accuracy() -> float:
+	if total_trivia_attempted == 0:
+		return 0.0
+	return (float(total_trivia_correct) / float(total_trivia_attempted)) * 100.0
 
 
 # ===== CODEX PERSISTENCE =====

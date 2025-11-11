@@ -8,6 +8,7 @@ const SHOP_SCENE := preload("res://scenes/shop/shop.tscn")
 const TREASURE_SCENE := preload("res://scenes/treasure/treasure.tscn")
 const BESTIARY_SCENE := preload("res://scenes/bestiary/bestiary.tscn")
 const WIN_SCREEN_SCENE := preload("res://scenes/win_screen/win_screen.tscn")
+const SUMMARY_SCENE := preload("res://scenes/ui/run_summary_screen.tscn")  # NEW
 const MAIN_MENU_PATH := "res://scenes/ui/main_menu.tscn"
 
 const MAP_MUSIC_01 := preload("res://art/music/during on player path.mp3")
@@ -37,6 +38,7 @@ const BOSS_MUSIC_02 := preload("res://art/music/boss battle.mp3")
 var stats: RunStats
 var character: CharacterStats
 var save_data: SaveGame
+var stats_tracker: RunStatsTracker  # NEW
 
 
 func _ready() -> void:
@@ -61,6 +63,7 @@ func _ready() -> void:
 
 func _start_run() -> void:
 	stats = RunStats.new()
+	stats_tracker = RunStatsTracker.new()  # NEW
 	
 	# Instantiate character and reset decks
 	character = run_startup.picked_character.create_instance()
@@ -94,6 +97,7 @@ func _save_run(was_on_map: bool) -> void:
 	save_data.floors_climbed = map.floors_climbed
 	save_data.was_on_map = was_on_map
 	save_data.discovered_cards = CardLibrary.discovered_cards
+	save_data.stats_tracker = stats_tracker  # NEW
 	save_data.save_data()
 
 
@@ -115,6 +119,12 @@ func _load_run() -> void:
 	for card in character.deck.cards:
 		if not CardLibrary.is_discovered(card.id):
 			CardLibrary.discovered_cards.append(card.id)
+	
+	# NEW: Load or create stats tracker
+	if save_data.stats_tracker:
+		stats_tracker = save_data.stats_tracker
+	else:
+		stats_tracker = RunStatsTracker.new()
 	
 	_setup_top_bar()
 	_setup_event_connections()
@@ -164,6 +174,7 @@ func _setup_event_connections() -> void:
 	Events.treasure_room_exited.connect(_on_treasure_room_exited)
 	Events.event_room_exited.connect(_show_map)
 	Events.bestiary_exited.connect(_show_map)
+	Events.player_died_run_over.connect(_on_player_died_run_over)  # NEW
 
 
 func _setup_top_bar():
@@ -199,6 +210,7 @@ func _on_battle_room_entered(room: Room) -> void:
 	battle_scene.char_stats = character
 	battle_scene.battle_stats = room.battle_stats
 	battle_scene.threads = thread_handler
+	battle_scene.stats_tracker = stats_tracker  # NEW
 	battle_scene.start_battle()
 
 
@@ -237,6 +249,7 @@ func _on_event_room_entered(room: Room) -> void:
 	event_room.character_stats = character
 	event_room.run_stats = stats
 	event_room.thread_handler = thread_handler
+	event_room.stats_tracker = stats_tracker  # NEW: Pass stats tracker to event rooms
 	event_room.setup()
 
 
@@ -246,8 +259,8 @@ func _on_battle_won() -> void:
 		var meta = MetaProgression.load_meta()
 		meta.increment_runs_won()
 		
-		var win_screen := _change_view(WIN_SCREEN_SCENE) as WinScreen
-		win_screen.character = character
+		# NEW: Show run summary screen instead of win screen
+		_show_run_summary(true)
 		SaveGame.delete_data()
 	else:
 		_show_regular_battle_rewards()
@@ -255,6 +268,9 @@ func _on_battle_won() -> void:
 
 func _on_map_exited(room: Room) -> void:
 	_save_run(false)
+	
+	# NEW: Track floor progression
+	stats_tracker.record_floor_cleared()
 	
 	# Track floor progression when entering a new room
 	var meta = MetaProgression.load_meta()
@@ -280,6 +296,21 @@ func _on_battle_reward_exited_wrapper() -> void:
 	# show a short congrats dialogue once after returning to map
 	if not DialogueState.has_shown("post_battle_shown"):
 		DialogueManager.start_dialogue_from_file("res://dialogues/post_battle_congrats.json", "post_battle_shown")
+
+
+# NEW: Handle player death
+func _on_player_died_run_over() -> void:
+	var meta = MetaProgression.load_meta()
+	meta.increment_runs_lost()
+	
+	_show_run_summary(false)
+
+
+# NEW: Show run summary screen
+func _show_run_summary(victory: bool) -> void:
+	var summary := _change_view(SUMMARY_SCENE) as RunSummaryScreen
+	summary.show_summary(stats_tracker, victory)
+	get_tree().paused = true
 
 
 func set_music(scene) -> void:
