@@ -10,10 +10,10 @@ const BESTIARY_SCENE := preload("res://scenes/bestiary/bestiary.tscn")
 const WIN_SCREEN_SCENE := preload("res://scenes/win_screen/win_screen.tscn")
 const MAIN_MENU_PATH := "res://scenes/ui/main_menu.tscn"
 
-const MAP_MUSIC_01 := preload("res://art/music/Updating.mp3")
-const MAP_MUSIC_02 := preload("res://art/music/Updating.mp3")
-const BOSS_MUSIC_01 := preload("res://art/music/Updating.mp3")
-const BOSS_MUSIC_02 := preload("res://art/music/Updating.mp3")
+const MAP_MUSIC_01 := preload("res://art/music/during on player path.mp3")
+const MAP_MUSIC_02 := preload("res://art/music/during on player path.mp3")
+const BOSS_MUSIC_01 := preload("res://art/music/boss battle.mp3")
+const BOSS_MUSIC_02 := preload("res://art/music/boss battle.mp3")
 
 @export var run_startup: RunStartup
 
@@ -37,11 +37,6 @@ const BOSS_MUSIC_02 := preload("res://art/music/Updating.mp3")
 var stats: RunStats
 var character: CharacterStats
 var save_data: SaveGame
-
-
-#func _input(event: InputEvent) -> void:
-#	if event.is_action_pressed("cheat"):
-#		get_tree().call_group("enemies", "queue_free")
 
 
 func _ready() -> void:
@@ -99,7 +94,6 @@ func _save_run(was_on_map: bool) -> void:
 	save_data.floors_climbed = map.floors_climbed
 	save_data.was_on_map = was_on_map
 	save_data.discovered_cards = CardLibrary.discovered_cards
-	# No longer save codex_discovered here - it's in MetaProgression now
 	save_data.save_data()
 
 
@@ -121,8 +115,6 @@ func _load_run() -> void:
 	for card in character.deck.cards:
 		if not CardLibrary.is_discovered(card.id):
 			CardLibrary.discovered_cards.append(card.id)
-	
-	# Codex state is loaded automatically from MetaProgression in CodexManager._ready()
 	
 	_setup_top_bar()
 	_setup_event_connections()
@@ -157,12 +149,14 @@ func _show_map() -> void:
 	map_labels.show()
 	message_label.show()
 	
+	# Resume map music when returning to map
+	MusicPlayer.resume_map_music()
+	
 	_save_run(true)
 
 
 func _setup_event_connections() -> void:
 	Events.battle_won.connect(_on_battle_won)
-	# use a wrapper so we can show map then run the dialogue (once)
 	Events.battle_reward_exited.connect(_on_battle_reward_exited_wrapper)
 	Events.campfire_exited.connect(_show_map)
 	Events.map_exited.connect(_on_map_exited)
@@ -189,7 +183,6 @@ func _setup_top_bar():
 	card_library_button.pressed.connect(card_library_view.show_current_view.bind("Codex"))
 	
 	bestiary_opener_button.pressed.connect(bestiary_view.show)
-	
 
 
 func _show_regular_battle_rewards() -> void:
@@ -228,8 +221,6 @@ func _on_treasure_room_exited(thread: ThreadPassive) -> void:
 func _on_campfire_entered() -> void:
 	var campfire := _change_view(CAMPFIRE_SCENE) as Campfire
 	campfire.char_stats = character
-	#if not DialogueState.has_shown("campfire_shown"):
-	#	DialogueManager.start_dialogue_from_file("res://dialogues/campfire_convo.json", "campfire_shown")
 
 
 func _on_shop_entered() -> void:
@@ -266,7 +257,6 @@ func _on_map_exited(room: Room) -> void:
 	_save_run(false)
 	
 	# Track floor progression when entering a new room
-	# (This counts each room as "progress" - adjust logic if needed)
 	var meta = MetaProgression.load_meta()
 	meta.increment_floors_climbed()
 	
@@ -303,5 +293,8 @@ func set_music(scene) -> void:
 		_:
 			scene.music = MAP_MUSIC_01
 			scene.boss_music = BOSS_MUSIC_01
-			
+	
+	# Start playing map music
+	MusicPlayer.play_map_music(scene.music)
+	
 	Events.music_set.emit()

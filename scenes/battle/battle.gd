@@ -32,9 +32,15 @@ func _ready() -> void:
 func start_battle() -> void:
 	get_tree().paused = false
 	
-	if battle_stats.battle_tier == 2:
-		boss_music = map.boss_music
-		MusicPlayer.play_music(boss_music, true)
+	# Play appropriate battle music
+	if battle_stats.battle_tier == 3:
+		# Boss battle
+		boss_music = map.boss_music if map else boss_music
+		MusicPlayer.play_battle_music(boss_music)
+	else:
+		# Regular battle
+		music = map.music if map else music
+		MusicPlayer.play_battle_music(music)
 	
 	battle_ui.char_stats = char_stats
 	player.stats = char_stats
@@ -96,15 +102,7 @@ func _on_threads_activated(type: ThreadPassive.Type) -> void:
 
 
 func _on_music_set() -> void:
-	music = map.music
-	boss_music = map.boss_music
-	#print("music copied from map")
-	
-	if battle_stats.battle_tier == 3:
-		#print("playing boss music")
-		MusicPlayer.play_music(boss_music, true)
-	elif not MusicPlayer.already_playing_music():
-		MusicPlayer.play_music(music, true)
-	else:
-		pass
-		#print("music already playing")
+	# Update music references from map
+	if map:
+		music = map.music
+		boss_music = map.boss_music
