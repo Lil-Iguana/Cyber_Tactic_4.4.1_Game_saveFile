@@ -33,7 +33,7 @@ static func create_steps() -> Array[TutorialStep]:
 	
 	# Step 3: Play an Attack Card
 	var step3 := TutorialStep.new()
-	step3.narration_text = "Try playing an ATTACK card (red) to damage the enemy!"
+	step3.narration_text = "CLICK and DRAG an ATTACK card (red) to damage the enemy!"
 	step3.highlight_node_path = "BattleUI/Hand"
 	step3.action_type = TutorialStep.ActionType.PLAY_CARD_TYPE
 	step3.card_type_required = Card.Type.ATTACK
