@@ -130,8 +130,15 @@ func _load_run() -> void:
 	_setup_event_connections()
 	
 	map.load_map(save_data.map_data, save_data.floors_climbed, save_data.last_room)
+	
+	# FIXED: Only try to enter room if it has valid data
 	if save_data.last_room and not save_data.was_on_map:
-		_on_map_exited(save_data.last_room)
+		# Check if the room has valid battle stats before trying to enter
+		if save_data.last_room.battle_stats:
+			_on_map_exited(save_data.last_room)
+		else:
+			# Room data is incomplete, return player to map instead
+			push_warning("Cannot resume mid-room (incomplete room data), returning to map")
 	
 	set_music(map)
 
@@ -206,11 +213,18 @@ func _show_regular_battle_rewards() -> void:
 
 
 func _on_battle_room_entered(room: Room) -> void:
+	# FIXED: Add null check for battle_stats
+	if not room.battle_stats:
+		push_error("Room has no battle_stats! Cannot start battle.")
+		_show_map()  # Return to map instead of crashing
+		return
+	
 	var battle_scene: Battle = _change_view(BATTLE_SCENE) as Battle
 	battle_scene.char_stats = character
 	battle_scene.battle_stats = room.battle_stats
 	battle_scene.threads = thread_handler
 	battle_scene.stats_tracker = stats_tracker  # NEW
+	battle_scene.starting_health = character.health  # FIXED: Set starting health for perfect battle tracking
 	battle_scene.start_battle()
 
 
