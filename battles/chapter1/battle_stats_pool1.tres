@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BattleStatsPool" load_steps=10 format=3 uid="uid://5vocm1gyjpxs"]
+[gd_resource type="Resource" script_class="BattleStatsPool" load_steps=11 format=3 uid="uid://5vocm1gyjpxs"]
 
 [ext_resource type="Script" uid="uid://dedae26v8t7fi" path="res://custom_resources/battle_stats.gd" id="1_b22iw"]
 [ext_resource type="Script" uid="uid://umr32i1532jj" path="res://custom_resources/battle_stats_pool.gd" id="2_043se"]
@@ -9,7 +9,8 @@
 [ext_resource type="Resource" uid="uid://c2g8b7vmt43qn" path="res://battles/chapter1/tier_3_hacker.tres" id="7_tc0i4"]
 [ext_resource type="Resource" uid="uid://b5pmt0ehn7hqd" path="res://battles/chapter1/tier_2_trojan_virus.tres" id="8_f2axv"]
 [ext_resource type="Resource" uid="uid://5c1l8stvmgs8" path="res://battles/chapter1/tier_1_trojan.tres" id="8_fykh3"]
+[ext_resource type="Resource" uid="uid://buuoh6al013y3" path="res://battles/chapter1/tier_2_worms_2.tres" id="9_e0c34"]
 
 [resource]
 script = ExtResource("2_043se")
-pool = Array[ExtResource("1_b22iw")]([ExtResource("4_n05sx"), ExtResource("5_ece2f"), ExtResource("6_rj56t"), ExtResource("7_tc0i4"), ExtResource("8_fykh3"), ExtResource("2_phjhu"), ExtResource("8_f2axv")])
+pool = Array[ExtResource("1_b22iw")]([ExtResource("4_n05sx"), ExtResource("5_ece2f"), ExtResource("6_rj56t"), ExtResource("7_tc0i4"), ExtResource("8_fykh3"), ExtResource("2_phjhu"), ExtResource("8_f2axv"), ExtResource("9_e0c34")])
