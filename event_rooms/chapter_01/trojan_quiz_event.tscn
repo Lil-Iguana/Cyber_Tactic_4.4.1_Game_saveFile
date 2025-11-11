@@ -1,0 +1,134 @@
+[gd_scene load_steps=3 format=3 uid="uid://fk8g5yp4ygga"]
+
+[ext_resource type="Script" uid="uid://bih1khdvtega8" path="res://event_rooms/chapter_01/trojan_quiz_event.gd" id="1_46sf7"]
+[ext_resource type="PackedScene" uid="uid://dnn5kg0tp0d22" path="res://scenes/event_rooms/event_room_button.tscn" id="2_73d52"]
+
+[node name="TrojanQuizEvent" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_46sf7")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1, 0.15, 0.3, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="IntroScreen" type="VBoxContainer" parent="HBoxContainer/CenterContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="EventTitleLabel" type="Label" parent="HBoxContainer/CenterContainer/IntroScreen"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Cybersecurity Quiz"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/CenterContainer/IntroScreen"]
+layout_mode = 2
+
+[node name="EventDescription" type="RichTextLabel" parent="HBoxContainer/CenterContainer/IntroScreen"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]Test your knowledge of cybersecurity!
+
+Answer the question correctly before time runs out to earn gold rewards.
+
+[color=yellow]Time Bonus:[/color] Answer quickly for extra gold![/center]"
+fit_content = true
+scroll_active = false
+
+[node name="StartQuizButton" parent="HBoxContainer/CenterContainer/IntroScreen" instance=ExtResource("2_73d52")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+text = "Start Quiz"
+
+[node name="EventMenu" type="VBoxContainer" parent="HBoxContainer/CenterContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TimerLabel" type="Label" parent="HBoxContainer/CenterContainer/EventMenu"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Time: 30"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/CenterContainer/EventMenu"]
+layout_mode = 2
+
+[node name="QuestionLabel" type="Label" parent="HBoxContainer/CenterContainer/EventMenu"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "Question goes here?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="HSeparator2" type="HSeparator" parent="HBoxContainer/CenterContainer/EventMenu"]
+layout_mode = 2
+
+[node name="AnswerAButton" parent="HBoxContainer/CenterContainer/EventMenu" instance=ExtResource("2_73d52")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "A.) Answer A"
+
+[node name="AnswerBButton" parent="HBoxContainer/CenterContainer/EventMenu" instance=ExtResource("2_73d52")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "B.) Answer B"
+
+[node name="EventAfterMath" type="VBoxContainer" parent="HBoxContainer/CenterContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="AftermathText" type="RichTextLabel" parent="HBoxContainer/CenterContainer/EventAfterMath"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]Result text goes here[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="ContinueButton" parent="HBoxContainer/CenterContainer/EventAfterMath" instance=ExtResource("2_73d52")]
+layout_mode = 2
+text = "Continue"
