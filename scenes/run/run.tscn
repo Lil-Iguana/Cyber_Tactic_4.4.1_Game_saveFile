@@ -93,7 +93,7 @@ color = Color(0.2, 1, 0.2, 1)
 [node name="Label" type="Label" parent="MapLabels/MapLabels/DifficultyLegend/EasyHBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
-text = "Easy (1-5)"
+text = "Easy (1-4)"
 label_settings = SubResource("LabelSettings_wgm62")
 
 [node name="MediumHBox" type="HBoxContainer" parent="MapLabels/MapLabels/DifficultyLegend"]
@@ -108,7 +108,7 @@ color = Color(1, 1, 0, 1)
 [node name="Label" type="Label" parent="MapLabels/MapLabels/DifficultyLegend/MediumHBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
-text = "Medium (6-10)"
+text = "Medium (5-10)"
 label_settings = SubResource("LabelSettings_aoa3b")
 
 [node name="HardHBox" type="HBoxContainer" parent="MapLabels/MapLabels/DifficultyLegend"]
