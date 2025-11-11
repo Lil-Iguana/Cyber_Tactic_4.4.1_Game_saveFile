@@ -1,12 +1,13 @@
-[gd_scene load_steps=31 format=3 uid="uid://dn52uptr8vtiu"]
+[gd_scene load_steps=32 format=3 uid="uid://dn52uptr8vtiu"]
 
 [ext_resource type="Script" uid="uid://cfsvercw8jdkv" path="res://scenes/battle/battle.gd" id="1_tgtwy"]
 [ext_resource type="PackedScene" uid="uid://306utgcvnsbs" path="res://scenes/enemy/enemy.tscn" id="2_7kg7y"]
 [ext_resource type="Script" uid="uid://c7qxtsgofswco" path="res://scenes/ui/hand.gd" id="2_dybx0"]
 [ext_resource type="PackedScene" uid="uid://b25jnn2o0ion1" path="res://scenes/player/player.tscn" id="3_arrrb"]
-[ext_resource type="AudioStream" uid="uid://cb2r7qvwyonp0" path="res://art/One_Two_ExterminateMP3.mp3" id="3_fsq28"]
 [ext_resource type="PackedScene" uid="uid://neowwkxk87rp" path="res://scenes/card_target_selector/card_target_selector.tscn" id="3_jsmm7"]
+[ext_resource type="AudioStream" uid="uid://dmv0nfthic2dq" path="res://art/music/during normal battle.mp3" id="3_ueicy"]
 [ext_resource type="Texture2D" uid="uid://lugennxj0o6x" path="res://art/battle_background1.png" id="4_8eh2s"]
+[ext_resource type="AudioStream" uid="uid://cqs86ck0kmw83" path="res://art/music/boss battle.mp3" id="4_n5ix6"]
 [ext_resource type="Resource" uid="uid://co6ar47di3crh" path="res://characters/warrior/warrior.tres" id="4_nhdv7"]
 [ext_resource type="Script" uid="uid://cgojt0i5spdq4" path="res://scenes/enemy/enemy_handler.gd" id="4_pp0u0"]
 [ext_resource type="Resource" uid="uid://di1u2yn8ru2vi" path="res://enemies_stats/virus/virus_enemy.tres" id="5_bry55"]
@@ -44,7 +45,8 @@ outline_color = Color(0, 0, 0, 1)
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_tgtwy")
 char_stats = ExtResource("4_nhdv7")
-music = ExtResource("3_fsq28")
+music = ExtResource("3_ueicy")
+boss_music = ExtResource("4_n5ix6")
 metadata/_edit_lock_ = true
 
 [node name="Background" type="Sprite2D" parent="."]

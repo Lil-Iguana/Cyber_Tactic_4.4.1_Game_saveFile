@@ -34,12 +34,12 @@ func start_battle() -> void:
 	
 	# Play appropriate battle music
 	if battle_stats.battle_tier == 3:
-		# Boss battle
-		boss_music = map.boss_music if map else boss_music
+		# Boss battle - get boss music from map
+		if map and map.boss_music:
+			boss_music = map.boss_music
 		MusicPlayer.play_battle_music(boss_music)
 	else:
-		# Regular battle
-		music = map.music if map else music
+		# Regular battle - use this scene's battle music
 		MusicPlayer.play_battle_music(music)
 	
 	battle_ui.char_stats = char_stats
