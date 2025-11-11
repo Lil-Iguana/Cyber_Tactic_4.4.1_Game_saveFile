@@ -118,7 +118,7 @@ func _on_music_set() -> void:
 		boss_music = map.boss_music
 
 #debug code to auto-win combat
-#func _unhandled_input(event: InputEvent) -> void:
-#	if event.is_action_pressed("cheat"):
-#		for enemy: Enemy in enemy_handler.get_children():
-#			enemy.queue_free()
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("cheat"):
+		for enemy: Enemy in enemy_handler.get_children():
+			enemy.queue_free()
