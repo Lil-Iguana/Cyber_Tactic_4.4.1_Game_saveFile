@@ -70,6 +70,8 @@ signal player_spend_spell
 signal player_gain_spell
 @warning_ignore("unused_signal")
 signal player_died
+@warning_ignore("unused_signal")
+signal player_died_run_over
 
 # Enemy related events
 @warning_ignore("unused_signal")
