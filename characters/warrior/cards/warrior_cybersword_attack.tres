@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=4 format=3 uid="uid://daiht3oljvjoj"]
 
-[ext_resource type="Texture2D" uid="uid://dnblcwlq0j5r0" path="res://art/Untitled1_20250529100304.png" id="1_5vaqh"]
+[ext_resource type="Texture2D" uid="uid://dka834hak3tq6" path="res://art/port_probe.png" id="1_5vaqh"]
 [ext_resource type="Script" uid="uid://bel2a66awwo8i" path="res://characters/warrior/cards/warrior_cybersword_attack.gd" id="2_cvsc0"]
 [ext_resource type="AudioStream" uid="uid://mld5qltxsv80" path="res://art/sfx/synth.wav" id="3_f525k"]
 
