@@ -3,11 +3,15 @@ extends EventRoom
 @onready var answer_a_button: EventRoomButton = %AnswerAButton
 @onready var answer_b_button: EventRoomButton = %AnswerBButton
 @onready var answer_c_button: EventRoomButton = %AnswerCButton
+@onready var intro_screen: VBoxContainer = %IntroScreen
 @onready var event_menu: VBoxContainer = %EventMenu
 @onready var event_aftermath: VBoxContainer = %EventAfterMath
 @onready var aftermath_text: RichTextLabel = %AftermathText
 @onready var question_label: Label = %QuestionLabel
 @onready var timer_label: Label = %TimerLabel
+@onready var event_title_label: Label = %EventTitleLabel
+@onready var event_description: RichTextLabel = %EventDescription
+@onready var start_quiz_button: EventRoomButton = %StartQuizButton
 
 var timer: Timer
 var time_remaining: int = 30
@@ -22,10 +26,34 @@ var answer_c: String = ""
 var reward_gold: int = 100
 var explanation: String = ""
 
+# Quiz metadata
+var quiz_title: String = "Cybersecurity Quiz"
+var quiz_description: String = "[center]Test your knowledge of cybersecurity!\n\nAnswer the question correctly before time runs out to earn gold rewards.\n\n[color=yellow]Time Bonus:[/color] Answer quickly for extra gold![/center]"
+var quiz_difficulty: String = "medium"
+
 func setup() -> void:
-	# Set up the question and answers
-	load_question_data()
+	# Show intro screen first
+	show_intro_screen()
 	
+	# Set up the start button
+	start_quiz_button.event_button_callback = start_quiz
+	
+	# Load question data but don't display yet
+	load_question_data()
+
+func show_intro_screen() -> void:
+	event_title_label.text = quiz_title
+	event_description.text = quiz_description
+	intro_screen.show()
+	event_menu.hide()
+	event_aftermath.hide()
+
+func start_quiz() -> void:
+	# Hide intro, show quiz
+	intro_screen.hide()
+	event_menu.show()
+	
+	# Set up the question and answers
 	question_label.text = question
 	answer_a_button.text = "A.) " + answer_a
 	answer_b_button.text = "B.) " + answer_b
@@ -43,13 +71,13 @@ func setup() -> void:
 func load_question_data() -> void:
 	# Override this in child classes or set the data here
 	# This is a default example
-	question = "How much damage did the Melissa virus cause?"
-	answer_a = "USD 80 Million"
-	answer_b = "USD 100 Million"
-	answer_c = "USD 50 Million"
-	correct_answer = "A"
+	question = "What is the general term for all malicious software, including viruses, worms, and spyware?"
+	answer_a = "Intruders"
+	answer_b = "Malware"
+	answer_c = "Cyberthreats"
+	correct_answer = "B"
 	reward_gold = 100
-	explanation = "The Melissa virus, released in 1999, caused approximately USD 80 million in damages worldwide."
+	explanation = "Malware, or malicious software is any program designed to cause harm to a computer, service, or network."
 
 func setup_timer() -> void:
 	timer = Timer.new()

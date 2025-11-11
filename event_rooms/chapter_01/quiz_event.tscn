@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjve674gwc21n"]
+[gd_scene load_steps=3 format=3 uid="uid://colm5ygfux0j5"]
 
 [ext_resource type="Script" uid="uid://dle1hpwvm5mw1" path="res://event_rooms/chapter_01/quiz_event.gd" id="1_f4vjs"]
 [ext_resource type="PackedScene" uid="uid://dnn5kg0tp0d22" path="res://scenes/event_rooms/event_room_button.tscn" id="2_2038y"]
@@ -33,8 +33,47 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="IntroScreen" type="VBoxContainer" parent="HBoxContainer/CenterContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="EventTitleLabel" type="Label" parent="HBoxContainer/CenterContainer/IntroScreen"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Cybersecurity Quiz"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/CenterContainer/IntroScreen"]
+layout_mode = 2
+
+[node name="EventDescription" type="RichTextLabel" parent="HBoxContainer/CenterContainer/IntroScreen"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]Test your knowledge of cybersecurity!
+
+Answer the question correctly before time runs out to earn gold rewards.
+
+[color=yellow]Time Bonus:[/color] Answer quickly for extra gold![/center]"
+fit_content = true
+scroll_active = false
+
+[node name="StartQuizButton" parent="HBoxContainer/CenterContainer/IntroScreen" instance=ExtResource("2_2038y")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+text = "Start Quiz"
+
 [node name="EventMenu" type="VBoxContainer" parent="HBoxContainer/CenterContainer"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 theme_override_constants/separation = 10
