@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://djc6rvuspi8dx"]
+[gd_scene load_steps=3 format=3 uid="uid://djc6rvuspi8dx"]
 
+[ext_resource type="Script" uid="uid://bb00jsmurm2cp" path="res://event_rooms/chapter_01/worm_quiz_event.gd" id="1_mswfc"]
 [ext_resource type="PackedScene" uid="uid://dnn5kg0tp0d22" path="res://scenes/event_rooms/event_room_button.tscn" id="2_xwfwq"]
 
 [node name="WormQuizEvent" type="Control"]
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_mswfc")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
