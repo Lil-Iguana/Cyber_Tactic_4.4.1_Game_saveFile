@@ -209,10 +209,10 @@ func _set_room_randomly(room_to_set: Room) -> void:
 
 
 func _get_tier_for_floor(row: int) -> int:
-	# Tier 0: Easy (floors 1-5, rows 0-4)
-	if row <= 4:
+	# Tier 0: Easy (floors 1-4, rows 0-3)
+	if row <= 3:
 		return 0
-	# Tier 1: Medium (floors 6-10, rows 5-9)
+	# Tier 1: Medium (floors 5-10, rows 4-9)
 	elif row <= 9:
 		return 1
 	# Tier 2: Hard (floors 11-14, rows 10-13)
