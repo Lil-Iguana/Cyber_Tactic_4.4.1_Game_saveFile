@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dbwpqsyi43vky"
+path="res://.godot/imported/battle tutoiral.mp3-49605399133fbb4636e134cb271a1799.mp3str"
+
+[deps]
+
+source_file="res://art/music/battle tutoiral.mp3"
+dest_files=["res://.godot/imported/battle tutoiral.mp3-49605399133fbb4636e134cb271a1799.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
