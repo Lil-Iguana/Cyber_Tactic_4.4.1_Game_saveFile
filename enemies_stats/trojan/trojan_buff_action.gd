@@ -30,4 +30,8 @@ func perform_action():
 	status_effect.status = power
 	status_effect.execute([enemy])
 	
-	Events.enemy_action_completed.emit(enemy)
+	get_tree().create_timer(1.0, false).timeout.connect(
+		func():
+			Events.enemy_action_completed.emit(enemy)
+			enemy.play_idle()
+	)
