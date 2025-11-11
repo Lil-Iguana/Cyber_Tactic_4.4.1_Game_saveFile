@@ -78,7 +78,7 @@ func load_question_data() -> void:
 	answer_a = "Trojan"
 	answer_b = "Virus"
 	answer_c = "Computer Worm"
-	correct_answer = "c"
+	correct_answer = "C"
 	reward_gold = 100
 	explanation = "A computer worm is a type of malicious software that can replicate and spread across networks independently, without needing to attach to a host program or requiring a user to manually spread it."
 
