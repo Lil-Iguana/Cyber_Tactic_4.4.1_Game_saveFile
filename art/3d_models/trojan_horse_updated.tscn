@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bd38ry726uo4t"]
+
+[ext_resource type="PackedScene" uid="uid://by0g575pvlybd" path="res://art/3d_models/TrojanHorse (1).glb" id="1_ynh45"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1i0uc"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_avn37"]
+sky_material = SubResource("ProceduralSkyMaterial_1i0uc")
+
+[sub_resource type="Environment" id="Environment_crn3w"]
+background_mode = 2
+sky = SubResource("Sky_avn37")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="TrojanHorse (1)" instance=ExtResource("1_ynh45")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="0"]
+environment = SubResource("Environment_crn3w")
+
+[node name="Camera3D" type="Camera3D" parent="." index="3"]
+transform = Transform3D(0.7563903, 0, 0.65412056, 0, 1, 0, -0.65412056, 0, 0.7563903, 0.80184764, 0.34780204, 0.9081675)
+projection = 1
+size = 0.705

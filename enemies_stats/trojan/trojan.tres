@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bcjbunymsjbfc" path="res://enemies_stats/trojan/trojan_ai.tscn" id="1_rlmg7"]
 [ext_resource type="Texture2D" uid="uid://b3ft6d6c1umcx" path="res://art/fragile.png" id="2_rlmg7"]
 [ext_resource type="Texture2D" uid="uid://bvsas8spv76vk" path="res://art/buff_shield.png" id="3_ku2or"]
-[ext_resource type="PackedScene" uid="uid://b3qmpcpjguoq" path="res://art/3d_models/trojan_horse_latest.tscn" id="5_rlmg7"]
+[ext_resource type="PackedScene" uid="uid://bd38ry726uo4t" path="res://art/3d_models/trojan_horse_updated.tscn" id="5_rlmg7"]
 
 [resource]
 script = ExtResource("1_ailic")
