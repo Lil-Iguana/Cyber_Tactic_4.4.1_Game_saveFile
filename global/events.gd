@@ -96,6 +96,12 @@ signal status_tooltip_requested(statuses: Array[Status])
 signal status_gained
 @warning_ignore("unused_signal")
 signal hand_choice_requested(reason: String) # Takes a string with the title of the hand choice view
+@warning_ignore("unused_signal")
+signal intent_tooltip_requested(description: String, mouse_pos: Vector2)
+@warning_ignore("unused_signal")
+signal intent_tooltip_hide_requested
+@warning_ignore("unused_signal")
+signal intent_tooltip_position_updated(mouse_pos: Vector2)
 
 # Map-related events
 @warning_ignore("unused_signal")
