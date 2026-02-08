@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dn52uptr8vtiu"]
+[gd_scene format=3 uid="uid://dn52uptr8vtiu"]
 
 [ext_resource type="Script" uid="uid://cfsvercw8jdkv" path="res://scenes/battle/battle.gd" id="1_tgtwy"]
 [ext_resource type="PackedScene" uid="uid://306utgcvnsbs" path="res://scenes/enemy/enemy.tscn" id="2_7kg7y"]
@@ -26,6 +26,7 @@
 [ext_resource type="Script" uid="uid://dl2wjln70kf86" path="res://scenes/battle/turn_indicator.gd" id="21_e48mi"]
 [ext_resource type="PackedScene" uid="uid://df1tufvp2h0o5" path="res://scenes/ui/card_pile_view.tscn" id="22_ems6g"]
 [ext_resource type="PackedScene" uid="uid://0ghovce46nd1" path="res://scenes/ui/status_view.tscn" id="23_83k76"]
+[ext_resource type="PackedScene" uid="uid://wjbp74oa1aai" path="res://scenes/ui/intent_tooltip_popup.tscn" id="23_n5ix6"]
 [ext_resource type="PackedScene" uid="uid://b4o366c13h18p" path="res://scenes/ui/hand_choice_view.tscn" id="25_8eh2s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ubsi8"]
@@ -42,57 +43,57 @@ font_size = 64
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Battle" type="Node2D"]
+[node name="Battle" type="Node2D" unique_id=7823241]
 script = ExtResource("1_tgtwy")
 char_stats = ExtResource("4_nhdv7")
 music = ExtResource("3_ueicy")
 boss_music = ExtResource("4_n5ix6")
 metadata/_edit_lock_ = true
 
-[node name="Background" type="Sprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="." unique_id=1550462719]
 self_modulate = Color(0.47816715, 0.47816715, 0.47816715, 1)
 scale = Vector2(0.5051221, 0.4979253)
 texture = ExtResource("4_8eh2s")
 centered = false
 
-[node name="CardDropArea" type="Area2D" parent="."]
+[node name="CardDropArea" type="Area2D" parent="." unique_id=657068141]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CardDropArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CardDropArea" unique_id=1222133508]
 position = Vector2(320.5, 134)
 shape = SubResource("RectangleShape2D_ubsi8")
 debug_color = Color(0, 0.6, 0.701961, 0.129412)
 
-[node name="EnemyHandler" type="Node2D" parent="." groups=["enemy_handler"]]
+[node name="EnemyHandler" type="Node2D" parent="." unique_id=1358015792 groups=["enemy_handler"]]
 script = ExtResource("4_pp0u0")
 
-[node name="MalwareEnemy" parent="EnemyHandler" instance=ExtResource("2_7kg7y")]
+[node name="MalwareEnemy" parent="EnemyHandler" unique_id=1173458039 instance=ExtResource("2_7kg7y")]
 position = Vector2(282, 120)
 stats = ExtResource("8_kd15x")
 
-[node name="VirusEnemy" parent="EnemyHandler" instance=ExtResource("2_7kg7y")]
+[node name="VirusEnemy" parent="EnemyHandler" unique_id=906048320 instance=ExtResource("2_7kg7y")]
 position = Vector2(322, 135)
 stats = ExtResource("5_bry55")
 
-[node name="MalwareEnemy2" parent="EnemyHandler" instance=ExtResource("2_7kg7y")]
+[node name="MalwareEnemy2" parent="EnemyHandler" unique_id=1774128087 instance=ExtResource("2_7kg7y")]
 position = Vector2(360, 120)
 stats = ExtResource("8_kd15x")
 
-[node name="Player" parent="." instance=ExtResource("3_arrrb")]
+[node name="Player" parent="." unique_id=1542701697 instance=ExtResource("3_arrrb")]
 position = Vector2(71, 171)
 stats = ExtResource("4_nhdv7")
 
-[node name="CardTargetSelector" parent="." instance=ExtResource("3_jsmm7")]
+[node name="CardTargetSelector" parent="." unique_id=1451219189 instance=ExtResource("3_jsmm7")]
 
-[node name="PlayerHandler" type="Node" parent="." node_paths=PackedStringArray("player", "hand") groups=["player_handler"]]
+[node name="PlayerHandler" type="Node" parent="." unique_id=1306024904 node_paths=PackedStringArray("player", "hand") groups=["player_handler"]]
 script = ExtResource("8_naovo")
 player = NodePath("../Player")
 hand = NodePath("../BattleUI/Hand")
 
-[node name="BattleUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
+[node name="BattleUI" type="CanvasLayer" parent="." unique_id=1221334537 groups=["ui_layer"]]
 script = ExtResource("7_qbvxi")
 
-[node name="Hand" type="HBoxContainer" parent="BattleUI" node_paths=PackedStringArray("player")]
+[node name="Hand" type="HBoxContainer" parent="BattleUI" unique_id=1673862704 node_paths=PackedStringArray("player")]
 unique_name_in_owner = true
 anchors_preset = 7
 anchor_left = 0.5
@@ -108,13 +109,13 @@ alignment = 1
 script = ExtResource("2_dybx0")
 player = NodePath("../../Player")
 
-[node name="ManaUI" parent="BattleUI" instance=ExtResource("11_2bebn")]
+[node name="ManaUI" parent="BattleUI" unique_id=1583718781 instance=ExtResource("11_2bebn")]
 offset_top = -102.0
 offset_right = 65.0
 offset_bottom = -42.0
 char_stats = ExtResource("4_nhdv7")
 
-[node name="EndTurnButton" type="Button" parent="BattleUI"]
+[node name="EndTurnButton" type="Button" parent="BattleUI" unique_id=1219614683]
 unique_name_in_owner = true
 anchors_preset = 3
 anchor_left = 1.0
@@ -131,7 +132,7 @@ theme = ExtResource("12_ml4cj")
 theme_override_font_sizes/font_size = 32
 text = "End Turn"
 
-[node name="DrawPileButton" parent="BattleUI" node_paths=PackedStringArray("counter") instance=ExtResource("17_0r3mo")]
+[node name="DrawPileButton" parent="BattleUI" unique_id=1321714338 node_paths=PackedStringArray("counter") instance=ExtResource("17_0r3mo")]
 unique_name_in_owner = true
 anchors_preset = 2
 anchor_top = 1.0
@@ -143,7 +144,7 @@ offset_bottom = -4.0
 grow_vertical = 0
 counter = NodePath("Counter")
 
-[node name="Counter" type="Label" parent="BattleUI/DrawPileButton"]
+[node name="Counter" type="Label" parent="BattleUI/DrawPileButton" unique_id=1890470630]
 layout_mode = 0
 offset_left = 19.0
 offset_top = 11.0
@@ -152,7 +153,7 @@ offset_bottom = 37.000034
 text = "99"
 label_settings = SubResource("LabelSettings_8eh2s")
 
-[node name="DiscardPileButton" parent="BattleUI" node_paths=PackedStringArray("counter") instance=ExtResource("17_0r3mo")]
+[node name="DiscardPileButton" parent="BattleUI" unique_id=1641929223 node_paths=PackedStringArray("counter") instance=ExtResource("17_0r3mo")]
 unique_name_in_owner = true
 anchors_preset = 3
 anchor_left = 1.0
@@ -169,7 +170,7 @@ texture_normal = ExtResource("18_5fl16")
 texture_hover = ExtResource("19_5ng34")
 counter = NodePath("Counter")
 
-[node name="Counter" type="Label" parent="BattleUI/DiscardPileButton"]
+[node name="Counter" type="Label" parent="BattleUI/DiscardPileButton" unique_id=1005308370]
 layout_mode = 0
 offset_left = -15.0
 offset_top = 10.0
@@ -178,16 +179,16 @@ offset_bottom = 42.0
 text = "99"
 label_settings = SubResource("LabelSettings_e48mi")
 
-[node name="EnemyTooltipPopup" parent="BattleUI" instance=ExtResource("20_pyfix")]
+[node name="EnemyTooltipPopup" parent="BattleUI" unique_id=420512267 instance=ExtResource("20_pyfix")]
 visible = false
 
-[node name="Tooltip" parent="BattleUI" instance=ExtResource("12_1gfg2")]
+[node name="Tooltip" parent="BattleUI" unique_id=1364540386 instance=ExtResource("12_1gfg2")]
 offset_left = -123.0
 offset_top = 19.0
 offset_right = 124.0
 offset_bottom = 79.0
 
-[node name="TurnIndicator" type="Label" parent="BattleUI"]
+[node name="TurnIndicator" type="Label" parent="BattleUI" unique_id=1028221354]
 custom_minimum_size = Vector2(300, 0)
 anchors_preset = 1
 anchor_left = 1.0
@@ -202,11 +203,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("21_e48mi")
 
-[node name="RedFlash" type="CanvasLayer" parent="."]
+[node name="IntentTooltipPopup" parent="BattleUI" unique_id=100656448 instance=ExtResource("23_n5ix6")]
+
+[node name="RedFlash" type="CanvasLayer" parent="." unique_id=1573534630]
 layer = 2
 script = ExtResource("15_5dacn")
 
-[node name="ColorRect" type="ColorRect" parent="RedFlash"]
+[node name="ColorRect" type="ColorRect" parent="RedFlash" unique_id=1576146599]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -215,40 +218,40 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(1, 0.443137, 0.443137, 0)
 
-[node name="Timer" type="Timer" parent="RedFlash"]
+[node name="Timer" type="Timer" parent="RedFlash" unique_id=1210916760]
 wait_time = 0.1
 one_shot = true
 
-[node name="BattleOverLayer" type="CanvasLayer" parent="."]
+[node name="BattleOverLayer" type="CanvasLayer" parent="." unique_id=1108797033]
 layer = 2
 
-[node name="BattleOverPanel" parent="BattleOverLayer" instance=ExtResource("17_oth3w")]
+[node name="BattleOverPanel" parent="BattleOverLayer" unique_id=656112126 instance=ExtResource("17_oth3w")]
 visible = false
 
-[node name="CardPileViews" type="CanvasLayer" parent="."]
+[node name="CardPileViews" type="CanvasLayer" parent="." unique_id=1974227609]
 layer = 4
 
-[node name="DrawPileView" parent="CardPileViews" instance=ExtResource("22_ems6g")]
+[node name="DrawPileView" parent="CardPileViews" unique_id=801042064 instance=ExtResource("22_ems6g")]
 unique_name_in_owner = true
 visible = false
 
-[node name="DiscardPileView" parent="CardPileViews" instance=ExtResource("22_ems6g")]
+[node name="DiscardPileView" parent="CardPileViews" unique_id=412751427 instance=ExtResource("22_ems6g")]
 unique_name_in_owner = true
 visible = false
 
-[node name="StatusViewLayer" type="CanvasLayer" parent="."]
+[node name="StatusViewLayer" type="CanvasLayer" parent="." unique_id=1320143190]
 layer = 4
 
-[node name="StatusView" parent="StatusViewLayer" instance=ExtResource("23_83k76")]
+[node name="StatusView" parent="StatusViewLayer" unique_id=2029734307 instance=ExtResource("23_83k76")]
 visible = false
 
-[node name="HandChoiceLayer" type="CanvasLayer" parent="."]
+[node name="HandChoiceLayer" type="CanvasLayer" parent="." unique_id=1327451884]
 layer = 4
 
-[node name="HandChoiceView" parent="HandChoiceLayer" instance=ExtResource("25_8eh2s")]
+[node name="HandChoiceView" parent="HandChoiceLayer" unique_id=1175844199 instance=ExtResource("25_8eh2s")]
 visible = false
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1068578588]
 offset_top = 250.0
 offset_right = 641.0
 offset_bottom = 362.0
