@@ -88,7 +88,8 @@ func update_enemy() -> void:
 func update_intent() -> void:
 	if current_action:
 		current_action.update_intent_text()
-		intent_ui.update_intent(current_action.intent)
+		var description = current_action.get_tooltip_description()
+		intent_ui.update_intent(current_action.intent, description)
 
 
 func do_turn() -> void:
