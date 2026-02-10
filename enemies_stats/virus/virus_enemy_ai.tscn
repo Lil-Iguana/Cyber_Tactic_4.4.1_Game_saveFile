@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://pi6b7mp1b2gx"]
+[gd_scene format=3 uid="uid://pi6b7mp1b2gx"]
 
 [ext_resource type="Script" uid="uid://dych0ejsny60v" path="res://scenes/enemy/enemy_action_picker.gd" id="1_wltji"]
 [ext_resource type="Script" uid="uid://cif4r3eljk8h3" path="res://enemies_stats/virus/virus_attack_action.gd" id="2_ybtl6"]
@@ -19,19 +19,21 @@ script = ExtResource("4_6rf4d")
 base_text = "6"
 icon = ExtResource("6_yhqum")
 
-[node name="VirusEnemyAI" type="Node"]
+[node name="VirusEnemyAI" type="Node" unique_id=1662571533]
 script = ExtResource("1_wltji")
 
-[node name="AttackAction" type="Node" parent="."]
+[node name="AttackAction" type="Node" parent="." unique_id=380352300]
 script = ExtResource("2_ybtl6")
 intent = SubResource("Resource_3lw5v")
 sound = ExtResource("5_21wbc")
+description = "Attacks"
 type = 1
 chance_weight = 1.0
 
-[node name="BlockAction" type="Node" parent="."]
+[node name="BlockAction" type="Node" parent="." unique_id=1920429389]
 script = ExtResource("3_wxsdj")
 intent = SubResource("Resource_nx1d7")
 sound = ExtResource("8_4s7fq")
+description = "Blocks"
 type = 1
 chance_weight = 0.8
