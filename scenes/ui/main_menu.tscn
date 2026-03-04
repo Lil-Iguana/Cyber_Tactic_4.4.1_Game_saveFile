@@ -1,12 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://bu3dhos1m15kj"]
+[gd_scene format=3 uid="uid://bu3dhos1m15kj"]
 
 [ext_resource type="Script" uid="uid://buds01dk4wjrb" path="res://scenes/ui/main_menu.gd" id="1_7m5q3"]
-[ext_resource type="Resource" uid="uid://cj8wg6pkgahdr" path="res://scenes/run/run_startup.tres" id="2_fe2o3"]
+[ext_resource type="Resource" uid="uid://co6ar47di3crh" path="res://characters/warrior/warrior.tres" id="2_wb0q5"]
 [ext_resource type="PackedScene" uid="uid://o0erus520lr" path="res://global/settings_menu.tscn" id="3_1g8jr"]
+[ext_resource type="Script" uid="uid://blfi25snr1bga" path="res://custom_resources/run_startup.gd" id="3_q85j6"]
 [ext_resource type="AudioStream" uid="uid://bdor7qf2njhcn" path="res://art/music/BeepBox-Song (1).mp3" id="3_uhagc"]
 [ext_resource type="AudioStream" uid="uid://c1y26cwodui50" path="res://art/sfx/blipSelect.wav" id="4_uhagc"]
 [ext_resource type="VideoStream" uid="uid://cb8dyjkpbac8f" path="res://art/video/MenuBGScene0001-0680.ogv" id="5_uhagc"]
 [ext_resource type="PackedScene" uid="uid://d3hawibt7cho4" path="res://scenes/compendium/compendium_view.tscn" id="7_btxxm"]
+
+[sub_resource type="Resource" id="Resource_8g5eo"]
+script = ExtResource("3_q85j6")
+picked_character = ExtResource("2_wb0q5")
 
 [sub_resource type="Gradient" id="Gradient_d3fc5"]
 colors = PackedColorArray(0.0925943, 0.108696, 0.555451, 1, 0.225601, 0.34753, 1, 1)
@@ -20,7 +25,7 @@ font_size = 80
 shadow_size = 4
 shadow_color = Color(0, 0, 0, 0.341176)
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" unique_id=78192185]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,11 +33,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7m5q3")
-run_startup = ExtResource("2_fe2o3")
+run_startup = SubResource("Resource_8g5eo")
 music = ExtResource("3_uhagc")
 button_sfx = ExtResource("4_uhagc")
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="." unique_id=1345088914]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,12 +46,12 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture1D_3olvj")
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="." unique_id=1343679374]
 layout_mode = 0
 offset_right = 640.0
 offset_bottom = 360.0
 
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="AspectRatioContainer"]
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="AspectRatioContainer" unique_id=1392160126]
 custom_minimum_size = Vector2(640, 0)
 layout_mode = 2
 stream = ExtResource("5_uhagc")
@@ -54,7 +59,7 @@ autoplay = true
 expand = true
 loop = true
 
-[node name="Title" type="Label" parent="."]
+[node name="Title" type="Label" parent="." unique_id=187557208]
 layout_mode = 1
 offset_left = 25.0
 offset_top = 15.0
@@ -65,7 +70,7 @@ label_settings = SubResource("LabelSettings_2wnys")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1148520559]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -77,7 +82,7 @@ offset_bottom = -27.0
 grow_vertical = 0
 theme_override_constants/separation = 15
 
-[node name="Continue" type="Button" parent="VBoxContainer"]
+[node name="Continue" type="Button" parent="VBoxContainer" unique_id=1920331225]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
@@ -85,33 +90,33 @@ theme_override_font_sizes/font_size = 32
 text = "Continue
 "
 
-[node name="NewRun" type="Button" parent="VBoxContainer"]
+[node name="NewRun" type="Button" parent="VBoxContainer" unique_id=43104821]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "New Game
 "
 
-[node name="Compendium" type="Button" parent="VBoxContainer"]
+[node name="Compendium" type="Button" parent="VBoxContainer" unique_id=42335549]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Compendium"
 
-[node name="Settings" type="Button" parent="VBoxContainer"]
+[node name="Settings" type="Button" parent="VBoxContainer" unique_id=96212888]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Settings"
 
-[node name="Exit" type="Button" parent="VBoxContainer"]
+[node name="Exit" type="Button" parent="VBoxContainer" unique_id=468436486]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Exit
 "
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1672490330]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -125,13 +130,13 @@ grow_vertical = 0
 text = "1.0.1"
 horizontal_alignment = 1
 
-[node name="SettingsMenu" parent="." instance=ExtResource("3_1g8jr")]
+[node name="SettingsMenu" parent="." unique_id=2092578843 instance=ExtResource("3_1g8jr")]
 unique_name_in_owner = true
 
-[node name="CompendiumLayer" type="CanvasLayer" parent="."]
+[node name="CompendiumLayer" type="CanvasLayer" parent="." unique_id=1290693025]
 layer = 2
 
-[node name="CompendiumView" parent="CompendiumLayer" instance=ExtResource("7_btxxm")]
+[node name="CompendiumView" parent="CompendiumLayer" unique_id=408396909 instance=ExtResource("7_btxxm")]
 unique_name_in_owner = true
 visible = false
 
