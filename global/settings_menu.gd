@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var full_screen_check: CheckBox = %FullScreenCheck
+@onready var fullscreen_check: CheckBox = %FullScreenCheck
 @onready var resolution_option: OptionButton = %ResolutionOption
 @onready var master_slider: HSlider = %MasterSlider
 @onready var music_slider: HSlider = %MusicSlider
@@ -12,22 +12,23 @@ extends CanvasLayer
 
 
 func _ready() -> void:
-	# Populate resolution dropdown
+	# Populate dropdowns
 	populate_resolution_options()
 	
 	# Load current settings into UI
 	load_current_settings()
 	
 	# Connect signals
-	full_screen_check.toggled.connect(_on_fullscreen_toggled)
+	fullscreen_check.toggled.connect(_on_fullscreen_toggled)
 	resolution_option.item_selected.connect(_on_resolution_selected)
 	master_slider.value_changed.connect(_on_master_volume_changed)
 	music_slider.value_changed.connect(_on_music_volume_changed)
 	sfx_slider.value_changed.connect(_on_sfx_volume_changed)
 	back_button.pressed.connect(_on_back_pressed)
 	
-	# Update value labels
+	# Update value labels and resolution state
 	update_value_labels()
+	update_resolution_availability()
 
 
 func populate_resolution_options() -> void:
@@ -39,19 +40,19 @@ func populate_resolution_options() -> void:
 
 
 func load_current_settings() -> void:
-	# Load values from SettingsManager
-	full_screen_check.button_pressed = SettingsManager.config.fullscreen
+	# Load fullscreen state
+	fullscreen_check.button_pressed = SettingsManager.config["fullscreen"]
 	
 	# Select the current resolution
-	var current_res = SettingsManager.config.resolution
+	var current_res = SettingsManager.config["resolution"]
 	for i in range(resolution_option.item_count):
 		if resolution_option.get_item_text(i) == current_res:
 			resolution_option.select(i)
 			break
 	
-	master_slider.value = SettingsManager.config.master_volume * 100
-	music_slider.value = SettingsManager.config.music_volume * 100
-	sfx_slider.value = SettingsManager.config.sfx_volume * 100
+	master_slider.value = SettingsManager.config["master_volume"] * 100
+	music_slider.value = SettingsManager.config["music_volume"] * 100
+	sfx_slider.value = SettingsManager.config["sfx_volume"] * 100
 
 
 func update_value_labels() -> void:
@@ -60,10 +61,19 @@ func update_value_labels() -> void:
 	sfx_value_label.text = str(int(sfx_slider.value)) + "%"
 
 
+func update_resolution_availability() -> void:
+	# Enable/disable resolution dropdown based on fullscreen state
+	var is_changeable = SettingsManager.is_resolution_changeable()
+	resolution_option.disabled = not is_changeable
+
+
 # Signal callbacks
 func _on_fullscreen_toggled(toggled: bool) -> void:
 	SettingsManager.set_fullscreen(toggled)
 	SettingsManager.save_settings()
+	
+	# Update resolution availability when fullscreen changes
+	update_resolution_availability()
 
 
 func _on_resolution_selected(index: int) -> void:
