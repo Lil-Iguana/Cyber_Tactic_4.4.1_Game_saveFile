@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://mpnkn13856x1"]
+[gd_scene format=3 uid="uid://mpnkn13856x1"]
 
 [ext_resource type="Script" uid="uid://b2pd8thhd1l7e" path="res://scenes/campfire/campfire.gd" id="1_wduac"]
 [ext_resource type="FontFile" uid="uid://bojuhq17w6srl" path="res://art/Font Styles/m3x6.ttf" id="2_1nk4i"]
@@ -132,7 +132,7 @@ _data = {
 &"fade_out": SubResource("Animation_vi5ju")
 }
 
-[node name="Campfire" type="Control"]
+[node name="Campfire" type="Control" unique_id=271740245]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -142,10 +142,10 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_wduac")
 
-[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+[node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=716534687]
 layer = 0
 
-[node name="Background" type="TextureRect" parent="BackgroundLayer"]
+[node name="Background" type="TextureRect" parent="BackgroundLayer" unique_id=1469099589]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -153,9 +153,9 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_b54su")
 
-[node name="ParticlesLayer" type="CanvasLayer" parent="."]
+[node name="ParticlesLayer" type="CanvasLayer" parent="." unique_id=251980484]
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="ParticlesLayer"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="ParticlesLayer" unique_id=388113386]
 position = Vector2(171, 211)
 scale = Vector2(2.14, 1.525)
 amount = 128
@@ -163,9 +163,9 @@ texture = ExtResource("2_yyc03")
 lifetime = 1.5
 process_material = SubResource("ParticleProcessMaterial_ytiwx")
 
-[node name="UILayer" type="CanvasLayer" parent="."]
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=901772364]
 
-[node name="UI" type="VBoxContainer" parent="UILayer"]
+[node name="UI" type="VBoxContainer" parent="UILayer" unique_id=1968007414]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -178,24 +178,24 @@ offset_bottom = 96.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Title" type="Label" parent="UILayer/UI"]
+[node name="Title" type="Label" parent="UILayer/UI" unique_id=1464894106]
 layout_mode = 2
 text = "Safe Spot"
 label_settings = SubResource("LabelSettings_xke4x")
 horizontal_alignment = 1
 
-[node name="Spacer" type="Control" parent="UILayer/UI"]
+[node name="Spacer" type="Control" parent="UILayer/UI" unique_id=250917891]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UILayer/UI"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UILayer/UI" unique_id=461091079]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 10
 
-[node name="Rest" type="VBoxContainer" parent="UILayer/UI/HBoxContainer"]
+[node name="Rest" type="VBoxContainer" parent="UILayer/UI/HBoxContainer" unique_id=452965647]
 layout_mode = 2
 
-[node name="RestButton" type="Button" parent="UILayer/UI/HBoxContainer/Rest"]
+[node name="RestButton" type="Button" parent="UILayer/UI/HBoxContainer/Rest" unique_id=1040104751]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
@@ -204,16 +204,16 @@ theme_override_font_sizes/font_size = 48
 text = "Rest
 "
 
-[node name="Description" type="Label" parent="UILayer/UI/HBoxContainer/Rest"]
+[node name="Description" type="Label" parent="UILayer/UI/HBoxContainer/Rest" unique_id=1322769067]
 layout_mode = 2
 text = "+30% HP"
 label_settings = SubResource("LabelSettings_auago")
 horizontal_alignment = 1
 
-[node name="Remove" type="VBoxContainer" parent="UILayer/UI/HBoxContainer"]
+[node name="Remove" type="VBoxContainer" parent="UILayer/UI/HBoxContainer" unique_id=1930097498]
 layout_mode = 2
 
-[node name="RemoveButton" type="Button" parent="UILayer/UI/HBoxContainer/Remove"]
+[node name="RemoveButton" type="Button" parent="UILayer/UI/HBoxContainer/Remove" unique_id=477043410]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
@@ -221,24 +221,22 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 48
 text = "Drop"
 
-[node name="Description" type="Label" parent="UILayer/UI/HBoxContainer/Remove"]
+[node name="Description" type="Label" parent="UILayer/UI/HBoxContainer/Remove" unique_id=1138559575]
 layout_mode = 2
 text = "Drop a card
 in your deck"
 label_settings = SubResource("LabelSettings_8pjve")
 horizontal_alignment = 1
 
-[node name="DeckViewLayer" type="CanvasLayer" parent="."]
+[node name="DeckViewLayer" type="CanvasLayer" parent="." unique_id=1979418249]
 layer = 5
 
-[node name="DeckView" parent="DeckViewLayer" instance=ExtResource("5_cj7qx")]
+[node name="DeckView" parent="DeckViewLayer" unique_id=1858944247 instance=ExtResource("5_cj7qx")]
 unique_name_in_owner = true
 visible = false
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_omvee")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=887230944]
+libraries/ = SubResource("AnimationLibrary_omvee")
 
 [connection signal="pressed" from="UILayer/UI/HBoxContainer/Rest/RestButton" to="." method="_on_rest_button_pressed"]
 [connection signal="pressed" from="UILayer/UI/HBoxContainer/Remove/RemoveButton" to="." method="_on_remove_button_pressed"]
