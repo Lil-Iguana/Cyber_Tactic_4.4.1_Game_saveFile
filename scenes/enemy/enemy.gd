@@ -328,8 +328,8 @@ func _ready() -> void:
 	status_handler.status_owner = self
 	
 	# Connect mouse signals for tooltip hovering
-	mouse_entered.connect(_on_mouse_entered)
-	mouse_exited.connect(_on_mouse_exited)
+	#mouse_entered.connect(_on_mouse_entered)
+	#mouse_exited.connect(_on_mouse_exited)
 	
 	# Listen for other enemies being hovered
 	Events.enemy_hovered.connect(_on_enemy_hovered)
