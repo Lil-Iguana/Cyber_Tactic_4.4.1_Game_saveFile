@@ -18,6 +18,7 @@ const SAVE_PATH := "user://savegame.tres"
 @export var was_on_map: bool
 @export var codex_discovered: Array[String] = []
 @export var stats_tracker: RunStatsTracker  # NEW
+@export var was_in_hub: bool = false  # True when the player is between runs in the Hub
 
 
 func save_data() -> void:
@@ -35,3 +36,11 @@ static func load_data() -> SaveGame:
 static func delete_data() -> void:
 	if FileAccess.file_exists(SAVE_PATH):
 		DirAccess.remove_absolute(SAVE_PATH)
+
+
+# Saves a minimal "player is in the Hub" record so the Continue button
+# on the main menu stays active and routes to the Hub scene.
+static func save_hub_state() -> void:
+	var hub_save := SaveGame.new()
+	hub_save.was_in_hub = true
+	hub_save.save_data()
