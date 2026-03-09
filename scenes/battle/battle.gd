@@ -94,7 +94,6 @@ func _on_enemy_turn_ended() -> void:
 
 func _on_player_died() -> void:
 	Events.player_died_run_over.emit()
-	SaveGame.delete_data()
 
 
 func _on_threads_activated(type: ThreadPassive.Type) -> void:
