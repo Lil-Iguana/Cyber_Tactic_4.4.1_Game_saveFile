@@ -273,9 +273,10 @@ func _on_battle_won() -> void:
 		var meta = MetaProgression.load_meta()
 		meta.increment_runs_won()
 		
-		# NEW: Show run summary screen instead of win screen
-		_show_run_summary(true)
+		# Delete run save — victory routes back to main menu, no hub needed
 		SaveGame.delete_data()
+		
+		_show_run_summary(true)
 	else:
 		_show_regular_battle_rewards()
 
@@ -312,10 +313,15 @@ func _on_battle_reward_exited_wrapper() -> void:
 		DialogueManager.start_dialogue_from_file("res://dialogues/post_battle_congrats.json", "post_battle_shown")
 
 
-# NEW: Handle player death
+# Handle player death — wipe the run save and drop the player into the Hub
 func _on_player_died_run_over() -> void:
 	var meta = MetaProgression.load_meta()
 	meta.increment_runs_lost()
+	
+	# Delete the in-progress run save and replace it with a hub-state save
+	# so that the Continue button on the main menu routes to the Hub.
+	SaveGame.delete_data()
+	SaveGame.save_hub_state()
 	
 	_show_run_summary(false)
 
