@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://vw5r2e2gcgui"]
+
+[ext_resource type="PackedScene" uid="uid://towi1d1vntok" path="res://scenes/pause_screen/pause_menu.tscn" id="1_bocl7"]
+[ext_resource type="Script" uid="uid://cxlfvkiv6s3o4" path="res://scenes/hub/hub.gd" id="1_koree"]
+[ext_resource type="PackedScene" uid="uid://o0erus520lr" path="res://global/settings_menu.tscn" id="2_koree"]
+
+[node name="Hub" type="Control" unique_id=889615737]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_koree")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1192506279]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=2118035922]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1110742470]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1839480212]
+layout_mode = 2
+text = "HUB"
+horizontal_alignment = 1
+
+[node name="SubtitleLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1555509814]
+layout_mode = 2
+text = "Plan your next infiltration"
+
+[node name="Spacer" type="Control" parent="CenterContainer/VBoxContainer" unique_id=1424550471]
+layout_mode = 2
+
+[node name="NewRunButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=920267133]
+layout_mode = 2
+text = "Start New Run
+"
+
+[node name="MainMenuButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1162600632]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="PlaceholderLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=126834420]
+modulate = Color(0.6, 0.6, 0.6, 1)
+layout_mode = 2
+text = "Deck Customization coming soon"
+
+[node name="PauseMenu" parent="." unique_id=540622390 instance=ExtResource("1_bocl7")]
+
+[node name="SettingsMenu" parent="." unique_id=1242404208 instance=ExtResource("2_koree")]
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/NewRunButton" to="." method="_on_new_run_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
