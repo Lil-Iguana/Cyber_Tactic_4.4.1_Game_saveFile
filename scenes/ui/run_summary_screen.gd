@@ -2,6 +2,7 @@ class_name RunSummaryScreen
 extends Control
 
 const MAIN_MENU_PATH := "res://scenes/ui/main_menu.tscn"
+const HUB_PATH       := "res://scenes/hub/hub.tscn"
 
 @onready var result_label: Label = %ResultLabel
 @onready var stats_container: VBoxContainer = %StatsContainer
@@ -26,9 +27,11 @@ func show_summary(tracker: RunStatsTracker, victory: bool) -> void:
 	if victory:
 		result_label.text = "RUN COMPLETE!"
 		result_label.add_theme_color_override("font_color", Color.GREEN)
+		return_button.text = "Return to Main Menu"
 	else:
 		result_label.text = "SECURITY BREACH"
 		result_label.add_theme_color_override("font_color", Color.RED)
+		return_button.text = "Return to Hub"
 	
 	# Display statistics
 	_display_statistics()
@@ -101,4 +104,9 @@ func _add_stat_label(text: String) -> void:
 
 func _on_return_pressed() -> void:
 	get_tree().paused = false
-	get_tree().change_scene_to_file(MAIN_MENU_PATH)
+	if was_victory:
+		# Victory: go straight to main menu with a static wipe
+		StaticTransition.transition_to_file(MAIN_MENU_PATH)
+	else:
+		# Defeat: static transition into the Hub
+		StaticTransition.transition_to_file(HUB_PATH)
