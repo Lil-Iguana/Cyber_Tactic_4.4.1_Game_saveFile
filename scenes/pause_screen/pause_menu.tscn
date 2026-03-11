@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cvittjk6naban" path="res://scenes/run/pause_menu.gd" id="1_cik3g"]
 [ext_resource type="FontFile" uid="uid://d3fuaowohtamf" path="res://art/Font Styles/PressStart2P-Regular.ttf" id="2_6njkv"]
 [ext_resource type="FontFile" uid="uid://7ucfniysa1ko" path="res://art/Font Styles/pixel_rpg.ttf" id="3_wysi6"]
+[ext_resource type="PackedScene" uid="uid://o0erus520lr" path="res://global/settings_menu.tscn" id="4_6njkv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7yo0l"]
 font = ExtResource("2_6njkv")
@@ -71,3 +72,6 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("3_wysi6")
 theme_override_font_sizes/font_size = 18
 text = "Save & Exit"
+
+[node name="SettingsMenu" parent="." unique_id=1242404208 instance=ExtResource("4_6njkv")]
+unique_name_in_owner = true

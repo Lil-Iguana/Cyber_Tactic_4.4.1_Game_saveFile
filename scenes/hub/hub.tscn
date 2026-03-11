@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://towi1d1vntok" path="res://scenes/pause_screen/pause_menu.tscn" id="1_bocl7"]
 [ext_resource type="Script" uid="uid://cxlfvkiv6s3o4" path="res://scenes/hub/hub.gd" id="1_koree"]
-[ext_resource type="PackedScene" uid="uid://o0erus520lr" path="res://global/settings_menu.tscn" id="2_koree"]
 
 [node name="Hub" type="Control" unique_id=889615737]
 layout_mode = 3
@@ -61,8 +60,6 @@ layout_mode = 2
 text = "Deck Customization coming soon"
 
 [node name="PauseMenu" parent="." unique_id=540622390 instance=ExtResource("1_bocl7")]
-
-[node name="SettingsMenu" parent="." unique_id=1242404208 instance=ExtResource("2_koree")]
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/NewRunButton" to="." method="_on_new_run_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
