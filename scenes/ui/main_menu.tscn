@@ -7,7 +7,9 @@
 [ext_resource type="AudioStream" uid="uid://bdor7qf2njhcn" path="res://art/music/BeepBox-Song (1).mp3" id="3_uhagc"]
 [ext_resource type="AudioStream" uid="uid://c1y26cwodui50" path="res://art/sfx/blipSelect.wav" id="4_uhagc"]
 [ext_resource type="VideoStream" uid="uid://cb8dyjkpbac8f" path="res://art/video/MenuBGScene0001-0680.ogv" id="5_uhagc"]
+[ext_resource type="FontFile" uid="uid://dmhy2sqasbky8" path="res://art/Font Styles/BoldPixels.ttf" id="7_8g5eo"]
 [ext_resource type="PackedScene" uid="uid://d3hawibt7cho4" path="res://scenes/compendium/compendium_view.tscn" id="7_btxxm"]
+[ext_resource type="FontFile" uid="uid://c1mfnubgq43co" path="res://art/Font Styles/Monocraft.ttc" id="8_7suek"]
 
 [sub_resource type="Resource" id="Resource_8g5eo"]
 script = ExtResource("3_q85j6")
@@ -21,9 +23,13 @@ gradient = SubResource("Gradient_d3fc5")
 width = 50
 
 [sub_resource type="LabelSettings" id="LabelSettings_2wnys"]
+font = ExtResource("7_8g5eo")
 font_size = 80
 shadow_size = 4
 shadow_color = Color(0, 0, 0, 0.341176)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8g5eo"]
+font = ExtResource("8_7suek")
 
 [node name="MainMenu" type="Control" unique_id=78192185]
 layout_mode = 3
@@ -86,33 +92,38 @@ theme_override_constants/separation = 15
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("8_7suek")
+theme_override_font_sizes/font_size = 16
 text = "Continue
 "
 
 [node name="NewRun" type="Button" parent="VBoxContainer" unique_id=43104821]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("8_7suek")
+theme_override_font_sizes/font_size = 16
 text = "New Game
 "
 
 [node name="Compendium" type="Button" parent="VBoxContainer" unique_id=42335549]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("8_7suek")
+theme_override_font_sizes/font_size = 16
 text = "Compendium"
 
 [node name="Settings" type="Button" parent="VBoxContainer" unique_id=96212888]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("8_7suek")
+theme_override_font_sizes/font_size = 16
 text = "Settings"
 
 [node name="Exit" type="Button" parent="VBoxContainer" unique_id=468436486]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("8_7suek")
+theme_override_font_sizes/font_size = 16
 text = "Exit
 "
 
@@ -128,6 +139,7 @@ offset_top = -16.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "1.0.1"
+label_settings = SubResource("LabelSettings_8g5eo")
 horizontal_alignment = 1
 
 [node name="SettingsMenu" parent="." unique_id=2092578843 instance=ExtResource("3_1g8jr")]
