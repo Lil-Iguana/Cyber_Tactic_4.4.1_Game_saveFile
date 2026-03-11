@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://3ryyux5dk14m"]
+[gd_scene format=3 uid="uid://3ryyux5dk14m"]
 
 [ext_resource type="Script" uid="uid://bkfrpm4r80sf2" path="res://scenes/ui/play_selector.gd" id="1_8ha05"]
 [ext_resource type="Texture2D" uid="uid://c65soght4j8py" path="res://art/tile_0087.png" id="2_1jh0v"]
 [ext_resource type="Resource" uid="uid://cj8wg6pkgahdr" path="res://scenes/run/run_startup.tres" id="2_osesr"]
+[ext_resource type="FontFile" uid="uid://c1mfnubgq43co" path="res://art/Font Styles/Monocraft.ttc" id="3_dw1ou"]
 [ext_resource type="Texture2D" uid="uid://bjo47ds8vcbi3" path="res://art/pixil-frame-0.png" id="4_gmg85"]
 [ext_resource type="Texture2D" uid="uid://48dvyc5h4mpb" path="res://art/question_mark.png" id="5_gmg85"]
 
@@ -14,18 +15,20 @@ gradient = SubResource("Gradient_d3fc5")
 width = 50
 
 [sub_resource type="LabelSettings" id="LabelSettings_2wnys"]
-font_size = 64
+font = ExtResource("3_dw1ou")
+font_size = 48
 shadow_size = 4
 shadow_color = Color(0, 0, 0, 0.341176)
 
 [sub_resource type="LabelSettings" id="LabelSettings_37jyt"]
+font = ExtResource("3_dw1ou")
 font_size = 32
 shadow_size = 4
 shadow_color = Color(0, 0, 0, 0.341176)
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_8tgp3"]
 
-[node name="PlaySelector" type="Control"]
+[node name="PlaySelector" type="Control" unique_id=1286704906]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,7 +38,7 @@ grow_vertical = 2
 script = ExtResource("1_8ha05")
 run_startup = ExtResource("2_osesr")
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="." unique_id=2019478597]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -44,7 +47,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture1D_3olvj")
 
-[node name="Texts" type="VBoxContainer" parent="."]
+[node name="Texts" type="VBoxContainer" parent="." unique_id=2146393944]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -55,8 +58,9 @@ offset_right = 299.0
 offset_bottom = 121.0
 grow_horizontal = 2
 theme_override_constants/separation = -3
+alignment = 1
 
-[node name="Title" type="Label" parent="Texts"]
+[node name="Title" type="Label" parent="Texts" unique_id=340470108]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Student"
@@ -64,7 +68,7 @@ label_settings = SubResource("LabelSettings_2wnys")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Description" type="Label" parent="Texts"]
+[node name="Description" type="Label" parent="Texts" unique_id=962334354]
 unique_name_in_owner = true
 layout_mode = 2
 text = "A normie student"
@@ -72,7 +76,7 @@ label_settings = SubResource("LabelSettings_37jyt")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CharacterPotrait" type="TextureRect" parent="."]
+[node name="CharacterPotrait" type="TextureRect" parent="." unique_id=259032]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 1
@@ -88,7 +92,7 @@ texture = ExtResource("2_1jh0v")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="StartButton" type="Button" parent="."]
+[node name="StartButton" type="Button" parent="." unique_id=2058634641]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -101,11 +105,11 @@ offset_right = -11.0
 offset_bottom = -11.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("3_dw1ou")
 text = "Start
 "
 
-[node name="PlayerButtons" type="HBoxContainer" parent="."]
+[node name="PlayerButtons" type="HBoxContainer" parent="." unique_id=1186898111]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -121,14 +125,14 @@ grow_vertical = 2
 scale = Vector2(2.04, 1.88)
 theme_override_constants/separation = 15
 
-[node name="StudentButton" type="Button" parent="PlayerButtons"]
+[node name="StudentButton" type="Button" parent="PlayerButtons" unique_id=1501436672]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 toggle_mode = true
 button_pressed = true
 button_group = SubResource("ButtonGroup_8tgp3")
 
-[node name="Icon" type="TextureRect" parent="PlayerButtons/StudentButton"]
+[node name="Icon" type="TextureRect" parent="PlayerButtons/StudentButton" unique_id=655741005]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -145,14 +149,14 @@ texture = ExtResource("4_gmg85")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="WizardButton2" type="Button" parent="PlayerButtons"]
+[node name="WizardButton2" type="Button" parent="PlayerButtons" unique_id=12902452]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 disabled = true
 toggle_mode = true
 button_group = SubResource("ButtonGroup_8tgp3")
 
-[node name="Icon" type="TextureRect" parent="PlayerButtons/WizardButton2"]
+[node name="Icon" type="TextureRect" parent="PlayerButtons/WizardButton2" unique_id=932236538]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -169,14 +173,14 @@ texture = ExtResource("5_gmg85")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="AssassinButton3" type="Button" parent="PlayerButtons"]
+[node name="AssassinButton3" type="Button" parent="PlayerButtons" unique_id=1360079030]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 disabled = true
 toggle_mode = true
 button_group = SubResource("ButtonGroup_8tgp3")
 
-[node name="Icon" type="TextureRect" parent="PlayerButtons/AssassinButton3"]
+[node name="Icon" type="TextureRect" parent="PlayerButtons/AssassinButton3" unique_id=335409016]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -193,13 +197,14 @@ texture = ExtResource("5_gmg85")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="BackButton" type="Button" parent="."]
+[node name="BackButton" type="Button" parent="." unique_id=1716403241]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 7.0
 offset_top = 9.0
-offset_right = 57.0
-offset_bottom = 29.0
+offset_right = 87.0
+offset_bottom = 34.0
+theme_override_fonts/font = ExtResource("3_dw1ou")
 text = "Back"
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
