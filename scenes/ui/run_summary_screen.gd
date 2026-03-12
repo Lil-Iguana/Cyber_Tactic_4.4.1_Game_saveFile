@@ -97,7 +97,8 @@ func _display_statistics() -> void:
 func _add_stat_label(text: String) -> void:
 	var label := Label.new()
 	label.text = text
-	label.add_theme_font_size_override("font_size", 20)
+	label.add_theme_font_size_override("font_size", 16)
+	label.add_theme_font_override("font", load("res://art/Font Styles/Monocraft.ttc"))
 	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	stats_container.add_child(label)
 
