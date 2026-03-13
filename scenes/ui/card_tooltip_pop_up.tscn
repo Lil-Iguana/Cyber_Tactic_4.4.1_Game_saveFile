@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://istosvrl2ng1"]
+[gd_scene format=3 uid="uid://istosvrl2ng1"]
 
 [ext_resource type="PackedScene" uid="uid://rsk8d12egnnf" path="res://scenes/ui/card_menu_ui.tscn" id="1_6kcv7"]
 [ext_resource type="Script" uid="uid://bkarab6e2bcx8" path="res://scenes/ui/card_tooltip_pop_up.gd" id="1_aur4j"]
 [ext_resource type="FontFile" uid="uid://d3fuaowohtamf" path="res://art/Font Styles/PressStart2P-Regular.ttf" id="2_wgmuf"]
-[ext_resource type="FontFile" uid="uid://dkc0wbxtwj6ao" path="res://art/Font Styles/MedodicaRegular.otf" id="4_t0kks"]
-[ext_resource type="FontFile" uid="uid://7ucfniysa1ko" path="res://art/Font Styles/pixel_rpg.ttf" id="4_wmmgr"]
+[ext_resource type="FontFile" uid="uid://c1mfnubgq43co" path="res://art/Font Styles/Monocraft.ttc" id="4_s48px"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uas1f"]
 font = ExtResource("2_wgmuf")
@@ -12,9 +11,9 @@ outline_size = 2
 outline_color = Color(0.184314, 0, 1, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_h63ux"]
-font_size = 32
+font = ExtResource("4_s48px")
 
-[node name="CardTooltipPopUp" type="Control"]
+[node name="CardTooltipPopUp" type="Control" unique_id=860517615]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,7 +23,7 @@ grow_vertical = 2
 script = ExtResource("1_aur4j")
 background_color = Color(0, 0, 0, 1)
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="." unique_id=1377585026]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -34,22 +33,23 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=482382937]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 
-[node name="CardVisuals" type="VBoxContainer" parent="HBoxContainer"]
+[node name="CardVisuals" type="VBoxContainer" parent="HBoxContainer" unique_id=2138491520]
 custom_minimum_size = Vector2(250, 90)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
-theme_override_constants/separation = 4
+theme_override_constants/separation = 14
 
-[node name="CardName" type="Label" parent="HBoxContainer/CardVisuals"]
+[node name="CardName" type="Label" parent="HBoxContainer/CardVisuals" unique_id=707217298]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
@@ -59,22 +59,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="TooltipCard" type="CenterContainer" parent="HBoxContainer/CardVisuals"]
+[node name="TooltipCard" type="CenterContainer" parent="HBoxContainer/CardVisuals" unique_id=508411241]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="CardMenuUI" parent="HBoxContainer/CardVisuals/TooltipCard" instance=ExtResource("1_6kcv7")]
+[node name="CardMenuUI" parent="HBoxContainer/CardVisuals/TooltipCard" unique_id=2058699343 instance=ExtResource("1_6kcv7")]
 layout_mode = 2
 
-[node name="CardType" type="Label" parent="HBoxContainer/CardVisuals"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "(Type)"
-label_settings = SubResource("LabelSettings_h63ux")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="RarityType" type="Label" parent="HBoxContainer/CardVisuals"]
+[node name="CardType" type="Label" parent="HBoxContainer/CardVisuals" unique_id=1047898800]
 unique_name_in_owner = true
 layout_mode = 2
 text = "(Type)"
@@ -82,18 +74,26 @@ label_settings = SubResource("LabelSettings_h63ux")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Description" type="VBoxContainer" parent="HBoxContainer"]
+[node name="RarityType" type="Label" parent="HBoxContainer/CardVisuals" unique_id=801071549]
+unique_name_in_owner = true
+layout_mode = 2
+text = "(Type)"
+label_settings = SubResource("LabelSettings_h63ux")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="VBoxContainer" parent="HBoxContainer" unique_id=268411577]
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="CardDescription" type="RichTextLabel" parent="HBoxContainer/Description"]
+[node name="CardDescription" type="RichTextLabel" parent="HBoxContainer/Description" unique_id=1842319305]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/line_separation = 2
-theme_override_fonts/normal_font = ExtResource("4_t0kks")
+theme_override_fonts/normal_font = ExtResource("4_s48px")
 bbcode_enabled = true
 text = "Card Description 
 Card Description
@@ -101,13 +101,13 @@ Card Description
 fit_content = true
 scroll_active = false
 
-[node name="RealWorldDescription" type="RichTextLabel" parent="HBoxContainer/Description"]
+[node name="RealWorldDescription" type="RichTextLabel" parent="HBoxContainer/Description" unique_id=391945758]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/line_separation = 2
-theme_override_fonts/normal_font = ExtResource("4_t0kks")
+theme_override_fonts/normal_font = ExtResource("4_s48px")
 bbcode_enabled = true
 text = "Card Description 
 Card Description
@@ -115,11 +115,11 @@ Card Description
 fit_content = true
 scroll_active = false
 
-[node name="Control" type="Control" parent="HBoxContainer"]
+[node name="Control" type="Control" parent="HBoxContainer" unique_id=62592335]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 
-[node name="ChooseButton" type="Button" parent="."]
+[node name="ChooseButton" type="Button" parent="." unique_id=1424116726]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(90, 25)
 layout_mode = 1
@@ -136,11 +136,11 @@ grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_fonts/font = ExtResource("4_wmmgr")
+theme_override_fonts/font = ExtResource("4_s48px")
 theme_override_font_sizes/font_size = 12
 text = "Select"
 
-[node name="BackButton" type="Button" parent="."]
+[node name="BackButton" type="Button" parent="." unique_id=2146506377]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 0
@@ -148,7 +148,8 @@ offset_left = 12.0
 offset_top = 27.0
 offset_right = 52.0
 offset_bottom = 42.0
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("4_s48px")
+theme_override_font_sizes/font_size = 16
 text = "Back"
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

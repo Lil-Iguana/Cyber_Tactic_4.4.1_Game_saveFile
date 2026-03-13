@@ -1,26 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://bewgiacc3d4xk"]
+[gd_scene format=3 uid="uid://bewgiacc3d4xk"]
 
 [ext_resource type="Script" uid="uid://weulmxgs6wh8" path="res://scenes/ui/status_tooltip.gd" id="1_n50un"]
 [ext_resource type="Texture2D" uid="uid://bs0qd6rr0gix7" path="res://art/expose.png" id="1_rw8mh"]
-[ext_resource type="FontFile" uid="uid://dkc0wbxtwj6ao" path="res://art/Font Styles/MedodicaRegular.otf" id="3_nj0h8"]
+[ext_resource type="FontFile" uid="uid://c1mfnubgq43co" path="res://art/Font Styles/Monocraft.ttc" id="3_nj0h8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_va8am"]
 font = ExtResource("3_nj0h8")
-font_size = 32
 
-[node name="StatusTooltip" type="HBoxContainer"]
+[node name="StatusTooltip" type="HBoxContainer" unique_id=1493656174]
 custom_minimum_size = Vector2(450, 0)
 offset_right = 300.0
 offset_bottom = 73.0
 script = ExtResource("1_n50un")
 
-[node name="Icon" type="TextureRect" parent="."]
+[node name="Icon" type="TextureRect" parent="." unique_id=1058687238]
 custom_minimum_size = Vector2(60, 10)
 layout_mode = 2
 texture = ExtResource("1_rw8mh")
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=954127924]
 custom_minimum_size = Vector2(450, 0)
 layout_mode = 2
 size_flags_horizontal = 3
