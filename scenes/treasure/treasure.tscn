@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://da6ocx485g0c7"]
+[gd_scene format=3 uid="uid://da6ocx485g0c7"]
 
 [ext_resource type="Script" uid="uid://ddky077xerok0" path="res://scenes/treasure/treasure.gd" id="1_xmwdt"]
 [ext_resource type="Script" uid="uid://jie6cbv6kc3m" path="res://custom_resources/thread_passive.gd" id="2_3ynfn"]
@@ -145,7 +145,7 @@ gravity = Vector3(0, 98, 0)
 scale_curve = SubResource("CurveTexture_hrmmc")
 alpha_curve = SubResource("CurveTexture_b8877")
 
-[node name="Treasure" type="Control"]
+[node name="Treasure" type="Control" unique_id=1520104596]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -156,7 +156,7 @@ mouse_filter = 2
 script = ExtResource("1_xmwdt")
 treasure_thread_pool = Array[ExtResource("2_3ynfn")]([ExtResource("3_72l3w"), ExtResource("4_knoyn"), ExtResource("5_ypb2i"), ExtResource("6_8auyv")])
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="." unique_id=638125677]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -167,7 +167,7 @@ texture = ExtResource("7_8auyv")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="BackgroundDimmer" type="ColorRect" parent="."]
+[node name="BackgroundDimmer" type="ColorRect" parent="." unique_id=1008228045]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -177,7 +177,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0.784314)
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=775880901]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -194,7 +194,7 @@ text = "Treasure"
 label_settings = SubResource("LabelSettings_5bk8g")
 horizontal_alignment = 1
 
-[node name="TreasureChest" type="TextureRect" parent="."]
+[node name="TreasureChest" type="TextureRect" parent="." unique_id=1895150746]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -212,14 +212,12 @@ mouse_filter = 0
 texture = ExtResource("9_bbvtr")
 stretch_mode = 5
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="TreasureChest"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TreasureChest" unique_id=1276166824]
 unique_name_in_owner = true
-libraries = {
-&"": SubResource("AnimationLibrary_u5neh")
-}
-autoplay = "highlight"
+libraries/ = SubResource("AnimationLibrary_u5neh")
+autoplay = &"highlight"
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="TreasureChest"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="TreasureChest" unique_id=867469428]
 position = Vector2(20, 29)
 emitting = false
 amount = 25
