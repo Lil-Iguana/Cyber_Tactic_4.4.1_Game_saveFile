@@ -17,8 +17,15 @@ const SAVE_PATH := "user://savegame.tres"
 @export var floors_climbed: int
 @export var was_on_map: bool
 @export var codex_discovered: Array[String] = []
-@export var stats_tracker: RunStatsTracker  # NEW
-@export var was_in_hub: bool = false  # True when the player is between runs in the Hub
+@export var stats_tracker: RunStatsTracker
+@export var was_in_hub: bool = false
+
+@export var shop_card_ids: Array[String]   = []
+@export var shop_card_prices: Array[int]   = []
+@export var shop_sold_card_ids: Array[String] = []
+@export var shop_thread_ids: Array[String] = []
+@export var shop_thread_prices: Array[int] = []
+@export var shop_sold_thread_ids: Array[String] = []
 
 
 func save_data() -> void:

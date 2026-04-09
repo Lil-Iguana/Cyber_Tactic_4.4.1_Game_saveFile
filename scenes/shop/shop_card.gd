@@ -9,9 +9,15 @@ const CARD_MENU_UI = preload("res://scenes/ui/card_menu_ui.tscn")
 @onready var price: HBoxContainer = %Price
 @onready var price_label: Label = %PriceLabel
 @onready var buy_button: Button = %BuyButton
-@onready var gold_cost := RNG.instance.randi_range(100, 300)
+
+var gold_cost: int = -1
 
 var current_card_ui: CardMenuUI
+
+
+func _ready() -> void:
+	if gold_cost == -1:
+		gold_cost = RNG.instance.randi_range(100, 300)
 
 
 func update(run_stats: RunStats) -> void:
@@ -26,6 +32,15 @@ func update(run_stats: RunStats) -> void:
 	else:
 		price_label.add_theme_color_override("font_color", Color.RED)
 		buy_button.disabled = true
+
+
+func mark_as_sold() -> void:
+	if card_container:
+		card_container.queue_free()
+	if price:
+		price.queue_free()
+	if buy_button:
+		buy_button.queue_free()
 
 
 func set_card(new_card: Card) -> void:

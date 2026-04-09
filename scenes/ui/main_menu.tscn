@@ -1,19 +1,14 @@
 [gd_scene format=3 uid="uid://bu3dhos1m15kj"]
 
 [ext_resource type="Script" uid="uid://buds01dk4wjrb" path="res://scenes/ui/main_menu.gd" id="1_7m5q3"]
-[ext_resource type="Resource" uid="uid://co6ar47di3crh" path="res://characters/warrior/warrior.tres" id="2_wb0q5"]
 [ext_resource type="PackedScene" uid="uid://o0erus520lr" path="res://global/settings_menu.tscn" id="3_1g8jr"]
-[ext_resource type="Script" uid="uid://blfi25snr1bga" path="res://custom_resources/run_startup.gd" id="3_q85j6"]
 [ext_resource type="AudioStream" uid="uid://bdor7qf2njhcn" path="res://art/music/BeepBox-Song (1).mp3" id="3_uhagc"]
 [ext_resource type="AudioStream" uid="uid://c1y26cwodui50" path="res://art/sfx/blipSelect.wav" id="4_uhagc"]
 [ext_resource type="VideoStream" uid="uid://cb8dyjkpbac8f" path="res://art/video/MenuBGScene0001-0680.ogv" id="5_uhagc"]
 [ext_resource type="FontFile" uid="uid://dmhy2sqasbky8" path="res://art/Font Styles/BoldPixels.ttf" id="7_8g5eo"]
 [ext_resource type="PackedScene" uid="uid://d3hawibt7cho4" path="res://scenes/compendium/compendium_view.tscn" id="7_btxxm"]
 [ext_resource type="FontFile" uid="uid://c1mfnubgq43co" path="res://art/Font Styles/Monocraft.ttc" id="8_7suek"]
-
-[sub_resource type="Resource" id="Resource_8g5eo"]
-script = ExtResource("3_q85j6")
-picked_character = ExtResource("2_wb0q5")
+[ext_resource type="Resource" uid="uid://cj8wg6pkgahdr" path="res://scenes/run/run_startup.tres" id="99_runst"]
 
 [sub_resource type="Gradient" id="Gradient_d3fc5"]
 colors = PackedColorArray(0.0925943, 0.108696, 0.555451, 1, 0.225601, 0.34753, 1, 1)
@@ -39,7 +34,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7m5q3")
-run_startup = SubResource("Resource_8g5eo")
+run_startup = ExtResource("99_runst")
 music = ExtResource("3_uhagc")
 button_sfx = ExtResource("4_uhagc")
 
