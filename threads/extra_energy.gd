@@ -2,7 +2,9 @@ extends ThreadPassive
 
 
 func activate_thread(owner: ThreadUI) -> void:
-	Events.player_hand_drawn.connect(_add_mana.bind(owner), CONNECT_ONE_SHOT)
+	var c := _add_mana.bind(owner)
+	if not Events.player_hand_drawn.is_connected(c):
+		Events.player_hand_drawn.connect(c, CONNECT_ONE_SHOT)
 
 
 func _add_mana(owner: ThreadUI) -> void:
