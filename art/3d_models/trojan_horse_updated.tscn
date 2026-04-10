@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bd38ry726uo4t"]
+[gd_scene format=3 uid="uid://bd38ry726uo4t"]
 
 [ext_resource type="PackedScene" uid="uid://by0g575pvlybd" path="res://art/3d_models/TrojanHorse (1).glb" id="1_ynh45"]
 
@@ -15,12 +15,40 @@ sky = SubResource("Sky_avn37")
 tonemap_mode = 2
 glow_enabled = true
 
-[node name="TrojanHorse (1)" instance=ExtResource("1_ynh45")]
+[node name="TrojanHorse (1)" unique_id=1732134185 instance=ExtResource("1_ynh45")]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="0"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="0" unique_id=1221569445]
 environment = SubResource("Environment_crn3w")
 
-[node name="Camera3D" type="Camera3D" parent="." index="3"]
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/position = Vector3(-3.6378564e-16, -0.5593458, 1.6018631)
+bones/0/rotation = Quaternion(-0.36367327, 1.110466e-07, -4.335323e-08, 0.9315266)
+bones/0/scale = Vector3(1, 0.99999994, 1)
+bones/1/rotation = Quaternion(-0.0152043635, 5.3314215e-15, -3.625001e-09, 0.9998844)
+bones/2/rotation = Quaternion(-0.40113014, -2.6553987e-15, -9.563687e-08, 0.9160211)
+bones/3/rotation = Quaternion(-0.099375606, 5.6664687e-15, -2.3692987e-08, 0.9950501)
+bones/4/rotation = Quaternion(0.74114925, 2.0072684e-14, 1.7670375e-07, 0.6713403)
+bones/5/rotation = Quaternion(0.7765477, -0.1907523, -0.24204575, 0.54954636)
+bones/6/rotation = Quaternion(-0.21725848, -1.4086142e-05, 0.1403272, 0.9659746)
+bones/7/rotation = Quaternion(0.7765476, 0.1907522, 0.24204575, 0.5495464)
+bones/8/rotation = Quaternion(-0.2172584, 1.4261322e-05, -0.14032714, 0.9659747)
+bones/9/position = Vector3(0.23603196, 0.2145071, 0.23874037)
+bones/9/rotation = Quaternion(0.8455256, -0.050438315, 0.0289595, 0.53075767)
+bones/10/rotation = Quaternion(-0.22870101, 0.013772386, -0.0632333, 0.9713433)
+bones/11/position = Vector3(-0.23603207, 0.21450709, 0.23874025)
+bones/11/rotation = Quaternion(0.8455257, 0.050438195, -0.028959272, 0.5307577)
+bones/12/rotation = Quaternion(-0.22870104, -0.013772396, 0.063233286, 0.9713433)
+bones/13/rotation = Quaternion(0.97055787, -5.7427393e-08, 4.6279806e-07, -0.24086797)
+bones/14/rotation = Quaternion(-0.55412173, 2.9769947e-07, -5.9450645e-07, 0.83243567)
+bones/15/rotation = Quaternion(-0.5938706, 2.4499359e-12, -8.4953666e-07, 0.8045606)
+bones/16/rotation = Quaternion(0.08142875, 9.094516e-14, 1.1648482e-07, 0.99667925)
+bones/17/rotation = Quaternion(0.21886972, -2.7435197e-14, 3.1309557e-07, 0.9757541)
+bones/18/rotation = Quaternion(0.31512576, 4.4195272e-14, 4.5079108e-07, 0.94905)
+
+[node name="AnimationPlayer" parent="." index="2"]
+autoplay = &"Idle"
+
+[node name="Camera3D" type="Camera3D" parent="." index="3" unique_id=1624542916]
 transform = Transform3D(0.7563903, 0, 0.65412056, 0, 1, 0, -0.65412056, 0, 0.7563903, 0.80184764, 0.34780204, 0.9081675)
 projection = 1
 size = 0.705
