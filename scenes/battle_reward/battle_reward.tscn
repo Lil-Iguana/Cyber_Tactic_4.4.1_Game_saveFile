@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cr6oeapjhsnjt"]
+[gd_scene format=3 uid="uid://cr6oeapjhsnjt"]
 
 [ext_resource type="Script" uid="uid://bex0kkfy7ai5n" path="res://scenes/battle_reward/battle_reward.gd" id="1_q0wnb"]
 [ext_resource type="Texture2D" uid="uid://lugennxj0o6x" path="res://art/battle_background1.png" id="2_gdsnt"]
-[ext_resource type="FontFile" uid="uid://7ucfniysa1ko" path="res://art/Font Styles/pixel_rpg.ttf" id="6_sfqgb"]
+[ext_resource type="FontFile" uid="uid://c1mfnubgq43co" path="res://art/Font Styles/Monocraft.ttc" id="3_jcbo2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ykgm0"]
 font_size = 48
@@ -16,7 +16,7 @@ font_color = Color(1, 0.85, 0.2, 1)
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
-[node name="BattleReward" type="Control"]
+[node name="BattleReward" type="Control" unique_id=2116987996]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,7 +26,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_q0wnb")
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="." unique_id=1998418322]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -37,7 +37,7 @@ texture = ExtResource("2_gdsnt")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="BackgroundDimmer" type="ColorRect" parent="."]
+[node name="BackgroundDimmer" type="ColorRect" parent="." unique_id=1209259894]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -47,7 +47,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0.784314)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1678980298]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -63,47 +63,47 @@ grow_vertical = 2
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=907824331]
 layout_mode = 2
 text = "Rewards"
 label_settings = SubResource("LabelSettings_ykgm0")
 horizontal_alignment = 1
 
-[node name="RewardContainer" type="PanelContainer" parent="VBoxContainer"]
+[node name="RewardContainer" type="PanelContainer" parent="VBoxContainer" unique_id=1380307434]
 custom_minimum_size = Vector2(110, 90)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qbeej")
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/RewardContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/RewardContainer" unique_id=1111544323]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="Rewards" type="VBoxContainer" parent="VBoxContainer/RewardContainer/MarginContainer"]
+[node name="Rewards" type="VBoxContainer" parent="VBoxContainer/RewardContainer/MarginContainer" unique_id=741312664]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ClaimAllButton" type="Button" parent="VBoxContainer"]
+[node name="ClaimAllButton" type="Button" parent="VBoxContainer" unique_id=999194890]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 30)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("6_sfqgb")
+theme_override_fonts/font = ExtResource("3_jcbo2")
 theme_override_font_sizes/font_size = 18
 text = "Claim All"
 
-[node name="ContinueButton" type="Button" parent="VBoxContainer"]
+[node name="ContinueButton" type="Button" parent="VBoxContainer" unique_id=670752141]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 30)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("6_sfqgb")
+theme_override_fonts/font = ExtResource("3_jcbo2")
 theme_override_font_sizes/font_size = 18
 text = "Continue"
 
-[node name="FeedbackLabel" type="Label" parent="."]
+[node name="FeedbackLabel" type="Label" parent="." unique_id=1402751531]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8

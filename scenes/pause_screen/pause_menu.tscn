@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cvittjk6naban" path="res://scenes/run/pause_menu.gd" id="1_cik3g"]
 [ext_resource type="FontFile" uid="uid://d3fuaowohtamf" path="res://art/Font Styles/PressStart2P-Regular.ttf" id="2_6njkv"]
-[ext_resource type="FontFile" uid="uid://7ucfniysa1ko" path="res://art/Font Styles/pixel_rpg.ttf" id="3_wysi6"]
+[ext_resource type="FontFile" uid="uid://c1mfnubgq43co" path="res://art/Font Styles/Monocraft.ttc" id="3_6njkv"]
 [ext_resource type="PackedScene" uid="uid://o0erus520lr" path="res://global/settings_menu.tscn" id="4_6njkv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7yo0l"]
@@ -53,15 +53,15 @@ theme_override_constants/separation = 10
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 30)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_wysi6")
+theme_override_fonts/font = ExtResource("3_6njkv")
 theme_override_font_sizes/font_size = 18
 text = "Resume"
 
 [node name="SettingsButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1036802471]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_wysi6")
+theme_override_fonts/font = ExtResource("3_6njkv")
 theme_override_font_sizes/font_size = 18
 text = "Settings"
 
@@ -69,7 +69,7 @@ text = "Settings"
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 14)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_wysi6")
+theme_override_fonts/font = ExtResource("3_6njkv")
 theme_override_font_sizes/font_size = 18
 text = "Save & Exit"
 
