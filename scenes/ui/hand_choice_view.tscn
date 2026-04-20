@@ -1,15 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4o366c13h18p"]
+[gd_scene format=3 uid="uid://b4o366c13h18p"]
 
-[ext_resource type="FontFile" uid="uid://7ucfniysa1ko" path="res://art/Font Styles/pixel_rpg.ttf" id="1_t5hk6"]
 [ext_resource type="Script" uid="uid://2fu1nhf245df" path="res://scenes/ui/hand_choice_view.gd" id="1_xk28b"]
+[ext_resource type="FontFile" uid="uid://c1mfnubgq43co" path="res://art/Font Styles/Monocraft.ttc" id="2_6h00s"]
 [ext_resource type="PackedScene" uid="uid://istosvrl2ng1" path="res://scenes/ui/card_tooltip_pop_up.tscn" id="2_xk28b"]
 [ext_resource type="PackedScene" uid="uid://d3r4tog78o57g" path="res://scenes/ui/card_hand_choice_ui.tscn" id="3_6h00s"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fn6mv"]
-font = ExtResource("1_t5hk6")
+font = ExtResource("2_6h00s")
 font_size = 18
 
-[node name="HandChoiceView" type="Control"]
+[node name="HandChoiceView" type="Control" unique_id=341821302]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,7 +18,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xk28b")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="." unique_id=586060875]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,7 +27,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.627451)
 
-[node name="Title" type="Label" parent="."]
+[node name="Title" type="Label" parent="." unique_id=594477934]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 5
@@ -43,12 +43,12 @@ label_settings = SubResource("LabelSettings_fn6mv")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CardTooltipPopUp" parent="." instance=ExtResource("2_xk28b")]
+[node name="CardTooltipPopUp" parent="." unique_id=1465030736 instance=ExtResource("2_xk28b")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
 
-[node name="HandCopy" type="HBoxContainer" parent="."]
+[node name="HandCopy" type="HBoxContainer" parent="." unique_id=1601901636]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 7
@@ -65,14 +65,14 @@ grow_vertical = 0
 mouse_filter = 2
 alignment = 1
 
-[node name="CardHandChoiceUI" parent="HandCopy" instance=ExtResource("3_6h00s")]
+[node name="CardHandChoiceUI" parent="HandCopy" unique_id=142766247 instance=ExtResource("3_6h00s")]
 layout_mode = 2
 
-[node name="CardHandChoiceUI2" parent="HandCopy" instance=ExtResource("3_6h00s")]
+[node name="CardHandChoiceUI2" parent="HandCopy" unique_id=599817914 instance=ExtResource("3_6h00s")]
 layout_mode = 2
 
-[node name="CardHandChoiceUI3" parent="HandCopy" instance=ExtResource("3_6h00s")]
+[node name="CardHandChoiceUI3" parent="HandCopy" unique_id=2034072838 instance=ExtResource("3_6h00s")]
 layout_mode = 2
 
-[node name="CardHandChoiceUI4" parent="HandCopy" instance=ExtResource("3_6h00s")]
+[node name="CardHandChoiceUI4" parent="HandCopy" unique_id=1130979477 instance=ExtResource("3_6h00s")]
 layout_mode = 2

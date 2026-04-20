@@ -7,13 +7,14 @@
 [ext_resource type="Resource" uid="uid://kyu5l54a2ljg" path="res://characters/warrior/cards/student_cybersword_slash.tres" id="3_egjv0"]
 [ext_resource type="Texture2D" uid="uid://dxjqjw61iqcea" path="res://art/rarity.png" id="4_7vuyd"]
 [ext_resource type="Texture2D" uid="uid://banyrqmjy17bd" path="res://art/cost_background.png" id="5_m3e03"]
+[ext_resource type="FontFile" uid="uid://c1mfnubgq43co" path="res://art/Font Styles/Monocraft.ttc" id="7_bp74k"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bp74k"]
-font_size = 20
+font = ExtResource("7_bp74k")
 font_color = Color(0, 0, 0, 1)
 
 [node name="CardVisuals" type="Control" unique_id=1356543861]
-custom_minimum_size = Vector2(50, 60)
+custom_minimum_size = Vector2(75, 90)
 layout_mode = 3
 anchors_preset = 0
 theme = ExtResource("1_ya3v2")
@@ -30,24 +31,6 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("2_ssooe")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=2125849516]
-layout_mode = 0
-offset_left = -3.0
-offset_top = -6.0
-offset_right = 15.0
-offset_bottom = 12.0
-texture = ExtResource("5_m3e03")
-
-[node name="Cost" type="Label" parent="." unique_id=361135712]
-layout_mode = 1
-offset_top = -7.0
-offset_right = 14.0
-offset_bottom = 13.0
-text = "2"
-label_settings = SubResource("LabelSettings_bp74k")
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Icon" type="TextureRect" parent="." unique_id=848587109]
 layout_mode = 1
 anchors_preset = 8
@@ -55,16 +38,35 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
+offset_left = -32.5
+offset_top = -40.0
+offset_right = 32.5
+offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("3_76wr0")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2125849516]
+layout_mode = 0
+offset_left = -6.0
+offset_top = -9.0
+offset_right = 21.0
+offset_bottom = 18.0
+texture = ExtResource("5_m3e03")
+
+[node name="Cost" type="Label" parent="." unique_id=361135712]
+layout_mode = 1
+offset_left = 2.0
+offset_top = -6.0
+offset_right = 16.0
+offset_bottom = 14.0
+text = "2"
+label_settings = SubResource("LabelSettings_bp74k")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Rarity" type="TextureRect" parent="." unique_id=1283108694]
 visible = false

@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://baxry1dnkxqpr" path="res://scenes/ui/red_flash.gd" id="15_5dacn"]
 [ext_resource type="PackedScene" uid="uid://di04dbe481yuy" path="res://scenes/ui/card_pile_opener.tscn" id="17_0r3mo"]
 [ext_resource type="PackedScene" uid="uid://dnjdeotl4lhvh" path="res://scenes/ui/battle_over_panel.tscn" id="17_oth3w"]
+[ext_resource type="FontFile" uid="uid://c1mfnubgq43co" path="res://art/Font Styles/Monocraft.ttc" id="17_tnndc"]
 [ext_resource type="Texture2D" uid="uid://exakf52t7siy" path="res://art/discard.png" id="18_5fl16"]
 [ext_resource type="Texture2D" uid="uid://b6lqhfwxxweht" path="res://art/discardHover.png" id="19_5ng34"]
 [ext_resource type="PackedScene" uid="uid://c2vbx7gpljslx" path="res://scenes/ui/enemy_tooltip_popup.tscn" id="20_pyfix"]
@@ -33,9 +34,11 @@
 size = Vector2(641, 222)
 
 [sub_resource type="LabelSettings" id="LabelSettings_8eh2s"]
+font = ExtResource("17_tnndc")
 font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_e48mi"]
+font = ExtResource("17_tnndc")
 font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_ueicy"]
@@ -100,9 +103,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -139.0
-offset_top = -59.0
-offset_right = 139.0
+offset_left = -235.0
+offset_top = -90.0
+offset_right = 235.0
 grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
@@ -110,9 +113,8 @@ script = ExtResource("2_dybx0")
 player = NodePath("../../Player")
 
 [node name="ManaUI" parent="BattleUI" unique_id=1583718781 instance=ExtResource("11_2bebn")]
-offset_top = -102.0
-offset_right = 65.0
-offset_bottom = -42.0
+offset_top = -105.0
+offset_bottom = -70.0
 char_stats = ExtResource("4_nhdv7")
 
 [node name="EndTurnButton" type="Button" parent="BattleUI" unique_id=1219614683]
@@ -122,14 +124,14 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -96.0
-offset_top = -68.0
-offset_right = -6.0
-offset_bottom = -38.0
+offset_left = -100.0
+offset_top = -121.0
+offset_right = -10.0
+offset_bottom = -91.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("12_ml4cj")
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("17_tnndc")
 text = "End Turn"
 
 [node name="DrawPileButton" parent="BattleUI" unique_id=1321714338 node_paths=PackedStringArray("counter") instance=ExtResource("17_0r3mo")]
@@ -138,18 +140,33 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 4.0
-offset_top = -36.0
-offset_right = 36.0
-offset_bottom = -4.0
+offset_top = -60.0
+offset_right = 52.0
+offset_bottom = -12.0
 grow_vertical = 0
 counter = NodePath("Counter")
 
+[node name="ColorRect" type="ColorRect" parent="BattleUI/DrawPileButton" unique_id=1624626039]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -3.0
+offset_right = 42.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.3137255)
+
 [node name="Counter" type="Label" parent="BattleUI/DrawPileButton" unique_id=1890470630]
 layout_mode = 0
-offset_left = 19.0
-offset_top = 11.0
-offset_right = 35.0
-offset_bottom = 37.000034
+offset_left = 25.0
+offset_top = 21.0
+offset_right = 53.0
+offset_bottom = 53.0
 text = "99"
 label_settings = SubResource("LabelSettings_8eh2s")
 
@@ -160,22 +177,37 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -35.0
-offset_right = -8.0
-offset_bottom = -3.0
+offset_left = -55.0
+offset_top = -60.0
+offset_right = -7.0
+offset_bottom = -12.0
 grow_horizontal = 0
 grow_vertical = 0
 texture_normal = ExtResource("18_5fl16")
 texture_hover = ExtResource("19_5ng34")
 counter = NodePath("Counter")
 
+[node name="ColorRect" type="ColorRect" parent="BattleUI/DiscardPileButton" unique_id=1768996952]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -3.0
+offset_right = 12.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.3137255)
+
 [node name="Counter" type="Label" parent="BattleUI/DiscardPileButton" unique_id=1005308370]
 layout_mode = 0
-offset_left = -15.0
-offset_top = 10.0
-offset_right = 13.0
-offset_bottom = 42.0
+offset_left = -5.0
+offset_top = 21.0
+offset_right = 38.0
+offset_bottom = 54.0
 text = "99"
 label_settings = SubResource("LabelSettings_e48mi")
 
