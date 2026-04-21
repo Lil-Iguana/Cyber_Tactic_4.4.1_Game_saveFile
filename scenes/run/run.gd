@@ -11,11 +11,6 @@ const WIN_SCREEN_SCENE := preload("res://scenes/win_screen/win_screen.tscn")
 const SUMMARY_SCENE := preload("res://scenes/ui/run_summary_screen.tscn")
 const MAIN_MENU_PATH := "res://scenes/ui/main_menu.tscn"
 
-const MAP_MUSIC_01 := preload("res://art/music/during on player path.mp3")
-const MAP_MUSIC_02 := preload("res://art/music/during on player path.mp3")
-const BOSS_MUSIC_01 := preload("res://art/music/boss battle.mp3")
-const BOSS_MUSIC_02 := preload("res://art/music/boss battle.mp3")
-
 @export var run_startup: RunStartup
 
 @onready var map: Map = $Map
@@ -78,7 +73,9 @@ func _start_run() -> void:
 	
 	_setup_event_connections()
 	_setup_top_bar()
-	set_music(map)
+	
+	# Start map music at the beginning of a new run.
+	MusicPlayer.play_track(MusicManager.Track.MAP)
 	
 	map.generate_new_map()
 	map.unlock_floor(0)
@@ -184,8 +181,6 @@ func _load_run() -> void:
 				_on_event_room_entered(save_data.last_room)
 	else:
 		_restore_map_view()
-	
-	set_music(map)
 
 
 func _restore_map_view() -> void:
@@ -193,7 +188,8 @@ func _restore_map_view() -> void:
 	map.show_map()
 	map_labels.show()
 	message_label.show()
-	MusicPlayer.resume_map_music()
+	# Returning to map on load — restart map music from the beginning.
+	MusicPlayer.play_track(MusicManager.Track.MAP)
 
 
 func _change_view(scene: PackedScene) -> Node:
@@ -223,7 +219,10 @@ func _show_map() -> void:
 	map_labels.show()
 	message_label.show()
 	
-	MusicPlayer.resume_map_music()
+	# Returning to map from a non-battle room — keep map music playing
+	# without restarting it (campfire/shop/treasure/event).
+	# Returning from battle reward is handled by _on_battle_reward_exited_wrapper.
+	MusicPlayer.play_track(MusicManager.Track.MAP)
 	
 	_save_run(true)
 
@@ -233,7 +232,7 @@ func _setup_event_connections() -> void:
 	Events.battle_reward_exited.connect(_on_battle_reward_exited_wrapper)
 	Events.campfire_exited.connect(_show_map)
 	Events.map_exited.connect(_on_map_exited)
-	Events.shop_exited.connect(_show_map)
+	Events.shop_exited.connect(_on_shop_exited)
 	Events.treasure_room_exited.connect(_on_treasure_room_exited)
 	Events.event_room_exited.connect(_show_map)
 	Events.bestiary_exited.connect(_show_map)
@@ -302,6 +301,7 @@ func _on_treasure_room_exited(thread: ThreadPassive) -> void:
 func _on_campfire_entered() -> void:
 	var campfire := _change_view(CAMPFIRE_SCENE) as Campfire
 	campfire.char_stats = character
+	# Map music continues playing through campfire (no track change needed).
 
 
 func _on_shop_entered() -> void:
@@ -310,6 +310,9 @@ func _on_shop_entered() -> void:
 	shop.run_stats      = stats
 	shop.thread_handler = thread_handler
 	Events.shop_entered.emit(shop)
+	
+	# Switch to shop music when entering the shop.
+	MusicPlayer.play_track(MusicManager.Track.SHOP)
 	
 	# If save_data has a captured shop session, restore it exactly —
 	# same items, same prices, purchased ones marked as sold-out.
@@ -327,6 +330,11 @@ func _on_shop_entered() -> void:
 		shop.populate_shop()
 
 
+func _on_shop_exited() -> void:
+	# Fade shop music out, map music fades in on _show_map().
+	_show_map()
+
+
 func _on_event_room_entered(room: Room) -> void:
 	var event_room := _change_view(room.event_scene) as EventRoom
 	event_room.character_stats = character
@@ -334,6 +342,7 @@ func _on_event_room_entered(room: Room) -> void:
 	event_room.thread_handler  = thread_handler
 	event_room.stats_tracker   = stats_tracker
 	event_room.setup()
+	# Map music continues through event rooms.
 
 
 func _on_battle_won() -> void:
@@ -374,9 +383,29 @@ func _on_map_exited(room: Room) -> void:
 
 
 func _on_battle_reward_exited_wrapper() -> void:
-	_show_map()
+	# Fade out result music and restart map music from the beginning.
+	_show_map_after_battle()
 	if not DialogueState.has_shown("post_battle_shown"):
 		DialogueManager.start_dialogue_from_file("res://dialogues/post_battle_congrats.json", "post_battle_shown")
+
+
+func _show_map_after_battle() -> void:
+	## Called specifically when returning from battle rewards.
+	## Map music restarts from the beginning (as confirmed by design).
+	if current_view.get_child_count() > 0:
+		current_view.get_child(0).queue_free()
+	
+	_is_on_map = true
+	
+	map.show_map()
+	map.unlock_next_rooms()
+	map_labels.show()
+	message_label.show()
+	
+	# force_restart = true so map music begins fresh after battle.
+	MusicPlayer.play_track(MusicManager.Track.MAP, true)
+	
+	_save_run(true)
 
 
 func _on_player_died_run_over() -> void:
@@ -391,19 +420,3 @@ func _show_run_summary(victory: bool) -> void:
 	var summary := _change_view(SUMMARY_SCENE) as RunSummaryScreen
 	summary.show_summary(stats_tracker, victory)
 	get_tree().paused = true
-
-
-func set_music(scene) -> void:
-	match stats.chapter:
-		0:
-			scene.music      = MAP_MUSIC_01
-			scene.boss_music = BOSS_MUSIC_01
-		1:
-			scene.music      = MAP_MUSIC_02
-			scene.boss_music = BOSS_MUSIC_02
-		_:
-			scene.music      = MAP_MUSIC_01
-			scene.boss_music = BOSS_MUSIC_01
-	
-	MusicPlayer.play_map_music(scene.music)
-	Events.music_set.emit()

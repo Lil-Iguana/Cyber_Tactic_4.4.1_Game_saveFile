@@ -2,7 +2,6 @@ class_name BattleSim
 extends Node2D
 
 @export var char_stats: CharacterStats
-@export var music: AudioStream
 
 @onready var battle_ui: BattleUISim = $BattleUI 
 @onready var player_handler: PlayerHandlerSim = $PlayerHandler
@@ -28,8 +27,6 @@ func _ready() -> void:
 	Events.player_hand_discarded.connect(enemy_handler.start_turn)
 	Events.player_died.connect(_on_player_died)
 	
-	Events.music_set.connect(_on_music_set)
-	
 	start_battle(new_stats)
 
 
@@ -51,7 +48,7 @@ func _setup_tutorial() -> void:
 
 func start_battle(stats: CharacterStats) -> void:
 	get_tree().paused = false
-	MusicPlayer.play(music, true)
+	MusicPlayer.play_track(MusicManager.Track.BATTLE)
 	enemy_handler.reset_enemy_actions()
 	player_handler.start_battle(stats)
 
@@ -70,11 +67,3 @@ func _on_enemy_turn_ended() -> void:
 func _on_player_died() -> void:
 	Events.battle_over_screen_requested.emit("Game Over!", BattleOverPanel.Type.LOSE)
 	SaveGame.delete_data()
-
-
-func _on_music_set() -> void:
-	if not MusicPlayer.already_playing_music():
-		MusicPlayer.play_music(music, true)
-	else:
-		pass
-		#print("music already playing")

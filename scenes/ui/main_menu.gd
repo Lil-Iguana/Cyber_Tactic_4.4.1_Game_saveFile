@@ -16,14 +16,14 @@ const HUB_SCENE = preload("res://scenes/hub/hub.tscn")
 func _ready() -> void:
 	get_tree().paused = false
 	continue_button.visible = SaveGame.load_data() != null
-	MusicPlayer.play_music(music, true)
+	MusicPlayer.play_track(MusicManager.Track.MAINMENU)
 	
 	# Hide compendium initially
 	if compendium_view:
 		compendium_view.hide()
 
 func _on_continue_pressed() -> void:
-	MusicPlayer.stop()
+	MusicPlayer.stop_music()
 	SFXPlayer.play(button_sfx)
 	
 	var save := SaveGame.load_data()

@@ -5,9 +5,6 @@ const SCROLL_SPEED := 15
 const MAP_ROOM = preload("res://scenes/map/map_room.tscn")
 const MAP_LINE = preload("res://scenes/map/map_line.tscn")
 
-@export var music: AudioStream
-@export var boss_music: AudioStream
-
 @onready var map_generator: MapGenerator = $MapGenerator
 @onready var lines: Node2D = %Lines
 @onready var rooms: Node2D = %Rooms
@@ -22,7 +19,6 @@ var camera_edge_y: float
 
 func _ready() -> void:
 	camera_edge_y = MapGenerator.Y_DIST * (MapGenerator.FLOORS - 4)
-	Events.music_set.connect(_on_music_set)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -62,7 +58,7 @@ func create_map() -> void:
 			if room.next_rooms.size() > 0:
 				_spawn_room(room)
 	
-	# Boss room has no next room but we need to spawn it
+	# Boss room has no next room but we need to spawn it.
 	var middle := floori(MapGenerator.MAP_WIDTH * 0.5)
 	_spawn_room(map_data[MapGenerator.FLOORS-1][middle])
 	
@@ -126,8 +122,3 @@ func _on_map_room_selected(room: Room) -> void:
 	last_room = room
 	floors_climbed += 1
 	Events.map_exited.emit(room)
-
-
-func _on_music_set() -> void:
-	MusicPlayer.play_music(music, true)
-	#print("map is playing the music")

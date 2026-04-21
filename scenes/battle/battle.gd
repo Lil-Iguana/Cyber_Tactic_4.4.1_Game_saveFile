@@ -3,8 +3,6 @@ extends Node2D
 
 @export var battle_stats: BattleStats
 @export var char_stats: CharacterStats
-@export var music: AudioStream
-@export var boss_music: AudioStream
 @export var threads: ThreadHandler
 
 @onready var battle_ui: BattleUI = $BattleUI
@@ -13,11 +11,10 @@ extends Node2D
 @onready var player: Player = $Player
 @onready var hand: HBoxContainer = %Hand
 
-@onready var map: Map = get_node_or_null("../../Map")
-
 var tutorial_manager: TutorialManager
-var stats_tracker: RunStatsTracker  # NEW
-var starting_health: int = 0  # NEW
+var stats_tracker: RunStatsTracker
+var starting_health: int = 0
+
 
 func _ready() -> void:
 	enemy_handler.child_order_changed.connect(_on_enemies_child_order_changed)
@@ -26,8 +23,6 @@ func _ready() -> void:
 	Events.player_press_end_turn_button.connect(player_handler.end_turn)
 	Events.player_hand_discarded.connect(enemy_handler.start_turn)
 	Events.player_died.connect(_on_player_died)
-	
-	Events.music_set.connect(_on_music_set)
 
 
 func start_battle() -> void:
@@ -37,15 +32,12 @@ func start_battle() -> void:
 	
 	get_tree().paused = false
 	
-	# Play appropriate battle music
+	# Play the correct music based on battle tier.
+	# Tier 3 = boss fight, anything else = regular battle.
 	if battle_stats.battle_tier == 3:
-		# Boss battle - get boss music from map
-		if map and map.boss_music:
-			boss_music = map.boss_music
-		MusicPlayer.play_battle_music(boss_music)
+		MusicPlayer.play_track(MusicManager.Track.BOSS)
 	else:
-		# Regular battle - use this scene's battle music
-		MusicPlayer.play_battle_music(music)
+		MusicPlayer.play_track(MusicManager.Track.BATTLE)
 	
 	battle_ui.char_stats = char_stats
 	player.stats = char_stats
@@ -56,23 +48,20 @@ func start_battle() -> void:
 	threads.threads_activated.connect(_on_threads_activated)
 	threads.activate_threads_by_type(ThreadPassive.Type.START_OF_COMBAT)
 	
-	# Check if tutorial should be shown (only for first non-tutorial battle)
+	# Check if tutorial should be shown (only for first non-tutorial battle).
 	if not DialogueState.has_shown("battle_full_tutorial"):
 		_setup_tutorial()
 
 
 func _setup_tutorial() -> void:
-	# Load tutorial steps
 	var BattleFullTutorialSteps = load("res://scenes/tutorial/battle_full_tutorial_steps.gd")
 	var tutorial_steps: Array[TutorialStep] = BattleFullTutorialSteps.create_steps()
 	
-	# Create tutorial manager
 	tutorial_manager = TutorialManager.new()
 	tutorial_manager.steps = tutorial_steps
 	tutorial_manager.tutorial_key = "battle_full_tutorial"
 	add_child(tutorial_manager)
 	
-	# Start tutorial after player's first turn starts
 	await Events.player_hand_drawn
 	await get_tree().create_timer(0.5).timeout
 	tutorial_manager.start_tutorial()
@@ -93,6 +82,8 @@ func _on_enemy_turn_ended() -> void:
 
 
 func _on_player_died() -> void:
+	# Play result music when the player dies.
+	MusicPlayer.play_track(MusicManager.Track.RESULT)
 	Events.player_died_run_over.emit()
 
 
@@ -102,22 +93,17 @@ func _on_threads_activated(type: ThreadPassive.Type) -> void:
 			player_handler.start_battle(char_stats)
 			battle_ui.initialize_card_pile_ui()
 		ThreadPassive.Type.END_OF_COMBAT:
-			# NEW: Track battle completion
 			var was_perfect = (char_stats.health == starting_health)
 			if is_instance_valid(stats_tracker):
 				stats_tracker.record_battle_won(battle_stats.battle_tier, was_perfect)
 			
+			# Switch to battle result music on victory.
+			MusicPlayer.play_track(MusicManager.Track.RESULT)
 			Events.battle_over_screen_requested.emit("Victorious!", BattleOverPanel.Type.WIN)
 
 
-func _on_music_set() -> void:
-	# Update music references from map
-	if map:
-		music = map.music
-		boss_music = map.boss_music
-
-#debug code to auto-win combat
-#func _unhandled_input(event: InputEvent) -> void:
-#	if event.is_action_pressed("cheat"):
-#		for enemy: Enemy in enemy_handler.get_children():
-#			enemy.queue_free()
+# Debug: auto-win combat.
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("cheat"):
+		for enemy: Enemy in enemy_handler.get_children():
+			enemy.queue_free()
