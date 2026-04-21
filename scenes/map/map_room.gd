@@ -6,7 +6,6 @@ signal selected(room: Room)
 
 const ICONS := {
 	Room.Type.NOT_ASSIGNED: [null, Vector2.ONE],
-	Room.Type.MONSTER: [preload("res://art/Enemy_Icon.png"), Vector2.ONE],
 	Room.Type.TREASURE: [preload("res://art/chest_1.png"), Vector2.ONE],
 	Room.Type.CAMPFIRE: [preload("res://art/player_heart.png"), Vector2(0.6, 0.6)],
 	Room.Type.SHOP: [preload("res://art/shop_icon.png"), Vector2.ONE],
@@ -14,18 +13,16 @@ const ICONS := {
 	Room.Type.BOSS: [preload("res://art/MalwareBoss.png"), Vector2(1.25, 1.25)],
 }
 
-# Difficulty colors for battle rooms
-const DIFFICULTY_COLORS := {
-	0: Color(0.2, 1.0, 0.2),      # Tier 0: Easy - Green
-	1: Color(1.0, 1.0, 0.0),      # Tier 1: Medium - Yellow
-	2: Color(1.0, 0.2, 0.2),      # Tier 2: Hard - Red
-	3: Color(0.8, 0.2, 1.0),      # Tier 3: Boss - Purple
+# Difficulty icons for MONSTER rooms (Easy, Medium, Hard)
+const DIFFICULTY_ICONS := {
+	0: preload("res://art/Enemy_Icon_Easy.png"),
+	1: preload("res://art/Enemy_Icon_Medium.png"),
+	2: preload("res://art/Enemy_Icon_Hard.png"),
 }
 
 @onready var sprite_2d: Sprite2D = $Visuals/Sprite2D
 @onready var line_2d: Line2D = $Visuals/Line2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var difficulty_indicator: ColorRect = $Visuals/DifficultyIndicator
 
 var available := false : set = set_available
 var room: Room : set = set_room
@@ -45,29 +42,19 @@ func set_room(new_data: Room) -> void:
 	room = new_data
 	position = room.position
 	line_2d.rotation_degrees = randi_range(0, 360)
-	sprite_2d.texture = ICONS[room.type][0]
-	sprite_2d.scale = ICONS[room.type][1]
-	
-	# Show difficulty indicator for battle rooms
-	_update_difficulty_indicator()
 
-
-func _update_difficulty_indicator() -> void:
-	# Only show difficulty for MONSTER and BOSS rooms
-	if room.type == Room.Type.MONSTER or room.type == Room.Type.BOSS:
-		if room.battle_stats:
-			difficulty_indicator.visible = true
-			var tier = room.battle_stats.battle_tier
-			difficulty_indicator.color = DIFFICULTY_COLORS.get(tier, Color.WHITE)
-		else:
-			difficulty_indicator.visible = false
+	# MONSTER rooms: show difficulty icon based on battle_tier
+	if room.type == Room.Type.MONSTER and room.battle_stats:
+		var tier = room.battle_stats.battle_tier
+		sprite_2d.texture = DIFFICULTY_ICONS.get(tier, DIFFICULTY_ICONS[0])
+		sprite_2d.scale = Vector2.ONE
 	else:
-		difficulty_indicator.visible = false
+		sprite_2d.texture = ICONS[room.type][0]
+		sprite_2d.scale = ICONS[room.type][1]
 
 
 func show_selected() -> void:
 	line_2d.modulate = Color.WHITE
-
 
 
 @warning_ignore("unused_parameter")

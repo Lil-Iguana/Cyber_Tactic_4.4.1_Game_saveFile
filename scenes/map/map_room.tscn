@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3gibqasn0w5x"]
+[gd_scene format=3 uid="uid://b3gibqasn0w5x"]
 
 [ext_resource type="Script" uid="uid://14hfvne0ewn6" path="res://scenes/map/map_room.gd" id="1_044g4"]
 [ext_resource type="Texture2D" uid="uid://bqhiuu3kr650s" path="res://art/tile_0103.png" id="1_jmyqc"]
@@ -111,36 +111,27 @@ _data = {
 &"select": SubResource("Animation_peyum")
 }
 
-[node name="MapRoom" type="Area2D"]
+[node name="MapRoom" type="Area2D" unique_id=489145463]
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_044g4")
 
-[node name="Visuals" type="Node2D" parent="."]
+[node name="Visuals" type="Node2D" parent="." unique_id=2097117245]
 
-[node name="Line2D" type="Line2D" parent="Visuals"]
+[node name="Line2D" type="Line2D" parent="Visuals" unique_id=1153493764]
 modulate = Color(1, 1, 1, 0)
 points = PackedVector2Array(0, -10, 5, -9, 8, -6, 10, -2, 10, 1, 9, 5, 7, 7, 4, 9, 0, 10, -4, 9, -7, 7, -9, 5, -10, 2, -10, -2, -9, -5, -7, -7, -5, -9, -2, -10)
 closed = true
 width = 2.0
 
-[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+[node name="Sprite2D" type="Sprite2D" parent="Visuals" unique_id=193406398]
 modulate = Color(0.2784314, 0.2784314, 0.2784314, 1)
 texture = ExtResource("1_jmyqc")
 
-[node name="DifficultyIndicator" type="ColorRect" parent="Visuals"]
-visible = false
-offset_left = -8.0
-offset_top = -14.0
-offset_right = -4.0
-offset_bottom = -10.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1614252299]
 shape = SubResource("CircleShape2D_8g6jj")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_6sorl")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=87279691]
+libraries/ = SubResource("AnimationLibrary_6sorl")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
