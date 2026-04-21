@@ -17,6 +17,7 @@
 ##   MusicPlayer.play_track(MusicManager.Track.SHOP)
 ##   MusicPlayer.stop_music()
 
+class_name MusicManager
 extends Node
 
 # ---------------------------------------------------------------------------

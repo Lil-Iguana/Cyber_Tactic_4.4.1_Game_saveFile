@@ -7,7 +7,9 @@ process_mode = 3
 script = ExtResource("1_uyuvo")
 
 [node name="PlayerA" type="AudioStreamPlayer" parent="." unique_id=1742642565]
+volume_db = -80.0
 bus = &"Music"
 
 [node name="PlayerB" type="AudioStreamPlayer" parent="." unique_id=147551317]
+volume_db = -80.0
 bus = &"Music"

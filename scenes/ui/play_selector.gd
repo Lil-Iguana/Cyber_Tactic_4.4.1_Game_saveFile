@@ -29,7 +29,7 @@ func set_current_character(new_character: CharacterStats) -> void:
 
 
 func _on_start_button_pressed() -> void:
-	MusicPlayer.stop()
+	MusicPlayer.stop_music()
 	# Clear discovered cards for new run
 	CardLibrary.discovered_cards.clear()
 
