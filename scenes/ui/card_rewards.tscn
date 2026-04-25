@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bhuc3qfelrj6f"]
+[gd_scene format=3 uid="uid://bhuc3qfelrj6f"]
 
 [ext_resource type="Script" uid="uid://md6f0hgtphpk" path="res://scenes/ui/card_rewards.gd" id="1_jycrj"]
 [ext_resource type="PackedScene" uid="uid://rsk8d12egnnf" path="res://scenes/ui/card_menu_ui.tscn" id="1_u1hn7"]
@@ -8,12 +8,12 @@
 [ext_resource type="Resource" uid="uid://cavj5bacvpmrd" path="res://characters/warrior/cards/warrior_big_slam.tres" id="4_j87tl"]
 [ext_resource type="Resource" uid="uid://bl66ldjcrh1ii" path="res://characters/warrior/cards/warrior_true_strength.tres" id="5_5vnx4"]
 [ext_resource type="FontFile" uid="uid://dyuep3t4l8j4" path="res://art/Font Styles/PublicPixel-rv0pA.ttf" id="6_14wmn"]
-[ext_resource type="FontFile" uid="uid://7ucfniysa1ko" path="res://art/Font Styles/pixel_rpg.ttf" id="7_tigeo"]
+[ext_resource type="FontFile" uid="uid://c1mfnubgq43co" path="res://art/Font Styles/Monocraft.ttc" id="8_14wmn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_27adq"]
 font = ExtResource("6_14wmn")
 
-[node name="CardRewards" type="ColorRect"]
+[node name="CardRewards" type="ColorRect" unique_id=1868186752]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -23,7 +23,7 @@ color = Color(0, 0, 0, 1)
 script = ExtResource("1_jycrj")
 rewards = Array[ExtResource("2_cvuw6")]([ExtResource("3_pfit7"), ExtResource("4_j87tl"), ExtResource("5_5vnx4")])
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1424150952]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -36,49 +36,49 @@ grow_horizontal = 2
 text = "Pick a Card to add to your deck!"
 label_settings = SubResource("LabelSettings_27adq")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1502152796]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -41.5
-offset_top = -20.0
-offset_right = 41.5
-offset_bottom = 20.0
+offset_left = -122.5
+offset_top = -56.0
+offset_right = 122.5
+offset_bottom = 94.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="Cards" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Cards" type="HBoxContainer" parent="VBoxContainer" unique_id=752004401]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="CardMenuUI" parent="VBoxContainer/Cards" instance=ExtResource("1_u1hn7")]
+[node name="CardMenuUI" parent="VBoxContainer/Cards" unique_id=1600015914 instance=ExtResource("1_u1hn7")]
 layout_mode = 2
 
-[node name="CardMenuUI2" parent="VBoxContainer/Cards" instance=ExtResource("1_u1hn7")]
+[node name="CardMenuUI2" parent="VBoxContainer/Cards" unique_id=490651491 instance=ExtResource("1_u1hn7")]
 layout_mode = 2
 
-[node name="CardMenuUI3" parent="VBoxContainer/Cards" instance=ExtResource("1_u1hn7")]
+[node name="CardMenuUI3" parent="VBoxContainer/Cards" unique_id=820402310 instance=ExtResource("1_u1hn7")]
 layout_mode = 2
 
-[node name="SkipCardReward" type="Button" parent="VBoxContainer"]
+[node name="SkipCardReward" type="Button" parent="VBoxContainer" unique_id=1933755895]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 30)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("7_tigeo")
+theme_override_fonts/font = ExtResource("8_14wmn")
 theme_override_font_sizes/font_size = 12
 text = "Skip"
 
-[node name="CardTooltipPopUp" parent="." instance=ExtResource("2_db3cx")]
+[node name="CardTooltipPopUp" parent="." unique_id=1811123951 instance=ExtResource("2_db3cx")]
 visible = false
 layout_mode = 1
 
-[node name="TakeButton" type="Button" parent="CardTooltipPopUp"]
+[node name="TakeButton" type="Button" parent="CardTooltipPopUp" unique_id=718728560]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 7

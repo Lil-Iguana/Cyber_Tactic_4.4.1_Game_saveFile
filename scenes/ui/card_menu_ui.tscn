@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://mtahay6yxl8j" path="res://scenes/ui/card_visuals.tscn" id="3_bf7wh"]
 
 [node name="CardMenuUI" type="CenterContainer" unique_id=367757317]
-custom_minimum_size = Vector2(0, 110)
+custom_minimum_size = Vector2(75, 110)
 offset_right = 25.0
 offset_bottom = 30.0
 size_flags_horizontal = 3
