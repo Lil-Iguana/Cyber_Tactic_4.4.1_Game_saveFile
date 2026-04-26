@@ -41,7 +41,7 @@ func take_damage(damage: int) -> void:
 
 
 func can_play_card(card: Card) -> bool:
-	return mana >= card.cost
+	return mana >= card.cost and spell >= card.spell_cost and not card.unplayable
 
 
 func create_instance() -> Resource:

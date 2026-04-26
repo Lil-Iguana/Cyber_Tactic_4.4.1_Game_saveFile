@@ -33,7 +33,9 @@ static func type_color(t: int) -> Color:
 @export var rarity: Rarity
 @export var target: Target
 @export var cost: int
+@export var spell_cost: int = 0
 @export var remove: bool = false
+@export var unplayable: bool = false
 
 @export_group("Card Visuals")
 @export var icon: Texture

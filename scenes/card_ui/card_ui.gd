@@ -100,13 +100,16 @@ func _set_card(value: Card) -> void:
 	
 	card = value
 	card_visuals.card = card
+	disabled = value.unplayable
 	# now that card is non-null, apply the base tint once
 	apply_tinted_style(BASE_STYLEBOX)
 
 
 func _set_playable(value: bool) -> void:
 	playable = value
-	if not playable:
+	if card.unplayable:
+		disabled = true
+	if not playable and not card.unplayable:
 		card_visuals.cost.add_theme_color_override("font_color", Color.RED)
 		card_visuals.icon.modulate = Color(1, 1, 1, 0.5)
 	else:

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c1xm34jv8s6vc"]
+[gd_resource type="Resource" format=3 uid="uid://c1xm34jv8s6vc"]
 
 [ext_resource type="Texture2D" uid="uid://dgkes7744g65f" path="res://art/antivirus_icon.png" id="1_b0er6"]
 [ext_resource type="Script" uid="uid://d17pglj8eepkd" path="res://characters/warrior/cards/antivirus.gd" id="2_b0er6"]
