@@ -6,6 +6,7 @@ enum Element { PHYSICAL, FIRE, WATER, ICE, LIGHTING}
 signal stats_changed
 
 @export var max_health := 1 : set = set_max_health
+@export var max_spell := 0 : set = set_max_spell
 @export var enemy_name: String
 @export var art: Texture
 @export var model: PackedScene
@@ -21,12 +22,11 @@ signal stats_changed
 
 var health: int : set = set_health
 var block: int : set = set_block
-
+var spell: int : set = set_spell
 
 func set_health(value: int) -> void:
 	health = clampi(value, 0, max_health)
 	stats_changed.emit()
-
 
 func set_max_health(value : int) -> void:
 	var diff := value - max_health
@@ -39,11 +39,24 @@ func set_max_health(value : int) -> void:
 
 	stats_changed.emit()
 
-
 func set_block(value : int) -> void:
 	block = clampi(value, 0, 999)
 	stats_changed.emit()
 
+func set_spell(value: int) -> void:
+	spell = clampi(value, 0, max_spell)
+	stats_changed.emit()
+
+func set_max_spell(value: int) -> void:
+	var diff := value - max_spell
+	max_spell = value
+
+	if diff > 0:
+		spell += diff
+	elif spell > max_spell:
+		spell = max_spell
+
+	stats_changed.emit()
 
 func take_damage(damage : int) -> void:
 	if damage <= 0:
@@ -53,23 +66,19 @@ func take_damage(damage : int) -> void:
 	block = clampi(block - initial_damage, 0, block)
 	health -= damage
 
-
 func take_pure_damage(damage: int) -> void:
 	if damage <= 0:
 		return
 	health -= damage
 
-
 func heal(amount: int) -> void:
 	health += amount
-
 
 # Helper to get the multiplier for an element (defaults to 1.0 if not found)
 func get_elemental_multiplier(elem: Element) -> float:
 	if elemental_multipliers.has(elem):
 		return elemental_multipliers[elem]
 	return 1.0
-
 
 func create_instance() -> Resource:
 	var instance: Stats = self.duplicate()

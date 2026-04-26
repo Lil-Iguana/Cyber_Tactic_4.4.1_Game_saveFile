@@ -25,7 +25,6 @@ func _replace_editor_placeholder_with_model() -> void:
 func _ready() -> void:
 	status_handler.status_owner = self
 
-
 func set_character_stats(value: CharacterStats) -> void:
 	stats = value
 	
@@ -33,7 +32,6 @@ func set_character_stats(value: CharacterStats) -> void:
 		stats.stats_changed.connect(update_stats)
 	
 	update_player()
-
 
 func update_player() -> void:
 	if not stats is CharacterStats:
@@ -44,16 +42,13 @@ func update_player() -> void:
 	sprite_2d.texture = stats.art
 	update_stats()
 
-
 func update_stats() -> void:
 	stats_ui.update_stats(stats)
-
 
 func gain_block(block: int, which_modifier: Modifier.Type) -> void:
 	var modified_block := modifier_handler.get_modified_value(block, which_modifier)
 	stats.block += modified_block
 	Events.player_gain_block.emit()
-
 
 func take_damage(damage: int, which_modifier: Modifier.Type) -> void:
 	if stats.health <= 0:
@@ -80,7 +75,6 @@ func take_damage(damage: int, which_modifier: Modifier.Type) -> void:
 				queue_free()
 	)
 
-
 func take_pure_damage(damage: int, which_modifier: Modifier.Type) -> void:
 	if stats.health <= 0:
 		return
@@ -106,6 +100,35 @@ func take_pure_damage(damage: int, which_modifier: Modifier.Type) -> void:
 				queue_free()
 	)
 
+# This function lets you damage the target by bypassing any defense.
+func lose_health(amount: int) -> void:
+	if stats.health <= 0 or amount <= 0:
+		return
+	
+	stats.health -= amount
+	Events.player_hit.emit()
+	Events.player_lose_life.emit()
+	
+	if stats.health <= 0:
+		Events.player_died.emit()
+		queue_free()
+	
+
+# This function emits a signal that can be picked up by certain relics and powers.
+func spend_spell(amount: int) -> void:
+	if stats.spell <= 0 or amount <= 0:
+		return
+	
+	stats.spell -= amount
+	Events.player_spend_spell.emit()
+
+# This function emits a signal for each spell charge gained.
+# It mustn't send the signal if the spell charge is lost because it goes beyond max_spell.
+func gain_spell(amount: int) -> void:
+	for i in amount:
+		if stats.spell < stats.max_spell:
+			stats.spell += 1
+			Events.player_gain_spell.emit()
 
 func play_idle_animation() -> void:
 	if model_3d.get_child_count() > 0:
@@ -114,7 +137,6 @@ func play_idle_animation() -> void:
 			var anim = model_node.get_node("AnimationPlayer") as AnimationPlayer
 			if anim.has_animation("Idle"):
 				anim.play("Idle")
-
 
 func play_hurt_animation() -> void:
 	if model_3d.get_child_count() > 0:
@@ -127,7 +149,6 @@ func play_hurt_animation() -> void:
 				push_warning("No ‘Hurt’ on this AnimationPlayer!")
 		else:
 			push_warning("Model has no AnimationPlayer!")
-
 
 func play_animation(animation_name: String) -> void:
 	if model_3d.get_child_count() > 0:

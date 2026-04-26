@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://b73bgdmuah55d"]
+
+[ext_resource type="Script" uid="uid://c2qi40uyfhogm" path="res://scenes/ui/spell_ui.gd" id="1_3bhm4"]
+[ext_resource type="Texture2D" uid="uid://p0yqsrixsboc" path="res://art/tile_0102.png" id="1_l502c"]
+
+[node name="SpellUI" type="HBoxContainer" unique_id=1614265760]
+offset_right = 37.0
+offset_bottom = 16.0
+theme_override_constants/separation = 0
+script = ExtResource("1_3bhm4")
+
+[node name="SpellImage" type="TextureRect" parent="." unique_id=903858713]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2
+texture = ExtResource("1_l502c")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="SpellLabel" type="Label" parent="." unique_id=1797449972]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+size_flags_vertical = 1
+text = "1"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="MaxSpellLabel" type="Label" parent="." unique_id=575607861]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "/99"
+horizontal_alignment = 1
+vertical_alignment = 1

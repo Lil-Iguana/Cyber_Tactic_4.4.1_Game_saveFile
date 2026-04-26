@@ -5,9 +5,7 @@
 [ext_resource type="Script" uid="uid://c7qxtsgofswco" path="res://scenes/ui/hand.gd" id="2_dybx0"]
 [ext_resource type="PackedScene" uid="uid://b25jnn2o0ion1" path="res://scenes/player/player.tscn" id="3_arrrb"]
 [ext_resource type="PackedScene" uid="uid://neowwkxk87rp" path="res://scenes/card_target_selector/card_target_selector.tscn" id="3_jsmm7"]
-[ext_resource type="AudioStream" uid="uid://dmv0nfthic2dq" path="res://art/music/during normal battle.mp3" id="3_ueicy"]
 [ext_resource type="Texture2D" uid="uid://lugennxj0o6x" path="res://art/battle_background1.png" id="4_8eh2s"]
-[ext_resource type="AudioStream" uid="uid://cqs86ck0kmw83" path="res://art/music/boss battle.mp3" id="4_n5ix6"]
 [ext_resource type="Resource" uid="uid://co6ar47di3crh" path="res://characters/warrior/warrior.tres" id="4_nhdv7"]
 [ext_resource type="Script" uid="uid://cgojt0i5spdq4" path="res://scenes/enemy/enemy_handler.gd" id="4_pp0u0"]
 [ext_resource type="Resource" uid="uid://di1u2yn8ru2vi" path="res://enemies_stats/virus/virus_enemy.tres" id="5_bry55"]
@@ -36,10 +34,14 @@ size = Vector2(641, 222)
 [sub_resource type="LabelSettings" id="LabelSettings_8eh2s"]
 font = ExtResource("17_tnndc")
 font_size = 32
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_e48mi"]
 font = ExtResource("17_tnndc")
 font_size = 32
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ueicy"]
 font_size = 64
@@ -49,8 +51,6 @@ outline_color = Color(0, 0, 0, 1)
 [node name="Battle" type="Node2D" unique_id=7823241]
 script = ExtResource("1_tgtwy")
 char_stats = ExtResource("4_nhdv7")
-music = ExtResource("3_ueicy")
-boss_music = ExtResource("4_n5ix6")
 metadata/_edit_lock_ = true
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1550462719]
@@ -146,21 +146,6 @@ offset_bottom = -12.0
 grow_vertical = 0
 counter = NodePath("Counter")
 
-[node name="ColorRect" type="ColorRect" parent="BattleUI/DrawPileButton" unique_id=1624626039]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -1.0
-offset_top = -3.0
-offset_right = 42.0
-offset_bottom = 30.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.3137255)
-
 [node name="Counter" type="Label" parent="BattleUI/DrawPileButton" unique_id=1890470630]
 layout_mode = 0
 offset_left = 25.0
@@ -186,21 +171,6 @@ grow_vertical = 0
 texture_normal = ExtResource("18_5fl16")
 texture_hover = ExtResource("19_5ng34")
 counter = NodePath("Counter")
-
-[node name="ColorRect" type="ColorRect" parent="BattleUI/DiscardPileButton" unique_id=1768996952]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -31.0
-offset_top = -3.0
-offset_right = 12.0
-offset_bottom = 30.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.3137255)
 
 [node name="Counter" type="Label" parent="BattleUI/DiscardPileButton" unique_id=1005308370]
 layout_mode = 0
